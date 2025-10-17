@@ -32,7 +32,7 @@ const SignupForm = () => {
         onFinish={onFinish}
         scrollToFirstError
       >
-        {/* Firstname */}
+        
         <Form.Item
           name="Firstname"
           label="First Name"
@@ -41,7 +41,7 @@ const SignupForm = () => {
           <Input placeholder="Enter first name" />
         </Form.Item>
 
-        {/* Lastname */}
+        
         <Form.Item
           name="Lastname"
           label="Last Name"
@@ -50,7 +50,7 @@ const SignupForm = () => {
           <Input placeholder="Enter last name" />
         </Form.Item>
 
-        {/* Email */}
+        
         <Form.Item
           name="Email Address"
           label="Email Address"
@@ -62,7 +62,7 @@ const SignupForm = () => {
           <Input placeholder="example@mail.com" />
         </Form.Item>
 
-        {/* Password */}
+       
         <Form.Item
           name="password"
           label="Password"
@@ -79,7 +79,7 @@ const SignupForm = () => {
           <Input.Password placeholder="Enter password" />
         </Form.Item>
 
-        {/* Confirm Password */}
+        
         <Form.Item
           name="confirm"
           label="Confirm Password"
@@ -131,9 +131,9 @@ const SignupForm = () => {
         >
           <Input
             placeholder="Enter phone number"
-            maxLength={11} // optional: limits to 11 digits (Nigeria format)
+            maxLength={11} 
             onKeyPress={(e) => {
-              // Prevent typing non-numeric characters
+              
               if (!/[0-9]/.test(e.key)) {
                 e.preventDefault();
               }
@@ -141,7 +141,7 @@ const SignupForm = () => {
           />
         </Form.Item>
 
-        {/* Country */}
+        
         <Form.Item
           name="country"
           label="Country"
@@ -150,7 +150,7 @@ const SignupForm = () => {
           <Input placeholder="Enter your country" />
         </Form.Item>
 
-        {/* Agree to Terms */}
+        
         <Form.Item
           name="agreement"
           valuePropName="checked"
@@ -168,14 +168,14 @@ const SignupForm = () => {
           </Checkbox>
         </Form.Item>
 
-        {/* Submit Button */}
+        
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
             Create Account
           </Button>
         </Form.Item>
 
-        {/* Already have an account */}
+        
         <AlreadyAccount>
           <Text>
             Already have an account?{" "}
