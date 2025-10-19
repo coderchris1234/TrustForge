@@ -1,7 +1,10 @@
-import SignupForm from "./Pages/Auth/Signup"
+import SignupForm from "./Pages/Auth/Signup";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-function App() {
+
+
+const App =()=> {
  
 
   return (
