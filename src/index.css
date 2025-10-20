@@ -3,3 +3,41 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+
+:root {
+  --primary_color_100: #b4d1f8;
+  --primary_color_200: #a1c5f6;
+  --primary_color_300: #8ab7f4;
+  --primary_color_400: #336bff;
+  --primary_color_500: #0046ff;
+  --primary_color_600: #0038cc;
+  --primary_color_700: #002da3;
+  --primary_color_800: #002da3;
+  --primary_color_900: #001d68;
+  --secondary_color_100: #c6f6a1;
+  --secondary_color_200: #b8f48a;
+  --secondary_color_300: #a6f16d;
+  --secondary_color_400: #90ed49;
+  --secondary_color_500: #7ceb27;
+  --secondary_color_600: #5dba16;
+  --secondary_color_700: #4a9512;
+  --secondary_color_800: #3b770e;
+  --secondary_color_900: #2f5f0b;
+  --netural_black_color: #1b1b1b;
+  --main_white: #ffffff;
+  --neutral_gray_color_400: #f7f8fb;
+  --neutral_gray_color_500: #e3e3e3;
+  --neutral_gray_color_600: #9c9c9c;
+  --accent_color_400: #f7c234;
+  --accent_color_500: #f5b301;
+  --accent_color_600: #c48f01;
+  --success_green_color_400: #45b56e;
+  --success_green_color_500: #16a34a;
+  --success_green_color_600: #12823b;
+  --error_red_color_400: #e35151;
+  --error_red_color_500: #dc2626;
+  --error_red_color_600: #b01e1e;
+
+}
