@@ -1,5 +1,7 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignupForm from "./Pages/Auth/Signup";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Pages/Auth/Login"
+
 
 
 
@@ -8,9 +10,16 @@ const App =()=> {
  
 
   return (
-    <>
-     <SignupForm />
-    </>
+   <BrowserRouter>
+      <Routes>
+         <Route path={"/"} element={<div>Landing Page</div>} />
+         <Route path={"/login"} element={<Login/>} />
+         <Route path={"/signup"} element={<SignupForm />} />
+         <Route path={"/"} element={<div>Landing Page</div>} />
+         <Route path={"/"} element={<div>Landing Page</div>} />
+      </Routes>
+   </BrowserRouter>
+   
   )
 }
 
