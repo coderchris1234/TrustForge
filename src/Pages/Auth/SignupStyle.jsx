@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const SignupContainer = styled.div`
   display: flex;
+  gap: 20px;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: max-content;
   font-family: "Inter", sans-serif;
   background-color: #fff;
   /* background-color: red; */
@@ -15,21 +17,23 @@ export const SignupContainer = styled.div`
 `;
 
 export const SignupLeft = styled.div`
+  display: flex;
   flex: 1;
-  background: #f5f7fa;
-  height: 100vh;
-  background-color: brown;
-  width: 100%;
-
-  img {
+  background: linear-gradient(0deg, rgba(0, 70, 255, 0.25) 0%, rgba(0, 70, 255, 0.25) 100%), url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 92% 51%, 100% 100%, 0 100%, 0% 50%);
+  /* border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%; */
+  /* clip-path: ellipse(90% 100% at 0% 50%); */
+  /* img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: 200px;
     object-fit: cover;
 
     @media (max-width: 900px) {
-      height: 250px;
+      height: 150px;
     }
-  }
+  } */
 `;
 
 export const SignupRight = styled.div`
@@ -37,9 +41,11 @@ export const SignupRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
   background: #fff;
+  box-shadow: 0 4px 10px 0 rgba(27, 27, 27, 0.25);
   padding: 20px;
-  height: max-content;
+  /* height: 100vh; */
 
   @media (max-width: 900px) {
     padding: 40px 20px;
@@ -137,7 +143,6 @@ export const PhoneField = styled.div`
     border-radius: 3px;
   }
 `;
-
 
 export const CreateButton = styled.button`
   background-color: #0066ff;

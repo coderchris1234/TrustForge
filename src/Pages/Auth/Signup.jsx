@@ -102,45 +102,46 @@ const Signup = () => {
 
   // 🚀 Handle form submission
   const handleSubmit = (e) => {
-  e.preventDefault();
-  const isValid = validateForm();
+    e.preventDefault();
+    const isValid = validateForm();
 
-  if (isValid) {
-    alert("Account created successfully!");
+    if (isValid) {
+      alert("Account created successfully!");
 
-    // Log the full submitted data
-    console.log({
-      ...formData,
-      country: country.name,
-      phone: `${country.code}${formData.phone}`,
-    });
+      // Log the full submitted data
+      console.log({
+        ...formData,
+        country: country.name,
+        phone: `${country.code}${formData.phone}`,
+      });
 
-    // ✅ Clear all input fields after submission
-    setFormData({
-      fullName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      phone: "",
-      role: "",
-    });
+      // ✅ Clear all input fields after submission
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phone: "",
+        role: "",
+      });
 
-    // ✅ Optionally reset selected country back to Nigeria
-    setCountry({
-      name: "Nigeria",
-      isoCode: "NG",
-      code: "+234",
-    });
+      // ✅ Optionally reset selected country back to Nigeria
+      setCountry({
+        name: "Nigeria",
+        isoCode: "NG",
+        code: "+234",
+      });
 
-    // ✅ Clear any previous errors
-    setErrors({});
-  }
-};
-
+      // ✅ Clear any previous errors
+      setErrors({});
+    }
+  };
 
   return (
     <SignupContainer>
-      <SignupLeft />
+      <SignupLeft>
+        {/* <img src="https://i.imgur.com/wfV9rnF.jpeg" alt="" /> */}
+      </SignupLeft>
 
       <SignupRight>
         <FormBox>
