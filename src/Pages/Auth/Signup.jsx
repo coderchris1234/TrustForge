@@ -48,7 +48,7 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // 🧹 Clear error for the field as user types
+  
     if (errors[name]) {
       setErrors((prevErrors) => {
         const updated = { ...prevErrors };
@@ -58,33 +58,33 @@ const Signup = () => {
     }
   };
 
-  // 🌍 Handle country selection and flag update
+  
   const handleCountryChange = (e) => {
     const selected = countries.find((c) => c.code === e.target.value);
     if (selected) setCountry(selected);
   };
 
-  // 🧾 Validate form inputs
+
   const validateForm = () => {
     const newErrors = {};
 
-    // Full name
+
     if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
 
-    // Email validation
+
     if (!formData.email) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Enter a valid email (must include @ and .com)";
     }
 
-    // Phone number
+   
     if (!formData.phone) newErrors.phone = "Phone number is required";
 
-    // Role
+   
     if (!formData.role) newErrors.role = "Please select a role";
 
-    // Password
+   
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
     if (!formData.password) newErrors.password = "Password is required";
@@ -92,7 +92,7 @@ const Signup = () => {
       newErrors.password =
         "Must include uppercase, lowercase, number, and symbol";
 
-    // Confirm password
+
     if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = "Passwords do not match";
 
@@ -100,7 +100,7 @@ const Signup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // 🚀 Handle form submission
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validateForm();
@@ -108,14 +108,8 @@ const Signup = () => {
     if (isValid) {
       alert("Account created successfully!");
 
-      // Log the full submitted data
-      console.log({
-        ...formData,
-        country: country.name,
-        phone: `${country.code}${formData.phone}`,
-      });
 
-      // ✅ Clear all input fields after submission
+   
       setFormData({
         fullName: "",
         email: "",
@@ -125,14 +119,13 @@ const Signup = () => {
         role: "",
       });
 
-      // ✅ Optionally reset selected country back to Nigeria
       setCountry({
         name: "Nigeria",
         isoCode: "NG",
         code: "+234",
       });
 
-      // ✅ Clear any previous errors
+      
       setErrors({});
     }
   };
@@ -140,7 +133,7 @@ const Signup = () => {
   return (
     <SignupContainer>
       <SignupLeft>
-        {/* <img src="https://i.imgur.com/wfV9rnF.jpeg" alt="" /> */}
+        
       </SignupLeft>
 
       <SignupRight>

@@ -8,7 +8,7 @@ export const SignupContainer = styled.div`
   height: max-content;
   font-family: "Inter", sans-serif;
   background-color: #fff;
-  /* background-color: red; */
+ 
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -21,19 +21,6 @@ export const SignupLeft = styled.div`
   flex: 1;
   background: linear-gradient(0deg, rgba(0, 70, 255, 0.25) 0%, rgba(0, 70, 255, 0.25) 100%), url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
   clip-path: polygon(0 0, 100% 0, 92% 51%, 100% 100%, 0 100%, 0% 50%);
-  /* border-top-right-radius: 50% 50%;
-  border-bottom-right-radius: 50% 50%; */
-  /* clip-path: ellipse(90% 100% at 0% 50%); */
-  /* img {
-    width: 100%;
-    height: auto;
-    max-width: 200px;
-    object-fit: cover;
-
-    @media (max-width: 900px) {
-      height: 150px;
-    }
-  } */
 `;
 
 export const SignupRight = styled.div`
@@ -55,8 +42,6 @@ export const SignupRight = styled.div`
 export const FormBox = styled.div`
   width: 80%;
   max-width: 400px;
-  /* height: max-content; */
-  /* background-color: red; */
 `;
 
 export const FormTitle = styled.h2`
@@ -75,7 +60,6 @@ export const InputField = styled.input`
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
-  /* margin-bottom: 10px; */
   transition: 0.3s;
 
   &:focus {
@@ -93,9 +77,7 @@ export const SelectField = styled.select`
   margin-bottom: 10px;
   background-color: #fff;
 
-  /* &:focus {
-    border-color: #0066ff;
-  } */
+
 `;
 
 export const PhoneField = styled.div`
@@ -108,7 +90,6 @@ export const PhoneField = styled.div`
   padding: 0 10px;
   margin-bottom: 10px;
   background-color: #fff;
-  /* background-color: red; */
 
   .country-select {
     display: flex;
@@ -126,7 +107,6 @@ export const PhoneField = styled.div`
     font-size: 14px;
     outline: none;
     cursor: pointer;
-    appearance: none; /* hides default dropdown arrow */
   }
 
   input {
