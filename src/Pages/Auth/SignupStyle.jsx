@@ -12,7 +12,6 @@ export const SignupContainer = styled.div`
   font-size: 16px;
   font-style: normal;
   line-height: 24px;
- 
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -22,9 +21,14 @@ export const SignupContainer = styled.div`
 
 export const SignupLeft = styled.div`
   display: flex;
-  flex: 1;
-  background: linear-gradient(0deg, rgba(0, 70, 255, 0.25) 0%, rgba(0, 70, 255, 0.25) 100%), url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
 
+  width: 40%;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 70, 255, 0.25) 0%,
+      rgba(0, 70, 255, 0.25) 100%
+    ),
+    url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
 `;
 
 export const SignupRight = styled.div`
@@ -34,7 +38,9 @@ export const SignupRight = styled.div`
   align-items: center;
   border-radius: 8px;
   background: #fff;
- 
+  /* background-color: red; */
+  width: 50%;
+
   padding: 20px;
   /* height: 100vh; */
 
@@ -80,8 +86,6 @@ export const SelectField = styled.select`
   font-size: 14px;
   margin-bottom: 10px;
   background-color: #fff;
-
-
 `;
 
 export const PhoneField = styled.div`
