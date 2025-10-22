@@ -6,8 +6,12 @@ export const SignupContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: max-content;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 24px;
  
 
   @media (max-width: 900px) {
@@ -20,7 +24,7 @@ export const SignupLeft = styled.div`
   display: flex;
   flex: 1;
   background: linear-gradient(0deg, rgba(0, 70, 255, 0.25) 0%, rgba(0, 70, 255, 0.25) 100%), url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
-  clip-path: polygon(0 0, 100% 0, 92% 51%, 100% 100%, 0 100%, 0% 50%);
+
 `;
 
 export const SignupRight = styled.div`
@@ -30,7 +34,7 @@ export const SignupRight = styled.div`
   align-items: center;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 4px 10px 0 rgba(27, 27, 27, 0.25);
+ 
   padding: 20px;
   /* height: 100vh; */
 

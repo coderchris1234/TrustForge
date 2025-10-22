@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import {
   SignupContainer,
   SignupLeft,
@@ -28,6 +29,9 @@ const Signup = () => {
     role: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
   const [country, setCountry] = useState({
     name: "Nigeria",
     isoCode: "NG",
@@ -35,20 +39,18 @@ const Signup = () => {
   });
 
   const countries = [
-    { name: "Nigeria", isoCode: "NG", code: "+234" },
-    { name: "Ghana", isoCode: "GH", code: "+233" },
-    { name: "Kenya", isoCode: "KE", code: "+254" },
-    { name: "United States", isoCode: "US", code: "+1" },
+    { isoCode: "NG", code: "+234" },
+    { isoCode: "GH", code: "+233" },
+    { isoCode: "KE", code: "+254" },
+    { isoCode: "US", code: "+1" },
   ];
 
   const [errors, setErrors] = useState({});
 
-  // 🧠 Handle text input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-  
     if (errors[name]) {
       setErrors((prevErrors) => {
         const updated = { ...prevErrors };
@@ -58,19 +60,15 @@ const Signup = () => {
     }
   };
 
-  
   const handleCountryChange = (e) => {
     const selected = countries.find((c) => c.code === e.target.value);
     if (selected) setCountry(selected);
   };
 
-
   const validateForm = () => {
     const newErrors = {};
 
-
     if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
-
 
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -78,20 +76,16 @@ const Signup = () => {
       newErrors.email = "Enter a valid email (must include @ and .com)";
     }
 
-   
     if (!formData.phone) newErrors.phone = "Phone number is required";
 
-   
     if (!formData.role) newErrors.role = "Please select a role";
 
-   
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
     if (!formData.password) newErrors.password = "Password is required";
     else if (!passwordRegex.test(formData.password))
       newErrors.password =
         "Must include uppercase, lowercase, number, and symbol";
-
 
     if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = "Passwords do not match";
@@ -100,7 +94,6 @@ const Signup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validateForm();
@@ -108,8 +101,6 @@ const Signup = () => {
     if (isValid) {
       alert("Account created successfully!");
 
-
-   
       setFormData({
         fullName: "",
         email: "",
@@ -125,16 +116,16 @@ const Signup = () => {
         code: "+234",
       });
 
-      
       setErrors({});
     }
   };
 
+  const togglePassword = () => setShowPassword(!showPassword);
+  const toggleConfirm = () => setShowConfirm(!showConfirm);
+
   return (
     <SignupContainer>
-      <SignupLeft>
-        
-      </SignupLeft>
+      <SignupLeft></SignupLeft>
 
       <SignupRight>
         <FormBox>
@@ -215,25 +206,56 @@ const Signup = () => {
             <Label>
               Password <span className="required">*</span>
             </Label>
-            <InputField
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            {errors.password && <ErrorText>{errors.password}</ErrorText>}
+           <div style={{ position: "relative" }}>
+              <InputField
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
+                onChange={handleChange}
+                style={{ paddingRight: "40px" }}
+              />
+              <span
+                onClick={togglePassword}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
 
             <Label>
               Confirm Password <span className="required">*</span>
             </Label>
-            <InputField
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
+           <div style={{ position: "relative" }}>
+              <InputField
+                type={showConfirm ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Confirm password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                style={{ paddingRight: "40px" }}
+              />
+              <span
+                onClick={toggleConfirm}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              >
+                {showConfirm ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
             {errors.confirmPassword && (
               <ErrorText>{errors.confirmPassword}</ErrorText>
             )}
