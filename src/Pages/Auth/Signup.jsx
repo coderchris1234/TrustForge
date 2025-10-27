@@ -1,192 +1,289 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import {
-  Form,
-  Input,
-  Button,
-  Select,
-  Checkbox,
-  message,
-  Typography,
-} from "antd";
-import { FormContainer, FormTitle, AlreadyAccount } from "./SignupStyle";
+  SignupContainer,
+  SignupLeft,
+  SignupRight,
+  FormBox,
+  FormTitle,
+  InputField,
+  SelectField,
+  PhoneField,
+  CreateButton,
+  GoogleBtn,
+  OrText,
+  LoginText,
+  TermsText,
+  Label,
+  ErrorText,
+} from "./SignupStyle";
+import ReactCountryFlag from "react-country-flag";
 
-const { Option } = Select;
-const { Text, Link } = Typography;
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    role: "",
+  });
 
-const SignupForm = () => {
-  const [form] = Form.useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
-  const onFinish = (values) => {
-    console.log("Form values:", values);
-    message.success("Account created successfully!");
+  const [country, setCountry] = useState({
+    name: "Nigeria",
+    isoCode: "NG",
+    code: "+234",
+  });
+
+  const countries = [
+    { isoCode: "NG", code: "+234" },
+    { isoCode: "GH", code: "+233" },
+    { isoCode: "KE", code: "+254" },
+    { isoCode: "US", code: "+1" },
+  ];
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (errors[name]) {
+      setErrors((prevErrors) => {
+        const updated = { ...prevErrors };
+        delete updated[name];
+        return updated;
+      });
+    }
   };
 
+  const handleCountryChange = (e) => {
+    const selected = countries.find((c) => c.code === e.target.value);
+    if (selected) setCountry(selected);
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
+
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email (must include @ and .com)";
+    }
+
+    if (!formData.phone) newErrors.phone = "Phone number is required";
+
+    if (!formData.role) newErrors.role = "Please select a role";
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+    if (!formData.password) newErrors.password = "Password is required";
+    else if (!passwordRegex.test(formData.password))
+      newErrors.password =
+        "Must include uppercase, lowercase, number, and symbol";
+
+    if (formData.password !== formData.confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateForm();
+
+    if (isValid) {
+      alert("Account created successfully!");
+
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phone: "",
+        role: "",
+      });
+
+      setCountry({
+        name: "Nigeria",
+        isoCode: "NG",
+        code: "+234",
+      });
+
+      setErrors({});
+    }
+  };
+
+  const togglePassword = () => setShowPassword(!showPassword);
+  const toggleConfirm = () => setShowConfirm(!showConfirm);
+
   return (
-    <FormContainer>
-      <FormTitle>Create Account</FormTitle>
+    <SignupContainer>
+      <SignupLeft></SignupLeft>
 
-      <Form
-        form={form}
-        name="signup"
-        layout="vertical"
-        onFinish={onFinish}
-        scrollToFirstError
-      >
-        
-        <Form.Item
-          name="Firstname"
-          label="First Name"
-          rules={[{ required: true, message: "Please enter your first name!" }]}
-        >
-          <Input placeholder="Enter first name" />
-        </Form.Item>
+      <SignupRight>
+        <FormBox>
+          <FormTitle>
+            Welcome to <span>TrustForge!</span>
+          </FormTitle>
 
-        
-        <Form.Item
-          name="Lastname"
-          label="Last Name"
-          rules={[{ required: true, message: "Please enter your last name!" }]}
-        >
-          <Input placeholder="Enter last name" />
-        </Form.Item>
+          <form onSubmit={handleSubmit}>
+            <Label>
+              Name <span className="required">*</span>
+            </Label>
+            <InputField
+              name="fullName"
+              placeholder="Enter Full Name"
+              value={formData.fullName}
+              onChange={handleChange}
+            />
+            {errors.fullName && <ErrorText>{errors.fullName}</ErrorText>}
 
-        
-        <Form.Item
-          name="Email Address"
-          label="Email Address"
-          rules={[
-            { required: true, message: "Please enter your email!" },
-            { type: "email", message: "Enter a valid email!" },
-          ]}
-        >
-          <Input placeholder="example@mail.com" />
-        </Form.Item>
+            <Label>
+              Email Address <span className="required">*</span>
+            </Label>
+            <InputField
+              name="email"
+              placeholder="example@gmail.com"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <ErrorText>{errors.email}</ErrorText>}
 
-       
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            { required: true, message: "Please enter your password!" },
-            {
-              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
-              message:
-                "Password must be at least 8 characters and include uppercase, lowercase, number, and symbol.",
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password placeholder="Enter password" />
-        </Form.Item>
+            <Label>
+              Phone Number <span className="required">*</span>
+            </Label>
+            <PhoneField>
+              <div className="country-select">
+                <ReactCountryFlag
+                  countryCode={country.isoCode}
+                  svg
+                  style={{ width: "24px", height: "18px" }}
+                />
+                <select value={country.code} onChange={handleCountryChange}>
+                  {countries.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.name} ({c.code})
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-        
-        <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={["password"]}
-          hasFeedback
-          rules={[
-            { required: true, message: "Please confirm your password!" },
-            {
-              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
-              message:
-                "Password must be at least 8 characters and include uppercase, lowercase, number, and symbol.",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(new Error("Passwords do not match!"));
-              },
-            }),
-          ]}
-        >
-          <Input.Password placeholder="Confirm password" />
-        </Form.Item>
+              <InputField
+                value={formData.phone}
+                type="text"
+                name="phone"
+                placeholder="Enter phone number"
+                maxLength="10"
+                onChange={(e) => {
+                  if (!/^\d*$/.test(e.target.value)) return;
+                  handleChange(e);
+                }}
+              />
+            </PhoneField>
+            {errors.phone && <ErrorText>{errors.phone}</ErrorText>}
 
-        {/* Role Dropdown */}
-        <Form.Item
-          name="role"
-          label="Select Role"
-          rules={[{ required: true, message: "Please select your role!" }]}
-        >
-          <Select placeholder="Choose your role">
-            <Option value="creator">Creator</Option>
-            <Option value="investor">Investor</Option>
-          </Select>
-        </Form.Item>
+            <Label>
+              Select Role <span className="required">*</span>
+            </Label>
+            <SelectField
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+            >
+              <option value="">Select...</option>
+              <option value="creator">Creator</option>
+              <option value="investor">Investor</option>
+            </SelectField>
+            {errors.role && <ErrorText>{errors.role}</ErrorText>}
 
-        {/* Phone */}
-        <Form.Item
-          name="phone"
-          label="Phone Number"
-          rules={[
-            { required: true, message: "Please enter your phone number!" },
-            {
-              pattern: /^[0-9]+$/,
-              message: "Phone number must be digits only!",
-            },
-          ]}
-        >
-          <Input
-            placeholder="Enter phone number"
-            maxLength={11} 
-            onKeyPress={(e) => {
-              
-              if (!/[0-9]/.test(e.key)) {
-                e.preventDefault();
-              }
-            }}
-          />
-        </Form.Item>
+            <Label>
+              Password <span className="required">*</span>
+            </Label>
+           <div style={{ position: "relative" }}>
+              <InputField
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
+                onChange={handleChange}
+                style={{ paddingRight: "40px" }}
+              />
+              <span
+                onClick={togglePassword}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
 
-        
-        <Form.Item
-          name="country"
-          label="Country"
-          rules={[{ required: true, message: "Please enter your country!" }]}
-        >
-          <Input placeholder="Enter your country" />
-        </Form.Item>
+            <Label>
+              Confirm Password <span className="required">*</span>
+            </Label>
+           <div style={{ position: "relative" }}>
+              <InputField
+                type={showConfirm ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Confirm password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                style={{ paddingRight: "40px" }}
+              />
+              <span
+                onClick={toggleConfirm}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              >
+                {showConfirm ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            {errors.confirmPassword && (
+              <ErrorText>{errors.confirmPassword}</ErrorText>
+            )}
 
-        
-        <Form.Item
-          name="agreement"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value
-                  ? Promise.resolve()
-                  : Promise.reject(new Error("You must agree to the terms")),
-            },
-          ]}
-        >
-          <Checkbox>
-            I agree to the <a href="#">Terms & Conditions</a>
-          </Checkbox>
-        </Form.Item>
+            <CreateButton type="submit">Create Account</CreateButton>
+          </form>
 
-        
-        <Form.Item>
-          <Button type="primary" htmlType="submit" block>
-            Create Account
-          </Button>
-        </Form.Item>
+          <OrText>Or create an account using</OrText>
 
-        
-        <AlreadyAccount>
-          <Text>
-            Already have an account?{" "}
-            <Link href="/login" style={{ fontWeight: 500 }}>
-              Log in
-            </Link>
-          </Text>
-        </AlreadyAccount>
-      </Form>
-    </FormContainer>
+          <GoogleBtn>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
+              alt="Google"
+            />
+          </GoogleBtn>
+
+          <LoginText>
+            Already have an account? <span>Log in</span>
+          </LoginText>
+
+          <TermsText>
+            By creating an account, you agree to our{" "}
+            <a href="#">Terms and Conditions</a>.
+          </TermsText>
+        </FormBox>
+      </SignupRight>
+    </SignupContainer>
   );
 };
 
-export default SignupForm;
+export default Signup;
