@@ -14,7 +14,6 @@ import add from "../../public/material-symbols_upload-rounded.svg";
 import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
-import { FaHeart } from "react-icons/fa";
 
 export const InvestorMenu = [
   [

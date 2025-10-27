@@ -10,7 +10,6 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import Private from "./Config/Private";
 import Creator from "./Pages/DashboardPage/CreatorPage/Creator";
 import Investor from "./Pages/DashboardPage/InvestorPage/Investor";
-import OverView from "./Pages/DashboardPage/CreatorPage/Overview";
 import MyBusiness from "./Pages/DashboardPage/CreatorPage/MyBusiness";
 import AddBusiness from "./Pages/DashboardPage/CreatorPage/AddBusiness";
 import Analytics from "./Pages/DashboardPage/CreatorPage/Analytics";
