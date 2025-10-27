@@ -17,17 +17,17 @@ const App = () => {
         <Route path={"/"} element={<LandingPage />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignupForm />} />
-        <Route path={"/verify-email"} element={<VerifyEmail />} />
-        <Route path={"/Reset-password"} element={<ResetPassword />} />
-        <Route path={"/forgot-password"} element={<ForgotPassword />} />
-        <Route path={"/Choose-role"} element={<ChooseRole />} />
+        <Route path={"/verifyemail"} element={<VerifyEmail />} />
+        <Route path={"/resetpassword"} element={<ResetPassword />} />
+        <Route path={"/forgotpassword"} element={<ForgotPassword />} />
+        <Route path={"/chooserole"} element={<ChooseRole />} />
 
         <Route element={<Private />}>
-          <Route path="/Dashboard/Creator" element={<Creator />} />
+          <Route path="/dashboard/creator" element={<Creator />} />
         </Route>
 
         <Route element={<Private />}>
-          <Route path="/Dashboard/Investor" element={<Investor />} />
+          <Route path="/dashboard/investor" element={<Investor />} />
         </Route>
       </Routes>
     </BrowserRouter>
