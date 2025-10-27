@@ -40,38 +40,38 @@ const App = () => {
         <Route path={"/"} element={<LandingPage />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignupForm />} />
-        <Route path={"/verify-email"} element={<VerifyEmail />} />
-        <Route path={"/Reset-password"} element={<ResetPassword />} />
-        <Route path={"/forgot-password"} element={<ForgotPassword />} />
-        <Route path={"/Choose-role"} element={<ChooseRole />} />
+        <Route path={"/verifyemail"} element={<VerifyEmail />} />
+        <Route path={"/resetpassword"} element={<ResetPassword />} />
+        <Route path={"/forgotpassword"} element={<ForgotPassword />} />
+        <Route path={"/chooserole"} element={<ChooseRole />} />
 
         <Route element={<Private />}>
-          <Route path="/Dashboard/Creator" element={<Creator />}>
+          <Route path="/dashboard/creator" element={<Creator />}>
             <Route path="" element={<Overview />} />
-            <Route path="my-business" element={<MyBusiness />} />
-            <Route path="add-business" element={<AddBusiness />} />
+            <Route path="mybusiness" element={<MyBusiness />} />
+            <Route path="addbusiness" element={<AddBusiness />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="notification" element={<Notification />} />
             <Route path="meeting" element={<Meeting />} />
             <Route path="profile" element={<Profile />} />
             <Route path="subscription" element={<Subscription />} />
-            <Route path="kyc-verification" element={<KycVerification />} />
-            <Route path="help-support" element={<HelpSupport />} />
+            <Route path="kycverification" element={<KycVerification />} />
+            <Route path="helpsupport" element={<HelpSupport />} />
           </Route>
         </Route>
 
         <Route element={<Private />}>
-          <Route path="/Dashboard/Investor" element={<Investor />}>
+          <Route path="/dashboard/investor" element={<Investor />}>
             <Route path="" element={<ExploreBusiness />} />
-            <Route path="saved-business" element={<SavedBusiness />} />
-            <Route path="nda-management" element={<NdaManagement2 />} />
+            <Route path="savedbusiness" element={<SavedBusiness />} />
+            <Route path="ndamanagement" element={<NdaManagement2 />} />
             <Route path="notification" element={<Notification2 />} />
             <Route path="meeting" element={<Meeting2 />} />
             <Route path="profile" element={<Profile2 />} />
             <Route path="subscription" element={<Subscription2 />} />
-            <Route path="kyc-verification" element={<KycVerification2 />} />
-            <Route path="help-support" element={<HelpSupport2 />} />
-            <Route path="funding-history" element={<FundingHistory />} />
+            <Route path="kycverification" element={<KycVerification2 />} />
+            <Route path="helpsupport" element={<HelpSupport2 />} />
+            <Route path="fundinghistory" element={<FundingHistory />} />
           </Route>
         </Route>
       </Routes>

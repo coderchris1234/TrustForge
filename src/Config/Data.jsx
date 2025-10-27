@@ -26,17 +26,17 @@ export const InvestorMenu = [
     {
       Icon: save,
       label: "Saved Business",
-      link: "saved-business",
+      link: "savedbusiness",
     },
     {
       Icon: dollar,
       label: "Funding History",
-      link: "funding-history",
+      link: "fundinghistory",
     },
     {
       Icon: nda,
       label: "NDA Management",
-      link: "nda-management",
+      link: "ndamanagement",
     },
   ],
   [
@@ -58,12 +58,12 @@ export const InvestorMenu = [
     {
       Icon: verify,
       label: "KYC Verification",
-      link: "kyc-verification",
+      link: "kycverification",
     },
     {
       Icon: help,
       label: "Help & Support",
-      link: "help-suppport",
+      link: "helpsuppport",
     },
   ],
 ];
@@ -77,12 +77,12 @@ export const CreatorMenu = [
     {
       Icon: light,
       label: "My Business",
-      link: "my-business",
+      link: "mybusiness",
     },
     {
       Icon: add,
       label: "Add Business",
-      link: "add-business",
+      link: "addbusiness",
     },
   ],
   [
@@ -104,12 +104,12 @@ export const CreatorMenu = [
     {
       Icon: verify,
       label: "KYC Verification",
-      link: "kyc-verification",
+      link: "kycverification",
     },
     {
       Icon: help,
       label: "Help & Support",
-      link: "help-suppport",
+      link: "helpsuppport",
     },
   ],
 ];
