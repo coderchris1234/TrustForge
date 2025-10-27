@@ -11,7 +11,7 @@ const MyBusiness = () => {
           <h2>My Business</h2>
           <span>Manage and track all your business Profile</span>
         </div>
-        <button onClick={() => nav("/Dashboard/Creator/add-business")}>
+        <button onClick={() => nav("/dashboard/creator/addbusiness")}>
           Add Business Profile
         </button>
       </MyBusinessHeader>
