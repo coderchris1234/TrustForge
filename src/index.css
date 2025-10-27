@@ -45,3 +45,8 @@ body {
   --error_red_color_500: #dc2626;
   --error_red_color_600: #b01e1e;
 }
+
+a {
+  text-decoration: none;
+  color: #1b1b1b;
+}
