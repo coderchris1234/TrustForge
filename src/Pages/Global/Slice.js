@@ -2,31 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  isLoggedIn: false,
-  loading: false,
-  error: null,
-  depositAmout: "",
+  blogBtnAction: "",
 };
 
 const authSlice = createSlice({
   name: "TrustForge",
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
-      state.user = action.payload;
-      state.isLoggedIn = true;
-      state.error = null;
-    },
-    logout: (state) => {
-      state.user = null;
-      state.isLoggedIn = false;
-    },
-
-    depositedAmount: (state, action) => {
-      state.depositAmout = action.payload;
+    setBlogBtnAction: (state, action) => {
+      state.blogBtnAction = action.payload;
     },
   },
 });
 
-export const { loginSuccess, logout, depositedAmount } = authSlice.actions;
+export const { setBlogBtnAction } = authSlice.actions;
 export default authSlice.reducer;
