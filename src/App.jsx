@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashboardLayout from "./Components/DashBoardLayout";
 import SignupForm from "./Pages/Auth/Signup";
 import Login from "./Pages/Auth/Login";
 import VerifyEmail from "./Pages/Auth/VerifyEmail";
@@ -10,6 +9,9 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import Private from "./Config/Private";
 import Creator from "./Pages/DashboardPage/CreatorPage/Creator";
 import Investor from "./Pages/DashboardPage/InvestorPage/Investor";
+import About from "./Pages/AboutPage/About";
+import BlogPage from "./Pages/Blog/BlogPage";
+import CategoryBlog from "./Pages/Blog/Category/CategoryBlog";
 import MyBusiness from "./Pages/DashboardPage/CreatorPage/MyBusiness";
 import AddBusiness from "./Pages/DashboardPage/CreatorPage/AddBusiness";
 import Analytics from "./Pages/DashboardPage/CreatorPage/Analytics";
@@ -37,6 +39,10 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path={"/"} element={<LandingPage />} />
+        <Route path={"/about"} element={<About />} />
+        <Route path={"/blog"} element={<BlogPage />} />
+        <Route path={"/blog-details"} element={<CategoryBlog />} />
+
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignupForm />} />
         <Route path={"/verifyemail"} element={<VerifyEmail />} />
