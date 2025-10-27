@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashboardLayout from "./Components/DashBoardLayout";
 import SignupForm from "./Pages/Auth/Signup";
 import Login from "./Pages/Auth/Login";
 import VerifyEmail from "./Pages/Auth/VerifyEmail";
