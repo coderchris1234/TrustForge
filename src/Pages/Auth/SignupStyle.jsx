@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import signup from '../../assets/signup.jpg';
 export const SignupContainer = styled.div`
   display: flex;
   gap: 20px;
@@ -12,41 +12,35 @@ export const SignupContainer = styled.div`
   font-size: 16px;
   font-style: normal;
   line-height: 24px;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    height: auto;
-  }
 `;
 
 export const SignupLeft = styled.div`
   display: flex;
-
+  height: 100vh;
   width: 40%;
+  position: fixed;
+  left: 0%;
   background: linear-gradient(
       0deg,
       rgba(0, 70, 255, 0.25) 0%,
       rgba(0, 70, 255, 0.25) 100%
     ),
-    url("https://i.imgur.com/wfV9rnF.jpeg") lightgray 50% / cover no-repeat;
+    url(${signup});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 `;
 
 export const SignupRight = styled.div`
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   background: #fff;
-  /* background-color: red; */
-  width: 50%;
-
+  width: 40%;
+  position: relative;
+  left: 20%;
   padding: 20px;
-  /* height: 100vh; */
-
-  @media (max-width: 900px) {
-    padding: 40px 20px;
-  }
 `;
 
 export const FormBox = styled.div`
@@ -133,7 +127,7 @@ export const PhoneField = styled.div`
 `;
 
 export const CreateButton = styled.button`
-  background-color: #0066ff;
+  
   color: white;
   border: none;
   padding: 12px;
@@ -141,11 +135,13 @@ export const CreateButton = styled.button`
   font-weight: 600;
   width: 100%;
   margin-top: 18px;
-  cursor: pointer;
-  transition: 0.3s;
+ background-color: ${props => (props.disabled ? "#144b9e" : "#0066ff")};
+  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
+  opacity: ${props => (props.disabled ? 0.8 : 1)};
+  transition: background-color 150ms ease, opacity 150ms ease;
 
   &:hover {
-    background-color: #004fd6;
+    background-color: ${props => (props.disabled ? "#144b9e" : "#0051cc")};
   }
 `;
 
@@ -187,6 +183,7 @@ export const LoginText = styled.p`
     color: #ff3c00;
     cursor: pointer;
     font-weight: 500;
+    text-decoration: none;
   }
 `;
 

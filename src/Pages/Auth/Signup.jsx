@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+
 import {
   SignupContainer,
   SignupLeft,
@@ -18,8 +20,12 @@ import {
   ErrorText,
 } from "./SignupStyle";
 import ReactCountryFlag from "react-country-flag";
+import { useNavigate } from 'react-router-dom'
+import { useMemo } from "react";
+import toast from "react-hot-toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -29,9 +35,9 @@ const Signup = () => {
     role: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
   const [country, setCountry] = useState({
     name: "Nigeria",
     isoCode: "NG",
@@ -99,7 +105,7 @@ const Signup = () => {
     const isValid = validateForm();
 
     if (isValid) {
-      alert("Account created successfully!");
+      setLoading(true);
 
       setFormData({
         fullName: "",
@@ -118,14 +124,34 @@ const Signup = () => {
 
       setErrors({});
     }
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Account created successfully!");
+    }, 3000);
+    navigate("/login");
   };
 
   const togglePassword = () => setShowPassword(!showPassword);
   const toggleConfirm = () => setShowConfirm(!showConfirm);
 
+  const isFormValid = useMemo(() => {
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    const passwordOk = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(formData.password);
+    const passwordMatch = formData.password === formData.confirmPassword;
+    return (
+      formData.fullName.trim().length > 0 &&
+      emailOk &&
+      passwordOk &&
+      passwordMatch &&
+      formData.phone &&
+      formData.role
+    );
+  }, [formData]);
+
   return (
     <SignupContainer>
-      <SignupLeft></SignupLeft>
+      <SignupLeft>
+      </SignupLeft>
 
       <SignupRight>
         <FormBox>
@@ -226,7 +252,7 @@ const Signup = () => {
                   color: "#888",
                 }}
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
 
@@ -253,17 +279,17 @@ const Signup = () => {
                   color: "#888",
                 }}
               >
-                {showConfirm ? <FaEyeSlash /> : <FaEye />}
+                {showConfirm ? <FaEye /> :<FaEyeSlash />}
               </span>
             </div>
             {errors.confirmPassword && (
               <ErrorText>{errors.confirmPassword}</ErrorText>
             )}
 
-            <CreateButton type="submit">Create Account</CreateButton>
+            <CreateButton type="submit" disabled={!isFormValid}>{loading ? "Creating..." : "Create Account"}</CreateButton>
           </form>
 
-          <OrText>Or create an account using</OrText>
+          <OrText style={{ color: "#1B1B1B" }}>Or create an account using</OrText>
 
           <GoogleBtn>
             <img
@@ -273,7 +299,7 @@ const Signup = () => {
           </GoogleBtn>
 
           <LoginText>
-            Already have an account? <span>Log in</span>
+            Already have an account? <span onClick={() => navigate("/login")} style={{color:"#DC2626"}}>Log in</span>
           </LoginText>
 
           <TermsText>
@@ -287,3 +313,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

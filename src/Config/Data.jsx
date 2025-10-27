@@ -11,7 +11,6 @@ import { IoTimeOutline, IoNotificationsOutline } from "react-icons/io5";
 import picture from "../assets/picture.png";
 import { TbWorld } from "react-icons/tb";
 import { PiMedalLight } from "react-icons/pi";
-/* eslint-disable no-unused-vars */
 import explore from "../../public/material-symbols-light_explore.svg";
 import save from "../../public/icon-park-outline_like.svg";
 import dollar from "../../public/bx_dollar.svg";
