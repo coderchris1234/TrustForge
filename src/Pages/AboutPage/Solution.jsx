@@ -1,11 +1,14 @@
 import React from "react";
 import { SolutionContainer } from "./SolutionStyle";
+import Woman from "../../assets/Woman.jpg";
 
 const Solution = () => {
   return (
     <SolutionContainer>
       <div className="Solution_wrapper">
-        <aside className="Solution_section"></aside>
+        <aside className="Solution_section">
+          <img src={Woman} />
+        </aside>
         <aside className="Section_section1">
           <div className="Solution_text_holder">
             <h3>Our Solution</h3>

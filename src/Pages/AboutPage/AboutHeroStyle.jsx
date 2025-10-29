@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import FrameBulb from "../../assets/FrameBulb.png";
 
 export const AboutHeroContainer = styled.div`
   width: 100%;
   height: 50vh;
-  background-color: blue;
+  background: url(${FrameBulb});
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +13,7 @@ export const AboutHeroContainer = styled.div`
   .About_hero_content {
     width: 60%;
     height: 60%;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: center;

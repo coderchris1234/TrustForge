@@ -13,10 +13,12 @@ export const ProblemContainer = styled.div`
     height: 95%;
     display: flex;
     gap: 10px;
+    /* background-color: red; */
 
     .Problem_section {
       width: 50%;
       height: 100%;
+      /* background-color: green; */
 
       .Problem_text_holder {
         width: 90%;
@@ -48,11 +50,18 @@ export const ProblemContainer = styled.div`
       }
     }
     .Problem_section1 {
-      width: 50%;
+      width: 49%;
       height: 95%;
-      background-color: pink;
       margin-top: 30px;
       border-radius: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background-position: center;
+        background-size: contain;
+      }
     }
   }
 `;

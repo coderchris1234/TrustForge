@@ -79,9 +79,12 @@ export const TeamContainer = styled.div`
         .Team_Card_profile {
           width: 162px;
           height: 162px;
-          background-color: orange;
+          /* background-color: orange; */
           border-radius: 50%;
           border: 4px solid var(--primary_color_500);
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
 
           img {
             width: 100%;

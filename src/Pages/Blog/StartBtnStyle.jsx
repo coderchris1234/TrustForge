@@ -25,12 +25,12 @@ export const StartBtnContainer = styled.div`
       .Startup_Header_btn1 {
         height: 41px;
         width: 40px;
-        background-color: var(--main_black);
-        color: var(--main_white);
+        background-color: var(--main_white);
+        border: 2px solid var(--neutral_gray_color_700);
+        color: var(--main_black);
         border-radius: 8px;
         font-size: 18px;
         font-weight: 400;
-        border: none;
         cursor: pointer;
       }
 
@@ -71,6 +71,12 @@ export const StartBtnContainer = styled.div`
           color: var(--main_white);
           border: none;
         }
+      }
+
+      .active_btn {
+        background-color: var(--main_black);
+        color: var(--main_white);
+        border: none;
       }
     }
   }
