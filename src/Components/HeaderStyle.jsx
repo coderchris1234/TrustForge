@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   position: sticky;
   top: 0px;
   z-index: 99999;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   .Header_Wrapper {
     width: 90%;
@@ -23,6 +24,11 @@ export const HeaderContainer = styled.header`
     height: 100%;
     display: flex;
     align-items: center;
+
+    img {
+      width: 100%;
+      height: 60%;
+    }
   }
 
   nav {

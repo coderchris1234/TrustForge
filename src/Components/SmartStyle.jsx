@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import WHYBg from "../assets/WHY.png";
 
 export const SmartContainer = styled.div`
   width: 100%;
-  height: 90vh;
-  /* background-color: red; */
+  height: 100vh;
+  background: url(${WHYBg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* object-fit: cover; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +28,7 @@ export const SmartContainer = styled.div`
         width: 100%;
         height: 30%;
         display: flex;
+
         flex-direction: column;
         justify-content: center;
         align-items: center;

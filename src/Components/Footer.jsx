@@ -4,6 +4,7 @@ import { MdCopyright } from "react-icons/md";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { RiFacebookCircleLine } from "react-icons/ri";
+import LOGO2 from "../assets/LOGO2.png";
 
 const Footer = () => {
   return (
@@ -13,9 +14,8 @@ const Footer = () => {
           <div className="Footer_text_logo">
             <div className="Footer_logo">
               <div className="Logo_img_footer">
-                <img src="" alt="" />
+                <img src={LOGO2} />
               </div>
-              <h3>TRUSTFORGE</h3>
             </div>
             <p>
               Bridging the gap between
@@ -29,9 +29,11 @@ const Footer = () => {
                 <h3>Quick links</h3>
               </div>
               <div className="Footer_text_footer">
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Blog</p>
+                <ul>
+                  <li>Home</li>
+                  <li>About Us</li>
+                  <li>Blog</li>
+                </ul>
               </div>
             </div>
             <div className="Footer_text">
@@ -39,9 +41,11 @@ const Footer = () => {
                 <h3>Legal</h3>
               </div>
               <div className="Footer_text_footer">
-                <p>Terms and conditions</p>
-                <p>Privacy and policy</p>
-                <p>Terms of use</p>
+                <ul>
+                  <li>Terms and conditions</li>
+                  <li>Privacy and policy</li>
+                  <li>Terms of use</li>
+                </ul>
               </div>
             </div>
           </article>
