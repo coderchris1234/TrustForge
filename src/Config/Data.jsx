@@ -107,7 +107,7 @@ export const InsightData = [
     descriptionDetails: [
       {
         titles: "1. Tell a Clear Story",
-        info: "People love stories. Before investors care about your numbers, they want to know why you started. Talk about what inspired your business and what problem you’re solving. Keep it simple and real,  not complicated. Instead of saying, “We sell skincare products,” try:  “We’re helping African women access affordable, high-quality skincare made for their skin types.”  That’s a story investors remember.",
+        info: "People love stories. Before investors care about your numbers, they want to know why you started. Talk about what inspired your business and what problem you’re solving. Keep it simple and real,  not complicated. Instead of saying, “We sell skincare products,” try:  “We’re helping African women access affordable, high-quality skincare made for their skin types.” That’s a story investors remember.",
       },
       {
         titles: "2. Show  Real Progress",
@@ -124,7 +124,7 @@ export const InsightData = [
     ],
 
     bottomText: [
-      "Investors want more than numbers, they want connection. Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
+      "Investors want more than numbers, they want connection.Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
       "Join TrusForge today and meet investors who believe in your vision.",
     ],
   },
@@ -268,7 +268,7 @@ export const InsightData = [
       },
     ],
     bottomText: [
-      "Investors want more than numbers, they want connection. Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
+      "Investors want more than numbers, they want connection.Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
       "Build your story. Find your investor.",
     ],
   },
@@ -288,22 +288,22 @@ export const InsightData = [
     timeIcon: <IoTimeOutline />,
     timeName: "4 min read",
     introduction:
-      "In the fast paced world of investing, everyone talks about “timing.” When to enter. When to exit. When to double down. But the truth is, timing means nothing without connection  because access to the right opportunities only comes through the right relationships.",
+      "In the fast paced world of investing, everyone talks about “timing.” When to enter. When to exit. When to double down.But the truth is, timing means nothing without connection  because access to the right opportunities only comes through the right relationships.",
 
     introduction2:
       "The investors who consistently win are not always the ones with the biggest capital  they’re the ones with the strongest partnerships. The ones who invest early not only in ideas but in people.",
     descriptionDetails: [
       {
         titles: "Why Early Partnerships Matter",
-        info: "Behind every breakout startup story, there’s always one thing in common  an early believer. Someone who saw potential before numbers, who trusted the founder before the headlines came. Early partnerships are powerful because they’re built on belief, not metrics. When you invest early, you’re not just funding an idea, you’re helping shape it. You get a front row seat in the decision making process, the brand identity, and the product journey. You become part of the DNA of that company.",
+        info: "Behind every breakout startup story, there’s always one thing in common  an early believer.Someone who saw potential before numbers, who trusted the founder before the headlines came. Early partnerships are powerful because they’re built on belief, not metrics. When you invest early, you’re not just funding an idea, you’re helping shape it.You get a front row seat in the decision making process, the brand identity, and the product journey. You become part of the DNA of that company.",
       },
       {
         titles: "Long Term Wins Over Short Term Gains",
-        info: "Early partnerships create a different kind of success story. Instead of flipping startups for quick exits, investors who commit early often enjoy deeper influence, higher equity, and longer term profitability. When founders feel supported, they build with loyalty. And loyal founders don’t forget their early backers. They bring them into new projects, new markets, and even new industries. The investors who truly win are the ones who stay long enough to see an idea grow into an ecosystem",
+        info: "Early partnerships create a different kind of success story.Instead of flipping startups for quick exits, investors who commit early often enjoy deeper influence, higher equity, and longer term profitability. When founders feel supported, they build with loyalty. And loyal founders don’t forget their early backers. They bring them into new projects, new markets, and even new industries. The investors who truly win are the ones who stay long enough to see an idea grow into an ecosystem",
       },
     ],
     bottomText: [
-      "Early partnerships are not about being first they’re about being faithful. They’re about showing up when it’s uncertain, believing when it’s still small, and helping shape something that lasts.",
+      "Early partnerships are not about being first they’re about being faithful.They’re about showing up when it’s uncertain, believing when it’s still small, and helping shape something that lasts.",
       "Connect with visionaries. Build with believers. Invest where trust and opportunity grow together.",
     ],
   },
