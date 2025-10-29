@@ -19,6 +19,8 @@ const MeetingCard = ({
   description,
   meetingType,
 }) => {
+
+const MeetingCard = () => {
   const fullName = "Sarah Johnson";
 
   const initials = fullName
@@ -36,6 +38,9 @@ const MeetingCard = ({
               <p>{title}</p>
               <p className="conf">{status}</p>
               <span>{meetingType}</span>
+              <p>Investment Discussion</p>
+              <p className="conf">Confirmed</p>
+              <span></span>
             </div>
             <div className="btn">
               <CustomButton
@@ -77,6 +82,18 @@ const MeetingCard = ({
             </div>
             <p className="discussion">{description}</p>
           </section>
+          <div className="meetingDetails">
+            <div className="contact">
+              <div className="initials">{initials}</div>
+              <div className="details">
+                <p>Sarah Johnson</p>
+                <span>SupplyChain AI</span>
+                <span className="link" onClick={() => nav("")}>
+                  SupplyChain AI Solutions
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </MeetingContainer>
     </>
