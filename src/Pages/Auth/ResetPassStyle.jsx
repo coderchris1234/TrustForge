@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import resetPassword from "../../assets/resetPassword.jpg";
+import resetPassword from "../../assets/resetpassword.jpg";
 export const ResetPasswordContainer = styled.div`
   display: flex;
   gap: 20px;
@@ -7,7 +7,6 @@ export const ResetPasswordContainer = styled.div`
   width: 100%;
   font-family: "Poppins", sans-serif;
   background-color: #fff;
-
 `;
 
 export const ResetPasswordLeft = styled.div`
