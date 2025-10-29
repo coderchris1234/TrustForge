@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-
 import {
   SignupContainer,
   SignupLeft,
@@ -20,7 +19,7 @@ import {
   ErrorText,
 } from "./SignupStyle";
 import ReactCountryFlag from "react-country-flag";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import toast from "react-hot-toast";
 
@@ -93,8 +92,10 @@ const Signup = () => {
       newErrors.password =
         "Must include uppercase, lowercase, number, and symbol";
 
-    if (formData.password !== formData.confirmPassword)
+    if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
+      return;
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -136,7 +137,10 @@ const Signup = () => {
 
   const isFormValid = useMemo(() => {
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-    const passwordOk = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(formData.password);
+    const passwordOk =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(
+        formData.password
+      );
     const passwordMatch = formData.password === formData.confirmPassword;
     return (
       formData.fullName.trim().length > 0 &&
@@ -150,8 +154,7 @@ const Signup = () => {
 
   return (
     <SignupContainer>
-      <SignupLeft>
-      </SignupLeft>
+      <SignupLeft></SignupLeft>
 
       <SignupRight>
         <FormBox>
@@ -232,7 +235,7 @@ const Signup = () => {
             <Label>
               Password <span className="required">*</span>
             </Label>
-           <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }}>
               <InputField
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -259,7 +262,7 @@ const Signup = () => {
             <Label>
               Confirm Password <span className="required">*</span>
             </Label>
-           <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }}>
               <InputField
                 type={showConfirm ? "text" : "password"}
                 name="confirmPassword"
@@ -279,17 +282,21 @@ const Signup = () => {
                   color: "#888",
                 }}
               >
-                {showConfirm ? <FaEye /> :<FaEyeSlash />}
+                {showConfirm ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
             {errors.confirmPassword && (
               <ErrorText>{errors.confirmPassword}</ErrorText>
             )}
 
-            <CreateButton type="submit" disabled={!isFormValid}>{loading ? "Creating..." : "Create Account"}</CreateButton>
+            <CreateButton type="submit" disabled={!isFormValid}>
+              {loading ? "Creating..." : "Create Account"}
+            </CreateButton>
           </form>
 
-          <OrText style={{ color: "#1B1B1B" }}>Or create an account using</OrText>
+          <OrText style={{ color: "#1B1B1B" }}>
+            Or create an account using
+          </OrText>
 
           <GoogleBtn>
             <img
@@ -299,7 +306,13 @@ const Signup = () => {
           </GoogleBtn>
 
           <LoginText>
-            Already have an account? <span onClick={() => navigate("/login")} style={{color:"#DC2626"}}>Log in</span>
+            Already have an account?{" "}
+            <span
+              onClick={() => navigate("/login")}
+              style={{ color: "#DC2626" }}
+            >
+              Log in
+            </span>
           </LoginText>
 
           <TermsText>
@@ -313,4 +326,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
