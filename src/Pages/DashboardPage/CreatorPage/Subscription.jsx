@@ -6,6 +6,13 @@ const Subscription = () => {
     <div>
       <SubcriptionCard />
     </div>
+import { SubscriptionContainer } from "./SubscriptionStyle";
+
+const Subscription = () => {
+  return (
+    <SubscriptionContainer>
+      <div className="SubscriptionHeading"></div>
+    </SubscriptionContainer>
   );
 };
 

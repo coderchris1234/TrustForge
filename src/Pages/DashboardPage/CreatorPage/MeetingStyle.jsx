@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MeetingContainer = styled.div`
   width: 95%;
   /* background-color: red; */
+  background-color: red;
   margin: 0 auto;
   margin-top: 2rem;
 
