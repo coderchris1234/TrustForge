@@ -19,8 +19,6 @@ const MeetingCard = ({
   description,
   meetingType,
 }) => {
-
-const MeetingCard = () => {
   const fullName = "Sarah Johnson";
 
   const initials = fullName
