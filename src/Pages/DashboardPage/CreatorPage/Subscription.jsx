@@ -1,11 +1,11 @@
 import React from "react";
-import { SubscriptionContainer } from "./SubscriptionStyle";
+import SubcriptionCard from "../../../Components/SubcriptionCard";
 
 const Subscription = () => {
   return (
-    <SubscriptionContainer>
-      <div className="SubscriptionHeading"></div>
-    </SubscriptionContainer>
+    <div>
+      <SubcriptionCard />
+    </div>
   );
 };
 

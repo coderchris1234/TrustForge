@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import HOME from "../assets/HOME.png";
 
 export const TargetContainer = styled.div`
   width: 100%;
   height: 75vh;
-  background-color: red;
+  background: url(${HOME});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +15,7 @@ export const TargetContainer = styled.div`
   .Target_wrapper {
     width: 90%;
     height: 90%;
-    background-color: var(--main_white);
+    /* background-color: var(--main_white); */
     display: flex;
     flex-direction: column;
     align-items: center;

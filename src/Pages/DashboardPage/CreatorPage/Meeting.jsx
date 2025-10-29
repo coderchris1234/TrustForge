@@ -1,6 +1,7 @@
 import React from "react";
 import { MeetingContainer } from "./MeetingStyle";
 import MeetingCard from "../../../Components/MeetingCard";
+import { Meetings } from "../../../Config/Data";
 
 const Meeting = () => {
   return (
@@ -20,7 +21,9 @@ const Meeting = () => {
           </div>
         </div>
       </div>
-      <MeetingCard />
+      {Meetings.map((biz) => (
+        <MeetingCard {...biz} key={biz.id} />
+      ))}
     </MeetingContainer>
   );
 };

@@ -2,8 +2,10 @@ import React from "react";
 import { HeroContainer } from "../Components/HeroStyle";
 import CustomButton from "./CustomButton";
 import { GoArrowRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const nav = useNavigate();
   return (
     <HeroContainer>
       <div className="Hero_page_wrapper">
@@ -22,7 +24,10 @@ const Hero = () => {
             className="Hero_btn"
             Btntext="Get started"
             type="button"
-            icon=<GoArrowRight className="Hero_icon" />
+            icon={<GoArrowRight className="Hero_icon" />}
+            onClick={() => {
+              nav("/signup");
+            }}
           />
         </article>
       </div>

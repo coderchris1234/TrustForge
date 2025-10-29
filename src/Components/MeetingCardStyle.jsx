@@ -3,18 +3,28 @@ import styled from "styled-components";
 export const MeetingContainer = styled.div`
   .MeetingWrapper {
     background-color: #ffff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    /* background-color: orange; */
+    padding: 0.5rem;
+
     .meetingHeader {
       width: 100%;
-      margin-top: 2rem;
+      /* margin-top: 2rem; */
       display: flex;
       justify-content: space-between;
-      padding: 1rem;
+      padding-top: 1rem;
       align-items: center;
     }
 
     .meetingDetails {
+      /* background-color: blue; */
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
       .contact {
-        /* background-color: red; */
+        /* background-color: green; */
         display: flex;
         gap: 0.5rem;
         align-items: center;
@@ -34,6 +44,9 @@ export const MeetingContainer = styled.div`
           margin: 0;
           padding: 0.5rem;
           /* background-color: orange; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
           span {
             display: block;
@@ -43,12 +56,38 @@ export const MeetingContainer = styled.div`
           }
         }
       }
+
+      .meetingTime {
+        /* background-color: grey; */
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+        align-items: center;
+
+        .meetingDate {
+          /* background-color: red; */
+          align-items: center;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        }
+      }
+
+      .discussion {
+        border-radius: 8px;
+        background: #eceff4;
+        width: 60%;
+        padding: 0.5rem;
+      }
     }
   }
 
   .busTitle {
     display: flex;
-    background-color: pink;
+    /* background-color: pink; */
     align-items: center;
     gap: 1rem;
 

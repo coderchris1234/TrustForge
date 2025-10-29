@@ -72,7 +72,7 @@ const Login = () => {
     setTimeout(() => {
       setLoading(false);
       toast.success("Logged in successfully!");
-      navigate("/dashboard");
+      navigate("/dashboard/creator");
     }, 1600);
   };
 
@@ -93,7 +93,8 @@ const Login = () => {
           <FormTitle>
             <div className="title-text">Log In.</div>
             <small>
-              Good to see you again. <br /> Log in to pick up where you left off.
+              Good to see you again. <br /> Log in to pick up where you left
+              off.
             </small>
           </FormTitle>
 
@@ -157,7 +158,7 @@ const Login = () => {
               </label>
 
               <span
-                onClick={() => navigate("/resetpassword")}
+                onClick={() => navigate("/forgotpassword")}
                 style={{
                   fontSize: 14,
                   color: "black",
@@ -174,11 +175,12 @@ const Login = () => {
             </CreateButton>
           </form>
 
-          <OrText onClick={() => navigate("/verifyemail")}>
-            Or log in with
-          </OrText>
+          <OrText>Or log in with</OrText>
 
           <GoogleBtn
+            style={{
+              marginTop: "2rem",
+            }}
             onClick={() => toast("Google login not implemented in demo.")}
             role="button"
           >
@@ -190,7 +192,10 @@ const Login = () => {
 
           <LoginText style={{ marginTop: 14 }}>
             Don't have an account?{" "}
-            <span onClick={() => navigate("/signup")} style={{ color: "#DC2626" }}>
+            <span
+              onClick={() => navigate("/signup")}
+              style={{ color: "#DC2626" }}
+            >
               Create one
             </span>
           </LoginText>
