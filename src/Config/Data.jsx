@@ -11,7 +11,6 @@ import { IoTimeOutline, IoNotificationsOutline } from "react-icons/io5";
 import picture from "../assets/picture.png";
 import { TbWorld } from "react-icons/tb";
 import { PiMedalLight } from "react-icons/pi";
-/* eslint-disable no-unused-vars */
 import explore from "../../public/material-symbols-light_explore.svg";
 import save from "../../public/icon-park-outline_like.svg";
 import dollar from "../../public/bx_dollar.svg";
@@ -28,7 +27,10 @@ import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
 import { FaHeart } from "react-icons/fa";
-
+import { LuBuilding2 } from "react-icons/lu";
+import { IoMdTrendingUp } from "react-icons/io";
+import { FaEye } from "react-icons/fa";
+import { FiMessageSquare } from "react-icons/fi";
 export const MenuNav = ["Home", "About", "Blog"];
 
 export const FundNum = [
@@ -520,5 +522,24 @@ export const RecentBusiness = [
     icon3: message,
     num3: 6,
     time: "2025 - 10 - 14",
+  },
+];
+export const BusinessPost = [
+  {
+    icon1: <LuBuilding2 />,
+    title: "SupplyChain AI Solutions",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    view: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
   },
 ];
