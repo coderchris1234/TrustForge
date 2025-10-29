@@ -26,11 +26,6 @@ import add from "../../public/material-symbols_upload-rounded.svg";
 import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
-import { FaHeart } from "react-icons/fa";
-import { LuBuilding2 } from "react-icons/lu";
-import { IoMdTrendingUp } from "react-icons/io";
-import { FaEye } from "react-icons/fa";
-import { FiMessageSquare } from "react-icons/fi";
 export const MenuNav = ["Home", "About", "Blog"];
 
 export const FundNum = [
