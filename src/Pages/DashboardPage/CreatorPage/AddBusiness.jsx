@@ -40,10 +40,11 @@ const AddBusiness = () => {
     industry: "",
     description: "",
     yearFounded: "",
-    BusinessModel: "",
-    RevenueModel: "",
-    TargetMarket: "",
-    CurrentRevenue: "",
+    businessModel: "",
+    revenueModel: "",
+    targetMarket: "",
+    currentRevenue: "",
+    fundingSought: "",
   });
 
   const progressPercent = (step / totalSteps) * 100;
@@ -69,12 +70,17 @@ const AddBusiness = () => {
     }
     if (
       step === 2 &&
-      (!form.BusinessModel ||
-        !form.CurrentRevenue ||
-        !form.RevenueModel ||
-        !form.TargetMarket)
+      (!form.businessModel ||
+        !form.currentRevenue ||
+        !form.revenueModel ||
+        !form.targetMarket)
     ) {
       toast.error("Please fill all required fields in Step 2");
+      return;
+    }
+    if (form.yearFounded.length < 4) {
+      toast.error("year should be 4 digits");
+
       return;
     }
     if (step < totalSteps) {
@@ -131,7 +137,7 @@ const AddBusiness = () => {
               <SectionTitle>Basic information</SectionTitle>
 
               <FieldRow>
-                <Label>Business Name*</Label>
+                <Label>Business Name</Label>
                 <Input
                   name="businessName"
                   value={form.businessName}
@@ -141,7 +147,7 @@ const AddBusiness = () => {
               </FieldRow>
 
               <FieldRow>
-                <Label>Industry*</Label>
+                <Label>Industry</Label>
                 <Input
                   name="industry"
                   value={form.industry}
@@ -151,18 +157,21 @@ const AddBusiness = () => {
               </FieldRow>
 
               <FieldRow>
-                <Label>Business Description*</Label>
+                <Label>Business Description</Label>
                 <Textarea
                   name="description"
                   value={form.description}
                   onChange={handleChange}
                   placeholder="Provide a short description of your business"
                   rows={4}
+                  style={{
+                    outline: "none",
+                  }}
                 />
               </FieldRow>
 
               <FieldRow>
-                <Label>Year Founded*</Label>
+                <Label>Year Founded</Label>
                 <Input
                   name="yearFounded"
                   value={form.yearFounded}
@@ -185,7 +194,7 @@ const AddBusiness = () => {
               <FieldRow>
                 <Label>Business Model</Label>
                 <Input
-                  value={form.BusinessModel}
+                  value={form.businessModel}
                   name="BusinessModel"
                   onChange={handleChange}
                   placeholder="Describe your business model (B2B, B2C, Marketplace, etc.)"
@@ -195,7 +204,7 @@ const AddBusiness = () => {
               <FieldRow>
                 <Label>Revenue Model</Label>
                 <Input
-                  value={form.RevenueModel}
+                  value={form.revenueModel}
                   onChange={handleChange}
                   name="RevenueModel"
                   placeholder="How does your business generate revenue?"
@@ -205,19 +214,53 @@ const AddBusiness = () => {
               <FieldRow>
                 <Label>Target Market</Label>
                 <Input
-                  value={form.TargetMarket}
+                  value={form.targetMarket}
                   onChange={handleChange}
                   name="TargetMarket"
                   placeholder="Who are your target customers?"
                 />
+                <FieldRow>
+                  <div className="fund">
+                    <div>
+                      <Label style={{ Color: "#e6e9ef" }}>Funding Stage</Label>
+                      <select>
+                        <option value="">Pre-Seed</option>
+                        <option value="">Seed</option>
+                        <option value="">Series A</option>
+                        <option value="">Series B</option>
+                        <option value="">Series C+</option>
+                        <option value="">Growth Stage</option>
+                      </select>
+                    </div>
+                    <div>
+                      <Label>Funding Sought</Label>
+                      <input
+                        type="num"
+                        placeholder="e.g..., ₦700,000"
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (/^\d{0,30}$/.test(value)) {
+                            setForm({ ...form, fundingSought: value });
+                          }
+                        }}
+                        value={form.fundingSought}
+                      />
+                    </div>
+                  </div>
+                </FieldRow>
               </FieldRow>
               <FieldRow>
                 <Label>Current Revenue</Label>
                 <Input
-                  value={form.CurrentRevenue}
-                  onChange={handleChange}
+                  value={form.currentRevenue}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d{0,30}$/.test(value)) {
+                      setForm({ ...form, CurrentRevenue: value });
+                    }
+                  }}
                   name="CurrentRevenue"
-                  placeholder="e.g..., 500,000"
+                  placeholder="e.g..., ₦500,000"
                 />
               </FieldRow>
             </>
