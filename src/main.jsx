@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import "antd/dist/reset.css";
 import { Provider } from "react-redux";
-import Store from "./pages/Global/Store.js";
+import Store from "./Pages/Global/Store.js";
 import { Toaster } from "react-hot-toast";
 
 createRoot(document.getElementById("root")).render(
