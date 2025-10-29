@@ -2,10 +2,12 @@ import React from "react";
 import {
   MyBusinessHeader,
   SearchBar,
-  BusinessContainer,
+  BusinessWrapper,
 } from "./MyBusinessStyle";
 import { useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
+import BusinessCard from "../../../Components/BusinessCard";
+import { Business } from "../../../Config/Data";
 
 const MyBusiness = () => {
   const nav = useNavigate();
@@ -33,7 +35,11 @@ const MyBusiness = () => {
         </select>
       </SearchBar>
 
-      <BusinessContainer>omo</BusinessContainer>
+      <BusinessWrapper>
+        {Business.map((biz) => (
+          <BusinessCard key={biz.id} {...biz} />
+        ))}
+      </BusinessWrapper>
     </>
   );
 };
