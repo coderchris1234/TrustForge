@@ -26,6 +26,10 @@ import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
 import { FaHeart } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
+import { RiBarChartFill } from "react-icons/ri";
+import { MdOutlineShowChart } from "react-icons/md";
+import { MdOutlineWorkspacePremium } from "react-icons/md";
 import picture from "../assets/picture.png";
 import picture1 from "../assets/picture1.png";
 import picture2 from "../assets/picture2.png";
@@ -841,5 +845,92 @@ export const Meetings = [
     time: "10:10 AM",
     type: "Video Call",
     description: "Discussion about A funding and growth strategy",
+  },
+];
+
+export const SubscriptionPlans = [
+  {
+    id: 1,
+    plan: "Current plan",
+    icon: <CiStar />,
+    name: "Basic",
+    tagline: "Start your fundraising journey",
+    price: "₦0",
+    metrics: {
+      title: "Promotion metrics",
+      icon: <RiBarChartFill />,
+      list: [
+        { label: "Visibility", value: "Standard" },
+        { label: "Monthly Impressions", value: "Up to 100/month" },
+        { label: "Placement", value: "Search results only" },
+      ],
+    },
+    features: [
+      "Standard search visibility",
+      "Basic business analytics",
+      "Up to 5 business analytics",
+      "Up to 5 investor connections per month",
+      "Email support(48hr response)",
+      "Access to investor directly",
+    ],
+    isCurrent: true,
+  },
+  {
+    id: 2,
+    plan: "Most Popular",
+    icon: <MdOutlineShowChart />,
+    name: "Growth",
+    tagline: "Start your fundraising journey",
+    price: "₦10,000",
+    metrics: {
+      title: "Promotion metrics",
+      icon: <RiBarChartFill />,
+      list: [
+        { label: "Visibility", value: "Enhanced Top 20% of search" },
+        { label: "Monthly Impressions", value: "Up to 100/month" },
+        { label: "Placement", value: "Search result only" },
+      ],
+    },
+    features: [
+      "Up to 3 Business profiles",
+      "Featured listing badge",
+      "priority in search results",
+      "Advanced analytics & insights",
+      "Unlimited investors connection",
+      "Priority email support (24hr response)",
+      "Meeting scheduler",
+      "Document sharing & NDA management",
+      "Custom business page branding",
+    ],
+    isCurrent: false,
+  },
+  {
+    id: 3,
+    plan: "Premium",
+    icon: <MdOutlineWorkspacePremium />,
+    name: "Premium",
+    tagline: "Start your fundraising journey",
+    price: "₦20,000",
+    metrics: {
+      title: "Promotion metrics",
+      icon: <RiBarChartFill />,
+      list: [
+        { label: "Visibility", value: "Top 5% guarantee" },
+        { label: "Monthly Impressions", value: "Unlimited" },
+        { label: "Placement", value: "Homepage Hero + categories" },
+      ],
+    },
+    features: [
+      "Unlimited business profiles",
+      "Top-tier featured placement",
+      "Daily homepage promotion",
+      "Dedicated account manager",
+      "premium analytics dasboard",
+      "unlimited everything",
+      "Quarterly strategy consultation",
+      "Media & PR kit preparation",
+      "Priority document review",
+    ],
+    isCurrent: false,
   },
 ];
