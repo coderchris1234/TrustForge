@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import {
@@ -21,20 +21,22 @@ import {
 import ReactCountryFlag from "react-country-flag";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import toast from "react-hot-toast";
+import axios from "axios";
+// import toast from "react-hot-toast";
 
 const Signup = () => {
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    phone: "",
+    phoneNumber: "",
     role: "",
   });
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [country, setCountry] = useState({
@@ -81,7 +83,7 @@ const Signup = () => {
       newErrors.email = "Enter a valid email (must include @ and .com)";
     }
 
-    if (!formData.phone) newErrors.phone = "Phone number is required";
+    if (!formData.phoneNumber) newErrors.phone = "Phone number is required";
 
     if (!formData.role) newErrors.role = "Please select a role";
 
@@ -101,19 +103,19 @@ const Signup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateForm();
 
     if (isValid) {
-      setLoading(true);
+      // setLoading(true);
 
       setFormData({
         fullName: "",
         email: "",
         password: "",
         confirmPassword: "",
-        phone: "",
+        phoneNumber: "",
         role: "",
       });
 
@@ -125,11 +127,19 @@ const Signup = () => {
 
       setErrors({});
     }
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Account created successfully!");
-    }, 3000);
-    navigate("/login");
+
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/${formData.role === "creator" ? "user" : "investor"}`,
+        formData
+      );
+
+      console.log("res", res);
+    } catch (err) {
+      console.log("err", err);
+    }
+
+    console.log("this is the value", formData);
   };
 
   const togglePassword = () => setShowPassword(!showPassword);
@@ -147,7 +157,7 @@ const Signup = () => {
       emailOk &&
       passwordOk &&
       passwordMatch &&
-      formData.phone &&
+      formData.phoneNumber &&
       formData.role
     );
   }, [formData]);
@@ -205,9 +215,9 @@ const Signup = () => {
               </div>
 
               <InputField
-                value={formData.phone}
+                value={formData.phoneNumber}
                 type="text"
-                name="phone"
+                name="phoneNumber"
                 placeholder="Enter phone number"
                 maxLength="10"
                 onChange={(e) => {
@@ -289,8 +299,9 @@ const Signup = () => {
               <ErrorText>{errors.confirmPassword}</ErrorText>
             )}
 
-            <CreateButton type="submit" disabled={!isFormValid}>
-              {loading ? "Creating..." : "Create Account"}
+            <CreateButton disabled={!isFormValid}>
+              {/* {loading ? "Creating..." : "Create Account"} */}
+              Create
             </CreateButton>
           </form>
 

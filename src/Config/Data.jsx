@@ -856,6 +856,7 @@ export const SubscriptionPlans = [
     name: "Basic",
     tagline: "Start your fundraising journey",
     price: "₦0",
+    yearlyPrice: "₦0",
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -882,6 +883,7 @@ export const SubscriptionPlans = [
     name: "Growth",
     tagline: "Start your fundraising journey",
     price: "₦10,000",
+    yearlyPrice: "₦100,800",
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -911,6 +913,7 @@ export const SubscriptionPlans = [
     name: "Premium",
     tagline: "Start your fundraising journey",
     price: "₦20,000",
+    yearlyPrice: "₦204,000",
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
