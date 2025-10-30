@@ -24,7 +24,6 @@ const Meeting = () => {
       {Meetings.map((biz) => (
         <MeetingCard {...biz} key={biz.id} />
       ))}
-      <MeetingCard />
     </MeetingContainer>
   );
 };

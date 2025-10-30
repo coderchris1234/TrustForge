@@ -17,7 +17,7 @@ const MeetingCard = ({
   time,
   type,
   description,
-  meetingType,
+  // meetingType,
 }) => {
   const fullName = "Sarah Johnson";
 
@@ -35,9 +35,7 @@ const MeetingCard = ({
             <div className="busTitle">
               <p>{title}</p>
               <p className="conf">{status}</p>
-              <span>{meetingType}</span>
-              <p>Investment Discussion</p>
-              <p className="conf">Confirmed</p>
+              {/* <span>{meetingType}</span> */}
               <span></span>
             </div>
             <div className="btn">
@@ -74,24 +72,17 @@ const MeetingCard = ({
                 </div>
               </div>
 
-              <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 <CiClock2 /> {time}
               </div>
             </div>
             <p className="discussion">{description}</p>
           </section>
-          <div className="meetingDetails">
-            <div className="contact">
-              <div className="initials">{initials}</div>
-              <div className="details">
-                <p>Sarah Johnson</p>
-                <span>SupplyChain AI</span>
-                <span className="link" onClick={() => nav("")}>
-                  SupplyChain AI Solutions
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </MeetingContainer>
     </>

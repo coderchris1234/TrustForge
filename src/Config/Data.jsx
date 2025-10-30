@@ -829,4 +829,17 @@ export const Meetings = [
     type: "Video Call",
     description: "Discussion about A funding and growth strategy",
   },
+  {
+    id: 6,
+    title: "Investment Discussion",
+    status: "Confirmed",
+    name: "Sarah Johnson",
+    meetingType: "1st Meeting",
+    company: "SupplyChain AI",
+    link: "SupplyChain AI Solutions",
+    date: "2025-10-25",
+    time: "10:10 AM",
+    type: "Video Call",
+    description: "Discussion about A funding and growth strategy",
+  },
 ];

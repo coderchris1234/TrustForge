@@ -10,16 +10,9 @@ export const MeetingContainer = styled.div`
 
     .meetingHeader {
       width: 100%;
-      /* margin-top: 2rem; */
       display: flex;
       justify-content: space-between;
-      padding-top: 1rem;
-    .meetingHeader {
-      width: 100%;
-      margin-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem;
+      /* padding: 1rem; */
       align-items: center;
     }
 
@@ -30,9 +23,6 @@ export const MeetingContainer = styled.div`
       gap: 1rem;
 
       .contact {
-        /* background-color: green; */
-      .contact {
-        /* background-color: red; */
         display: flex;
         gap: 0.5rem;
         align-items: center;
@@ -80,6 +70,7 @@ export const MeetingContainer = styled.div`
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            /* background-color: red; */
           }
         }
       }
@@ -96,7 +87,7 @@ export const MeetingContainer = styled.div`
   .busTitle {
     display: flex;
     /* background-color: pink; */
-    background-color: pink;
+    /* background-color: pink; */
     align-items: center;
     gap: 1rem;
 
