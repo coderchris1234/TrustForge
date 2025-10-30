@@ -5,12 +5,14 @@ const SubcriptionCard = ({
   icon,
   name,
   tagline,
-  price,
   metrics,
   features,
   isCurrent,
+  displayPrice,
   plan,
+  planType,
 }) => {
+  const billingPeriod = planType === "monthly" ? "/mo" : "/yr";
   return (
     <SubscribeContainer>
       <div className="subscriptionPlan">
@@ -36,7 +38,7 @@ const SubcriptionCard = ({
               <h2>{name}</h2>
               <span>{tagline}</span>
               <h3>
-                {price} <span>/mo</span>
+                {displayPrice} <span>{billingPeriod}</span>
               </h3>
             </div>
 
