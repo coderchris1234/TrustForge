@@ -12,7 +12,7 @@ const Header = () => {
   const blogIndex = useSelector((state) => state.TrustForge.blogIndex);
   const nav = useNavigate();
   const dispatch = useDispatch();
-  console.log("blogIndex", blogIndex);
+  // console.log("blogIndex", blogIndex);
   return (
     <HeaderContainer>
       <section className="Header_Wrapper">
