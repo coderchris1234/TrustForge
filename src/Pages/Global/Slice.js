@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   blogBtnAction: "",
+  blogIndex: null,
 };
 
 const authSlice = createSlice({
@@ -12,8 +13,11 @@ const authSlice = createSlice({
     setBlogBtnAction: (state, action) => {
       state.blogBtnAction = action.payload;
     },
+    setBlogIndex: (state, action) => {
+      state.blogIndex = action.payload;
+    },
   },
 });
 
-export const { setBlogBtnAction } = authSlice.actions;
+export const { setBlogBtnAction, setBlogIndex } = authSlice.actions;
 export default authSlice.reducer;

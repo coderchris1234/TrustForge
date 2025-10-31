@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import header from "../../assets/header.png";
 
 export const BlogHeroContainer = styled.div`
   width: 100%;
   height: 50vh;
-  background-color: red;
+  background: url(${header});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +19,6 @@ export const BlogHeroContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: green;
     gap: 10px;
 
     h1 {

@@ -7,6 +7,7 @@ export const SolutionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 
   .Solution_wrapper {
     width: 90%;
@@ -19,8 +20,15 @@ export const SolutionContainer = styled.div`
     .Solution_section {
       width: 50%;
       height: 90%;
-      background-color: yellow;
       border-radius: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: contain;
+        border-radius: 15px;
+      }
     }
 
     .Section_section1 {

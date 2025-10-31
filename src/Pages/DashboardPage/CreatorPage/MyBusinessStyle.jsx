@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const MyBusinessHeader = styled.div`
-  /* background-color: red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,9 +73,11 @@ export const SearchBar = styled.div`
   }
 `;
 
-export const BusinessContainer = styled.div`
-  background-color: red;
-  width: 95%;
-  margin: 0 auto;
-  margin-top: 2rem;
+export const BusinessWrapper = styled.div`
+  /* background-color: pink; */
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 0;
 `;

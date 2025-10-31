@@ -1,8 +1,10 @@
 import React from "react";
 import { JourneyContainer } from "./JourneyStyle";
 import CustomButton from "../../Components/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const Journey = () => {
+  const nav = useNavigate();
   return (
     <JourneyContainer>
       <div className="Journney_wrapper">
@@ -12,7 +14,13 @@ const Journey = () => {
           <br />
           opportunities, TRUSTFORGE is here to help you succeed.
         </p>
-        <CustomButton className="journey_button" Btntext="Get Started Today" />
+        <CustomButton
+          className="journey_button"
+          Btntext="Get Started Today"
+          onClick={() => {
+            nav("/signup");
+          }}
+        />
       </div>
     </JourneyContainer>
   );

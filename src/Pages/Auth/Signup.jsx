@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
 
 import {
   SignupContainer,
@@ -20,18 +19,20 @@ import {
   ErrorText,
 } from "./SignupStyle";
 import ReactCountryFlag from "react-country-flag";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    phone: "",
+    phoneNumber: "",
     role: "",
   });
 
@@ -82,7 +83,7 @@ const Signup = () => {
       newErrors.email = "Enter a valid email (must include @ and .com)";
     }
 
-    if (!formData.phone) newErrors.phone = "Phone number is required";
+    if (!formData.phoneNumber) newErrors.phone = "Phone number is required";
 
     if (!formData.role) newErrors.role = "Please select a role";
 
@@ -93,26 +94,27 @@ const Signup = () => {
       newErrors.password =
         "Must include uppercase, lowercase, number, and symbol";
 
-    if (formData.password !== formData.confirmPassword)
+    if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
+      return;
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const isValid = validateForm();
 
     if (isValid) {
-      setLoading(true);
-
       setFormData({
         fullName: "",
         email: "",
         password: "",
         confirmPassword: "",
-        phone: "",
+        phoneNumber: "",
         role: "",
       });
 
@@ -124,11 +126,30 @@ const Signup = () => {
 
       setErrors({});
     }
-    setTimeout(() => {
+
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/${formData.role === "creator" ? "user" : "investor"}`,
+        formData
+      );
+
+      console.log("res", res);
+
+      toast.success(res?.data?.message);
+      sessionStorage.setItem(
+        import.meta.env.VITE_USERID,
+        JSON.stringify(res.data.data.id)
+      );
+      sessionStorage.setItem("userEmail", JSON.stringify(formData.email));
+      sessionStorage.setItem("userRole", JSON.stringify(formData.role));
+      navigate("/verifyemail");
+    } catch (err) {
+      console.log("error", err);
       setLoading(false);
-      toast.success("Account created successfully!");
-    }, 3000);
-    navigate("/login");
+      toast.error(err?.response?.data?.message);
+    }
+
+    console.log("this is the value", formData);
   };
 
   const togglePassword = () => setShowPassword(!showPassword);
@@ -136,22 +157,24 @@ const Signup = () => {
 
   const isFormValid = useMemo(() => {
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-    const passwordOk = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(formData.password);
+    const passwordOk =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(
+        formData.password
+      );
     const passwordMatch = formData.password === formData.confirmPassword;
     return (
       formData.fullName.trim().length > 0 &&
       emailOk &&
       passwordOk &&
       passwordMatch &&
-      formData.phone &&
+      formData.phoneNumber &&
       formData.role
     );
   }, [formData]);
 
   return (
     <SignupContainer>
-      <SignupLeft>
-      </SignupLeft>
+      <SignupLeft></SignupLeft>
 
       <SignupRight>
         <FormBox>
@@ -202,9 +225,9 @@ const Signup = () => {
               </div>
 
               <InputField
-                value={formData.phone}
+                value={formData.phoneNumber}
                 type="text"
-                name="phone"
+                name="phoneNumber"
                 placeholder="Enter phone number"
                 maxLength="10"
                 onChange={(e) => {
@@ -232,7 +255,7 @@ const Signup = () => {
             <Label>
               Password <span className="required">*</span>
             </Label>
-           <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }}>
               <InputField
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -259,7 +282,7 @@ const Signup = () => {
             <Label>
               Confirm Password <span className="required">*</span>
             </Label>
-           <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }}>
               <InputField
                 type={showConfirm ? "text" : "password"}
                 name="confirmPassword"
@@ -279,17 +302,21 @@ const Signup = () => {
                   color: "#888",
                 }}
               >
-                {showConfirm ? <FaEye /> :<FaEyeSlash />}
+                {showConfirm ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
             {errors.confirmPassword && (
               <ErrorText>{errors.confirmPassword}</ErrorText>
             )}
 
-            <CreateButton type="submit" disabled={!isFormValid}>{loading ? "Creating..." : "Create Account"}</CreateButton>
+            <CreateButton disabled={!isFormValid}>
+              {loading ? "Creating..." : "Create Account"}
+            </CreateButton>
           </form>
 
-          <OrText style={{ color: "#1B1B1B" }}>Or create an account using</OrText>
+          <OrText style={{ color: "#1B1B1B" }}>
+            Or create an account using
+          </OrText>
 
           <GoogleBtn>
             <img
@@ -299,7 +326,13 @@ const Signup = () => {
           </GoogleBtn>
 
           <LoginText>
-            Already have an account? <span onClick={() => navigate("/login")} style={{color:"#DC2626"}}>Log in</span>
+            Already have an account?{" "}
+            <span
+              onClick={() => navigate("/login")}
+              style={{ color: "#DC2626" }}
+            >
+              Log in
+            </span>
           </LoginText>
 
           <TermsText>
@@ -313,4 +346,3 @@ const Signup = () => {
 };
 
 export default Signup;
-

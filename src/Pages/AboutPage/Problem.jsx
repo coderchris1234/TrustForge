@@ -1,5 +1,6 @@
 import React from "react";
 import { ProblemContainer } from "./ProblemStyle";
+import Frame from "../../assets/Frame.png";
 
 const Problem = () => {
   return (
@@ -22,7 +23,9 @@ const Problem = () => {
             </span>
           </div>
         </aside>
-        <aside className="Problem_section1"></aside>
+        <aside className="Problem_section1">
+          <img src={Frame} alt="" />
+        </aside>
       </div>
     </ProblemContainer>
   );

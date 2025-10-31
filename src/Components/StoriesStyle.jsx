@@ -1,12 +1,18 @@
 import styled from "styled-components";
+import Success from "../assets/Success.png";
 
 export const StoriesContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  /* background-color: red; */
+  height: 110vh;
+  background: url(${Success});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 
   .Story_wrapper {
     width: 90%;
@@ -46,6 +52,7 @@ export const StoriesContainer = styled.div`
       height: 80%;
       display: flex;
       justify-content: space-between;
+      /* background-color: red; */
 
       .Story_card {
         width: 32%;
@@ -55,6 +62,7 @@ export const StoriesContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        background-color: var(--main_white);
 
         &:hover {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -71,7 +79,9 @@ export const StoriesContainer = styled.div`
             height: 100%;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            object-fit: cover;
+            /* background-position: center; */
+            background-size: cover;
+            background-repeat: no-repeat;
           }
         }
 

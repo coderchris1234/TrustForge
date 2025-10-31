@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import HeroBg from "../assets/HeroBg.jpg";
 
 export const HeroContainer = styled.div`
   width: 100%;
@@ -7,7 +8,12 @@ export const HeroContainer = styled.div`
   .Hero_page_wrapper {
     width: 100%;
     height: 100%;
-    background-color: black;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.71)),
+      url(${HeroBg});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;

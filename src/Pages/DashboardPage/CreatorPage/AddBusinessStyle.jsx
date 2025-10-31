@@ -119,6 +119,36 @@ export const FieldRow = styled.div`
   gap: 1rem;
   margin-bottom: 14px;
 
+  .fund {
+    /* background-color: red; */
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+
+      select {
+        padding: 0.4rem 0.2rem;
+        border-radius: 5px;
+        background-color: #f3f5f8;
+        border: none;
+        outline: none;
+      }
+      input {
+        padding: 0.5rem 0.2rem;
+        border-radius: 5px;
+        background-color: #f3f5f8;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
   .submission {
     background-color: var(--primary_color_100);
     padding: 1rem;
@@ -139,9 +169,14 @@ export const FieldRow = styled.div`
 
 export const Label = styled.label`
   font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 6px;
+  color: #1b1b1b;
+  margin-bottom: 5px;
   /* background-color: blue; */
+
+  &::after {
+    content: "*";
+    color: red;
+  }
 `;
 
 export const Input = styled.input`

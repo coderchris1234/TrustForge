@@ -39,23 +39,22 @@ export const FooterContainer = styled.div`
         }
 
         .Footer_logo {
-          width: 100%;
-          height: 20%;
+          width: 80%;
+          height: 23%;
           display: flex;
           align-items: center;
           gap: 10px;
+          /* background-color: red; */
 
           .Logo_img_footer {
-            width: 35px;
+            width: 100%;
             height: 100%;
-            background-color: red;
-          }
+            /* background-color: green; */
 
-          h3 {
-            color: var(--main_white);
-            margin: 0px;
-            font-size: 28px;
-            font-weight: 600;
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
       }
@@ -90,16 +89,29 @@ export const FooterContainer = styled.div`
           .Footer_text_footer {
             display: flex;
             flex-direction: column;
-
-            p {
-              color: var(--main_white);
-              font-size: 16px;
-              font-weight: 300;
+            ul {
               display: flex;
+              flex-direction: column;
               gap: 20px;
+              width: max-content;
+              li {
+                color: var(--main_white);
+                font-size: 16px;
+                font-weight: 300;
+                display: flex;
+                gap: 20px;
+                position: relative;
+                cursor: pointer;
 
-              &:hover {
-                text-decoration: underline;
+                &:hover::after {
+                  position: absolute;
+                  content: "";
+                  width: 100%;
+                  height: 1px;
+                  background-color: white;
+                  top: 25px;
+                  left: 0px;
+                }
               }
             }
           }
@@ -135,9 +147,17 @@ export const FooterContainer = styled.div`
             color: var(--main_white);
             font-size: 16px;
             font-weight: 300;
+            position: relative;
+            cursor: pointer;
 
-            &:hover {
-              text-decoration: underline;
+            &:hover::after {
+              position: absolute;
+              content: "";
+              width: 100%;
+              height: 1px;
+              background-color: white;
+              top: 25px;
+              left: 0px;
             }
           }
         }

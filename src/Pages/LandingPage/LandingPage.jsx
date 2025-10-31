@@ -15,9 +15,9 @@ const LandingPage = () => {
       <div className="LandingPage_wrapper">
         <Header />
         <Hero />
-        <Fund />
         <Target />
         <Insight />
+        <Fund />
         <Smart />
         <Stories />
         <Footer />
