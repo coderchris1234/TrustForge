@@ -24,7 +24,17 @@ const ForgotPassword = () => {
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+    // const email = sessionStorage.getItem()
+
+    // try {
+    //   const res = await.post(`${BaseUrl}/forgot`)
+    //   toast.success("Reset")
+
+    // } catch (error) {
+
+    // }
     e.preventDefault();
     setError("");
 
@@ -56,8 +66,11 @@ const ForgotPassword = () => {
             <div className="title-text">
               Forgot <span>Password.</span>
             </div>
-            <small style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}>
-              Don't worry, it happens! Enter your email address and we'll send a link to reset your password.
+            <small
+              style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}
+            >
+              Don't worry, it happens! Enter your email address and we'll send a
+              link to reset your password.
             </small>
           </FormTitle>
 
@@ -84,14 +97,16 @@ const ForgotPassword = () => {
           <OrText style={{ marginTop: 12 }}> </OrText>
 
           <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
-            Remember password? <span onClick={() => navigate("/login")}>Log In</span>
+            Remember password?{" "}
+            <span onClick={() => navigate("/login")}>Log In</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>
             By requesting a password reset, you agree to our{" "}
             <a href="#" onClick={(e) => e.preventDefault()}>
               Terms and Conditions
-            </a>.
+            </a>
+            .
           </TermsText>
         </FormBox>
       </ForgotPasswordRight>

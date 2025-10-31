@@ -25,11 +25,12 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    remember: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [role, setRole] = useState(null);
+  console.log(role);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -37,6 +38,8 @@ const Login = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+
+    setRole(name);
 
     if (errors[name]) {
       setErrors((prevErrors) => {
@@ -70,7 +73,6 @@ const Login = () => {
     if (!validateForm()) return;
 
     setLoading(true);
-    const role = localStorage.getItem("role");
     const email = formData.email;
 
     const endpoint =
@@ -173,12 +175,12 @@ const Login = () => {
               <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <input
                   type="checkbox"
-                  name="remember"
+                  name="BusinessOwner"
                   checked={formData.remember}
                   onChange={handleChange}
                   style={{ width: 16, height: 16, cursor: "pointer" }}
                 />
-                <span style={{ fontSize: 14 }}>Remember me</span>
+                <span style={{ fontSize: 14 }}>Log in as BusinessOwner</span>
               </label>
 
               <span
