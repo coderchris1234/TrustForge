@@ -1,7 +1,8 @@
 import { GoArrowRight, GoShieldCheck } from "react-icons/go";
 import { GrGroup } from "react-icons/gr";
 import { FiTarget, FiShield, FiSearch, FiMessageSquare } from "react-icons/fi";
-import { CiHeart } from "react-icons/ci";import { IoMdTrendingUp } from "react-icons/io";
+import { CiHeart } from "react-icons/ci";
+import { IoMdTrendingUp } from "react-icons/io";
 import { LuBuilding, LuQuote } from "react-icons/lu";
 import { CiClock2 } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
@@ -31,8 +32,7 @@ import message from "../../public/mdi_message-outline.svg";
 import { GiConfirmed } from "react-icons/gi";
 import { FaEye, FaHeart } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
-export const MenuNav = ["Home", "About", "Blog"];
-import { FaHeart } from "react-icons/fa";
+// import { FaHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -551,7 +551,6 @@ export const RecentBusiness = [
   },
 ];
 export const BusinessPost = [
-  
   {
     icon1: <LuBuilding />,
     title: "SupplyChain AI Solutions",
@@ -573,7 +572,7 @@ export const BusinessPost = [
     love: <CiHeart size={25} />,
   },
 
-    {
+  {
     icon1: <LuBuilding />,
     title: "MediConnect Health",
     trendicon: <IoMdTrendingUp />,
@@ -593,8 +592,8 @@ export const BusinessPost = [
     view: "View Details",
     love: <CiHeart size={25} />,
   },
-  
-      {
+
+  {
     icon1: <LuBuilding />,
     title: "CryptoFlow Payments",
     trendicon: <IoMdTrendingUp />,
@@ -615,7 +614,7 @@ export const BusinessPost = [
     love: <CiHeart size={25} />,
   },
 
-      {
+  {
     icon1: <LuBuilding />,
     title: "LearnSmart Education",
     trendicon: <IoMdTrendingUp />,
@@ -635,7 +634,7 @@ export const BusinessPost = [
     view: "View Details",
     love: <CiHeart size={25} />,
   },
-      {
+  {
     icon1: <LuBuilding />,
     title: "SupplyChain AI Solutions",
     trendicon: <IoMdTrendingUp />,
@@ -655,26 +654,25 @@ export const BusinessPost = [
     view: "View Details",
     love: <CiHeart size={25} />,
   },
-
 ];
 
- export const funding = [
+export const funding = [
   {
     tittle: "Total Invested",
     icon: "₦",
     amount: "1,200,000",
   },
-   {
+  {
     tittle: "Active Investments",
     icon: <IoMdTrendingUp />,
     amount: "2",
   },
-   {
+  {
     tittle: "Average Return",
     icon: <CiClock2 />,
     amount: "+25.3%",
   },
-   {
+  {
     tittle: "Pending Reviews",
     icon: "₦",
     amount: "0",
@@ -683,52 +681,51 @@ export const BusinessPost = [
 
 export const second = [
   {
-  tittle: "AI-Powered Supply Chain Optimization",
-  tech: "TechVentures Inc.",
-  icon: <GiConfirmed />,
-  active: "Active",
-  detail: "View Details",
-  investment: "Investment Amount",
-  amount: "₦500,000",  
-  equity: "Equity",
-  percent: "8%",
-  investtime: "Investment Date",
-  date: "2025-09-15",
-  return: "Current Return",
-  returns: "+12.5%",
+    tittle: "AI-Powered Supply Chain Optimization",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    active: "Active",
+    detail: "View Details",
+    investment: "Investment Amount",
+    amount: "₦500,000",
+    equity: "Equity",
+    percent: "8%",
+    investtime: "Investment Date",
+    date: "2025-09-15",
+    return: "Current Return",
+    returns: "+12.5%",
   },
   {
-  tittle: "Healthcare Telemedicine Platform",
-  tech: "MediConnect",
-  icon: <GiConfirmed />,
-  active: "Active",
-  detail: "View Details",
-  investment: "Investment Amount",
-  amount: "₦700,000",  
-  equity: "Equity",
-  percent: "10%",
-  investtime: "Investment Date",
-  date: "2025-08-20",
-  return: "Current Return",
-  returns: "+18.3%",
+    tittle: "Healthcare Telemedicine Platform",
+    tech: "MediConnect",
+    icon: <GiConfirmed />,
+    active: "Active",
+    detail: "View Details",
+    investment: "Investment Amount",
+    amount: "₦700,000",
+    equity: "Equity",
+    percent: "10%",
+    investtime: "Investment Date",
+    date: "2025-08-20",
+    return: "Current Return",
+    returns: "+18.3%",
   },
 ];
 
 export const ndadata = [
-{
-  ai: "AI-Powered Supply Chain Optimization",
-  tech: "TechVentures Inc.",
-  icon: <GiConfirmed />,
-  sign: "Signed",
-  icon2: <FiDownload />,
-  download: "Download",
-  view: "View",
-  signed: "Signed Date",
-  date1: "2025-09-14",
-  expiry: "Expiry Date",
-  date2: "2026-09-14",
-  status: "Status",
-  active: "Active",
+  {
+    ai: "AI-Powered Supply Chain Optimization",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    sign: "Signed",
+    icon2: <FiDownload />,
+    download: "Download",
+    view: "View",
+    signed: "Signed Date",
+    date1: "2025-09-14",
+    expiry: "Expiry Date",
+    date2: "2026-09-14",
+    status: "Status",
+    active: "Active",
   },
 ];
-
