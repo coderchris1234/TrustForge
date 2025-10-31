@@ -17,8 +17,10 @@ import {
 } from "./LoginStyle";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -63,17 +65,39 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoading(true);
+    const role = localStorage.getItem("role");
+    const email = formData.email;
 
-    setTimeout(() => {
+    const endpoint =
+      role === "BusinessOwner" ? `${BaseUrl}/userl` : `${BaseUrl}/investorl`;
+    try {
+      const res = await axios.post(endpoint, {
+        email,
+        password: formData.password,
+      });
+
+      toast.success(res?.data?.message || "Logged in successfully");
+      role === "BusinessOwner"
+        ? navigate("/dashboard/creator")
+        : navigate("/dashboard/investor");
+      localStorage.removeItem("verifiedEmail");
+      localStorage.removeItem("role");
+    } catch (err) {
       setLoading(false);
-      toast.success("Logged in successfully!");
-      navigate("/dashboard");
-    }, 1600);
+      console.error(err);
+      toast.error(err?.response?.data?.message || "Login failed. Try again.");
+    }
+
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   toast.success("Logged in successfully!");
+    //   navigate("/dashboard/creator");
+    // }, 1600);
   };
 
   const togglePassword = () => setShowPassword((s) => !s);
@@ -93,7 +117,8 @@ const Login = () => {
           <FormTitle>
             <div className="title-text">Log In.</div>
             <small>
-              Good to see you again. <br /> Log in to pick up where you left off.
+              Good to see you again. <br /> Log in to pick up where you left
+              off.
             </small>
           </FormTitle>
 
@@ -157,7 +182,7 @@ const Login = () => {
               </label>
 
               <span
-                onClick={() => navigate("/resetpassword")}
+                onClick={() => navigate("/forgotpassword")}
                 style={{
                   fontSize: 14,
                   color: "black",
@@ -174,11 +199,12 @@ const Login = () => {
             </CreateButton>
           </form>
 
-          <OrText onClick={() => navigate("/verifyemail")}>
-            Or log in with
-          </OrText>
+          <OrText>Or log in with</OrText>
 
           <GoogleBtn
+            style={{
+              marginTop: "2rem",
+            }}
             onClick={() => toast("Google login not implemented in demo.")}
             role="button"
           >
@@ -190,7 +216,10 @@ const Login = () => {
 
           <LoginText style={{ marginTop: 14 }}>
             Don't have an account?{" "}
-            <span onClick={() => navigate("/signup")} style={{ color: "#DC2626" }}>
+            <span
+              onClick={() => navigate("/signup")}
+              style={{ color: "#DC2626" }}
+            >
               Create one
             </span>
           </LoginText>
