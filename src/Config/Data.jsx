@@ -312,7 +312,6 @@ export const InsightData = [
     ],
   },
 ];
-
 export const SmartData = [
   [
     {
