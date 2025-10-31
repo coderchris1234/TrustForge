@@ -87,7 +87,7 @@ const Login = () => {
 
       toast.success(res?.data?.message || "Logged in successfully");
       role === "BusinessOwner"
-        ? navigate("/dashboard/creator")
+        ? navigate("/dashboard/business_owner")
         : navigate("/dashboard/investor");
       localStorage.removeItem("verifiedEmail");
       localStorage.removeItem("role");
@@ -96,12 +96,6 @@ const Login = () => {
       console.error(err);
       toast.error(err?.response?.data?.message || "Login failed. Try again.");
     }
-
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   toast.success("Logged in successfully!");
-    //   navigate("/dashboard/creator");
-    // }, 1600);
   };
 
   const togglePassword = () => setShowPassword((s) => !s);

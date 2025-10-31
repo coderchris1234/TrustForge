@@ -5,8 +5,6 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdTrendingUp } from "react-icons/io";
 import { LuBuilding, LuQuote } from "react-icons/lu";
 import { CiClock2 } from "react-icons/ci";
-import { FiTarget, FiShield, FiSearch } from "react-icons/fi";
-import { LuQuote } from "react-icons/lu";
 import { LuUserRound } from "react-icons/lu";
 import { CiCalendar } from "react-icons/ci";
 import { GrSecure } from "react-icons/gr";
@@ -34,7 +32,6 @@ import { GiConfirmed } from "react-icons/gi";
 import { FaEye, FaHeart } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 // import { FaHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -321,7 +318,6 @@ export const InsightData = [
     ],
   },
 ];
-
 export const SmartData = [
   [
     {
@@ -787,8 +783,6 @@ export const BusinessPost = [
   },
 ];
 
-export const funding = [
-
 export const Business = [
   {
     id: 1,
@@ -885,70 +879,6 @@ export const second = [
     date: "2025-08-20",
     return: "Current Return",
     returns: "+18.3%",
-  },
-];
-
-export const ndadata = [
-  {
-    ai: "AI-Powered Supply Chain Optimization",
-    tech: "TechVentures Inc.",
-    icon: <GiConfirmed />,
-    sign: "Signed",
-    icon2: <FiDownload />,
-    download: "Download",
-    view: "View",
-    signed: "Signed Date",
-    date1: "2025-09-14",
-    expiry: "Expiry Date",
-    date2: "2026-09-14",
-    status: "Status",
-    active: "Active",
-    id: 5,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
-  },
-  {
-    id: 6,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
-  },
-  {
-    id: 7,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
-  },
-  {
-    id: 8,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
   },
 ];
 
@@ -1120,5 +1050,46 @@ export const SubscriptionPlans = [
       "Priority document review",
     ],
     isCurrent: false,
+  },
+];
+
+export const ndadata = [
+  {
+    ai: "AI-Powered Supply Chain Optimization",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    sign: "Signed",
+    icon2: <FiDownload />,
+    download: "Download",
+    view: "View",
+    signed: "Signed Date",
+    date1: "2025-09-14",
+    expiry: "Expiry Date",
+    date2: "2026-09-14",
+    status: "Status",
+    active: "Active",
+  },
+];
+
+export const funding = [
+  {
+    tittle: "Total Invested",
+    icon: "₦",
+    amount: "1,200,000",
+  },
+  {
+    tittle: "Active Investments",
+    icon: <IoMdTrendingUp />,
+    amount: "2",
+  },
+  {
+    tittle: "Average Return",
+    icon: <CiClock2 />,
+    amount: "+25.3%",
+  },
+  {
+    tittle: "Pending Reviews",
+    icon: "₦",
+    amount: "0",
   },
 ];

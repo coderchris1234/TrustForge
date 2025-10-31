@@ -59,7 +59,6 @@ export const HeaderContainer = styled.header`
       li {
         list-style-type: none;
         font-size: 18px;
-        /* color: var(--netural_black_color); */
         font-weight: 500;
         cursor: pointer;
         transition: all 350ms ease-in-out;
