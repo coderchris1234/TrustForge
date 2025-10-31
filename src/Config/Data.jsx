@@ -1,5 +1,10 @@
 import { GoArrowRight, GoShieldCheck } from "react-icons/go";
 import { GrGroup } from "react-icons/gr";
+import { FiTarget, FiShield, FiSearch, FiMessageSquare } from "react-icons/fi";
+import { CiHeart } from "react-icons/ci";
+import { IoMdTrendingUp } from "react-icons/io";
+import { LuBuilding, LuQuote } from "react-icons/lu";
+import { CiClock2 } from "react-icons/ci";
 import { FiTarget, FiShield, FiSearch } from "react-icons/fi";
 import { LuQuote } from "react-icons/lu";
 import { LuUserRound } from "react-icons/lu";
@@ -25,6 +30,10 @@ import add from "../../public/material-symbols_upload-rounded.svg";
 import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
+import { GiConfirmed } from "react-icons/gi";
+import { FaEye, FaHeart } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
+// import { FaHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
@@ -672,6 +681,113 @@ export const RecentBusiness = [
     time: "2025 - 10 - 14",
   },
 ];
+export const BusinessPost = [
+  {
+    icon1: <LuBuilding />,
+    title: "SupplyChain AI Solutions",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
+
+  {
+    icon1: <LuBuilding />,
+    title: "MediConnect Health",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "Telemedicine platform connecting patients with specialized healthcare providers nationwide..",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
+
+  {
+    icon1: <LuBuilding />,
+    title: "CryptoFlow Payments",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "Secure and fast cryptocurrency payment gateway solution for e-commerce businesses.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
+
+  {
+    icon1: <LuBuilding />,
+    title: "LearnSmart Education",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
+  {
+    icon1: <LuBuilding />,
+    title: "SupplyChain AI Solutions",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
+];
+
+export const funding = [
 
 export const Business = [
   {
@@ -723,6 +839,70 @@ export const Business = [
     postedDate: "2025-10-14",
   },
   {
+    tittle: "Active Investments",
+    icon: <IoMdTrendingUp />,
+    amount: "2",
+  },
+  {
+    tittle: "Average Return",
+    icon: <CiClock2 />,
+    amount: "+25.3%",
+  },
+  {
+    tittle: "Pending Reviews",
+    icon: "₦",
+    amount: "0",
+  },
+];
+
+export const second = [
+  {
+    tittle: "AI-Powered Supply Chain Optimization",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    active: "Active",
+    detail: "View Details",
+    investment: "Investment Amount",
+    amount: "₦500,000",
+    equity: "Equity",
+    percent: "8%",
+    investtime: "Investment Date",
+    date: "2025-09-15",
+    return: "Current Return",
+    returns: "+12.5%",
+  },
+  {
+    tittle: "Healthcare Telemedicine Platform",
+    tech: "MediConnect",
+    icon: <GiConfirmed />,
+    active: "Active",
+    detail: "View Details",
+    investment: "Investment Amount",
+    amount: "₦700,000",
+    equity: "Equity",
+    percent: "10%",
+    investtime: "Investment Date",
+    date: "2025-08-20",
+    return: "Current Return",
+    returns: "+18.3%",
+  },
+];
+
+export const ndadata = [
+  {
+    ai: "AI-Powered Supply Chain Optimization",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    sign: "Signed",
+    icon2: <FiDownload />,
+    download: "Download",
+    view: "View",
+    signed: "Signed Date",
+    date1: "2025-09-14",
+    expiry: "Expiry Date",
+    date2: "2026-09-14",
+    status: "Status",
+    active: "Active",
     id: 5,
     title: "Supermarket / Mini Mart",
     category: "Retail",
