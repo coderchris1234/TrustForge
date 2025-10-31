@@ -17,8 +17,10 @@ import {
 } from "./LoginStyle";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -63,17 +65,39 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoading(true);
+    const role = localStorage.getItem("role");
+    const email = formData.email;
 
-    setTimeout(() => {
+    const endpoint =
+      role === "BusinessOwner" ? `${BaseUrl}/userl` : `${BaseUrl}/investorl`;
+    try {
+      const res = await axios.post(endpoint, {
+        email,
+        password: formData.password,
+      });
+
+      toast.success(res?.data?.message || "Logged in successfully");
+      role === "BusinessOwner"
+        ? navigate("/dashboard/creator")
+        : navigate("/dashboard/investor");
+      localStorage.removeItem("verifiedEmail");
+      localStorage.removeItem("role");
+    } catch (err) {
       setLoading(false);
-      toast.success("Logged in successfully!");
-      navigate("/dashboard/creator");
-    }, 1600);
+      console.error(err);
+      toast.error(err?.response?.data?.message || "Login failed. Try again.");
+    }
+
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   toast.success("Logged in successfully!");
+    //   navigate("/dashboard/creator");
+    // }, 1600);
   };
 
   const togglePassword = () => setShowPassword((s) => !s);
