@@ -24,9 +24,7 @@ const ForgotPassword = () => {
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  const handleSubmit = async (e) => {
-    const BaseUrl = import.meta.env.VITE_BaseUrl;
-
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
 
