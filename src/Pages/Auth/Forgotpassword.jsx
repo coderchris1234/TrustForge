@@ -26,15 +26,7 @@ const ForgotPassword = () => {
 
   const handleSubmit = async (e) => {
     const BaseUrl = import.meta.env.VITE_BaseUrl;
-    // const email = sessionStorage.getItem()
 
-    // try {
-    //   const res = await.post(`${BaseUrl}/forgot`)
-    //   toast.success("Reset")
-
-    // } catch (error) {
-
-    // }
     e.preventDefault();
     setError("");
 
