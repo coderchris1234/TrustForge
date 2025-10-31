@@ -25,6 +25,7 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    isBusinessOwner: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -75,6 +76,7 @@ const Login = () => {
     setLoading(true);
     const email = formData.email;
 
+    const role = formData.isBusinessOwner ? "BusinessOwner" : "Investor";
     const endpoint =
       role === "BusinessOwner" ? `${BaseUrl}/userl` : `${BaseUrl}/investorl`;
     try {
@@ -175,8 +177,8 @@ const Login = () => {
               <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <input
                   type="checkbox"
-                  name="BusinessOwner"
-                  checked={formData.remember}
+                  name="isBusinessOwner"
+                  checked={formData.isBusinessOwner}
                   onChange={handleChange}
                   style={{ width: 16, height: 16, cursor: "pointer" }}
                 />
