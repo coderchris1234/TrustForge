@@ -23,6 +23,8 @@ import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setUser } from "../Global/Slice";
 
 const Signup = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -33,8 +35,9 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
     phoneNumber: "",
-    role: "",
   });
+
+  const [role, setRole] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -44,6 +47,7 @@ const Signup = () => {
     isoCode: "NG",
     code: "+234",
   });
+  const dispatch = useDispatch();
 
   const countries = [
     { isoCode: "NG", code: "+234" },
@@ -85,7 +89,7 @@ const Signup = () => {
 
     if (!formData.phoneNumber) newErrors.phone = "Phone number is required";
 
-    if (!formData.role) newErrors.role = "Please select a role";
+    if (!role) newErrors.role = "Please select a role";
 
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
@@ -129,7 +133,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        `${BaseUrl}/${formData.role === "creator" ? "user" : "investor"}`,
+        `${BaseUrl}/${role === "BusinessOwner" ? "user" : "investor"}`,
         formData
       );
       if (isValid) {
@@ -139,7 +143,6 @@ const Signup = () => {
           password: "",
           confirmPassword: "",
           phoneNumber: "",
-          role: "",
         });
 
         setCountry({
@@ -150,8 +153,7 @@ const Signup = () => {
 
         setErrors({});
       }
-
-      console.log("res", res);
+      dispatch(setUser(res?.data));
 
       toast.success(res?.data?.message);
       sessionStorage.setItem(
@@ -159,7 +161,6 @@ const Signup = () => {
         JSON.stringify(res.data.data.id)
       );
       sessionStorage.setItem("userEmail", JSON.stringify(formData.email));
-      sessionStorage.setItem("userRole", JSON.stringify(formData.role));
       navigate("/verifyemail");
     } catch (err) {
       console.log("error", err);
@@ -180,15 +181,17 @@ const Signup = () => {
         formData.password
       );
     const passwordMatch = formData.password === formData.confirmPassword;
+    if (!role) {
+      return;
+    }
     return (
       formData.fullName.trim().length > 0 &&
       emailOk &&
       passwordOk &&
       passwordMatch &&
-      formData.phoneNumber &&
-      formData.role
+      formData.phoneNumber
     );
-  }, [formData]);
+  }, [formData, role]);
 
   return (
     <SignupContainer>
@@ -261,11 +264,11 @@ const Signup = () => {
             </Label>
             <SelectField
               name="role"
-              value={formData.role}
-              onChange={handleChange}
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
             >
               <option value="">Select...</option>
-              <option value="creator">Creator</option>
+              <option value="BusinessOwner">Business Owner</option>
               <option value="investor">Investor</option>
             </SelectField>
             {errors.role && <ErrorText>{errors.role}</ErrorText>}

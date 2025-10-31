@@ -16,8 +16,16 @@ const authSlice = createSlice({
     setBlogIndex: (state, action) => {
       state.blogIndex = action.payload;
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+
+    logOut: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { setBlogBtnAction, setBlogIndex } = authSlice.actions;
+export const { setBlogBtnAction, setBlogIndex, setUser, logOut } =
+  authSlice.actions;
 export default authSlice.reducer;

@@ -52,7 +52,7 @@ const App = () => {
         <Route path={"/chooserole"} element={<ChooseRole />} />
 
         <Route element={<Private />}>
-          <Route path="/dashboard/creator" element={<Creator />}>
+          <Route path="/dashboard/business_owner" element={<Creator />}>
             <Route path="" element={<Overview />} />
             <Route path="mybusiness" element={<MyBusiness />} />
             <Route path="addbusiness" element={<AddBusiness />} />

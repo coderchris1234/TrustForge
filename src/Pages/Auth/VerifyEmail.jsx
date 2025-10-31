@@ -15,6 +15,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../Global/Slice";
 
 const CODE_LENGTH = 6;
 
@@ -27,6 +29,10 @@ const VerifyEmail = () => {
   const [error, setError] = useState("");
   const [resendTimer, setResendTimer] = useState(60);
   const [canResend, setCanResend] = useState(false);
+  const dispatch = useDispatch();
+
+  const role = useSelector((state) => state.TrustForge.user);
+  console.log("this is role", role);
 
   useEffect(() => {
     setCanResend(false);
@@ -107,6 +113,9 @@ const VerifyEmail = () => {
     const lastIndex = Math.min(digits.length - 1, CODE_LENGTH - 1);
     if (lastIndex >= 0) inputsRef.current[lastIndex]?.focus();
   };
+  const email = JSON.parse(sessionStorage.getItem("userEmail"));
+
+  // console.log("this is role", role);
 
   const verifyCode = async (e) => {
     e?.preventDefault();
@@ -117,12 +126,12 @@ const VerifyEmail = () => {
       return;
     }
 
-    const email = JSON.parse(sessionStorage.getItem("userEmail"));
-    const role = JSON.parse(sessionStorage.getItem("userRole"));
     const BaseUrl = import.meta.env.VITE_BaseUrl;
 
     const endpoint =
-      role === "investor" ? `${BaseUrl}/verifyInvestor` : `${BaseUrl}/verify`;
+      role?.data?.role === "Investor"
+        ? `${BaseUrl}/verifyInvestor`
+        : `${BaseUrl}/verify`;
 
     const payload = {
       email,
@@ -132,23 +141,27 @@ const VerifyEmail = () => {
     try {
       setLoading(true);
       const res = await axios.post(endpoint, payload);
-      const data = res?.data;
 
       toast.success(res?.data?.message || "Email verified successfully");
+      dispatch(setUser(res?.data));
 
-      // localStorage.setItem("verifiedEmail", data?.data?.email);
-      localStorage.setItem("role", data?.data?.role);
-
-      // sessionStorage.removeItem("userEmail");
-      // sessionStorage.removeItem("userRole");
       setLoading(false);
 
-      navigate("/login");
+      navigate(
+        `${
+          res?.data?.role === "Investor"
+            ? "/dashboard/investor"
+            : "/dashboard/business_owner"
+        }`
+      );
     } catch (err) {
       console.log(err);
       setLoading(false);
 
       toast.error(err?.response?.data?.message || "Verification failed.");
+    } finally {
+      sessionStorage.removeItem("userEmail");
+      sessionStorage.removeItem("userRole");
     }
 
     // setLoading(true);
@@ -165,10 +178,21 @@ const VerifyEmail = () => {
   };
 
   const resendCode = () => {
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+    const endpoint =
+      role?.data?.role === "Investor"
+        ? `${BaseUrl}/verifyInvestor`
+        : `${BaseUrl}/verify`;
     if (!canResend) return;
     setCanResend(false);
     setResendTimer(60);
-    toast("Verification code resent (demo).");
+    try {
+      const res = axios.post(endpoint);
+      console.log(res);
+    } catch (error) {
+      toast.error(error?.message);
+    }
     setCode(Array(CODE_LENGTH).fill(""));
     inputsRef.current[0]?.focus();
 

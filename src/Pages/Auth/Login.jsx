@@ -87,7 +87,7 @@ const Login = () => {
 
       toast.success(res?.data?.message || "Logged in successfully");
       role === "BusinessOwner"
-        ? navigate("/dashboard/creator")
+        ? navigate("/dashboard/business_owner")
         : navigate("/dashboard/investor");
       localStorage.removeItem("verifiedEmail");
       localStorage.removeItem("role");
