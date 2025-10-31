@@ -32,6 +32,26 @@ import { GiConfirmed } from "react-icons/gi";
 import { FaEye, FaHeart } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 export const MenuNav = ["Home", "About", "Blog"];
+import { FaHeart } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
+import { RiBarChartFill } from "react-icons/ri";
+import { MdOutlineShowChart } from "react-icons/md";
+import { MdOutlineWorkspacePremium } from "react-icons/md";
+import picture from "../assets/picture.png";
+import picture1 from "../assets/picture1.png";
+import picture2 from "../assets/picture2.png";
+import picture4 from "../assets/picture4.png";
+import picture5 from "../assets/picture5.png";
+import picture6 from "../assets/picture6.png";
+import { CiUser } from "react-icons/ci";
+import Olu from "../assets/Olu.jpg";
+import Michael from "../assets/Michael.jpg";
+import Esther from "../assets/Esther.jpg";
+import Uchechi from "../assets/Uchechi.jpg";
+import Daniel from "../assets/Daniel.jpg";
+import VICKY from "../assets/VICKY.jpg";
+
+export const MenuNav = ["Home", "About", "Insights"];
 
 export const FundNum = [
   {
@@ -240,6 +260,11 @@ export const InvestorMenu = [
     },
     {
       Icon: sub,
+      label: "profile",
+      link: "profile",
+    },
+    {
+      Icon: sub,
       label: "Subscription",
       link: "subscription",
     },
@@ -375,6 +400,7 @@ export const TeamInfo = [
 
   {
     Image: picture,
+    Image: VICKY,
     name: "James Victoria",
     role: "Product Designer",
     details:

@@ -11,8 +11,7 @@ const Hero = () => {
       <div className="Hero_page_wrapper">
         <article className="Hero_content">
           <h3>
-            Where Startups, Businesses, <br /> and Investors Build the Future
-            Together.
+            Where <span>Startups</span> <br /> Build the Future Together.
           </h3>
           <p>
             TrustForge connects innovative founders, growing enterprises,

@@ -26,6 +26,7 @@ export const InvestContainer = styled.div`
       .left_Container {
         width: 25%;
         height: 100vh;
+        /* background-color: red; */
 
         .Blog_Header {
           display: flex;
@@ -111,12 +112,14 @@ export const InvestContainer = styled.div`
               padding-bottom: 2rem;
 
               h3 {
-                font-size: 30px;
+                font-size: 22px;
+                font-weight: 600;
               }
 
               p {
                 font-size: 18px;
                 line-height: 2rem;
+                font-weight: 400;
               }
             }
 
@@ -132,12 +135,14 @@ export const InvestContainer = styled.div`
                 list-style-type: none;
 
                 h4 {
-                  font-size: 20px;
+                  font-size: 18px;
+                  font-weight: 500;
                 }
 
                 p {
                   line-height: 2rem;
-                  font-size: 18px;
+                  font-size: 16px;
+                  font-weight: 400;
                 }
               }
             }
@@ -157,9 +162,30 @@ export const InvestContainer = styled.div`
                 li {
                   list-style-type: none;
                   line-height: 2rem;
-                  font-size: 18px;
+                  font-size: 16px;
+                  font-weight: 400;
                 }
               }
+            }
+          }
+          .Insight_btn {
+            width: 183px;
+            height: 52px;
+            border-radius: 12px;
+            color: var(--main_white);
+            border: none;
+            background-color: var(--primary_color_500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+
+            .Insight_icon {
+              font-size: 35px;
+              font-weight: 100;
             }
           }
         }
@@ -178,6 +204,8 @@ export const InvestContainer = styled.div`
       header {
         h1 {
           font-size: 30px;
+          font-weight: 700;
+          color: var(--netural_black_color);
           margin-bottom: 2rem;
         }
       }

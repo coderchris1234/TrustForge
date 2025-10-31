@@ -2,11 +2,15 @@ import React from "react";
 import { InvestContainer } from "./BussInvestStyle";
 import { RiRectangleFill } from "react-icons/ri";
 import { InsightData } from "../../../Config/Data";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BlogPostCard from "../../../Components/BlogPostCard";
+import CustomButton from "../../../Components/CustomButton";
+import { GoArrowRight } from "react-icons/go";
 
 const BussInvest = () => {
   const { blogTitle } = useParams();
+
+  const nav = useNavigate();
 
   //   the CheckItem is Finding the blog heading that match witht the blog title coming from the userParams
   const checkTitle = InsightData.find((item) => {
@@ -22,8 +26,8 @@ const BussInvest = () => {
 
   // const DisplayRelated = RelatedData.filter()
 
-  console.log("this is the checkTitle data", checkTitle);
-  console.log("this is the Related data", RelatedData);
+  // console.log("this is the checkTitle data", checkTitle);
+  // console.log("this is the Related data", RelatedData);
   return (
     <InvestContainer>
       <div className="Invest_wrapper">
@@ -81,6 +85,15 @@ const BussInvest = () => {
                   </ul>
                 </section>
               </section>
+              <CustomButton
+                className="Insight_btn"
+                Btntext="Get started"
+                type="button"
+                icon={<GoArrowRight className="Insight_icon" />}
+                onClick={() => {
+                  nav("/signup");
+                }}
+              />
             </div>
           </div>
         </section>

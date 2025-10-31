@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import header from "../../assets/header.png";
+import Insight from "../../assets/Insight.png";
 
 export const BlogHeroContainer = styled.div`
   width: 100%;
   height: 50vh;
-  background: url(${header});
-  background-size: contain;
+  background: url(${Insight});
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -22,8 +22,8 @@ export const BlogHeroContainer = styled.div`
     gap: 10px;
 
     h1 {
-      font-size: 48px;
-      font-weight: 600;
+      font-size: 50px;
+      font-weight: 700;
       color: var(--main_white);
       margin: 0px;
       line-height: 120%;
