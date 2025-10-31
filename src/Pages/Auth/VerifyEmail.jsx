@@ -136,10 +136,11 @@ const VerifyEmail = () => {
 
       toast.success(res?.data?.message || "Email verified successfully");
 
-      localStorage.setItem("verifiedEmail", data?.data?.email);
+      // localStorage.setItem("verifiedEmail", data?.data?.email);
       localStorage.setItem("role", data?.data?.role);
-      sessionStorage.removeItem("userEmail");
-      sessionStorage.removeItem("userRole");
+
+      // sessionStorage.removeItem("userEmail");
+      // sessionStorage.removeItem("userRole");
       setLoading(false);
 
       navigate("/login");

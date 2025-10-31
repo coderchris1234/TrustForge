@@ -108,30 +108,48 @@ const Signup = () => {
     e.preventDefault();
     const isValid = validateForm();
 
-    if (isValid) {
-      setFormData({
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        phoneNumber: "",
-        role: "",
-      });
+    // if (isValid) {
+    //   setFormData({
+    //     fullName: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPassword: "",
+    //     phoneNumber: "",
+    //     role: "",
+    //   });
 
-      setCountry({
-        name: "Nigeria",
-        isoCode: "NG",
-        code: "+234",
-      });
+    //   setCountry({
+    //     name: "Nigeria",
+    //     isoCode: "NG",
+    //     code: "+234",
+    //   });
 
-      setErrors({});
-    }
+    //   setErrors({});
+    // }
 
     try {
       const res = await axios.post(
         `${BaseUrl}/${formData.role === "creator" ? "user" : "investor"}`,
         formData
       );
+      if (isValid) {
+        setFormData({
+          fullName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+          phoneNumber: "",
+          role: "",
+        });
+
+        setCountry({
+          name: "Nigeria",
+          isoCode: "NG",
+          code: "+234",
+        });
+
+        setErrors({});
+      }
 
       console.log("res", res);
 

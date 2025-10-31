@@ -1,8 +1,9 @@
 import React from "react";
 import { DashboardLayout } from "./DashBoardLayoutStyle";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const DashBoardLayout = (props) => {
+  const nav = useNavigate();
   return (
     <>
       <DashboardLayout>
@@ -39,7 +40,9 @@ const DashBoardLayout = (props) => {
           </div>
           <div className="logout">
             <img src="/public/material-symbols_logout.svg" alt="" />
-            <span>Logout</span>
+            <span style={{ cursor: "pointer" }} onClick={() => nav("/login")}>
+              Logout
+            </span>
           </div>
         </aside>
 
