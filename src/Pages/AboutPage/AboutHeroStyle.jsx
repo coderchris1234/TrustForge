@@ -11,7 +11,7 @@ export const AboutHeroContainer = styled.div`
   align-items: center;
 
   .About_hero_content {
-    width: 60%;
+    width: 70%;
     height: 60%;
     /* background-color: red; */
     display: flex;
@@ -22,15 +22,15 @@ export const AboutHeroContainer = styled.div`
     gap: 20px;
 
     h1 {
-      font-size: 48px;
-      font-weight: 600;
+      font-size: 50px;
+      font-weight: 700;
       color: var(--main_white);
       margin: 0px;
       line-height: 120%;
     }
 
     p {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 400;
       color: var(--main_white);
       line-height: 150%;

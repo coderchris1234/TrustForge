@@ -8,7 +8,7 @@ export const ContentContainer = styled.div`
   padding: 50px;
 
   .Startup_content {
-    width: 90%;
+    width: 100%;
     height: max-content;
     display: flex;
     justify-content: space-between;

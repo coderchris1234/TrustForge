@@ -79,8 +79,8 @@ export const StoriesContainer = styled.div`
             height: 100%;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            /* background-position: center; */
-            background-size: cover;
+            background-position: center;
+            background-size: contain;
             background-repeat: no-repeat;
           }
         }

@@ -6,6 +6,7 @@ export const DashboardLayout = styled.div`
   display: flex;
   font-family: "Poppins", sans-serif;
   gap: 2px;
+  /* background-color: green; */
 
   .aside {
     width: 14%;

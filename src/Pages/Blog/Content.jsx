@@ -4,6 +4,7 @@ import { InsightData } from "../../Config/Data";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import BlogPostCard from "../../Components/BlogPostCard";
+import CustomButton from "../../Components/CustomButton";
 
 const Content = () => {
   const blogTitle = useSelector((state) => state.TrustForge.blogBtnAction);

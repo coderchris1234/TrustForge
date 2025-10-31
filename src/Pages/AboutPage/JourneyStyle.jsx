@@ -8,6 +8,7 @@ export const JourneyContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 15px;
+  margin-bottom: 2rem;
 
   .Journney_wrapper {
     width: 45%;
