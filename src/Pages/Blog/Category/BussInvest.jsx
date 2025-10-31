@@ -26,8 +26,8 @@ const BussInvest = () => {
 
   // const DisplayRelated = RelatedData.filter()
 
-  console.log("this is the checkTitle data", checkTitle);
-  console.log("this is the Related data", RelatedData);
+  // console.log("this is the checkTitle data", checkTitle);
+  // console.log("this is the Related data", RelatedData);
   return (
     <InvestContainer>
       <div className="Invest_wrapper">
