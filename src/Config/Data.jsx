@@ -1,13 +1,16 @@
 import { GoArrowRight, GoShieldCheck } from "react-icons/go";
 import { GrGroup } from "react-icons/gr";
-import { FiTarget, FiShield, FiSearch } from "react-icons/fi";
-import { LuQuote } from "react-icons/lu";
+import { FiTarget, FiShield, FiSearch, FiMessageSquare } from "react-icons/fi";
+import { CiHeart } from "react-icons/ci";import { IoMdTrendingUp } from "react-icons/io";
+import { LuBuilding, LuQuote } from "react-icons/lu";
+import { CiClock2 } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
 import { CiCalendar } from "react-icons/ci";
 import { GrSecure } from "react-icons/gr";
 import { RiGroupLine } from "react-icons/ri";
 import { RxLightningBolt } from "react-icons/rx";
 import { IoTimeOutline, IoNotificationsOutline } from "react-icons/io5";
+import picture from "../assets/picture.png";
 import { TbWorld } from "react-icons/tb";
 import { PiMedalLight } from "react-icons/pi";
 import explore from "../../public/material-symbols-light_explore.svg";
@@ -25,6 +28,10 @@ import add from "../../public/material-symbols_upload-rounded.svg";
 import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
+import { GiConfirmed } from "react-icons/gi";
+import { FaEye, FaHeart } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
+export const MenuNav = ["Home", "About", "Blog"];
 import { FaHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
@@ -94,9 +101,9 @@ export const TargetInfo = [
 export const InsightData = [
   {
     image: picture,
-    category: "For Business",
+    detailsImage: picture,
     title: "for startups",
-    heading: "How to Attract the Right Investors to your Business",
+    details: "How to Attract the Right Investors to your Business",
     descriptions:
       "You've built something special, your own business. But now you want it to...",
     link: "Read More",
@@ -106,38 +113,12 @@ export const InsightData = [
     dateName: "October 10, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "5 min read",
-    introduction:
-      "You’ve built something special, your own business. But now you want it to grow, and that means finding people who believe in your dream. The right investor can help your business reach the next level. But not every investor is the right fit. Here’s how to attract the one who truly understands your vision.",
-    descriptionDetails: [
-      {
-        titles: "1. Tell a Clear Story",
-        info: "People love stories. Before investors care about your numbers, they want to know why you started. Talk about what inspired your business and what problem you’re solving. Keep it simple and real,  not complicated. Instead of saying, “We sell skincare products,” try:  “We’re helping African women access affordable, high-quality skincare made for their skin types.” That’s a story investors remember.",
-      },
-      {
-        titles: "2. Show  Real Progress",
-        info: "Investors want to see that your idea works. Share your numbers, how many customers you have, how your sales are growing, or what feedback you’ve gotten.",
-      },
-      {
-        titles: "3. Know the Kind of Investor You Want",
-        info: "There are different types of investors: angel investors, venture capitalists, crowdfunding supporters, and even impact investors. Each one looks for something specific.",
-      },
-      {
-        titles: "4. Be Honest and Open",
-        info: "No business is perfect. Don’t hide your challenges, be honest about them. Investors prefer honesty over perfection. When they see that you’re transparent, they’re more likely to trust you.",
-      },
-    ],
-
-    bottomText: [
-      "Investors want more than numbers, they want connection.Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
-      "Join TrusForge today and meet investors who believe in your vision.",
-    ],
   },
 
   {
-    image: picture1,
-    category: "For Investors",
+    image: picture,
     title: "for investors",
-    heading: "How to Identify High Potential Startups Before Everyone Else",
+    details: "How to Identify High Potential Startups Before Everyone Else",
     descriptions:
       "Every investor wants to find the next big thing, that one startup that grows from...",
     link: "Read More",
@@ -147,28 +128,12 @@ export const InsightData = [
     dateName: "August 25, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "6 min read",
-    introduction:
-      "Every investor wants to find the next big thing, that one startup that grows from an idea into a movement. But spotting that potential early requires more than luck. It takes observation, curiosity, and a good understanding of what truly drives long term success.",
-    descriptionDetails: [
-      {
-        titles: "Look Beyond the Pitch Deck",
-        info: "A beautiful pitch deck doesn’t equal a strong business. The best startups often start simple, but with founders who are deeply passionate and focused. Look for authenticity, resilience, and a clear understanding of the problem they’re solving.",
-      },
-      {
-        titles: "Back Teams, Not Just Ideas",
-        info: "An idea can evolve, but a great team adapts and survives. Pay attention to the chemistry, drive, and vision of the people behind the business. A strong team can pivot when needed, and that flexibility is the secret ingredient behind most successful startups.",
-      },
-    ],
-    bottomText: [
-      "Finding high-potential startups isn’t about guessing; it’s about recognizing the right combination of passion, execution, and resilience. When you invest in founders who embody these traits, you’re not just funding a business, you’re shaping the future.",
-    ],
   },
 
   {
-    image: picture2,
-    category: "For Business",
+    image: picture,
     title: "for startups",
-    heading: "Why Building Relationships Matters More Than Funding image",
+    details: "Why Building Relationships Matters More Than Funding image",
     descriptions:
       "Many entrepreneurs believe that securing funding is the ultimate goal. But...",
     link: "Read More",
@@ -178,31 +143,11 @@ export const InsightData = [
     dateName: "October 1, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "4 min read",
-    introduction:
-      "Many entrepreneurs believe that securing funding is the ultimate goal. But while money can help you start, it’s relationships that help you last. Funding may build your product, but relationships build your foundation and in business, that foundation is everything.",
-    descriptionDetails: [
-      {
-        titles: "Funding Gives You a Start, Relationships Keep You Going",
-        info: "Money can accelerate growth, but it doesn’t guarantee success. Countless startups have raised funds and still failed because they lacked the right guidance, partnerships, and community. Relationships provide those things — wisdom, access, and long-term support that money can’t buy.",
-      },
-      {
-        titles: "Investors Invest in People, Not Just Ideas",
-        info: "Investors want to see that your idea works. Share your numbers, how many customers you have, how your sales are growing, or what feedback you’ve gotten.",
-      },
-      {
-        titles: "Collaboration Over Competition",
-        info: "Strong relationships also lead to partnerships, not rivalry. When founders collaborate with others in their industry, they unlock new opportunities, shared growth, and mutual success. In today’s world, collaboration is the new competitive edge.",
-      },
-    ],
-    bottomText: [
-      "Build meaningful connections today. Join TrustForge and connect with the right investors and partners who believe in your vision.",
-    ],
   },
   {
-    image: picture4,
-    category: "For Investors",
+    image: picture,
     title: "for investors",
-    heading: "The Vision Factor: Why Great Investors See Before Others Do",
+    details: "The Vision Factor: Why Great Investors See Before Others Do",
     descriptions:
       "Vision is what allows investors to see the spark in an idea long before it becom...",
     link: "Read More",
@@ -212,32 +157,12 @@ export const InsightData = [
     dateName: "October 7, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "8 min read",
-    introduction:
-      " Vision is what allows investors to see the spark in an idea long before it becomes a flame. It’s not about luck or timing, it’s about clarity the ability to look beyond the obvious and recognize potential where others see risk.",
-    descriptionDetails: [
-      {
-        titles: "Beyond the Numbers, The True Skill of Investing",
-        info: "In today’s fast paced investment world, data is everywhere. Everyone has access to analytics, performance metrics, and market trends. Yet, only a few investors consistently identify the next big breakthrough not because they have more information, but because they see differently.",
-      },
-      {
-        titles: "The Power of Early Belief",
-        info: "Every major success story began as a fragile idea, one that seemed unrealistic to most. From garage startups to global disruptors, the earliest investors weren’t merely buyers of equity, they were believers in vision.These investors understood something vital, belief compounds faster than capital. A founder’s confidence is contagious, but it needs to be met with faith someone who sees the future before it takes form.",
-      },
-      {
-        titles: "Vision Is the New Currency",
-        info: "In a noisy world where everyone is chasing the next big thing, vision remains timeless. It’s not something you can buy, measure, or automate. it’s cultivated through experience, empathy, and curiosity. Investors who master the art of seeing before others do are not just funding businesses; they are shaping the future. They understand that wealth is built not just in numbers, but in insight the kind that sees tomorrow’s success hiding inside today’s uncertainty. Because the difference between good investors and great ones isn’t in how much they invest, it’s in how deeply they believe.",
-      },
-    ],
-    bottomText: [
-      "Step into the future, where belief becomes return. Start investing.",
-    ],
   },
 
   {
-    image: picture5,
-    category: "For Business",
+    image: picture,
     title: "for startups",
-    heading: "Ways to Make Your Business More Attractive to Investors",
+    details: "Ways to Make Your Business More Attractive to Investors",
     descriptions:
       "Investors receive hundreds of proposals, so how do you make yours stand is...",
     link: "Read More",
@@ -247,41 +172,12 @@ export const InsightData = [
     dateName: "October 5, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "6 min read",
-    introduction:
-      "Investors receive hundreds of proposals, so how do you make yours stand out? The secret isn’t just having a great idea, it’s about presenting your business the right way.",
-    descriptionDetails: [
-      {
-        titles: "1. Have a Clear Problem and Solution ",
-        info: "Investors back clarity. Clearly define the problem you’re solving and how your business provides a unique, scalable solution.",
-      },
-      {
-        titles: "2. Show Traction, Even the Small Wins Matter",
-        info: "Investors are not just buying into your idea, they are buying into your progress. They want to see proof that your business has potential, and you can show that in many ways, even before you make your first big sale.",
-      },
-      {
-        titles: "3.  Know Your Numbers",
-        info: "One of the biggest turnoffs for any investor is a founder who doesn’t know their numbers. When you step into a meeting, you should be able to confidently discuss your costs, your revenue model, and your growth projections. Investors aren’t expecting perfection, but they expect you to understand your financial foundation.",
-      },
-      {
-        titles: "4. Highlight Your Team",
-        info: "Even the best ideas can fail in the wrong hands, and investors know it. That’s why they often say they invest in people first, not products. A capable, committed, and adaptable team can take a good idea and turn it into a great company.",
-      },
-      {
-        titles: "5. Be Story Driven",
-        info: "Facts tell, but stories sell. Craft a compelling business story that shows passion, purpose, and potential.",
-      },
-    ],
-    bottomText: [
-      "Investors want more than numbers, they want connection.Share your story, show real growth, and stay true to your values. The right investor will see your passion and want to join your journey.",
-      "Build your story. Find your investor.",
-    ],
   },
 
   {
-    image: picture6,
-    category: "For Investors",
+    image: picture,
     title: "for investors",
-    heading: "The Power of Early Partnerships in Smart Investing",
+    details: "The Power of Early Partnerships in Smart Investing",
     descriptions:
       "In the fast paced world of investing, everyone talks about “timing.” When to en...",
     link: "Read More",
@@ -291,25 +187,6 @@ export const InsightData = [
     dateName: "October 12, 2025",
     timeIcon: <IoTimeOutline />,
     timeName: "4 min read",
-    introduction:
-      "In the fast paced world of investing, everyone talks about “timing.” When to enter. When to exit. When to double down.But the truth is, timing means nothing without connection  because access to the right opportunities only comes through the right relationships.",
-
-    introduction2:
-      "The investors who consistently win are not always the ones with the biggest capital  they’re the ones with the strongest partnerships. The ones who invest early not only in ideas but in people.",
-    descriptionDetails: [
-      {
-        titles: "Why Early Partnerships Matter",
-        info: "Behind every breakout startup story, there’s always one thing in common  an early believer.Someone who saw potential before numbers, who trusted the founder before the headlines came. Early partnerships are powerful because they’re built on belief, not metrics. When you invest early, you’re not just funding an idea, you’re helping shape it.You get a front row seat in the decision making process, the brand identity, and the product journey. You become part of the DNA of that company.",
-      },
-      {
-        titles: "Long Term Wins Over Short Term Gains",
-        info: "Early partnerships create a different kind of success story.Instead of flipping startups for quick exits, investors who commit early often enjoy deeper influence, higher equity, and longer term profitability. When founders feel supported, they build with loyalty. And loyal founders don’t forget their early backers. They bring them into new projects, new markets, and even new industries. The investors who truly win are the ones who stay long enough to see an idea grow into an ecosystem",
-      },
-    ],
-    bottomText: [
-      "Early partnerships are not about being first they’re about being faithful.They’re about showing up when it’s uncertain, believing when it’s still small, and helping shape something that lasts.",
-      "Connect with visionaries. Build with believers. Invest where trust and opportunity grow together.",
-    ],
   },
 ];
 
@@ -445,14 +322,14 @@ export const CreatorMenu = [
     {
       Icon: help,
       label: "Help & Support",
-      link: "helpsupport",
+      link: "helpsuppport",
     },
   ],
 ];
 
 export const StoriesData = [
   {
-    image: Olu,
+    image: picture,
     name: "Olumide Olaitan",
     descriptions:
       "TRUSTFORGE connected us with investors who truly understood our vision. Within 3 months, we closed our Series A round with partners who share our long-term goals.",
@@ -462,7 +339,7 @@ export const StoriesData = [
   },
 
   {
-    image: Michael,
+    image: picture,
     name: "Michael Okafor ",
     descriptions:
       "The verification process gave us confidence that we were dealing with serious investors. TRUSTFORGE's platform made the entire funding journey transparent and efficient.",
@@ -472,7 +349,7 @@ export const StoriesData = [
   },
 
   {
-    image: Esther,
+    image: picture,
     name: "Esther Johnson",
     descriptions:
       "As a first-time founder, I was overwhelmed by the fundraising process. TRUSTFORGE provided the tools and connections I needed to successfully raise our seed round.",
@@ -514,7 +391,7 @@ export const ValueInfo = [
 
 export const TeamInfo = [
   {
-    Image: Uchechi,
+    Image: picture,
     name: "Uchechi Ogbonna",
     role: "Product Designer",
     details:
@@ -522,6 +399,7 @@ export const TeamInfo = [
   },
 
   {
+    Image: picture,
     Image: VICKY,
     name: "James Victoria",
     role: "Product Designer",
@@ -530,7 +408,7 @@ export const TeamInfo = [
   },
 
   {
-    Image: Daniel,
+    Image: picture,
     name: "Daniel Paul-Chukwudi",
     role: "Backend Developer",
     details:
@@ -672,273 +550,185 @@ export const RecentBusiness = [
     time: "2025 - 10 - 14",
   },
 ];
+export const BusinessPost = [
+  
+  {
+    icon1: <LuBuilding />,
+    title: "SupplyChain AI Solutions",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
+  },
 
-export const Business = [
-  {
-    id: 1,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+    {
+    icon1: <LuBuilding />,
+    title: "MediConnect Health",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "Telemedicine platform connecting patients with specialized healthcare providers nationwide..",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
   },
-  {
-    id: 2,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+  
+      {
+    icon1: <LuBuilding />,
+    title: "CryptoFlow Payments",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "Secure and fast cryptocurrency payment gateway solution for e-commerce businesses.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
   },
-  {
-    id: 3,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+
+      {
+    icon1: <LuBuilding />,
+    title: "LearnSmart Education",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
   },
-  {
-    id: 4,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+      {
+    icon1: <LuBuilding />,
+    title: "SupplyChain AI Solutions",
+    trendicon: <IoMdTrendingUp />,
+    trend: "Trending",
+    ai: "AI & ML",
+    series: "Series A",
+    founded: "Founded 2022",
+    about:
+      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+    views: <FaEye />,
+    viewNum: 300,
+    like: <FaHeart />,
+    likeNum: 45,
+    comment: <FiMessageSquare />,
+    commentNum: 12,
+    seeking: "₦250,000,000",
+    view: "View Details",
+    love: <CiHeart size={25} />,
   },
+
+];
+
+ export const funding = [
   {
-    id: 5,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+    tittle: "Total Invested",
+    icon: "₦",
+    amount: "1,200,000",
   },
-  {
-    id: 6,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+   {
+    tittle: "Active Investments",
+    icon: <IoMdTrendingUp />,
+    amount: "2",
   },
-  {
-    id: 7,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+   {
+    tittle: "Average Return",
+    icon: <CiClock2 />,
+    amount: "+25.3%",
   },
-  {
-    id: 8,
-    title: "Supermarket / Mini Mart",
-    category: "Retail",
-    status: "Active",
-    stage: "Seed",
-    description: "Neighborhood store selling groceries and daily essentials.",
-    views: 30,
-    likes: 12,
-    messages: 6,
-    postedDate: "2025-10-14",
+   {
+    tittle: "Pending Reviews",
+    icon: "₦",
+    amount: "0",
   },
 ];
 
-export const Meetings = [
+export const second = [
   {
-    id: 1,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    meetingType: "1st Meeting",
-    name: "Sarah Johnson",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
+  tittle: "AI-Powered Supply Chain Optimization",
+  tech: "TechVentures Inc.",
+  icon: <GiConfirmed />,
+  active: "Active",
+  detail: "View Details",
+  investment: "Investment Amount",
+  amount: "₦500,000",  
+  equity: "Equity",
+  percent: "8%",
+  investtime: "Investment Date",
+  date: "2025-09-15",
+  return: "Current Return",
+  returns: "+12.5%",
   },
   {
-    id: 2,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    meetingType: "1st Meeting",
-    name: "Sarah Johnson",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
-  },
-  {
-    id: 3,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    meetingType: "1st Meeting",
-    name: "Sarah Johnson",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
-  },
-  {
-    id: 4,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    meetingType: "1st Meeting",
-    name: "Sarah Johnson",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
-  },
-  {
-    id: 5,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    name: "Sarah Johnson",
-    meetingType: "1st Meeting",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
-  },
-  {
-    id: 6,
-    title: "Investment Discussion",
-    status: "Confirmed",
-    name: "Sarah Johnson",
-    meetingType: "1st Meeting",
-    company: "SupplyChain AI",
-    link: "SupplyChain AI Solutions",
-    date: "2025-10-25",
-    time: "10:10 AM",
-    type: "Video Call",
-    description: "Discussion about A funding and growth strategy",
+  tittle: "Healthcare Telemedicine Platform",
+  tech: "MediConnect",
+  icon: <GiConfirmed />,
+  active: "Active",
+  detail: "View Details",
+  investment: "Investment Amount",
+  amount: "₦700,000",  
+  equity: "Equity",
+  percent: "10%",
+  investtime: "Investment Date",
+  date: "2025-08-20",
+  return: "Current Return",
+  returns: "+18.3%",
   },
 ];
 
-export const SubscriptionPlans = [
-  {
-    id: 1,
-    plan: "Current plan",
-    icon: <CiStar />,
-    name: "Basic",
-    tagline: "Start your fundraising journey",
-    price: "₦0",
-    yearlyPrice: "₦0",
-    metrics: {
-      title: "Promotion metrics",
-      icon: <RiBarChartFill />,
-      list: [
-        { label: "Visibility", value: "Standard" },
-        { label: "Monthly Impressions", value: "Up to 100/month" },
-        { label: "Placement", value: "Search results only" },
-      ],
-    },
-    features: [
-      "Standard search visibility",
-      "Basic business analytics",
-      "Up to 5 business analytics",
-      "Up to 5 investor connections per month",
-      "Email support(48hr response)",
-      "Access to investor directly",
-    ],
-    isCurrent: true,
-  },
-  {
-    id: 2,
-    plan: "Most Popular",
-    icon: <MdOutlineShowChart />,
-    name: "Growth",
-    tagline: "Start your fundraising journey",
-    price: "₦10,000",
-    yearlyPrice: "₦100,800",
-    metrics: {
-      title: "Promotion metrics",
-      icon: <RiBarChartFill />,
-      list: [
-        { label: "Visibility", value: "Enhanced Top 20% of search" },
-        { label: "Monthly Impressions", value: "Up to 100/month" },
-        { label: "Placement", value: "Search result only" },
-      ],
-    },
-    features: [
-      "Up to 3 Business profiles",
-      "Featured listing badge",
-      "priority in search results",
-      "Advanced analytics & insights",
-      "Unlimited investors connection",
-      "Priority email support (24hr response)",
-      "Meeting scheduler",
-      "Document sharing & NDA management",
-      "Custom business page branding",
-    ],
-    isCurrent: false,
-  },
-  {
-    id: 3,
-    plan: "Premium",
-    icon: <MdOutlineWorkspacePremium />,
-    name: "Premium",
-    tagline: "Start your fundraising journey",
-    price: "₦20,000",
-    yearlyPrice: "₦204,000",
-    metrics: {
-      title: "Promotion metrics",
-      icon: <RiBarChartFill />,
-      list: [
-        { label: "Visibility", value: "Top 5% guarantee" },
-        { label: "Monthly Impressions", value: "Unlimited" },
-        { label: "Placement", value: "Homepage Hero + categories" },
-      ],
-    },
-    features: [
-      "Unlimited business profiles",
-      "Top-tier featured placement",
-      "Daily homepage promotion",
-      "Dedicated account manager",
-      "premium analytics dasboard",
-      "unlimited everything",
-      "Quarterly strategy consultation",
-      "Media & PR kit preparation",
-      "Priority document review",
-    ],
-    isCurrent: false,
+export const ndadata = [
+{
+  ai: "AI-Powered Supply Chain Optimization",
+  tech: "TechVentures Inc.",
+  icon: <GiConfirmed />,
+  sign: "Signed",
+  icon2: <FiDownload />,
+  download: "Download",
+  view: "View",
+  signed: "Signed Date",
+  date1: "2025-09-14",
+  expiry: "Expiry Date",
+  date2: "2026-09-14",
+  status: "Status",
+  active: "Active",
   },
 ];
+
