@@ -195,7 +195,7 @@ const AddBusiness = () => {
                 <Label>Business Model</Label>
                 <Input
                   value={form.businessModel}
-                  name="BusinessModel"
+                  name="businessModel"
                   onChange={handleChange}
                   placeholder="Describe your business model (B2B, B2C, Marketplace, etc.)"
                 />
@@ -206,7 +206,7 @@ const AddBusiness = () => {
                 <Input
                   value={form.revenueModel}
                   onChange={handleChange}
-                  name="RevenueModel"
+                  name="revenueModel"
                   placeholder="How does your business generate revenue?"
                 />
               </FieldRow>
@@ -216,7 +216,7 @@ const AddBusiness = () => {
                 <Input
                   value={form.targetMarket}
                   onChange={handleChange}
-                  name="TargetMarket"
+                  name="targetMarket"
                   placeholder="Who are your target customers?"
                 />
                 <FieldRow>
@@ -256,10 +256,10 @@ const AddBusiness = () => {
                   onChange={(e) => {
                     const value = e.target.value;
                     if (/^\d{0,30}$/.test(value)) {
-                      setForm({ ...form, CurrentRevenue: value });
+                      setForm({ ...form, currentRevenue: value });
                     }
                   }}
-                  name="CurrentRevenue"
+                  name="currentRevenue"
                   placeholder="e.g..., ₦500,000"
                 />
               </FieldRow>

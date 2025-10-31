@@ -14,6 +14,7 @@ import {
 } from "./VerfiyEmailStyle";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const CODE_LENGTH = 6;
 
@@ -116,17 +117,50 @@ const VerifyEmail = () => {
       return;
     }
 
-    setLoading(true);
-    setTimeout(() => {
+    const email = JSON.parse(sessionStorage.getItem("userEmail"));
+    const role = JSON.parse(sessionStorage.getItem("userRole"));
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+    const endpoint =
+      role === "investor" ? `${BaseUrl}/verifyInvestor` : `${BaseUrl}/verify`;
+
+    const payload = {
+      email,
+      otp: joined,
+    };
+
+    try {
+      setLoading(true);
+      const res = await axios.post(endpoint, payload);
+      const data = res?.data;
+
+      toast.success(res?.data?.message || "Email verified successfully");
+
+      localStorage.setItem("verifiedEmail", data?.data?.email);
+      localStorage.setItem("role", data?.data?.role);
+      sessionStorage.removeItem("userEmail");
+      sessionStorage.removeItem("userRole");
       setLoading(false);
-      if (joined === "123456") {
-        toast.success("Email verified successfully!");
-        navigate("/login");
-      } else {
-        setError("Invalid verification code. Please try again.");
-        toast.error("Verification failed");
-      }
-    }, 1200);
+
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+
+      toast.error(err?.response?.data?.message || "Verification failed.");
+    }
+
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   if (joined === "123456") {
+    //     toast.success("Email verified successfully!");
+    //     navigate("/login");
+    //   } else {
+    //     setError("Invalid verification code. Please try again.");
+    //     toast.error("Verification failed");
+    //   }
+    // }, 1200);
   };
 
   const resendCode = () => {
@@ -165,8 +199,11 @@ const VerifyEmail = () => {
             <div className="title-text">
               Email <span>Verification.</span>
             </div>
-            <small style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}>
-              A verification code has been sent to your email address. Please enter to continue.
+            <small
+              style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}
+            >
+              A verification code has been sent to your email address. Please
+              enter to continue.
             </small>
           </FormTitle>
 

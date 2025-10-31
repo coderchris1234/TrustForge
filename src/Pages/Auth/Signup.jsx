@@ -22,7 +22,7 @@ import ReactCountryFlag from "react-country-flag";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import axios from "axios";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -36,7 +36,7 @@ const Signup = () => {
     role: "",
   });
 
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [country, setCountry] = useState({
@@ -104,12 +104,11 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const isValid = validateForm();
 
     if (isValid) {
-      // setLoading(true);
-
       setFormData({
         fullName: "",
         email: "",
@@ -135,8 +134,19 @@ const Signup = () => {
       );
 
       console.log("res", res);
+
+      toast.success(res?.data?.message);
+      sessionStorage.setItem(
+        import.meta.env.VITE_USERID,
+        JSON.stringify(res.data.data.id)
+      );
+      sessionStorage.setItem("userEmail", JSON.stringify(formData.email));
+      sessionStorage.setItem("userRole", JSON.stringify(formData.role));
+      navigate("/verifyemail");
     } catch (err) {
-      console.log("err", err);
+      console.log("error", err);
+      setLoading(false);
+      toast.error(err?.response?.data?.message);
     }
 
     console.log("this is the value", formData);
@@ -300,8 +310,7 @@ const Signup = () => {
             )}
 
             <CreateButton disabled={!isFormValid}>
-              {/* {loading ? "Creating..." : "Create Account"} */}
-              Create
+              {loading ? "Creating..." : "Create Account"}
             </CreateButton>
           </form>
 
