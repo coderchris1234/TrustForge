@@ -25,8 +25,6 @@ import add from "../../public/material-symbols_upload-rounded.svg";
 import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
-<<<<<<< HEAD
-=======
 import { FaHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
@@ -46,7 +44,6 @@ import Uchechi from "../assets/Uchechi.jpg";
 import Daniel from "../assets/Daniel.jpg";
 import Victoria from "../assets/Victoria.png";
 
->>>>>>> 4a45698b0b8c7dbbaa05d796557439e5a2a18db0
 export const MenuNav = ["Home", "About", "Blog"];
 
 export const FundNum = [
