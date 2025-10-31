@@ -41,7 +41,7 @@ export const InsightContainer = styled.div`
       }
 
       p {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         color: var(--netural_black_color);
       }

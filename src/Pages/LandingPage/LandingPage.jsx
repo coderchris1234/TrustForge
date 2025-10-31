@@ -16,8 +16,8 @@ const LandingPage = () => {
         <Header />
         <Hero />
         <Target />
-        <Insight />
         <Fund />
+        <Insight />
         <Smart />
         <Stories />
         <Footer />

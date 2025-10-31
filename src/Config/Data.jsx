@@ -36,15 +36,15 @@ import picture2 from "../assets/picture2.png";
 import picture4 from "../assets/picture4.png";
 import picture5 from "../assets/picture5.png";
 import picture6 from "../assets/picture6.png";
-
+import { CiUser } from "react-icons/ci";
 import Olu from "../assets/Olu.jpg";
 import Michael from "../assets/Michael.jpg";
 import Esther from "../assets/Esther.jpg";
 import Uchechi from "../assets/Uchechi.jpg";
 import Daniel from "../assets/Daniel.jpg";
-import Victoria from "../assets/Victoria.png";
+import VICKY from "../assets/VICKY.jpg";
 
-export const MenuNav = ["Home", "About", "Blog"];
+export const MenuNav = ["Home", "About", "Insights"];
 
 export const FundNum = [
   {
@@ -383,6 +383,11 @@ export const InvestorMenu = [
     },
     {
       Icon: sub,
+      label: "profile",
+      link: "profile",
+    },
+    {
+      Icon: sub,
       label: "Subscription",
       link: "subscription",
     },
@@ -517,7 +522,7 @@ export const TeamInfo = [
   },
 
   {
-    Image: Victoria,
+    Image: VICKY,
     name: "James Victoria",
     role: "Product Designer",
     details:

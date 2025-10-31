@@ -6,8 +6,8 @@ export const FundContainer = styled.div`
   display: flex;
   justify-content: center;
   background: linear-gradient(to left, #336bff, #002da3, #002da3, #336bff);
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  /* margin-top: 3rem; */
+  margin-bottom: 2rem;
 
   .Fund_page_wrapper {
     width: 90%;

@@ -122,6 +122,10 @@ export const DashboardLayout = styled.div`
     scrollbar-width: none;
     -ms-overflow-style: none;
     /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
 
     .header {
       width: 100%;
@@ -129,6 +133,7 @@ export const DashboardLayout = styled.div`
       padding: 8px;
       display: flex;
       justify-content: center;
+      margin-bottom: 2rem;
 
       .header-content {
         width: 98%;

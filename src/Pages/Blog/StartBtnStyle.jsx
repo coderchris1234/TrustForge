@@ -32,6 +32,13 @@ export const StartBtnContainer = styled.div`
         font-size: 18px;
         font-weight: 400;
         cursor: pointer;
+        transition: all 350ms ease-in-out;
+
+        &:hover {
+          background-color: var(--main_black);
+          color: var(--main_white);
+          border: none;
+        }
       }
 
       .Startup_Header_btn2 {

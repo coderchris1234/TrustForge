@@ -22,7 +22,6 @@ import Profile from "./Pages/DashboardPage/CreatorPage/Profile";
 import Subscription from "./Pages/DashboardPage/CreatorPage/Subscription";
 import KycVerification from "./Pages/DashboardPage/CreatorPage/KycVerification";
 import HelpSupport from "./Pages/DashboardPage/CreatorPage/HelpSupport";
-
 import ExploreBusiness from "./Pages/DashboardPage/InvestorPage/ExploreBusiness";
 import SavedBusiness from "./Pages/DashboardPage/InvestorPage/SavedBusiness";
 import FundingHistory from "./Pages/DashboardPage/InvestorPage/FundingHistory";
@@ -33,14 +32,16 @@ import Profile2 from "./Pages/DashboardPage/InvestorPage/Profile";
 import Subscription2 from "./Pages/DashboardPage/InvestorPage/Subscription2";
 import KycVerification2 from "./Pages/DashboardPage/InvestorPage/KycVerification2";
 import HelpSupport2 from "./Pages/DashboardPage/InvestorPage/HelpSupport2";
+import ScrollToTop from "./Config/Scroll_to_top";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path={"/"} element={<LandingPage />} />
         <Route path={"/about"} element={<About />} />
-        <Route path={"/blog"} element={<BlogPage />} />
+        <Route path={"/insights"} element={<BlogPage />} />
         <Route path={"/blog-details/:blogTitle"} element={<CategoryBlog />} />
 
         <Route path={"/login"} element={<Login />} />

@@ -3,7 +3,7 @@ import HeroBg from "../assets/HeroBg.jpg";
 
 export const HeroContainer = styled.div`
   width: 100%;
-  height: 75vh;
+  height: 80vh;
 
   .Hero_page_wrapper {
     width: 100%;
@@ -19,28 +19,41 @@ export const HeroContainer = styled.div`
     align-items: center;
 
     .Hero_content {
-      width: 55%;
-      height: 50%;
+      width: 70%;
+      height: 70%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 15px;
+      /* background-color: red; */
 
       h3 {
-        font-size: 36px;
-        font-weight: 600;
+        font-size: 64px;
+        font-weight: 800;
         text-align: center;
         color: var(--main_white);
         line-height: 140%;
         margin: 0px;
+
+        span {
+          /* color: var(--primary_color_500); */
+          background: linear-gradient(90deg, #0046ff, #0046ff, #042f6cff 70%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke: 1px white; /* outline color & thickness */
+          text-stroke: 1px white; /* for Firefox (partial support) */
+          background-clip: text;
+          color: transparent;
+        }
       }
 
       p {
         font-size: 18px;
         color: var(--main_white);
         text-align: center;
-        line-height: 120%;
+        line-height: 30px;
+        font-weight: 400;
       }
 
       .Hero_btn {
