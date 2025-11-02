@@ -13,9 +13,11 @@ import {
   TermsText,
   Label,
   ErrorText,
-} from "./ResetPassStyle"; 
-import { useNavigate } from "react-router-dom";
+} from "./ResetPassStyle";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -27,6 +29,9 @@ const ResetPassword = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const role = useSelector((state) => state.TrustForge.user);
+  const { token } = useParams();
 
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
@@ -58,16 +63,31 @@ const ResetPassword = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+    const endpoint =
+      role?.data?.role === "Investor"
+        ? `${BaseUrl}/reset-passwordi`
+        : `${BaseUrl}/reset-password`;
+
+    try {
+      setLoading(true);
+
+      const res = await axios.patch(`${endpoint}/${token}`, formData);
+
+      toast.success(res?.data?.message);
+      navigate("/login");
+      console.log("this is the value", res);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Failed to log you in.");
+    } finally {
+      setLoading(false);
+    }
     e.preventDefault();
     if (!validateForm()) return;
-
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Password reset successfully!");
-      navigate("/login");
-    }, 1600);
   };
 
   const checks = useMemo(() => {
@@ -102,7 +122,8 @@ const ResetPassword = () => {
             </div>
             <br />
             <small>
-              Enter a new password for your account. <br /> Make sure it's strong and easy for you to remember.
+              Enter a new password for your account. <br /> Make sure it's
+              strong and easy for you to remember.
             </small>
           </FormTitle>
 
@@ -161,15 +182,23 @@ const ResetPassword = () => {
                 {showConfirm ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
-            {errors.confirmPassword && <ErrorText>{errors.confirmPassword}</ErrorText>}
+            {errors.confirmPassword && (
+              <ErrorText>{errors.confirmPassword}</ErrorText>
+            )}
 
             <div style={{ marginTop: 12, marginBottom: 8, fontSize: 14 }}>
               <ChecklistItem ok={checks.strong}>
                 Password strength: {checks.strong ? "Strong" : "Weak"}
               </ChecklistItem>
-              <ChecklistItem ok={checks.minLength}>At least 8 characters</ChecklistItem>
-              <ChecklistItem ok={checks.hasNumberOrSymbol}>Contains a number or symbol</ChecklistItem>
-              <ChecklistItem ok={checks.hasUpper}>Contains an uppercase letter</ChecklistItem>
+              <ChecklistItem ok={checks.minLength}>
+                At least 8 characters
+              </ChecklistItem>
+              <ChecklistItem ok={checks.hasNumberOrSymbol}>
+                Contains a number or symbol
+              </ChecklistItem>
+              <ChecklistItem ok={checks.hasUpper}>
+                Contains an uppercase letter
+              </ChecklistItem>
             </div>
 
             <CreateButton type="submit" disabled={!isFormValid}>
@@ -188,7 +217,8 @@ const ResetPassword = () => {
             By resetting your password, you agree to our{" "}
             <a href="#" onClick={(e) => e.preventDefault()}>
               Terms and Conditions
-            </a>.
+            </a>
+            .
           </TermsText>
         </FormBox>
       </ResetPasswordRight>

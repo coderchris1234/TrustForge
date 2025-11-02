@@ -32,7 +32,9 @@ const VerifyEmail = () => {
   const dispatch = useDispatch();
 
   const role = useSelector((state) => state.TrustForge.user);
-  console.log("this is role", role);
+  const email = role?.data?.email;
+
+  console.log("this is email", email);
 
   useEffect(() => {
     setCanResend(false);
@@ -113,9 +115,6 @@ const VerifyEmail = () => {
     const lastIndex = Math.min(digits.length - 1, CODE_LENGTH - 1);
     if (lastIndex >= 0) inputsRef.current[lastIndex]?.focus();
   };
-  const email = JSON.parse(sessionStorage.getItem("userEmail"));
-
-  // console.log("this is role", role);
 
   const verifyCode = async (e) => {
     e?.preventDefault();
@@ -159,37 +158,28 @@ const VerifyEmail = () => {
       setLoading(false);
 
       toast.error(err?.response?.data?.message || "Verification failed.");
-    } finally {
-      sessionStorage.removeItem("userEmail");
-      sessionStorage.removeItem("userRole");
     }
-
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   if (joined === "123456") {
-    //     toast.success("Email verified successfully!");
-    //     navigate("/login");
-    //   } else {
-    //     setError("Invalid verification code. Please try again.");
-    //     toast.error("Verification failed");
-    //   }
-    // }, 1200);
   };
 
   const resendCode = () => {
     const BaseUrl = import.meta.env.VITE_BaseUrl;
 
+    if (!email) {
+      toast.error("No email found for this user.");
+      return false;
+    }
+
     const endpoint =
       role?.data?.role === "Investor"
-        ? `${BaseUrl}/verifyInvestor`
-        : `${BaseUrl}/verify`;
+        ? `${BaseUrl}/resendi`
+        : `${BaseUrl}/resend`;
     if (!canResend) return;
     setCanResend(false);
     setResendTimer(60);
     try {
-      const res = axios.post(endpoint);
+      const res = axios.post(endpoint, { email });
       console.log(res);
+      toast.success("code sent successfully");
     } catch (error) {
       toast.error(error?.message);
     }

@@ -404,7 +404,7 @@ export const InvestorMenu = [
     {
       Icon: help,
       label: "Help & Support",
-      link: "helpsuppport",
+      link: "helpsupport",
     },
   ],
 ];
@@ -832,21 +832,21 @@ export const Business = [
     messages: 6,
     postedDate: "2025-10-14",
   },
-  {
-    tittle: "Active Investments",
-    icon: <IoMdTrendingUp />,
-    amount: "2",
-  },
-  {
-    tittle: "Average Return",
-    icon: <CiClock2 />,
-    amount: "+25.3%",
-  },
-  {
-    tittle: "Pending Reviews",
-    icon: "₦",
-    amount: "0",
-  },
+  // {
+  //   tittle: "Active Investments",
+  //   icon: <IoMdTrendingUp />,
+  //   amount: "2",
+  // },
+  // {
+  //   tittle: "Average Return",
+  //   icon: <CiClock2 />,
+  //   amount: "+25.3%",
+  // },
+  // {
+  //   tittle: "Pending Reviews",
+  //   icon: "₦",
+  //   amount: "0",
+  // },
 ];
 
 export const second = [
