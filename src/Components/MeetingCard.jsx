@@ -19,13 +19,12 @@ const MeetingCard = ({
   description,
   // meetingType,
 }) => {
-  const fullName = "Sarah Johnson";
-
-  const initials = fullName
-    .split(" ")
+  const initials = name
+    ?.split(" ")
     .map((word) => word[0])
     .join("")
     .toUpperCase();
+
   const nav = useNavigate();
   return (
     <>
@@ -34,7 +33,9 @@ const MeetingCard = ({
           <div className="meetingHeader">
             <div className="busTitle">
               <p>{title}</p>
-              <p className="conf">{status}</p>
+              <p className={status === "Confirmed" ? "conf" : "past"}>
+                {status}
+              </p>
               {/* <span>{meetingType}</span> */}
               <span></span>
             </div>

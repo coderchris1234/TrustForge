@@ -3,7 +3,7 @@ import SignupForm from "./Pages/Auth/Signup";
 import Login from "./Pages/Auth/Login";
 import VerifyEmail from "./Pages/Auth/VerifyEmail";
 import ResetPassword from "./Pages/Auth/ResetPassword";
-import ForgotPassword from "./Pages/Auth/ForgotPassword";
+import ForgotPassword from "./Pages/Auth/Forgotpassword";
 import ChooseRole from "./Pages/Auth/ChooseRole";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Private from "./Config/Private";
@@ -47,7 +47,7 @@ const App = () => {
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignupForm />} />
         <Route path={"/verifyemail"} element={<VerifyEmail />} />
-        <Route path={"/resetpassword"} element={<ResetPassword />} />
+        <Route path={"/resetpassword/:token"} element={<ResetPassword />} />
         <Route path={"/forgotpassword"} element={<ForgotPassword />} />
         <Route path={"/chooserole"} element={<ChooseRole />} />
 

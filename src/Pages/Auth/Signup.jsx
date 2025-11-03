@@ -20,7 +20,6 @@ import {
 } from "./SignupStyle";
 import ReactCountryFlag from "react-country-flag";
 import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -47,6 +46,7 @@ const Signup = () => {
     isoCode: "NG",
     code: "+234",
   });
+
   const dispatch = useDispatch();
 
   const countries = [
@@ -56,19 +56,9 @@ const Signup = () => {
     { isoCode: "US", code: "+1" },
   ];
 
-  const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
-    if (errors[name]) {
-      setErrors((prevErrors) => {
-        const updated = { ...prevErrors };
-        delete updated[name];
-        return updated;
-      });
-    }
   };
 
   const handleCountryChange = (e) => {
@@ -77,94 +67,81 @@ const Signup = () => {
   };
 
   const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Enter a valid email (must include @ and .com)";
+    if (
+      !formData.fullName.trim() ||
+      !formData.email ||
+      !formData.password ||
+      !formData.phoneNumber ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      toast.error("All fields are required");
+      return false;
     }
 
-    if (!formData.phoneNumber) newErrors.phone = "Phone number is required";
+    if (!formData.email.includes("@") || !formData.email.includes("com")) {
+      toast.error("Please input a valid email...must include @ and .com");
 
-    if (!role) newErrors.role = "Please select a role";
-
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
-    if (!formData.password) newErrors.password = "Password is required";
-    else if (!passwordRegex.test(formData.password))
-      newErrors.password =
-        "Must include uppercase, lowercase, number, and symbol";
+      return false;
+    }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-      return;
+      toast.error("Password does not match");
+      return false;
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    if (formData.password.length < 8) {
+      toast.error("Password must be greater than eight");
+      return false;
+    }
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+    if (!passwordRegex.test(formData.password)) {
+      toast.error(
+        "Password must include at least  uppercase, number, symbol and be 8+ chars long"
+      );
+      return false;
+    }
+
+    if (!role) {
+      toast.error("Please select a role");
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
-    const isValid = validateForm();
+    const isvalid = validateForm();
+    if (!isvalid) return;
+    setLoading(true);
 
-    // if (isValid) {
-    //   setFormData({
-    //     fullName: "",
-    //     email: "",
-    //     password: "",
-    //     confirmPassword: "",
-    //     phoneNumber: "",
-    //     role: "",
-    //   });
-
-    //   setCountry({
-    //     name: "Nigeria",
-    //     isoCode: "NG",
-    //     code: "+234",
-    //   });
-
-    //   setErrors({});
-    // }
+    setCountry({
+      name: "Nigeria",
+      isoCode: "NG",
+      code: "+234",
+    });
 
     try {
       const res = await axios.post(
-        `${BaseUrl}/${role === "BusinessOwner" ? "user" : "investor"}`,
+        `${BaseUrl}/${role === "Investor" ? "Investor" : "user"}`,
         formData
       );
-      if (isValid) {
-        setFormData({
-          fullName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          phoneNumber: "",
-        });
 
-        setCountry({
-          name: "Nigeria",
-          isoCode: "NG",
-          code: "+234",
-        });
-
-        setErrors({});
-      }
       dispatch(setUser(res?.data));
+
+      console.log("res", res);
 
       toast.success(res?.data?.message);
       sessionStorage.setItem(
         import.meta.env.VITE_USERID,
         JSON.stringify(res.data.data.id)
       );
-      sessionStorage.setItem("userEmail", JSON.stringify(formData.email));
+
       navigate("/verifyemail");
     } catch (err) {
-      console.log("error", err);
       setLoading(false);
+      console.log("error", err);
       toast.error(err?.response?.data?.message);
     }
 
@@ -173,25 +150,6 @@ const Signup = () => {
 
   const togglePassword = () => setShowPassword(!showPassword);
   const toggleConfirm = () => setShowConfirm(!showConfirm);
-
-  const isFormValid = useMemo(() => {
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-    const passwordOk =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(
-        formData.password
-      );
-    const passwordMatch = formData.password === formData.confirmPassword;
-    if (!role) {
-      return;
-    }
-    return (
-      formData.fullName.trim().length > 0 &&
-      emailOk &&
-      passwordOk &&
-      passwordMatch &&
-      formData.phoneNumber
-    );
-  }, [formData, role]);
 
   return (
     <SignupContainer>
@@ -203,7 +161,7 @@ const Signup = () => {
             Welcome to <span>TrustForge!</span>
           </FormTitle>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             <Label>
               Name <span className="required">*</span>
             </Label>
@@ -213,7 +171,6 @@ const Signup = () => {
               value={formData.fullName}
               onChange={handleChange}
             />
-            {errors.fullName && <ErrorText>{errors.fullName}</ErrorText>}
 
             <Label>
               Email Address <span className="required">*</span>
@@ -224,7 +181,6 @@ const Signup = () => {
               value={formData.email}
               onChange={handleChange}
             />
-            {errors.email && <ErrorText>{errors.email}</ErrorText>}
 
             <Label>
               Phone Number <span className="required">*</span>
@@ -257,7 +213,6 @@ const Signup = () => {
                 }}
               />
             </PhoneField>
-            {errors.phone && <ErrorText>{errors.phone}</ErrorText>}
 
             <Label>
               Select Role <span className="required">*</span>
@@ -268,10 +223,9 @@ const Signup = () => {
               onChange={(e) => setRole(e.target.value)}
             >
               <option value="">Select...</option>
-              <option value="BusinessOwner">Business Owner</option>
-              <option value="investor">Investor</option>
+              <option value="BusinessOwner">Startup/Existing Business</option>
+              <option value="Investor">Investor</option>
             </SelectField>
-            {errors.role && <ErrorText>{errors.role}</ErrorText>}
 
             <Label>
               Password <span className="required">*</span>
@@ -326,11 +280,8 @@ const Signup = () => {
                 {showConfirm ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
-            {errors.confirmPassword && (
-              <ErrorText>{errors.confirmPassword}</ErrorText>
-            )}
 
-            <CreateButton disabled={!isFormValid}>
+            <CreateButton>
               {loading ? "Creating..." : "Create Account"}
             </CreateButton>
           </form>
