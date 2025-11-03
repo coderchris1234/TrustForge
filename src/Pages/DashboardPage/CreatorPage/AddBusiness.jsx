@@ -27,8 +27,12 @@ import {
 import toast from "react-hot-toast";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const AddBusiness = () => {
+  const token = useSelector((state) => state.TrustForge.user?.data?.token);
+
   const fileInputRef = useRef(null);
   const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -45,6 +49,7 @@ const AddBusiness = () => {
     targetMarket: "",
     currentRevenue: "",
     fundingSought: "",
+    pitchDeck: null,
   });
 
   const progressPercent = (step / totalSteps) * 100;
@@ -90,11 +95,31 @@ const AddBusiness = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log("Form submitted:", form);
-    toast.success("Business successfully submitted!");
-    setStep(1);
-    setForm("");
+  const handleSubmit = async () => {
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+    try {
+      if (!uploadedFile) {
+        toast.error("Please upload your pitch deck before submitting");
+      }
+
+      const formData = new FormData();
+      Object.entries(form).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append("pitchDeck", uploadedFile);
+
+      const res = await axios.post(`${BaseUrl}/pitch`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer${token}`,
+        },
+      });
+
+      toast.success(res?.data?.message || "Business created successfully");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleBack = () => {
@@ -282,6 +307,7 @@ const AddBusiness = () => {
                     ref={fileInputRef}
                     style={{ display: "none" }}
                     onChange={handleFileChange}
+                    name="pitchDeck"
                   />
                   <UploadBox onClick={() => fileInputRef.current.click()}>
                     <MdOutlineFileUpload size={40} color="blue" />

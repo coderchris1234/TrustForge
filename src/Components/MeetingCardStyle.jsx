@@ -91,12 +91,21 @@ export const MeetingContainer = styled.div`
     align-items: center;
     gap: 1rem;
 
-    .conf {
+    p.conf {
       background-color: #7af3a7;
       padding: 0.2rem;
       color: #16a34a;
       border-radius: 8px;
       font-size: 14px;
+      display: inline-block;
+    }
+
+    p.past {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 0.2rem;
+      border-radius: 8px;
+      display: inline-block;
     }
   }
 

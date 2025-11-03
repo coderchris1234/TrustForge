@@ -12,6 +12,7 @@ const DashBoardLayout = (props) => {
     nav("/");
     dispatch(logOut());
   };
+
   return (
     <>
       <DashboardLayout>
