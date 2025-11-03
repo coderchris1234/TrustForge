@@ -55,6 +55,10 @@ import Evans from "../assets/Evans.jpg";
 import Favour from "../assets/Favour.jpg";
 import alfred from "../assets/alfred.jpg";
 
+import { IoMdTime } from "react-icons/io";
+import { FaRegFileAlt } from "react-icons/fa";
+import { BsLightbulb } from "react-icons/bs";
+import { BsPeople } from "react-icons/bs";
 export const MenuNav = ["Home", "About", "Insights"];
 
 export const FundNum = [
@@ -409,7 +413,7 @@ export const InvestorMenu = [
     {
       Icon: help,
       label: "Help & Support",
-      link: "helpsuppport",
+      link: "helpsupport",
     },
   ],
 ];
@@ -706,7 +710,7 @@ export const BusinessPost = [
 
   {
     icon1: <LuBuilding />,
-    title: "MediConnect Health",
+    title: "CryptoFlow Payments",
     trendicon: <IoMdTrendingUp />,
     trend: "Trending",
     ai: "AI & ML",
@@ -725,67 +729,67 @@ export const BusinessPost = [
     love: <CiHeart size={25} />,
   },
 
-  {
-    icon1: <LuBuilding />,
-    title: "CryptoFlow Payments",
-    trendicon: <IoMdTrendingUp />,
-    trend: "Trending",
-    ai: "AI & ML",
-    series: "Series A",
-    founded: "Founded 2022",
-    about:
-      "Secure and fast cryptocurrency payment gateway solution for e-commerce businesses.",
-    views: <FaEye />,
-    viewNum: 300,
-    like: <FaHeart />,
-    likeNum: 45,
-    comment: <FiMessageSquare />,
-    commentNum: 12,
-    seeking: "₦250,000,000",
-    view: "View Details",
-    love: <CiHeart size={25} />,
-  },
+  // {
+  //   icon1: <LuBuilding />,
+  //   title: "CryptoFlow Payments",
+  //   trendicon: <IoMdTrendingUp />,
+  //   trend: "Trending",
+  //   ai: "AI & ML",
+  //   series: "Series A",
+  //   founded: "Founded 2022",
+  //   about:
+  //     "Secure and fast cryptocurrency payment gateway solution for e-commerce businesses.",
+  //   views: <FaEye />,
+  //   viewNum: 300,
+  //   like: <FaHeart />,
+  //   likeNum: 45,
+  //   comment: <FiMessageSquare />,
+  //   commentNum: 12,
+  //   seeking: "₦250,000,000",
+  //   view: "View Details",
+  //   love: <CiHeart size={25} />,
+  // },
 
-  {
-    icon1: <LuBuilding />,
-    title: "LearnSmart Education",
-    trendicon: <IoMdTrendingUp />,
-    trend: "Trending",
-    ai: "AI & ML",
-    series: "Series A",
-    founded: "Founded 2022",
-    about:
-      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
-    views: <FaEye />,
-    viewNum: 300,
-    like: <FaHeart />,
-    likeNum: 45,
-    comment: <FiMessageSquare />,
-    commentNum: 12,
-    seeking: "₦250,000,000",
-    view: "View Details",
-    love: <CiHeart size={25} />,
-  },
-  {
-    icon1: <LuBuilding />,
-    title: "SupplyChain AI Solutions",
-    trendicon: <IoMdTrendingUp />,
-    trend: "Trending",
-    ai: "AI & ML",
-    series: "Series A",
-    founded: "Founded 2022",
-    about:
-      "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
-    views: <FaEye />,
-    viewNum: 300,
-    like: <FaHeart />,
-    likeNum: 45,
-    comment: <FiMessageSquare />,
-    commentNum: 12,
-    seeking: "₦250,000,000",
-    view: "View Details",
-    love: <CiHeart size={25} />,
-  },
+  // {
+  //   icon1: <LuBuilding />,
+  //   title: "LearnSmart Education",
+  //   trendicon: <IoMdTrendingUp />,
+  //   trend: "Trending",
+  //   ai: "AI & ML",
+  //   series: "Series A",
+  //   founded: "Founded 2022",
+  //   about:
+  //     "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+  //   views: <FaEye />,
+  //   viewNum: 300,
+  //   like: <FaHeart />,
+  //   likeNum: 45,
+  //   comment: <FiMessageSquare />,
+  //   commentNum: 12,
+  //   seeking: "₦250,000,000",
+  //   view: "View Details",
+  //   love: <CiHeart size={25} />,
+  // },
+  // {
+  //   icon1: <LuBuilding />,
+  //   title: "SupplyChain AI Solutions",
+  //   trendicon: <IoMdTrendingUp />,
+  //   trend: "Trending",
+  //   ai: "AI & ML",
+  //   series: "Series A",
+  //   founded: "Founded 2022",
+  //   about:
+  //     "B2B SaaS platform providing AI-powered supply chain optimisation for manufacturing companies.",
+  //   views: <FaEye />,
+  //   viewNum: 300,
+  //   like: <FaHeart />,
+  //   likeNum: 45,
+  //   comment: <FiMessageSquare />,
+  //   commentNum: 12,
+  //   seeking: "₦250,000,000",
+  //   view: "View Details",
+  //   love: <CiHeart size={25} />,
+  // },
 ];
 
 export const Business = [
@@ -837,24 +841,9 @@ export const Business = [
     messages: 6,
     postedDate: "2025-10-14",
   },
-  {
-    tittle: "Active Investments",
-    icon: <IoMdTrendingUp />,
-    amount: "2",
-  },
-  {
-    tittle: "Average Return",
-    icon: <CiClock2 />,
-    amount: "+25.3%",
-  },
-  {
-    tittle: "Pending Reviews",
-    icon: "₦",
-    amount: "0",
-  },
 ];
 
-export const second = [
+export const SavedFunds = [
   {
     tittle: "AI-Powered Supply Chain Optimization",
     tech: "TechVentures Inc.",
@@ -906,7 +895,7 @@ export const Meetings = [
     title: "Investment Discussion",
     status: "Confirmed",
     meetingType: "1st Meeting",
-    name: "Sarah Johnson",
+    name: "Christobel Nwachukwu",
     company: "SupplyChain AI",
     link: "SupplyChain AI Solutions",
     date: "2025-10-25",
@@ -919,7 +908,7 @@ export const Meetings = [
     title: "Investment Discussion",
     status: "Confirmed",
     meetingType: "1st Meeting",
-    name: "Sarah Johnson",
+    name: "Adora Nwa",
     company: "SupplyChain AI",
     link: "SupplyChain AI Solutions",
     date: "2025-10-25",
@@ -932,7 +921,7 @@ export const Meetings = [
     title: "Investment Discussion",
     status: "Confirmed",
     meetingType: "1st Meeting",
-    name: "Sarah Johnson",
+    name: "matthew Johnson",
     company: "SupplyChain AI",
     link: "SupplyChain AI Solutions",
     date: "2025-10-25",
@@ -944,7 +933,7 @@ export const Meetings = [
     id: 5,
     title: "Investment Discussion",
     status: "Confirmed",
-    name: "Sarah Johnson",
+    name: "favour Johnson",
     meetingType: "1st Meeting",
     company: "SupplyChain AI",
     link: "SupplyChain AI Solutions",
@@ -957,7 +946,20 @@ export const Meetings = [
     id: 6,
     title: "Investment Discussion",
     status: "Confirmed",
-    name: "Sarah Johnson",
+    name: "ovie Gohnson",
+    meetingType: "1st Meeting",
+    company: "SupplyChain AI",
+    link: "SupplyChain AI Solutions",
+    date: "2025-10-25",
+    time: "10:10 AM",
+    type: "Video Call",
+    description: "Discussion about A funding and growth strategy",
+  },
+  {
+    id: 6,
+    title: "Investment Discussion",
+    status: "past",
+    name: "ovie Gohnson",
     meetingType: "1st Meeting",
     company: "SupplyChain AI",
     link: "SupplyChain AI Solutions",
@@ -1074,8 +1076,37 @@ export const ndadata = [
     status: "Status",
     active: "Active",
   },
+  {
+    ai: "Healthcare Telemedicine Platform",
+    tech: "TechVentures Inc.",
+    icon: <GiConfirmed />,
+    sign: "Signed",
+    icon2: <FiDownload />,
+    download: "Download",
+    view: "View",
+    signed: "Signed Date",
+    date1: "2025-09-14",
+    expiry: "Expiry Date",
+    date2: "2026-09-14",
+    status: "Status",
+    active: "Active",
+  },
 ];
 
+export const ndadata22 = [
+  {
+    ai: "Blockchain Payment Gateway",
+    tech: "CryptoFlow",
+    icon: <IoMdTime />,
+    sign: "Signed",
+    icon2: <FaRegFileAlt />,
+    download: "Sign NDA",
+    sent: "Sent Date",
+    date1: "2025-09-14",
+    action: "Action Required",
+    signature: "Signature Pending",
+  },
+];
 export const funding = [
   {
     tittle: "Total Invested",
@@ -1096,5 +1127,44 @@ export const funding = [
     tittle: "Pending Reviews",
     icon: "₦",
     amount: "0",
+  },
+];
+
+export const notify = [
+  {
+    bulb: <BsLightbulb size={17} />,
+    new: "New Business in AI & ML",
+    newbtn: "new",
+    text: "A new business matching your interests has been posted ",
+    hour: "1 hour ago",
+  },
+  {
+    bulb: <FaRegFileAlt size={17} />,
+    new: "NDA Ready for Signature",
+    newbtn: "new",
+    text: "A new business matching your interests has been posted ",
+    hour: "3 hour ago",
+  },
+  {
+    bulb: <FiMessageSquare size={18} />,
+    new: "New Message",
+    newbtn: "new",
+    text: "A new business matching your interests has been posted ",
+    hour: "3 hour ago",
+  },
+];
+
+export const notify2 = [
+  {
+    bulb: <BsPeople size={20} />,
+    new: "New Message",
+    text: "Meeting confirmed with MediConnect for tomorrow at 2:00pm. ",
+    hour: "1 days ago",
+  },
+  {
+    bulb: <IoMdTrendingUp size={20} />,
+    new: "Investment Update",
+    text: "Smart Home Energy Management posted an update. ",
+    hour: "2 days ago",
   },
 ];

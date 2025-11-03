@@ -74,7 +74,7 @@ export const SearchBar = styled.div`
 `;
 
 export const BusinessWrapper = styled.div`
-  /* background-color: pink; */
+  width: 100%;
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
