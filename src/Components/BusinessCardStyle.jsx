@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const BusinessContainer = styled.div`
-  /* background-color: red; */
+  background-color: red;
   /* margin-bottom: 0.3rem; */
   padding: 0.5rem;
+  width: 100%;
 
   .businessContainer {
     width: 97%;

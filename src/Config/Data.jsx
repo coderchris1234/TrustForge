@@ -404,7 +404,7 @@ export const InvestorMenu = [
     {
       Icon: help,
       label: "Help & Support",
-      link: "helpsuppport",
+      link: "helpsupport",
     },
   ],
 ];
