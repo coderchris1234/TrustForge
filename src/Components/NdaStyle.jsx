@@ -1,11 +1,13 @@
 import styled from "styled-components"
 export const Nda_container = styled.div`
-height: 100%;
+height: max-content;
 width: 100%;
 margin-top: 1.7rem;
-
+gap: 1rem;
+display: flex;
+flex-direction: column;
 .ndadata_main{
-    height: 12rem;
+    height: 9.6rem;
     width: 100%;
     padding: 1rem;
     border: 1px solid gray;
@@ -22,7 +24,7 @@ margin-top: 1.7rem;
         height: 100%;
         width: 22rem;
         display: flex;
-        gap: 3.1rem;
+        gap: 2.7rem;
         .sign_icon{
             height: 1.6rem;
             width: 4.7rem;
@@ -36,13 +38,13 @@ margin-top: 1.7rem;
             font-size: 12px;
         }
         .download_view{
-            height: 3rem;
+            height: 2.7rem;
             width: 7rem;
             gap: 0.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.8rem;
+            border-radius: 0.6rem;
             border: 1px solid gray;
         }
         .view{
