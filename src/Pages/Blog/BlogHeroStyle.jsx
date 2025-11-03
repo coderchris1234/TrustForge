@@ -20,6 +20,7 @@ export const BlogHeroContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    text-align: center;
 
     h1 {
       font-size: 50px;
@@ -35,6 +36,55 @@ export const BlogHeroContainer = styled.div`
       color: var(--main_white);
       line-height: 150%;
       text-align: center;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    height: 45vh;
+
+    .Blog_hero_wrapper {
+      width: 80%;
+
+      h1 {
+        font-size: 42px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 4rem 1.5rem;
+
+    .Blog_hero_wrapper {
+      width: 100%;
+      gap: 15px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 130%;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+
+    .Blog_hero_wrapper {
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
     }
   }
 `;

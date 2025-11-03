@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import resetPassword from "../../assets/resetpassword.jpg";
+
 export const ResetPasswordContainer = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const ResetPasswordLeft = styled.div`
@@ -22,6 +34,15 @@ export const ResetPasswordLeft = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 40vh;
+  }
+
+  @media (max-width: 600px) {
+    height: 60vh;
+  }
 `;
 
 export const ResetPasswordRight = styled.div`
@@ -33,11 +54,25 @@ export const ResetPasswordRight = styled.div`
   background: #fff;
   width: 50%;
   padding: 20px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 600px) {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 export const FormBox = styled.div`
   width: 80%;
   max-width: 420px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -49,6 +84,13 @@ export const FormTitle = styled.h2`
     color: #0046ff;
     font-size: 28px;
     font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .title-text {
+      font-size: 22px;
+      line-height: 140%;
+    }
   }
 `;
 
@@ -83,6 +125,11 @@ export const CreateButton = styled.button`
   &:hover {
     background-color: ${(props) => (props.disabled ? "#144b9e" : "#0051cc")};
   }
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+    padding: 10px;
+  }
 `;
 
 export const OrText = styled.p`
@@ -90,6 +137,10 @@ export const OrText = styled.p`
   color: #888;
   font-size: 14px;
   margin: 15px 0 10px;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 export const LoginText = styled.p`
@@ -101,6 +152,10 @@ export const LoginText = styled.p`
     color: #ff3c00;
     cursor: pointer;
     font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 13px;
   }
 `;
 
@@ -114,6 +169,10 @@ export const TermsText = styled.p`
     color: #0066ff;
     text-decoration: none;
   }
+
+  @media (max-width: 600px) {
+    font-size: 11px;
+  }
 `;
 
 export const Label = styled.label`
@@ -126,10 +185,19 @@ export const Label = styled.label`
     color: red;
     margin-left: 3px;
   }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 export const ErrorText = styled.p`
   color: red;
   font-size: 0.8rem;
   margin-top: 0.2rem;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 0.75rem;
+  }
 `;

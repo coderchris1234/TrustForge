@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import signup from '../../assets/signup.jpg';
+import signup from "../../assets/signup.jpg";
+
 export const SignupContainer = styled.div`
   display: flex;
   gap: 20px;
@@ -12,6 +13,12 @@ export const SignupContainer = styled.div`
   font-size: 16px;
   font-style: normal;
   line-height: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
 `;
 
 export const SignupLeft = styled.div`
@@ -19,16 +26,30 @@ export const SignupLeft = styled.div`
   height: 100vh;
   width: 40%;
   position: fixed;
-  left: 0%;
+  left: 0;
+  top: 0;
   background: linear-gradient(
       0deg,
       rgba(0, 70, 255, 0.25) 0%,
       rgba(0, 70, 255, 0.25) 100%
     ),
     url(${signup});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  /* ✅ Responsive adjustments */
+  @media (max-width: 1024px) {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    border-radius: 0; /* full rectangular image */
+  }
+
+  @media (max-width: 600px) {
+    height: 60vh;
+    border-radius: 0;
+  }
 `;
 
 export const SignupRight = styled.div`
@@ -41,6 +62,19 @@ export const SignupRight = styled.div`
   position: relative;
   left: 20%;
   padding: 20px;
+  min-height: 100vh;
+
+  /* ✅ Responsive stack fix */
+  @media (max-width: 1024px) {
+    width: 100%;
+    left: 0;
+    min-height: auto;
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 600px) {
+    padding: 2.5rem 1.5rem;
+  }
 `;
 
 export const FormBox = styled.div`
@@ -127,7 +161,6 @@ export const PhoneField = styled.div`
 `;
 
 export const CreateButton = styled.button`
-  
   color: white;
   border: none;
   padding: 12px;
@@ -135,13 +168,13 @@ export const CreateButton = styled.button`
   font-weight: 600;
   width: 100%;
   margin-top: 18px;
- background-color: ${props => (props.disabled ? "#144b9e" : "#0066ff")};
-  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
-  opacity: ${props => (props.disabled ? 0.8 : 1)};
+  background-color: ${(props) => (props.disabled ? "#144b9e" : "#0066ff")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  opacity: ${(props) => (props.disabled ? 0.8 : 1)};
   transition: background-color 150ms ease, opacity 150ms ease;
 
   &:hover {
-    background-color: ${props => (props.disabled ? "#144b9e" : "#0051cc")};
+    background-color: ${(props) => (props.disabled ? "#144b9e" : "#0051cc")};
   }
 `;
 
@@ -171,6 +204,10 @@ export const GoogleBtn = styled.div`
   img {
     width: 25px;
     height: 25px;
+  }
+
+  @media (max-width: 600px) {
+    width: 60%;
   }
 `;
 
