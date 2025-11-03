@@ -49,6 +49,12 @@ import Esther from "../assets/Esther.jpg";
 import Uchechi from "../assets/Uchechi.jpg";
 import Daniel from "../assets/Daniel.jpg";
 import VICKY from "../assets/VICKY.jpg";
+import Chris from "../assets/Chris.jpg";
+import Ovie from "../assets/Ovie.jpg";
+import Evans from "../assets/Evans.jpg";
+import Favour from "../assets/Favour.jpg";
+import alfred from "../assets/alfred.jpg";
+
 import { IoMdTime } from "react-icons/io";
 import { FaRegFileAlt } from "react-icons/fa";
 import { BsLightbulb } from "react-icons/bs";
@@ -545,45 +551,45 @@ export const TeamInfo = [
       "“I design experiences that build trust, inspire growth, and make every interaction feel effortless.”",
   },
 
-  // {
-  //   image: picture,
-  //   name: "Ovie Oghenevwede",
-  //   role: "Backend Developer",
-  //   details:
-  //     "“I build and maintain the backend architecture that powers web applications, focusing on scalable, secure, and efficient APIs to ensure seamless performaance and reliable data flow.”",
-  // },
+  {
+    Image: Ovie,
+    name: "Ovie Oghenevwede",
+    role: "Backend Developer",
+    details:
+      "“I build and maintain the backend architecture that powers web applications, focusing on scalable, secure, and efficient APIs to ensure seamless performaance and reliable data flow.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Christobel Nwachukwu",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“I translate design concepts into responsive web interfaces, working collaboratively with designers and backend developers to provide outstanding user experience.”",
-  // },
+  {
+    Image: Chris,
+    name: "Christobel Nwachukwu",
+    role: "Frontend Developer",
+    details:
+      "“I translate design concepts into responsive web interfaces, working collaboratively with designers and backend developers to provide outstanding user experience.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Okoye Alfred",
-  //   role: "Backend Developer",
-  //   details:
-  //     "“I'm passionate about building efficient, scalable systems & crafting smooth digital experiences through clean backend logic and reliable Apis.”",
-  // },
+  {
+    Image: alfred,
+    name: "Okoye Alfred",
+    role: "Backend Developer",
+    details:
+      "“I'm passionate about building efficient, scalable systems & crafting smooth digital experiences through clean backend logic and reliable Apis.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Uchechukwu Evans",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“Fueled by creativity and attention to detail, dedicated to turning design visions into interactive, user-friendly web experiences that blend beauty, performance and functionality.”",
-  // },
+  {
+    Image: Evans,
+    name: "Uchechukwu Evans",
+    role: "Frontend Developer",
+    details:
+      "“Fueled by creativity and attention to detail, dedicated to turning design visions into interactive, user-friendly web experiences that blend beauty, performance and functionality.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Godsfavour Azimadu",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“I transform design visions into responsive web interfaces, collaborating closely with designers and backend developers to deliver exceptional user experiences.”",
-  // },
+  {
+    Image: Favour,
+    name: "Godsfavour Azimadu",
+    role: "Frontend Developer",
+    details:
+      "“I transform design visions into responsive web interfaces, collaborating closely with designers and backend developers to deliver exceptional user experiences.”",
+  },
 ];
 
 export const MissionInfo = [
@@ -868,7 +874,7 @@ export const SavedFunds = [
     return: "Current Return",
     returns: "+18.3%",
   },
-]
+];
 
 export const Meetings = [
   {
@@ -1100,7 +1106,7 @@ export const ndadata22 = [
     action: "Action Required",
     signature: "Signature Pending",
   },
-]
+];
 export const funding = [
   {
     tittle: "Total Invested",
@@ -1126,39 +1132,39 @@ export const funding = [
 
 export const notify = [
   {
-    bulb: <BsLightbulb size={17}/>,
+    bulb: <BsLightbulb size={17} />,
     new: "New Business in AI & ML",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "1 hour ago",
   },
   {
-    bulb: <FaRegFileAlt size={17}/>,
+    bulb: <FaRegFileAlt size={17} />,
     new: "NDA Ready for Signature",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "3 hour ago",
   },
   {
-    bulb: <FiMessageSquare size={18}/>,
+    bulb: <FiMessageSquare size={18} />,
     new: "New Message",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "3 hour ago",
   },
-]
+];
 
 export const notify2 = [
   {
-    bulb: < BsPeople size={20}/>,
-     new: "New Message",
-     text: "Meeting confirmed with MediConnect for tomorrow at 2:00pm. ",
-     hour: "1 days ago",
+    bulb: <BsPeople size={20} />,
+    new: "New Message",
+    text: "Meeting confirmed with MediConnect for tomorrow at 2:00pm. ",
+    hour: "1 days ago",
   },
   {
-    bulb: < IoMdTrendingUp size={20}/>,
-     new: "Investment Update",
-     text: "Smart Home Energy Management posted an update. ",
-     hour: "2 days ago",
-  }
-]
+    bulb: <IoMdTrendingUp size={20} />,
+    new: "Investment Update",
+    text: "Smart Home Energy Management posted an update. ",
+    hour: "2 days ago",
+  },
+];

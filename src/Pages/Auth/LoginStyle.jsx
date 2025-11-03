@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import login from '../../assets/login.jpg';
+import login from "../../assets/login.jpg";
+
 export const LoginContainer = styled.div`
   display: flex;
   gap: 10px;
@@ -12,6 +13,12 @@ export const LoginContainer = styled.div`
   font-size: 16px;
   font-style: normal;
   line-height: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
 `;
 
 export const LoginLeft = styled.div`
@@ -25,6 +32,18 @@ export const LoginLeft = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  /* ✅ Responsive image — full width, no border radius */
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 40vh;
+    border-radius: 0; /* Full rectangular image */
+  }
+
+  @media (max-width: 600px) {
+    height: 60vh;
+    border-radius: 0; /* Keep full edge-to-edge */
+  }
 `;
 
 export const LoginRight = styled.div`
@@ -37,6 +56,16 @@ export const LoginRight = styled.div`
   width: 50%;
   padding: 10rem;
   height: 100vh;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: auto;
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 600px) {
+    padding: 2.5rem 1.5rem;
+  }
 `;
 
 export const FormBox = styled.div`
@@ -48,19 +77,15 @@ export const FormTitle = styled.h2`
   display: block;
   text-align: center;
   margin-bottom: 12px;
-  text-align: center;
   font-family: Poppins;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 150%;
   color: #1b1b1b;
 
   .title-text {
-    color: #0046ff;
-    font-family: Poppins;
+    /* color: #0046ff; */
     font-size: 28px;
-    font-style: normal;
     font-weight: 600;
     line-height: 145%;
   }
@@ -133,6 +158,10 @@ export const GoogleBtn = styled.div`
   img {
     width: 25px;
     height: 25px;
+  }
+
+  @media (max-width: 600px) {
+    width: 60%;
   }
 `;
 

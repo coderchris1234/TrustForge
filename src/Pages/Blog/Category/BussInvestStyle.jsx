@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const InvestContainer = styled.div`
   width: 100%;
   height: max-content;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +21,15 @@ export const InvestContainer = styled.div`
       height: max-content;
       display: flex;
       justify-content: space-between;
+      gap: 2rem;
+
+      /* ✅ Tablet & Mobile responsiveness */
+      @media (max-width: 1024px) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 3rem;
+      }
 
       .left_Container {
         width: 25%;
@@ -64,6 +72,17 @@ export const InvestContainer = styled.div`
             }
           }
         }
+
+        /* ✅ Tablet & Mobile */
+        @media (max-width: 1024px) {
+          width: 100%;
+          height: auto;
+          padding: 1rem 0;
+          .Blog_Infos {
+            margin-top: 1rem;
+            gap: 1rem;
+          }
+        }
       }
 
       .Right_Container {
@@ -86,6 +105,10 @@ export const InvestContainer = styled.div`
               font-weight: 500;
               color: var(--netural_black_color);
               line-height: 120%;
+
+              @media (max-width: 768px) {
+                font-size: 32px;
+              }
             }
           }
 
@@ -99,6 +122,10 @@ export const InvestContainer = styled.div`
               height: 100%;
               border-radius: 10px;
               object-fit: cover;
+            }
+
+            @media (max-width: 768px) {
+              height: 250px;
             }
           }
 
@@ -120,6 +147,16 @@ export const InvestContainer = styled.div`
                 font-size: 18px;
                 line-height: 2rem;
                 font-weight: 400;
+              }
+
+              @media (max-width: 768px) {
+                h3 {
+                  font-size: 20px;
+                }
+                p {
+                  font-size: 15px;
+                  line-height: 1.8rem;
+                }
               }
             }
 
@@ -145,6 +182,16 @@ export const InvestContainer = styled.div`
                   font-weight: 400;
                 }
               }
+
+              @media (max-width: 768px) {
+                gap: 1rem;
+                li h4 {
+                  font-size: 16px;
+                }
+                li p {
+                  font-size: 14px;
+                }
+              }
             }
 
             .bottomText {
@@ -166,8 +213,16 @@ export const InvestContainer = styled.div`
                   font-weight: 400;
                 }
               }
+
+              @media (max-width: 768px) {
+                ul li {
+                  font-size: 14px;
+                  line-height: 1.8rem;
+                }
+              }
             }
           }
+
           .Insight_btn {
             width: 183px;
             height: 52px;
@@ -187,7 +242,19 @@ export const InvestContainer = styled.div`
               font-size: 35px;
               font-weight: 100;
             }
+
+            @media (max-width: 600px) {
+              width: 50%;
+              height: 48px;
+              font-size: 15px;
+            }
           }
+        }
+
+        /* ✅ Tablet & Mobile */
+        @media (max-width: 1024px) {
+          width: 100%;
+          padding-top: 2rem;
         }
       }
     }
@@ -207,12 +274,21 @@ export const InvestContainer = styled.div`
           font-weight: 700;
           color: var(--netural_black_color);
           margin-bottom: 2rem;
+
+          @media (max-width: 768px) {
+            font-size: 24px;
+          }
         }
       }
 
       .relatedPost {
         display: flex;
         gap: 1rem;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 2rem;
+        }
       }
     }
   }

@@ -5,6 +5,7 @@ import { SlSocialLinkedin } from "react-icons/sl";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import LOGO2 from "../assets/LOGO2.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,9 +31,15 @@ const Footer = () => {
               </div>
               <div className="Footer_text_footer">
                 <ul>
-                  <li>Home</li>
-                  <li>About Us</li>
-                  <li>Blog</li>
+                  <Link to={"/"}>
+                    <li>Home</li>
+                  </Link>
+                  <Link to={"/about"}>
+                    <li>About Us</li>
+                  </Link>
+                  <Link to={"/insights"}>
+                    <li>Insight</li>
+                  </Link>
                 </ul>
               </div>
             </div>

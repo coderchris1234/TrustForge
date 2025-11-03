@@ -109,11 +109,12 @@ const Login = () => {
   return (
     <LoginContainer>
       <LoginLeft />
-
       <LoginRight>
         <FormBox>
           <FormTitle>
-            <div className="title-text">Log In.</div>
+            <div className="title-text">
+              Log <span>In.</span>
+            </div>
             <small>
               Good to see you again. <br /> Log in to pick up where you left
               off.
