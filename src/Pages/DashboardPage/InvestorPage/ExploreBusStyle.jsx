@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Explorecontainer = styled.div`
 height: 100vh;
 width: 100%;
-padding: 25px;
+padding: 1rem;
 
 .exploreText{
     height: 70px;

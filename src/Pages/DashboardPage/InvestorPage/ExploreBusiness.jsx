@@ -26,7 +26,7 @@ const ExploreBusiness = () => {
       </div>
     </SearchContainer>
     <Text>Showing 4 Businesses </Text>
-    <BusinessNewsFeed />
+      <BusinessNewsFeed />
   </Explorecontainer>
   );
 };
