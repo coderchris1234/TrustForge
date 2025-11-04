@@ -18,8 +18,11 @@ import {
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { setUser } from "../Global/Slice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -84,6 +87,9 @@ const Login = () => {
         email,
         password: formData.password,
       });
+
+      dispatch(setUser(res?.data));
+      console.log("user", res);
 
       toast.success(res?.data?.message || "Logged in successfully");
       role === "BusinessOwner"
