@@ -1,8 +1,10 @@
-import React from "react";
-import { DashboardLayout } from "./DashBoardLayoutStyle";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import { DashboardLayoutContainer } from "./DashBoardLayoutStyle";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Pages/Global/Slice";
+import axios from "axios";
 
 const DashBoardLayout = (props) => {
   const dispatch = useDispatch();
@@ -13,9 +15,40 @@ const DashBoardLayout = (props) => {
     dispatch(logOut());
   };
 
+  const user = useSelector((state) => state.TrustForge.user);
+  const token = user?.token;
+  const userId = user?.data?.data?.id;
+  const [userDetails, setUserDetails] = useState(null);
+  useEffect(() => {
+    const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+    const fetchUser = async () => {
+      if (!userId || !token) return;
+
+      const endpoints =
+        user?.data?.role === "Investor"
+          ? `${BaseUrl}/investor/${userId}`
+          : `${BaseUrl}/user/${userId}`;
+
+      try {
+        const res = await axios.get(endpoints, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setUserDetails(res?.data?.data);
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    fetchUser();
+  }, [token, userId]);
+
   return (
     <>
-      <DashboardLayout>
+      <DashboardLayoutContainer>
         <aside className="aside">
           <div className="leftSidedContent">
             <div className="image-logo">
@@ -61,8 +94,10 @@ const DashBoardLayout = (props) => {
               <div className="profile-content">
                 <div className="image"></div>
                 <div>
-                  <p style={{ marginBottom: "0" }}>{props?.username}</p>
-                  <span>{props?.title}</span>
+                  <div style={{ marginBottom: "0" }}>
+                    <p>{userDetails?.user?.fullName || "Loading..."}</p>
+                  </div>
+                  <span>{userDetails?.user?.role}</span>
                 </div>
               </div>
               <div className="notification">
@@ -73,7 +108,7 @@ const DashBoardLayout = (props) => {
           </header>
           {props.Outlet}
         </div>
-      </DashboardLayout>
+      </DashboardLayoutContainer>
     </>
   );
 };
