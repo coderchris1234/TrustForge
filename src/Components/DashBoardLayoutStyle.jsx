@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DashboardLayout = styled.div`
+export const DashboardLayoutContainer = styled.div`
   width: 100%;
   background: #eceff4;
   height: 100vh;

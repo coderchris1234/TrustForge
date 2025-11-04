@@ -140,9 +140,13 @@ const VerifyEmail = () => {
     try {
       setLoading(true);
       const res = await axios.post(endpoint, payload);
+      console.log("userDetails", res);
 
       toast.success(res?.data?.message || "Email verified successfully");
       dispatch(setUser(res?.data));
+      localStorage.setItem("userData", JSON.stringify(res.data.data));
+      console.log("from verify", res);
+      console.log("userDetails", res);
 
       setLoading(false);
 

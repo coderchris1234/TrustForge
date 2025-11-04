@@ -608,37 +608,34 @@ export const MissionInfo = [
   },
 ];
 
-export const overviewBusiness = [
+export const getOverviewBusiness = (overviewData) => [
   {
     id: 1,
     title: "Business Profile",
-    num: 8,
+    num: overviewData?.businesscount ?? 0,
     icon: light,
     bgColor: "#8ab7f4",
   },
-
   {
     id: 2,
     title: "Total Views",
-    num: 200,
+    num: overviewData?.totalViews ?? 0,
     icon: eye,
     bgColor: "#90ed49",
     color: "#4a9512",
   },
-
   {
     id: 3,
     title: "Total Likes",
-    num: 30,
+    num: overviewData?.totalLikes ?? 0,
     icon: save,
     bgColor: "#e35151",
     color: "#b01e1e",
   },
-
   {
     id: 4,
     title: "Investor Connections",
-    num: 8,
+    num: overviewData?.meetings?.length ?? 0,
     icon: people,
     bgColor: "#e6b5e6",
     color: "#8a38f5",
