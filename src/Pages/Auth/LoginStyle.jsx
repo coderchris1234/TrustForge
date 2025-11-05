@@ -39,7 +39,6 @@ export const LoginLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-  }
     /* ✅ Responsive image — full width, no border radius */
     @media (max-width: 1024px) {
       width: 100%;
@@ -51,6 +50,7 @@ export const LoginLeft = styled.div`
       height: 60vh;
       border-radius: 0; /* Keep full edge-to-edge */
     }
+  }
 `;
 
 export const LoginRight = styled.div`
