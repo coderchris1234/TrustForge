@@ -155,7 +155,6 @@ const AddBusiness = () => {
       </StepInfo>
 
       <Card>
-        {/* Form content */}
         <FormArea>
           {step === 1 && (
             <>
