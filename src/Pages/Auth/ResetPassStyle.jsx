@@ -41,15 +41,16 @@ export const ResetPasswordLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-  @media (max-width: 1024px) {
-    width: 100%;
-    height: 40vh;
-  }
+    @media (max-width: 1024px) {
+      width: 100%;
+      height: 40vh;
+    }
 
-  @media (max-width: 600px) {
-    height: 60vh;
+    @media (max-width: 600px) {
+      height: 60vh;
+    }
   }
-`};
+`;
 
 export const ResetPasswordRight = styled.div`
   flex: 1;

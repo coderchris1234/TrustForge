@@ -35,22 +35,22 @@ export const VerifyEmailLeft = styled.div`
   background-size: cover;
   background-position: center;
 
-  
   img {
     height: 3rem;
     width: 3rem;
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-  @media (max-width: 1024px) {
-    width: 100%;
-    height: 40vh;
-  }
+    @media (max-width: 1024px) {
+      width: 100%;
+      height: 40vh;
+    }
 
-  @media (max-width: 600px) {
-    height: 60vh;
+    @media (max-width: 600px) {
+      height: 60vh;
+    }
   }
-`};
+`;
 
 export const VerifyEmailRight = styled.div`
   flex: 1;
