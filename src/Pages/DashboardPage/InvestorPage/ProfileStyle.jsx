@@ -95,7 +95,6 @@ export const ProfileStyle = styled.div`
       .Profile_img_holder {
         width: 20%;
         height: 100%;
-        background-color: green;
         padding: 10px;
         display: flex;
         justify-content: center;
@@ -111,13 +110,13 @@ export const ProfileStyle = styled.div`
         img {
           width: 100%;
           height: 100%;
+          border-radius: 50%;
         }
       }
 
       .Profile_content_holder {
         width: 80%;
         height: max-content;
-        background-color: yellow;
         display: flex;
         flex-direction: column;
         /* padding: 8px; */
@@ -129,7 +128,7 @@ export const ProfileStyle = styled.div`
           /* justify-content: center; */
           align-items: center;
           gap: 20px;
-          background-color: red;
+          /* background-color: red; */
           /* margin-top: 0.3rem; */
 
           h3 {
@@ -153,7 +152,7 @@ export const ProfileStyle = styled.div`
         .Profile_info_holder {
           width: 100%;
           height: 50%;
-          background-color: pink;
+          /* background-color: pink; */
           /* margin-top: 10px; */
           /* padding: 1rem; */
           /* margin-bottom: 1rem; */

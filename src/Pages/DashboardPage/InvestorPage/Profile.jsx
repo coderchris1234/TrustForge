@@ -1,5 +1,6 @@
 import React from "react";
 import { ProfileStyle } from "./ProfileStyle";
+import Uchechi from "../../../assets/Uchechi.jpg";
 
 const Profile = () => {
   return (
@@ -20,7 +21,7 @@ const Profile = () => {
         <article className="Profile_image">
           <div className="Profile_img_holder">
             <aside className="Image_holder">
-              <img src="" alt="" />
+              <img src={Uchechi} alt="" />
             </aside>
             <div className="ProIcon"></div>
           </div>

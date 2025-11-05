@@ -21,6 +21,17 @@ export const StartBtnContainer = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
+
+      .Startup_Header_btn1,
+      .Startup_Header_btn2,
+      .Startup_Header_btn3 {
+        border-radius: 8px;
+        transition: all 350ms ease-in-out;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 400;
+      }
 
       .Startup_Header_btn1 {
         height: 41px;
@@ -28,11 +39,6 @@ export const StartBtnContainer = styled.div`
         background-color: var(--main_white);
         border: 2px solid var(--neutral_gray_color_700);
         color: var(--main_black);
-        border-radius: 8px;
-        font-size: 18px;
-        font-weight: 400;
-        cursor: pointer;
-        transition: all 350ms ease-in-out;
 
         &:hover {
           background-color: var(--main_black);
@@ -47,12 +53,7 @@ export const StartBtnContainer = styled.div`
         background-color: var(--main_white);
         color: var(--main_black);
         border: 2px solid var(--neutral_gray_color_700);
-        border-radius: 8px;
-        font-size: 18px;
-        cursor: pointer;
-        font-weight: 400;
         padding: 5px;
-        transition: all 350ms ease-in-out;
 
         &:hover {
           background-color: var(--main_black);
@@ -67,11 +68,6 @@ export const StartBtnContainer = styled.div`
         background-color: var(--main_white);
         color: var(--main_black);
         border: 2px solid var(--neutral_gray_color_700);
-        border-radius: 8px;
-        font-size: 18px;
-        cursor: pointer;
-        font-weight: 400;
-        transition: all 350ms ease-in-out;
 
         &:hover {
           background-color: var(--main_black);
@@ -84,6 +80,75 @@ export const StartBtnContainer = styled.div`
         background-color: var(--main_black);
         color: var(--main_white);
         border: none;
+      }
+    }
+  }
+
+  /* ✅ Tablet view */
+  @media (max-width: 1024px) {
+    height: auto;
+    padding: 1.5rem 0;
+
+    .Startup_header {
+      .Startup_Header_btns {
+        width: 70%;
+        height: auto;
+        gap: 15px;
+
+        .Startup_Header_btn2 {
+          width: 250px;
+          font-size: 16px;
+        }
+
+        .Startup_Header_btn3 {
+          width: 120px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  /* ✅ Mobile view */
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 1.5rem 0;
+
+    .Startup_header {
+      .Startup_Header_btns {
+        width: 90%;
+        flex-direction: column;
+        gap: 12px;
+
+        .Startup_Header_btn1,
+        .Startup_Header_btn2,
+        .Startup_Header_btn3 {
+          width: 100%;
+          max-width: 350px;
+          font-size: 16px;
+        }
+
+        .Startup_Header_btn1 {
+          width: 60px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .Startup_header {
+      .Startup_Header_btns {
+        width: 100%;
+        gap: 10px;
+
+        .Startup_Header_btn2 {
+          font-size: 15px;
+          width: 100%;
+        }
+
+        .Startup_Header_btn3 {
+          width: 40%;
+          font-size: 15px;
+        }
       }
     }
   }

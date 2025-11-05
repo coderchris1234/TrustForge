@@ -49,6 +49,12 @@ import Esther from "../assets/Esther.jpg";
 import Uchechi from "../assets/Uchechi.jpg";
 import Daniel from "../assets/Daniel.jpg";
 import VICKY from "../assets/VICKY.jpg";
+import Chris from "../assets/Chris.jpg";
+import Ovie from "../assets/Ovie.jpg";
+import Evans from "../assets/Evans.jpg";
+import Favour from "../assets/Favour.jpg";
+import alfred from "../assets/alfred.jpg";
+
 import { IoMdTime } from "react-icons/io";
 import { FaRegFileAlt } from "react-icons/fa";
 import { BsLightbulb } from "react-icons/bs";
@@ -548,45 +554,45 @@ export const TeamInfo = [
       "“I design experiences that build trust, inspire growth, and make every interaction feel effortless.”",
   },
 
-  // {
-  //   image: picture,
-  //   name: "Ovie Oghenevwede",
-  //   role: "Backend Developer",
-  //   details:
-  //     "“I build and maintain the backend architecture that powers web applications, focusing on scalable, secure, and efficient APIs to ensure seamless performaance and reliable data flow.”",
-  // },
+  {
+    Image: Ovie,
+    name: "Ovie Oghenevwede",
+    role: "Backend Developer",
+    details:
+      "“I build and maintain the backend architecture that powers web applications, focusing on scalable, secure, and efficient APIs to ensure seamless performaance and reliable data flow.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Christobel Nwachukwu",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“I translate design concepts into responsive web interfaces, working collaboratively with designers and backend developers to provide outstanding user experience.”",
-  // },
+  {
+    Image: Chris,
+    name: "Christobel Nwachukwu",
+    role: "Frontend Developer",
+    details:
+      "“I translate design concepts into responsive web interfaces, working collaboratively with designers and backend developers to provide outstanding user experience.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Okoye Alfred",
-  //   role: "Backend Developer",
-  //   details:
-  //     "“I'm passionate about building efficient, scalable systems & crafting smooth digital experiences through clean backend logic and reliable Apis.”",
-  // },
+  {
+    Image: alfred,
+    name: "Okoye Alfred",
+    role: "Backend Developer",
+    details:
+      "“I'm passionate about building efficient, scalable systems & crafting smooth digital experiences through clean backend logic and reliable Apis.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Uchechukwu Evans",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“Fueled by creativity and attention to detail, dedicated to turning design visions into interactive, user-friendly web experiences that blend beauty, performance and functionality.”",
-  // },
+  {
+    Image: Evans,
+    name: "Uchechukwu Evans",
+    role: "Frontend Developer",
+    details:
+      "“Fueled by creativity and attention to detail, dedicated to turning design visions into interactive, user-friendly web experiences that blend beauty, performance and functionality.”",
+  },
 
-  // {
-  //   image: picture,
-  //   name: "Godsfavour Azimadu",
-  //   role: "Frontend Developer",
-  //   details:
-  //     "“I transform design visions into responsive web interfaces, collaborating closely with designers and backend developers to deliver exceptional user experiences.”",
-  // },
+  {
+    Image: Favour,
+    name: "Godsfavour Azimadu",
+    role: "Frontend Developer",
+    details:
+      "“I transform design visions into responsive web interfaces, collaborating closely with designers and backend developers to deliver exceptional user experiences.”",
+  },
 ];
 
 export const MissionInfo = [
@@ -605,37 +611,34 @@ export const MissionInfo = [
   },
 ];
 
-export const overviewBusiness = [
+export const getOverviewBusiness = (overviewData) => [
   {
     id: 1,
     title: "Business Profile",
-    num: 8,
+    num: overviewData?.businesscount ?? 0,
     icon: light,
     bgColor: "#8ab7f4",
   },
-
   {
     id: 2,
     title: "Total Views",
-    num: 200,
+    num: overviewData?.totalViews ?? 0,
     icon: eye,
     bgColor: "#90ed49",
     color: "#4a9512",
   },
-
   {
     id: 3,
     title: "Total Likes",
-    num: 30,
+    num: overviewData?.totalLikes ?? 0,
     icon: save,
     bgColor: "#e35151",
     color: "#b01e1e",
   },
-
   {
     id: 4,
     title: "Investor Connections",
-    num: 8,
+    num: overviewData?.meetings?.length ?? 0,
     icon: people,
     bgColor: "#e6b5e6",
     color: "#8a38f5",

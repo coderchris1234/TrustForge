@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const TeamContainer = styled.div`
   width: 100%;
-  height: max-content;
   background-color: var(--main_white);
   display: flex;
   justify-content: center;
@@ -10,14 +9,12 @@ export const TeamContainer = styled.div`
 
   .Team_wrapper {
     width: 90%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     padding-bottom: 40px;
 
     .Team_header_text {
       width: 100%;
-      height: max-content;
       gap: 15px;
       display: flex;
       flex-direction: column;
@@ -29,6 +26,7 @@ export const TeamContainer = styled.div`
         font-weight: 600;
         color: var(--main_black);
       }
+
       p {
         font-size: 18px;
         font-weight: 400;
@@ -37,21 +35,32 @@ export const TeamContainer = styled.div`
       }
     }
 
-    .Team_images {
+    .Team_images_carousel {
       width: 100%;
-      height: 406px;
+      min-width: max-contents;
+      height: max-content;
+      overflow: hidden;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      padding: 1rem;
+
+      .scroll {
+        display: flex;
+        width: max-content;
+        gap: 20px;
+        animation: scroll-left 20s linear infinite; /* continuous left scroll */
+      }
 
       .Team_card {
-        width: 32%;
-        height: 100%;
+        width: 400px;
+        height: 420px;
         background-color: var(--main_white);
         border-radius: 8px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 20px;
+        padding: 2rem;
         gap: 12px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -79,12 +88,11 @@ export const TeamContainer = styled.div`
         .Team_Card_profile {
           width: 162px;
           height: 162px;
-          /* background-color: orange; */
           border-radius: 50%;
           border: 4px solid var(--primary_color_500);
-          background-position: center;
-          background-size: contain;
-          background-repeat: no-repeat;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           img {
             width: 100%;
@@ -93,6 +101,15 @@ export const TeamContainer = styled.div`
           }
         }
       }
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
     }
   }
 `;

@@ -5,29 +5,19 @@ import { GoTrash } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
-const BusinessCard = ({
-  title,
-  category,
-  status,
-  stage,
-  description,
-  views,
-  likes,
-  messages,
-  postedDate,
-}) => {
+const BusinessCard = (props) => {
   return (
     <BusinessContainer>
       <div className="businessContainer">
         <div className="businessContent">
           <div className="business">
-            <p style={{ marginBottom: "2px" }}>{title}</p>
+            <p style={{ marginBottom: "2px" }}>{props.title}</p>
             <div className="set">
-              <span className="retail status">{category}</span>
-              <span className="active status">{status}</span>
-              <span className="seed status">{stage}</span>
+              <span className="retail status">{props.category}</span>
+              <span className="active status">{props.status}</span>
+              <span className="seed status">{props.stage}</span>
             </div>
-            <p style={{ paddingTop: "20px" }}>{description}</p>
+            <p style={{ paddingTop: "20px" }}>{props.description}</p>
           </div>
           <div className="btn">
             <CustomButton Btntext="View Details" className="bt" />
@@ -41,13 +31,13 @@ const BusinessCard = ({
         <div className="under">
           <div className="extra">
             <div>
-              <IoEyeOutline /> {views} views
+              <IoEyeOutline /> {props.views} views
             </div>
             <div>
-              <CiHeart /> {likes} likes
+              <CiHeart /> {props.likes} likes
             </div>
             <div>
-              <FiMessageSquare /> {messages} messages
+              <FiMessageSquare /> {props.messages} messages
             </div>
           </div>
           <div>
@@ -56,7 +46,7 @@ const BusinessCard = ({
                 paddingTop: "1rem",
               }}
             >
-              {postedDate}
+              {props.postedDate}
             </p>
           </div>
         </div>

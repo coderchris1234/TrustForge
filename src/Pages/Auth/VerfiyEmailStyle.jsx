@@ -1,17 +1,24 @@
 import styled from "styled-components";
-import emailverify from '../../assets/emailverify.jpg';
+import emailverify from "../../assets/emailverify.jpg";
+
 export const VerifyEmailContainer = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
   width: 100%;
-  height: max-content;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: #fff;
   font-weight: 400;
   font-size: 16px;
-  font-style: normal;
   line-height: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 export const VerifyEmailLeft = styled.div`
@@ -35,8 +42,15 @@ export const VerifyEmailLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 40vh;
   }
-`;
+
+  @media (max-width: 600px) {
+    height: 60vh;
+  }
+`};
 
 export const VerifyEmailRight = styled.div`
   flex: 1;
@@ -47,11 +61,25 @@ export const VerifyEmailRight = styled.div`
   background: #fff;
   width: 50%;
   padding: 20px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 600px) {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 export const FormBox = styled.div`
   width: 80%;
   max-width: 420px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -59,16 +87,13 @@ export const FormTitle = styled.h2`
   margin-bottom: 12px;
   font-family: Poppins;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 150%;
   color: #1b1b1b;
 
   .title-text {
     color: #1b1b1b;
     font-family: Poppins;
     font-size: 28px;
-    font-style: normal;
     font-weight: 600;
     line-height: 145%;
   }
@@ -79,6 +104,13 @@ export const FormTitle = styled.h2`
 
   small {
     font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .title-text {
+      font-size: 22px;
+      line-height: 140%;
+    }
   }
 `;
 
@@ -98,6 +130,11 @@ export const CreateButton = styled.button`
   &:hover {
     background-color: ${(props) => (props.disabled ? "#144b9e" : "#0051cc")};
   }
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+    padding: 10px;
+  }
 `;
 
 export const OrText = styled.p`
@@ -105,6 +142,10 @@ export const OrText = styled.p`
   color: #1b1b1b;
   font-size: 14px;
   margin: 15px 0 10px;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 export const LoginText = styled.p`
@@ -118,6 +159,10 @@ export const LoginText = styled.p`
     font-weight: 500;
     text-decoration: none;
   }
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 export const TermsText = styled.p`
@@ -129,6 +174,10 @@ export const TermsText = styled.p`
   a {
     color: #0066ff;
     text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 11px;
   }
 `;
 
@@ -143,6 +192,10 @@ export const Label = styled.label`
     color: red;
     margin-left: 3px;
   }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 export const ErrorText = styled.p`
@@ -150,4 +203,8 @@ export const ErrorText = styled.p`
   font-size: 0.9rem;
   margin-top: 0.2rem;
   text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `;

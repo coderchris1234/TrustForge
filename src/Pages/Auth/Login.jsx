@@ -19,8 +19,11 @@ import authlogo from "../../assets/authlogo.png"
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { setUser } from "../Global/Slice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -86,6 +89,9 @@ const Login = () => {
         password: formData.password,
       });
 
+      dispatch(setUser(res?.data));
+      console.log("user", res);
+
       toast.success(res?.data?.message || "Logged in successfully");
       role === "BusinessOwner"
         ? navigate("/dashboard/business_owner")
@@ -112,10 +118,13 @@ const Login = () => {
       <LoginLeft >
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </LoginLeft >
+      <LoginLeft />
       <LoginRight>
         <FormBox>
           <FormTitle>
-            <div className="title-text">Log In.</div>
+            <div className="title-text">
+              Log <span>In.</span>
+            </div>
             <small>
               Good to see you again. <br /> Log in to pick up where you left
               off.

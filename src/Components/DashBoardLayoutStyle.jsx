@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DashboardLayout = styled.div`
+export const DashboardLayoutContainer = styled.div`
   width: 100%;
   background: #eceff4;
   height: 100vh;
@@ -147,14 +147,23 @@ export const DashboardLayout = styled.div`
           width: 40%;
           align-items: center;
           gap: 8px;
-        }
-      }
+          .image {
+            background-color: red;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
 
-      .image {
-        background-color: red;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+          .UserInfo {
+            p {
+              margin: 0px;
+            }
+            span {
+              font-size: 10px;
+              color: var(--secondary_color_700);
+            }
+          }
+        }
       }
 
       .notification {
