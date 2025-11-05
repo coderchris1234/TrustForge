@@ -53,6 +53,9 @@ import { IoMdTime } from "react-icons/io";
 import { FaRegFileAlt } from "react-icons/fa";
 import { BsLightbulb } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
+import { FaVideo } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
+
 export const MenuNav = ["Home", "About", "Insights"];
 
 export const FundNum = [
@@ -868,7 +871,7 @@ export const SavedFunds = [
     return: "Current Return",
     returns: "+18.3%",
   },
-]
+];
 
 export const Meetings = [
   {
@@ -1100,7 +1103,7 @@ export const ndadata22 = [
     action: "Action Required",
     signature: "Signature Pending",
   },
-]
+];
 export const funding = [
   {
     tittle: "Total Invested",
@@ -1126,39 +1129,225 @@ export const funding = [
 
 export const notify = [
   {
-    bulb: <BsLightbulb size={17}/>,
+    bulb: <BsLightbulb size={17} />,
     new: "New Business in AI & ML",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "1 hour ago",
   },
   {
-    bulb: <FaRegFileAlt size={17}/>,
+    bulb: <FaRegFileAlt size={17} />,
     new: "NDA Ready for Signature",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "3 hour ago",
   },
   {
-    bulb: <FiMessageSquare size={18}/>,
+    bulb: <FiMessageSquare size={18} />,
     new: "New Message",
     newbtn: "new",
     text: "A new business matching your interests has been posted ",
     hour: "3 hour ago",
   },
-]
+];
 
 export const notify2 = [
   {
-    bulb: < BsPeople size={20}/>,
-     new: "New Message",
-     text: "Meeting confirmed with MediConnect for tomorrow at 2:00pm. ",
-     hour: "1 days ago",
+    bulb: <BsPeople size={20} />,
+    new: "New Message",
+    text: "Meeting confirmed with MediConnect for tomorrow at 2:00pm. ",
+    hour: "1 days ago",
   },
   {
-    bulb: < IoMdTrendingUp size={20}/>,
-     new: "Investment Update",
-     text: "Smart Home Energy Management posted an update. ",
-     hour: "2 days ago",
-  }
-]
+    bulb: <IoMdTrendingUp size={20} />,
+    new: "Investment Update",
+    text: "Smart Home Energy Management posted an update. ",
+    hour: "2 days ago",
+  },
+];
+
+export const meetings = [
+  {
+    invest: "Investment Discussion",
+    confirm: "Confirmed",
+    first: "1st Meeting",
+    icon1: <FaVideo size={20} />,
+    join: "Join Meeting",
+    icon2: <FiRefreshCw size={20} />,
+    reschedule: "Reschedule",
+    profile: "SJ",
+    name: "Sarah Johnson",
+    supply: "SupplyChain AI",
+    solution: "SupplyChain AI Solutions",
+    calender: <CiCalendar size={20} />,
+    date: "2025-10-23",
+    icon3: <FaVideo size={20} />,
+    video: "Video Call",
+    icon4: <CiClock2 />,
+    time: "2:00 PM ",
+    discussion: "Discussion about  A funding a funding and growth strategy",
+  },
+];
+
+export const meetings2 = [
+  {
+    invest: "Product Demo",
+    clock: <CiClock2 />,
+    pending: "Pending",
+    first: "1st Meeting",
+    clock2: <CiClock2 />,
+    await: "Awaiting Response",
+    cancel: "Cancel Request",
+    profile: "DSC",
+    name: "Dr. Sarah Chen",
+    supply: "MediConnect Health",
+    solution: "MediConnect Health",
+    calender: <CiCalendar size={20} />,
+    date: "2025-10-25",
+    icon3: <FaVideo size={20} />,
+    video: "Video Call",
+    icon4: <CiClock2 />,
+    time: "10:00 PM ",
+    discussion: "Live demo of the platform and Q&A session.",
+  },
+];
+
+export const meetings3 = [
+  {
+    invest: "Follow-up Discussion",
+    confirm: "Confirmed",
+    icon2: <FiRefreshCw size={20} />,
+    reschedule: "Reschedule",
+    profile: "DP",
+    name: "David Park",
+    supply: "GreenPack Industries",
+    solution: "GreenPack Industries",
+    calender: <CiCalendar size={20} />,
+    date: "2025-10-23",
+    icon3: <FaVideo size={20} />,
+    video: "Video Call",
+    icon4: <CiClock2 />,
+    time: "3:30 PM ",
+    discussion: "Second meeting - Financial review and team introdcution ",
+  },
+];
+
+export const monthlyPlans = [
+  {
+    id: "explorer",
+    title: "Explorer",
+    price: "N0",
+    unit: "/mo",
+    highlights: ["Discover investment opportunities"],
+    features: [
+      "Standard search visibility",
+      "Basic business analytics",
+      "Up to 5 business analytics",
+      "Up to 5 investors connections per month",
+      "Email support (48hr response)",
+      "Access to investor directly",
+    ],
+    action: "Current Plan",
+    variant: "outline",
+  },
+  {
+    id: "growth",
+    title: "Growth",
+    price: "N5,000",
+    unit: "/mo",
+    highlights: ["For active investors"],
+    features: [
+      "Up to 3 Business profiles",
+      "Featured listing badge",
+      "Prority in search results",
+      "Advance analytics & Insights",
+      "Unlimited investors connection",
+      "Priority email support (24hr response",
+      "Meeting scheduler",
+      "Document sharing & NDA management",
+      "Custom business page branding",
+    ],
+    action: "Subscribe Now",
+    variant: "primary",
+  },
+  {
+    id: "premium",
+    title: "Premium Promotion",
+    price: "N10,000",
+    unit: "/mo",
+    highlights: ["For top investors & promotions"],
+    features: [
+      "Unlimited business profiles",
+      "Top-tier featured placement",
+      "Daily homepage promotion",
+      "Dedicated account manager",
+      "premium analytics dasboard",
+      "unlimited everything",
+      "Quarterly strategy consultation",
+      "Media & PR kit preparation",
+      "Priority document review",
+    ],
+    action: "Subscribe Now",
+    variant: "ghost",
+  },
+];
+
+export const annualPlans = [
+  {
+    id: "explorer",
+    title: "Explorer",
+    price: "N0",
+    unit: "/yr",
+    highlights: ["Discover investment opportunities"],
+    features: [
+      "Standard search visibility",
+      "Basic business analytics",
+      "Up to 5 business analytics",
+      "Up to 5 investors connections per month",
+      "Email support (48hr response)",
+      "Access to investor directly",
+    ],
+    action: "Current Plan",
+    variant: "outline",
+  },
+  {
+    id: "growth",
+    title: "Growth",
+    price: "N54,000",
+    unit: "/yr",
+    highlights: ["For active investors"],
+    features: [
+      "Up to 3 Business profiles",
+      "Featured listing badge",
+      "Prority in search results",
+      "Advance analytics & Insights",
+      "Homepage rotation (2 days month)",
+      "Unlimited Investors connection",
+      "Priority email support (24hr response",
+      "Meeting scheduler",
+      "Document sharing & NDA management",
+    ],
+    action: "Subscribe Now",
+    variant: "primary",
+  },
+  {
+    id: "premium",
+    title: "Premium Promotion",
+    price: "N108,000",
+    unit: "/yr",
+    highlights: ["For top investors & promotions"],
+    features: [
+      "Unlimited business profiles",
+      "Top-tier featured placement",
+      "Daily homepage promotion",
+      "Dedicated account manager",
+      "premium analytics dasboard",
+      "unlimited everything",
+      "Quarterly strategy consultation",
+      "Media & PR kit preparation",
+      "Priority document review",
+    ],
+    action: "Subscribe Now",
+    variant: "ghost",
+  },
+];

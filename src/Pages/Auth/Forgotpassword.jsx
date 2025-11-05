@@ -15,12 +15,12 @@ import {
   Label,
   ErrorText,
 } from "./ForgotPassStyle";
+import authlogo from "../../assets/authlogo.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 const ForgotPassword = () => {
   const role = useSelector((state) => state.TrustForge.user);
-  // const email = role?.data?.email;
 
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -60,8 +60,6 @@ const ForgotPassword = () => {
           "Reset link has been sent to your email address (valid for 10 mins)."
       );
       console.log("this is the value", res);
-
-      // navigate("/resetpassword");
     } catch (error) {
       console.log(error);
       toast.error(
@@ -74,8 +72,9 @@ const ForgotPassword = () => {
 
   return (
     <ForgotPasswordContainer>
-      <ForgotPasswordLeft />
-
+      <ForgotPasswordLeft>
+        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+      </ForgotPasswordLeft>
       <ForgotPasswordRight>
         <FormBox>
           <FormTitle>

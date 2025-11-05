@@ -3,6 +3,9 @@ export const Meeting_container = styled.div`
   height: 100%;
   width: 100%;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   .meeting {
     height: 5rem;

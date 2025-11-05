@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import signup from '../../assets/signup.jpg';
+import signup from "../../assets/signup.jpg";
 export const SignupContainer = styled.div`
   display: flex;
   gap: 20px;
@@ -26,9 +26,17 @@ export const SignupLeft = styled.div`
       rgba(0, 70, 255, 0.25) 100%
     ),
     url(${signup});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
 `;
 
 export const SignupRight = styled.div`
@@ -127,7 +135,6 @@ export const PhoneField = styled.div`
 `;
 
 export const CreateButton = styled.button`
-  
   color: white;
   border: none;
   padding: 12px;
@@ -135,13 +142,13 @@ export const CreateButton = styled.button`
   font-weight: 600;
   width: 100%;
   margin-top: 18px;
- background-color: ${props => (props.disabled ? "#144b9e" : "#0066ff")};
-  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
-  opacity: ${props => (props.disabled ? 0.8 : 1)};
+  background-color: ${(props) => (props.disabled ? "#144b9e" : "#0066ff")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  opacity: ${(props) => (props.disabled ? 0.8 : 1)};
   transition: background-color 150ms ease, opacity 150ms ease;
 
   &:hover {
-    background-color: ${props => (props.disabled ? "#144b9e" : "#0051cc")};
+    background-color: ${(props) => (props.disabled ? "#144b9e" : "#0051cc")};
   }
 `;
 

@@ -22,6 +22,14 @@ export const ResetPasswordLeft = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
 `;
 
 export const ResetPasswordRight = styled.div`

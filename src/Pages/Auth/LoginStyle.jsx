@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import login from '../../assets/login.jpg';
+import login from "../../assets/login.jpg";
 export const LoginContainer = styled.div`
   display: flex;
   gap: 10px;
@@ -25,6 +25,14 @@ export const LoginLeft = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
 `;
 
 export const LoginRight = styled.div`
