@@ -45,17 +45,17 @@ export const SignupLeft = styled.div`
     margin-left: 2rem;
     cursor: pointer;
     /* ✅ Responsive adjustments */
-    @media (max-width: 1024px) {
-      position: relative;
-      width: 100%;
-      height: 40vh;
-      border-radius: 0; /* full rectangular image */
-    }
+  }
+  @media (max-width: 1024px) {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    border-radius: 0; /* full rectangular image */
+  }
 
-    @media (max-width: 600px) {
-      height: 60vh;
-      border-radius: 0;
-    }
+  @media (max-width: 600px) {
+    height: 60vh;
+    border-radius: 0;
   }
 `;
 
