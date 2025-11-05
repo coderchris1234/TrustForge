@@ -48,8 +48,8 @@ export const ResetPasswordLeft = styled.div`
 
   @media (max-width: 600px) {
     height: 60vh;
-  }
-`};
+  }}
+`;
 
 export const ResetPasswordRight = styled.div`
   flex: 1;

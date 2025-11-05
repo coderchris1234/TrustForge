@@ -56,7 +56,8 @@ export const SignupLeft = styled.div`
     height: 60vh;
     border-radius: 0;
   }
-`};
+}
+`;
 
 export const SignupRight = styled.div`
   display: flex;

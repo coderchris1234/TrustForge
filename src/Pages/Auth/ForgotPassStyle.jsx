@@ -49,7 +49,8 @@ export const ForgotPasswordLeft = styled.div`
   @media (max-width: 600px) {
     height: 60vh;
   }
-`};
+}
+`;
 
 export const ForgotPasswordRight = styled.div`
   flex: 1;

@@ -50,7 +50,8 @@ export const VerifyEmailLeft = styled.div`
   @media (max-width: 600px) {
     height: 60vh;
   }
-`};
+}
+`;
 
 export const VerifyEmailRight = styled.div`
   flex: 1;
