@@ -35,6 +35,13 @@ export const ForgotPasswordLeft = styled.div`
   background-size: cover;
   background-position: center;
 
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
   @media (max-width: 1024px) {
     width: 100%;
     height: 40vh;

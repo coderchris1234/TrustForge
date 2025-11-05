@@ -15,6 +15,7 @@ import {
   Label,
   ErrorText,
 } from "./LoginStyle";
+import authlogo from "../../assets/authlogo.png"
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -114,7 +115,9 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <LoginLeft />
+      <LoginLeft >
+        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+      </LoginLeft >
       <LoginRight>
         <FormBox>
           <FormTitle>

@@ -33,10 +33,9 @@ import axios from "axios";
 const AddBusiness = () => {
   const token = useSelector((state) => state.TrustForge.user?.data?.token);
 
-  const fileInputRef = useRef(null);
-  const [uploadedFile, setUploadedFile] = useState(null);
+  const pitchDeckInputRef = useRef(null);
+  const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  console.log(uploadedFile);
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -50,18 +49,19 @@ const AddBusiness = () => {
     revenueModel: "",
     targetMarket: "",
     currentRevenue: "",
+    fundingStage: "",
     fundingSought: "",
     pitchDeck: null,
+    businessRegistrationCertificate: null,
   });
   console.log("data", form);
 
   const progressPercent = (step / totalSteps) * 100;
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
     if (file) {
-      setUploadedFile(file);
-      setForm((f) => ({ ...f, pitchDeck: file.name }));
+      setForm((f) => ({ ...f, [fieldName]: file }));
       toast.success(`${file.name} uploaded successfully`);
     }
   };
@@ -103,8 +103,17 @@ const AddBusiness = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      if (!uploadedFile) {
+      if (!form.pitchDeck) {
         toast.error("Please upload your pitch deck before submitting");
+        setLoading(false);
+        return;
+      }
+      if (!form.businessRegistrationCertificate) {
+        toast.error(
+          "Please upload your business registration certificate before submitting"
+        );
+        setLoading(false);
+        return;
       }
 
       const formData = new FormData();
@@ -251,7 +260,11 @@ const AddBusiness = () => {
                   <div className="fund">
                     <div>
                       <Label style={{ Color: "#e6e9ef" }}>Funding Stage</Label>
-                      <select>
+                      <select
+                        name="fundingStage"
+                        value={form.fundingStage}
+                        onChange={handleChange}
+                      >
                         <option value="">Pre-Seed</option>
                         <option value="">Seed</option>
                         <option value="">Series A</option>
@@ -307,14 +320,32 @@ const AddBusiness = () => {
                 <UploadWrapper>
                   <input
                     type="file"
-                    ref={fileInputRef}
+                    ref={pitchDeckInputRef}
                     style={{ display: "none" }}
-                    onChange={handleFileChange}
+                    onChange={(e) => handleFileChange(e, "pitchDeck")}
                     name="pitchDeck"
                   />
-                  <UploadBox onClick={() => fileInputRef.current.click()}>
+                  <UploadBox onClick={() => pitchDeckInputRef.current.click()}>
                     <MdOutlineFileUpload size={40} color="blue" />
-                    {uploadedFile ? uploadedFile.name : "Click to upload"}
+                    {form.pitchDeck ? form.pitchDeck.name : "Click to upload"}
+                  </UploadBox>
+                </UploadWrapper>
+                <Label>Business Registration Certificate</Label>
+                <UploadWrapper>
+                  <input
+                    type="file"
+                    ref={certInputRef}
+                    style={{ display: "none" }}
+                    onChange={(e) =>
+                      handleFileChange(e, "businessRegistrationCertificate")
+                    }
+                    name="businessRegistrationCertificate"
+                  />
+                  <UploadBox onClick={() => certInputRef.current.click()}>
+                    <MdOutlineFileUpload size={40} color="blue" />
+                    {form.businessRegistrationCertificate
+                      ? form.businessRegistrationCertificate.name
+                      : "Click to upload"}
                   </UploadBox>
                 </UploadWrapper>
                 <div className="submission">

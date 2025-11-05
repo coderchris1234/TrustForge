@@ -33,7 +33,15 @@ export const LoginLeft = styled.div`
   background-size: cover;
   background-position: center;
 
-  /* ✅ Responsive image — full width, no border radius */
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+    /* background-color: red; */
+  }
+
   @media (max-width: 1024px) {
     width: 100%;
     height: 40vh;
@@ -41,7 +49,6 @@ export const LoginLeft = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 60vh;
     border-radius: 0; /* Keep full edge-to-edge */
   }
 `;

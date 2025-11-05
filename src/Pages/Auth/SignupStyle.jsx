@@ -38,7 +38,14 @@ export const SignupLeft = styled.div`
   background-size: cover;
   background-position: center;
 
-  /* ✅ Responsive adjustments */
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+    /* ✅ Responsive adjustments */
+  }
   @media (max-width: 1024px) {
     position: relative;
     width: 100%;

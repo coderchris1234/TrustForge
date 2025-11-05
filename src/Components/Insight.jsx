@@ -28,7 +28,7 @@ const Insight = () => {
           Btntext="View All Post"
           type="button"
           onClick={() => {
-            nav("/blog");
+            nav("/insights");
           }}
         />
       </div>
