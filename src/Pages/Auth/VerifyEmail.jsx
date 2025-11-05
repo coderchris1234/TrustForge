@@ -12,6 +12,7 @@ import {
   Label,
   ErrorText,
 } from "./VerfiyEmailStyle";
+import authlogo from "../../assets/authlogo.png";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -211,7 +212,9 @@ const VerifyEmail = () => {
 
   return (
     <VerifyEmailContainer>
-      <VerifyEmailLeft />
+      <VerifyEmailLeft>
+        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+      </VerifyEmailLeft>
       <VerifyEmailRight>
         <FormBox>
           <FormTitle>

@@ -14,6 +14,7 @@ import {
   Label,
   ErrorText,
 } from "./ResetPassStyle";
+import authlogo from "../../assets/authlogo.png";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -113,7 +114,9 @@ const ResetPassword = () => {
 
   return (
     <ResetPasswordContainer>
-      <ResetPasswordLeft />
+      <ResetPasswordLeft>
+        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+      </ResetPasswordLeft>
       <ResetPasswordRight>
         <FormBox>
           <FormTitle>

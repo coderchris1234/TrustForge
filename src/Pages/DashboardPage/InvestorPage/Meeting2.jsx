@@ -1,6 +1,8 @@
 import React from "react";
 import { Meeting_container } from "./MeetingStyle";
-import MeetingCard from "../../../Components/MeetingCard";
+import InvestorMeeting from "../../../Components/InvestorMeeting"
+import InvestorMeeting2 from "../../../Components/InvestorMeeting2"
+import InvestorMeeting3 from "../../../Components/InvestorMeeting3";
 const Meeting2 = () => {
   return (
     <Meeting_container>
@@ -18,7 +20,9 @@ const Meeting2 = () => {
           Coming <span></span>
         </div>
       </div>
-      <MeetingCard />
+      <InvestorMeeting />
+      <InvestorMeeting2 />
+      <InvestorMeeting3 />
     </Meeting_container>
   );
 };

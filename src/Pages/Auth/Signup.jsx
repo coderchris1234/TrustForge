@@ -18,6 +18,7 @@ import {
   Label,
   ErrorText,
 } from "./SignupStyle";
+import authlogo from "../../assets/authlogo.png";
 import ReactCountryFlag from "react-country-flag";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -153,7 +154,9 @@ const Signup = () => {
 
   return (
     <SignupContainer>
-      <SignupLeft></SignupLeft>
+      <SignupLeft>
+        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+      </SignupLeft>
 
       <SignupRight>
         <FormBox>
