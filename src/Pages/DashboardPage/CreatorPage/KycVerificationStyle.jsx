@@ -34,9 +34,9 @@ export const KycContainer = styled.div`
       left: 0;
       width: 8px;
       height: 8px;
-      border: 2px solid #336bff; /* border color */
+      border: 2px solid #336bff;
       border-radius: 50%;
-      background-color: transparent; /* or use a solid color */
+      background-color: transparent;
     }
   }
 `;
@@ -53,8 +53,8 @@ export const PageWrap = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 980px;
-  /* background: #ffffff; */
+  width: 100%;
+  background: #ffffff;
   border-radius: 8px;
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
@@ -115,7 +115,69 @@ export const FormArea = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: red;
+
+  .profilePic {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .imageContainer {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      background-color: blue;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      position: absolute;
+      right: 25rem;
+      top: 9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .Bank {
+    /* background-color: red; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .bankDetails {
+      /* background-color: pink; */
+      display: flex;
+      gap: 1rem;
+    }
+
+    .secure {
+      background-color: var(--primary_color_300);
+      padding: 1rem;
+      display: flex;
+
+      span {
+        color: var(--primary_color_500);
+      }
+    }
+  }
+
+  .Upload {
+    border: 1px dashed lightgray;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const SectionTitle = styled.h3`
@@ -130,38 +192,18 @@ export const FieldRow = styled.div`
   gap: 1rem;
   margin-bottom: 14px;
 
-  .ProfileContainer {
-    background-color: pink;
-  }
-  .profilePic {
-  }
-
-  .fund {
-    padding-top: 1rem;
+  .Name {
+    /* background-color: blue; */
+    /* padding: 1rem; */
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
-
+    gap: 2rem;
     div {
+      /* background-color: grey; */
+      width: 30%;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
       flex: 1;
-
-      select {
-        padding: 0.4rem 0.2rem;
-        border-radius: 5px;
-        background-color: #f3f5f8;
-        border: none;
-        outline: none;
-      }
-      input {
-        padding: 0.5rem 0.2rem;
-        border-radius: 5px;
-        background-color: #f3f5f8;
-        border: none;
-        outline: none;
-      }
     }
   }
 
@@ -242,4 +284,38 @@ export const UploadBox = styled.div`
   font-size: 13px;
   background: #fafafa;
   color: var(--primary_color_400);
+`;
+
+export const ActionRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+`;
+
+export const BackButton = styled.button`
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  &:disabled {
+    color: #c7ccd4;
+    cursor: not-allowed;
+  }
+`;
+
+export const NextButton = styled.button`
+  background: #00a3ff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background: #007ad9;
+  }
 `;

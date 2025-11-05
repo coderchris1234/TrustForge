@@ -35,6 +35,8 @@ const AddBusiness = () => {
 
   const fileInputRef = useRef(null);
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  console.log(uploadedFile);
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -51,6 +53,7 @@ const AddBusiness = () => {
     fundingSought: "",
     pitchDeck: null,
   });
+  console.log("data", form);
 
   const progressPercent = (step / totalSteps) * 100;
 
@@ -58,6 +61,7 @@ const AddBusiness = () => {
     const file = e.target.files[0];
     if (file) {
       setUploadedFile(file);
+      setForm((f) => ({ ...f, pitchDeck: file.name }));
       toast.success(`${file.name} uploaded successfully`);
     }
   };
@@ -95,9 +99,9 @@ const AddBusiness = () => {
     }
   };
 
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const handleSubmit = async () => {
-    const BaseUrl = import.meta.env.VITE_BaseUrl;
-
+    setLoading(true);
     try {
       if (!uploadedFile) {
         toast.error("Please upload your pitch deck before submitting");
@@ -107,18 +111,18 @@ const AddBusiness = () => {
       Object.entries(form).forEach(([key, value]) => {
         formData.append(key, value);
       });
-      formData.append("pitchDeck", uploadedFile);
 
       const res = await axios.post(`${BaseUrl}/pitch`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer${token}`,
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
       });
 
       toast.success(res?.data?.message || "Business created successfully");
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -155,7 +159,6 @@ const AddBusiness = () => {
       </StepInfo>
 
       <Card>
-        {/* Form content */}
         <FormArea>
           {step === 1 && (
             <>
@@ -344,7 +347,11 @@ const AddBusiness = () => {
           {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
 
           <NextButton onClick={handleNext}>
-            {step < totalSteps ? "Next Step" : "Submit"}
+            {step < totalSteps
+              ? "Next Step"
+              : loading
+              ? "Submiting..."
+              : "Submit"}
           </NextButton>
         </ActionRow>
       </Card>
