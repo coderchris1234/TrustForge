@@ -39,18 +39,19 @@ export const LoginLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-  /* ✅ Responsive image — full width, no border radius */
-  @media (max-width: 1024px) {
-    width: 100%;
-    height: 40vh;
-    border-radius: 0; /* Full rectangular image */
-  }
+    /* ✅ Responsive image — full width, no border radius */
+    @media (max-width: 1024px) {
+      width: 100%;
+      height: 40vh;
+      border-radius: 0; /* Full rectangular image */
+    }
 
-  @media (max-width: 600px) {
-    height: 60vh;
-    border-radius: 0; /* Keep full edge-to-edge */
+    @media (max-width: 600px) {
+      height: 60vh;
+      border-radius: 0; /* Keep full edge-to-edge */
+    }
   }
-`};
+`;
 
 export const LoginRight = styled.div`
   flex: 1;
