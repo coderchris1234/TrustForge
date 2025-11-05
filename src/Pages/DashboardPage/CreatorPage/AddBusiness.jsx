@@ -49,6 +49,7 @@ const AddBusiness = () => {
     revenueModel: "",
     targetMarket: "",
     currentRevenue: "",
+    fundingStage: "",
     fundingSought: "",
     pitchDeck: null,
     businessRegistrationCertificate: null,
@@ -259,7 +260,11 @@ const AddBusiness = () => {
                   <div className="fund">
                     <div>
                       <Label style={{ Color: "#e6e9ef" }}>Funding Stage</Label>
-                      <select>
+                      <select
+                        name="fundingStage"
+                        value={form.fundingStage}
+                        onChange={handleChange}
+                      >
                         <option value="">Pre-Seed</option>
                         <option value="">Seed</option>
                         <option value="">Series A</option>
