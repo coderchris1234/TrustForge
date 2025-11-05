@@ -125,6 +125,7 @@ const KycVerification = () => {
   };
   const handleSubmit = () => {
     toast.success("KYC submitted successfully");
+
     setFormData({
       profilePic: null,
       firstName: "",

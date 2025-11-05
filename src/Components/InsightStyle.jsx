@@ -6,6 +6,8 @@ export const InsightContainer = styled.div`
   height: 107vh;
   /* background: linear-gradient(to right, #f5b301, #8ab7f4, #8ab7f4); */
   background: url(${InsightBg});
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;

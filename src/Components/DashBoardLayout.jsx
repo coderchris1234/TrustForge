@@ -16,14 +16,13 @@ const DashBoardLayout = (props) => {
   };
 
   const user = useSelector((state) => state.TrustForge.user);
-  const token = user?.token;
-  const userId = user?.data?.data?.id;
+  const userId = user?.data?.id;
   const [userDetails, setUserDetails] = useState(null);
-  useEffect(() => {
-    const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
 
+  useEffect(() => {
     const fetchUser = async () => {
-      if (!userId || !token) return;
+      if (!userId) return;
 
       const endpoints =
         user?.data?.role === "Investor"
@@ -31,11 +30,7 @@ const DashBoardLayout = (props) => {
           : `${BaseUrl}/user/${userId}`;
 
       try {
-        const res = await axios.get(endpoints, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(endpoints);
 
         setUserDetails(res?.data?.data);
       } catch (error) {
@@ -44,7 +39,18 @@ const DashBoardLayout = (props) => {
     };
 
     fetchUser();
-  }, [token, userId]);
+  }, [userId]);
+
+  // const UserProfile = (ProfileName) => {
+  //   const DisplayName = ProfileName.split(" ")
+  //     .map((P) => P[0])
+  //     .join("")
+  //     .toUpperCase();
+
+  //   return DisplayName;
+  // };
+
+  // console.log("userDetails", userDetails);
 
   return (
     <>
@@ -93,10 +99,8 @@ const DashBoardLayout = (props) => {
             <div className="header-content">
               <div className="profile-content">
                 <div className="image"></div>
-                <div>
-                  <div style={{ marginBottom: "0" }}>
-                    <p>{userDetails?.user?.fullName || "Loading..."}</p>
-                  </div>
+                <div className="UserInfo">
+                  <p>{userDetails?.user?.fullName || "Loading..."}</p>
                   <span>{userDetails?.user?.role}</span>
                 </div>
               </div>

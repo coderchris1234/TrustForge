@@ -79,5 +79,9 @@ export const BusinessWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
-  padding: 0;
+  padding: 1rem;
+
+  p {
+    color: gray;
+  }
 `;

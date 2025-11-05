@@ -15,9 +15,10 @@ export const RecentIdeas = styled.div`
   /* padding-bottom: 2.5rem; */
   overflow-y: scroll;
   /* background-color: red; */
-  height: 400px;
+  /* min-height: 400px; */
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-bottom: 1rem;
 
   .wow {
     /* background-color: pink; */
