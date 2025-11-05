@@ -118,7 +118,6 @@ const Login = () => {
       <LoginLeft >
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </LoginLeft >
-      <LoginLeft />
       <LoginRight>
         <FormBox>
           <FormTitle>
