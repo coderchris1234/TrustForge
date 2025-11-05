@@ -5,60 +5,46 @@ import BusinessList from "../../../Components/BusinessList";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { CiCalendar } from "react-icons/ci";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Overview = () => {
   const [overviewData, setOverviewData] = useState({});
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+
+  // console.log("overviewData", overviewData);
+
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const user = useSelector((state) => state.TrustForge.user);
+  const userId = user?.data?.id;
 
   useEffect(() => {
-    const BaseUrl = import.meta.env.VITE_BaseUrl;
-
+    if (!userId) {
+      return;
+    }
     try {
-      const root = localStorage.getItem("persist:root");
-      if (!root) {
-        setLoading(false);
-        return;
-      }
-
-      const parsedRoot = JSON.parse(root);
-      const trustForgeData = parsedRoot.TrustForge
-        ? JSON.parse(parsedRoot.TrustForge)
-        : null;
-
-      const userData = trustForgeData?.user?.data;
-      const token = userData?.token;
-      const userId = userData?.id;
-      const role = userData?.role;
-
-      if (!userId || !token) {
-        setLoading(false);
-        return;
-      }
-
       const endpoint =
-        role === "Investor"
+        user?.data?.role === "Investor"
           ? `${BaseUrl}/investor/${userId}`
           : `${BaseUrl}/user/${userId}`;
 
       const fetchData = async () => {
         try {
-          const res = await axios.get(endpoint, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          const res = await axios.get(endpoint);
           setOverviewData(res.data.data || {});
         } catch (err) {
           console.error("Error fetching overview data:", err);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
 
       fetchData();
     } catch (error) {
       console.error("Error reading persisted user:", error);
-      setLoading(false);
+      // setLoading(false);
     }
-  }, []);
+  }, [userId]);
 
   const overviewBusiness = getOverviewBusiness(overviewData);
 
@@ -70,36 +56,34 @@ const Overview = () => {
       </div>
 
       <div className="Overview-content">
-        {loading ? (
-          <p>Loading overview...</p>
-        ) : (
-          overviewBusiness.map((section) => (
-            <div key={section.id} className="box">
-              <div>
-                <p>{section.title}</p>
-                <span>{section.num}</span>
-              </div>
-              <div
-                style={{
-                  backgroundColor: section.bgColor,
-                  padding: "8px",
-                  color: section.color,
-                  borderRadius: "5px",
-                }}
-              >
-                <img src={section.icon} alt="" />
-              </div>
+        {overviewBusiness.map((section) => (
+          <div key={section.id} className="box">
+            <div>
+              <p>{section.title}</p>
+              <span>{section.num}</span>
             </div>
-          ))
-        )}
+            <div
+              style={{
+                backgroundColor: section.bgColor,
+                padding: "8px",
+                color: section.color,
+                borderRadius: "5px",
+              }}
+            >
+              <img src={section.icon} alt="" />
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="recentIdeas">
         <div className="recent">
           <p>Recent Ideas</p>
-          <button>View All</button>
+          <NavLink to={"mybusiness"}>
+            <button>View All</button>
+          </NavLink>
         </div>
-        <BusinessList />
+        <BusinessList overviewData={overviewData} />
       </div>
 
       <div className="QuickAction">
