@@ -56,14 +56,14 @@ const Meeting = () => {
             className={activeTab === "upcoming" ? "active" : ""}
             onClick={() => setActiveTab("upcoming")}
           >
-            <p>Upcoming ({allMeeting?.upcomingMeetings?.length})</p>
+            <p>Upcoming ({allMeeting?.upcomingMeetings?.length || 0})</p>
           </div>
 
           <div
             className={activeTab === "past" ? "active" : ""}
             onClick={() => setActiveTab("past")}
           >
-            <p>Past ({allMeeting?.pastMeetings?.length})</p>
+            <p>Past ({allMeeting?.pastMeetings?.length || 0})</p>
           </div>
         </div>
       </div>
