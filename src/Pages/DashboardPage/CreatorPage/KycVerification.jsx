@@ -30,7 +30,7 @@ const KycVerification = () => {
   const proofOfAdressRef = useRef(null);
   const ProfilePicRef = useRef(null);
   const [profilePics, setProfilePics] = useState(null);
-  const [user, setUser] = useState("");
+  const [userKYC, setUserKYC] = useState(null);
   const [formData, setFormData] = useState({
     profilePic: null,
     firstName: "",
@@ -109,8 +109,8 @@ const KycVerification = () => {
   };
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const token = useSelector((state) => state.TrustForge.user?.token);
-  const user1 = useSelector((state) => state.TrustForge.user);
-  const userId = user1?.data?.id;
+  const user = useSelector((state) => state.TrustForge.user);
+  const userId = user?.data?.id;
 
   const handleSubmit = async () => {
     const formData2 = new FormData();
@@ -161,8 +161,8 @@ const KycVerification = () => {
       const fetchData = async () => {
         try {
           const res = await axios.get(endpoint);
-          console.log("omo", res);
-          setUser(res.data.data || {});
+          // console.log("omo", res);
+          setUserKYC(res?.data?.data?.user?.kycStatus || "");
         } catch (err) {
           console.error("Error fetching overview data:", err);
         } finally {
@@ -176,6 +176,14 @@ const KycVerification = () => {
       // setLoading(false);
     }
   }, [userId]);
+
+  console.log("this is user", userKYC);
+  useEffect(() => {
+    if (userKYC?.includes("review")) {
+      setStep(4);
+    }
+  }, [userKYC]);
+
   return (
     <KycContainer>
       <h2>KYC Verification</h2>

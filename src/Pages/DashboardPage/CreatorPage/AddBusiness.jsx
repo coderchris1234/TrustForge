@@ -233,12 +233,7 @@ const AddBusiness = () => {
                     type="date"
                     name="yearFounded"
                     value={form.yearFounded}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      if (/^\d{0,4}$/.test(value)) {
-                        setForm({ ...form, yearFounded: value });
-                      }
-                    }}
+                    onChange={handleChange}
                     placeholder="e.g. 2020"
                   />
                 </FieldRow>
