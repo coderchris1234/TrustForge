@@ -1,9 +1,9 @@
 import { BusinessPost } from "../Config/Data";
 import { Newsfeed_container } from "./BusinessNewsFeedStyle";
-const BusinessNewsFeed = () => {
+const BusinessNewsFeed = ({ data }) => {
   return (
     <Newsfeed_container>
-      {BusinessPost.map((post, index) => (
+      {data.map((post, index) => (
         <div key={index} className="postCard">
           <div className="busines_left">
             <div className="supplychain">

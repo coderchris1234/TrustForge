@@ -1,48 +1,31 @@
 import React from "react";
 import { RecentIdeas } from "./BusinessListStyle";
-import { RecentBusiness } from "../Config/Data";
+import BusinessCard from "./BusinessCard";
+// import { RecentBusiness } from "../Config/Data";
 const BusinessList = ({ overviewData }) => {
+  console.log(overviewData);
   return (
     <RecentIdeas>
-      {overviewData?.business?.length > 0
-        ? overviewData?.business
-            ?.reverse()
-            .splice(0, 5)
-            .map((item) => (
-              <div key={item.id} className="wow">
-                <p className="title">{item.title}</p>
-                <div className="ideaLabel">
-                  <p>{item.label}</p>
-                  <span>{item.isActive ? "active" : ""}</span>
-                </div>
-                <div className="cont">
-                  <div className="ideaIcons">
-                    <div className="icons">
-                      <img src={item.icon} alt="" />
-                      <span>{item.num}</span>
-                    </div>
-                    <div className="icons">
-                      <img src={item.icon2} alt="" />
-                      <span>{item.num2}</span>
-                    </div>
-                    <div className="icons">
-                      <img src={item.icon3} alt="" />
-                      <span>{item.num3}</span>
-                    </div>
-                  </div>
-                  <p
-                    style={{
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {item.time}
-                  </p>
-                </div>
-              </div>
-            ))
+      {overviewData?.businesses?.length > 0
+        ? overviewData.businesses.map((item) => (
+            <div className="omo">
+              <BusinessCard
+                key={item.id}
+                id={item.id}
+                title={item.businessName}
+                industry={item.industry}
+                businessStatus={item.businessStatus}
+                fundingStage={item.fundingStage}
+                description={item.description}
+                views={item.views}
+                likes={item.likes}
+                messages={item.messages}
+                postedDate={new Date(item.createdAt).toDateString()}
+              />
+            </div>
+          ))
         : "No Recent Ideas"}
     </RecentIdeas>
   );
 };
-
 export default BusinessList;
