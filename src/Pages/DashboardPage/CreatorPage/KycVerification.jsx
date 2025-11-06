@@ -36,11 +36,8 @@ const KycVerification = () => {
     city: "",
     state: "",
     companyName: "",
-    industry: "",
     businessRegistrationNumber: "",
     businessAddress: "",
-    yearFounded: "",
-    teamSize: "",
     companyWebsite: "",
     businessDescription: "",
     bankName: "",
@@ -335,14 +332,6 @@ const KycVerification = () => {
                 <FieldRow>
                   <div className="Name">
                     <div>
-                      <Label>Industry</Label>
-                      <Input
-                        onChange={handleChange}
-                        name="industry"
-                        value={formData.industry}
-                      />
-                    </div>
-                    <div>
                       <Label>Business registration number</Label>
                       <Input
                         value={formData.businessRegistrationNumber}
@@ -353,35 +342,15 @@ const KycVerification = () => {
                 </FieldRow>
 
                 <FieldRow>
-                  <div className="Name">
-                    <div>
-                      <Label>Year Founded</Label>
-                      <Input
-                        onChange={handleChange}
-                        name="yearFounded"
-                        value={formData.yearFounded}
-                      />
-                    </div>
-                    <div>
-                      <Label>Team Size</Label>
-                      <Input
-                        onChange={handleChange}
-                        name="teamSize"
-                        value={formData.teamSize}
-                      />
-                    </div>
-                  </div>
-
-                  <FieldRow>
-                    <Label>Company Website</Label>
-                    <Input
-                      value={formData.companyWebsite}
-                      onChange={handleChange}
-                      placeholder="https://example.com"
-                      type="text"
-                    />
-                  </FieldRow>
+                  <Label>Company Website</Label>
+                  <Input
+                    value={formData.companyWebsite}
+                    onChange={handleChange}
+                    placeholder="https://example.com"
+                    type="text"
+                  />
                 </FieldRow>
+
                 <FieldRow>
                   <Label>Business Description</Label>
                   <Input

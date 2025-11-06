@@ -41,17 +41,6 @@ const DashBoardLayout = (props) => {
     fetchUser();
   }, [userId]);
 
-  // const UserProfile = (ProfileName) => {
-  //   const DisplayName = ProfileName.split(" ")
-  //     .map((P) => P[0])
-  //     .join("")
-  //     .toUpperCase();
-
-  //   return DisplayName;
-  // };
-
-  // console.log("userDetails", userDetails);
-
   return (
     <>
       <DashboardLayoutContainer>

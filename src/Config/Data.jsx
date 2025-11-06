@@ -451,6 +451,11 @@ export const CreatorMenu = [
     },
     {
       Icon: sub,
+      label: "profile",
+      link: "profile",
+    },
+    {
+      Icon: sub,
       label: "Subscription",
       link: "subscription",
     },

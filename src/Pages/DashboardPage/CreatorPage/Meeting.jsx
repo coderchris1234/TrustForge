@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MeetingContainer } from "./MeetingStyle";
 import MeetingCard from "../../../Components/MeetingCard";
 import { Meetings } from "../../../Config/Data";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Meeting = () => {
   const [activeTab, setActiveTab] = useState("upcoming");
+  const [allMeeting, setAllMeeting] = useState({});
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const user = useSelector((state) => state.TrustForge.user);
+  const userId = user?.data?.id;
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    try {
+      const endpoint =
+        user?.data?.role === "Investor"
+          ? `${BaseUrl}/investor/${userId}`
+          : `${BaseUrl}/user/${userId}`;
+
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(endpoint);
+          setAllMeeting(res.data.data || {});
+        } catch (err) {
+          console.error("Error fetching overview data:", err);
+        }
+      };
+
+      fetchData();
+    } catch (error) {
+      console.error("Error reading persisted user:", error);
+      // setLoading(false);
+    }
+  }, [userId]);
 
   const upcomingMeetings = Meetings.filter((m) => m.status === "Confirmed");
   const pastMeetings = Meetings.filter((m) => m.status !== "Confirmed");
@@ -24,18 +56,18 @@ const Meeting = () => {
             className={activeTab === "upcoming" ? "active" : ""}
             onClick={() => setActiveTab("upcoming")}
           >
-            <p>Upcoming ({upcomingMeetings.length})</p>
+            <p>Upcoming ({allMeeting?.upcomingMeetings?.length})</p>
           </div>
 
           <div
             className={activeTab === "past" ? "active" : ""}
             onClick={() => setActiveTab("past")}
           >
-            <p>Past ({pastMeetings.length})</p>
+            <p>Past ({allMeeting?.pastMeetings?.length})</p>
           </div>
         </div>
       </div>
-      {displayedMeetings.length > 0 ? (
+      {allMeeting?.displayedMeetings?.length > 0 ? (
         displayedMeetings.map((biz) => <MeetingCard {...biz} key={biz.id} />)
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>

@@ -31,11 +31,12 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const AddBusiness = () => {
-  const token = useSelector((state) => state.TrustForge.user?.data?.token);
+  const token = useSelector((state) => state.TrustForge.user?.token);
 
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -54,7 +55,6 @@ const AddBusiness = () => {
     pitchDeck: null,
     businessRegistrationCertificate: null,
   });
-  console.log("data", form);
 
   const progressPercent = (step / totalSteps) * 100;
 
@@ -123,16 +123,35 @@ const AddBusiness = () => {
 
       const res = await axios.post(`${BaseUrl}/pitch`, formData, {
         headers: {
-          "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
       });
+      console.log("res", res?.data);
 
       toast.success(res?.data?.message || "Business created successfully");
     } catch (error) {
-      console.log(error);
       setLoading(false);
+      const msg = error?.response?.data?.message;
+      setErrorMessage(msg);
+      toast.error(msg);
+      console.log(errorMessage);
     }
+    setStep(1);
+    setLoading(false);
+    setForm({
+      businessName: "",
+      industry: "",
+      description: "",
+      yearFounded: "",
+      businessModel: "",
+      revenueModel: "",
+      targetMarket: "",
+      currentRevenue: "",
+      fundingStage: "",
+      fundingSought: "",
+      pitchDeck: null,
+      businessRegistrationCertificate: null,
+    });
   };
 
   const handleBack = () => {
@@ -143,250 +162,257 @@ const AddBusiness = () => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   return (
-    <PageWrap>
-      <TitleBlock>
-        <MainTitle>Add Business profile</MainTitle>
-        <SubTitle>
-          Share your innovative Business idea with Potential investors
-        </SubTitle>
-      </TitleBlock>
+    <>
+      <PageWrap>
+        <TitleBlock>
+          <MainTitle>Add Business profile</MainTitle>
+          <SubTitle>
+            Share your innovative Business idea with Potential investors
+          </SubTitle>
+        </TitleBlock>
 
-      <StepInfo>
-        <StepLabel>
-          Step {step} of {totalSteps}
-        </StepLabel>
+        <StepInfo>
+          <StepLabel>
+            Step {step} of {totalSteps}
+          </StepLabel>
 
-        <ProgressBar>
-          <ProgressFill style={{ width: `${progressPercent}%` }} />
-        </ProgressBar>
+          <ProgressBar>
+            <ProgressFill style={{ width: `${progressPercent}%` }} />
+          </ProgressBar>
 
-        <StepNames>
-          <StepName active={step === 1}>Basic info</StepName>
-          <StepName active={step === 2}>Details</StepName>
-          <StepName active={step === 3}>Attachment</StepName>
-        </StepNames>
-      </StepInfo>
+          <StepNames>
+            <StepName active={step === 1}>Basic info</StepName>
+            <StepName active={step === 2}>Details</StepName>
+            <StepName active={step === 3}>Attachment</StepName>
+          </StepNames>
+        </StepInfo>
 
-      <Card>
-        <FormArea>
-          {step === 1 && (
-            <>
-              <SectionTitle>Basic information</SectionTitle>
+        <Card>
+          <FormArea>
+            {step === 1 && (
+              <>
+                <SectionTitle>Basic information</SectionTitle>
 
-              <FieldRow>
-                <Label>Business Name</Label>
-                <Input
-                  name="businessName"
-                  value={form.businessName}
-                  onChange={handleChange}
-                  placeholder="Enter your business name"
-                />
-              </FieldRow>
-
-              <FieldRow>
-                <Label>Industry</Label>
-                <Input
-                  name="industry"
-                  value={form.industry}
-                  onChange={handleChange}
-                  placeholder="Enter your industry"
-                />
-              </FieldRow>
-
-              <FieldRow>
-                <Label>Business Description</Label>
-                <Textarea
-                  name="description"
-                  value={form.description}
-                  onChange={handleChange}
-                  placeholder="Provide a short description of your business"
-                  rows={4}
-                  style={{
-                    outline: "none",
-                  }}
-                />
-              </FieldRow>
-
-              <FieldRow>
-                <Label>Year Founded</Label>
-                <Input
-                  name="yearFounded"
-                  value={form.yearFounded}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (/^\d{0,4}$/.test(value)) {
-                      setForm({ ...form, yearFounded: value });
-                    }
-                  }}
-                  placeholder="e.g. 2020"
-                />
-              </FieldRow>
-            </>
-          )}
-
-          {step === 2 && (
-            <>
-              <SectionTitle>Business Model</SectionTitle>
-
-              <FieldRow>
-                <Label>Business Model</Label>
-                <Input
-                  value={form.businessModel}
-                  name="businessModel"
-                  onChange={handleChange}
-                  placeholder="Describe your business model (B2B, B2C, Marketplace, etc.)"
-                />
-              </FieldRow>
-
-              <FieldRow>
-                <Label>Revenue Model</Label>
-                <Input
-                  value={form.revenueModel}
-                  onChange={handleChange}
-                  name="revenueModel"
-                  placeholder="How does your business generate revenue?"
-                />
-              </FieldRow>
-
-              <FieldRow>
-                <Label>Target Market</Label>
-                <Input
-                  value={form.targetMarket}
-                  onChange={handleChange}
-                  name="targetMarket"
-                  placeholder="Who are your target customers?"
-                />
                 <FieldRow>
-                  <div className="fund">
-                    <div>
-                      <Label style={{ Color: "#e6e9ef" }}>Funding Stage</Label>
-                      <select
-                        name="fundingStage"
-                        value={form.fundingStage}
-                        onChange={handleChange}
-                      >
-                        <option value="">Pre-Seed</option>
-                        <option value="">Seed</option>
-                        <option value="">Series A</option>
-                        <option value="">Series B</option>
-                        <option value="">Series C+</option>
-                        <option value="">Growth Stage</option>
-                      </select>
+                  <Label>Business Name</Label>
+                  <Input
+                    name="businessName"
+                    value={form.businessName}
+                    onChange={handleChange}
+                    placeholder="Enter your business name"
+                  />
+                </FieldRow>
+
+                <FieldRow>
+                  <Label>Industry</Label>
+                  <Input
+                    name="industry"
+                    value={form.industry}
+                    onChange={handleChange}
+                    placeholder="Enter your industry"
+                  />
+                </FieldRow>
+
+                <FieldRow>
+                  <Label>Business Description</Label>
+                  <Textarea
+                    name="description"
+                    value={form.description}
+                    onChange={handleChange}
+                    placeholder="Provide a short description of your business"
+                    rows={4}
+                    style={{
+                      outline: "none",
+                    }}
+                  />
+                </FieldRow>
+
+                <FieldRow>
+                  <Label>Year Founded</Label>
+                  <Input
+                    name="yearFounded"
+                    value={form.yearFounded}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d{0,4}$/.test(value)) {
+                        setForm({ ...form, yearFounded: value });
+                      }
+                    }}
+                    placeholder="e.g. 2020"
+                  />
+                </FieldRow>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <SectionTitle>Business Model</SectionTitle>
+
+                <FieldRow>
+                  <Label>Business Model</Label>
+                  <Input
+                    value={form.businessModel}
+                    name="businessModel"
+                    onChange={handleChange}
+                    placeholder="Describe your business model (B2B, B2C, Marketplace, etc.)"
+                  />
+                </FieldRow>
+
+                <FieldRow>
+                  <Label>Revenue Model</Label>
+                  <Input
+                    value={form.revenueModel}
+                    onChange={handleChange}
+                    name="revenueModel"
+                    placeholder="How does your business generate revenue?"
+                  />
+                </FieldRow>
+
+                <FieldRow>
+                  <Label>Target Market</Label>
+                  <Input
+                    value={form.targetMarket}
+                    onChange={handleChange}
+                    name="targetMarket"
+                    placeholder="Who are your target customers?"
+                  />
+                  <FieldRow>
+                    <div className="fund">
+                      <div>
+                        <Label style={{ Color: "#e6e9ef" }}>
+                          Funding Stage
+                        </Label>
+                        <select
+                          name="fundingStage"
+                          value={form.fundingStage}
+                          onChange={handleChange}
+                        >
+                          <option value="Pre-Seed">Pre-Seed</option>
+                          <option value="Seed">Seed</option>
+                          <option value="Series A">Series A</option>
+                          <option value="Series B">Series B</option>
+                          <option value="Series C+">Series C+</option>
+                          <option value="Growth Stage">Growth Stage</option>
+                        </select>
+                      </div>
+                      <div>
+                        <Label>Funding Sought</Label>
+                        <input
+                          type="num"
+                          placeholder="e.g..., ₦700,000"
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (/^\d{0,30}$/.test(value)) {
+                              setForm({ ...form, fundingSought: value });
+                            }
+                          }}
+                          value={form.fundingSought}
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <Label>Funding Sought</Label>
-                      <input
-                        type="num"
-                        placeholder="e.g..., ₦700,000"
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          if (/^\d{0,30}$/.test(value)) {
-                            setForm({ ...form, fundingSought: value });
-                          }
-                        }}
-                        value={form.fundingSought}
-                      />
-                    </div>
+                  </FieldRow>
+                </FieldRow>
+                <FieldRow>
+                  <Label>Current Revenue</Label>
+                  <Input
+                    value={form.currentRevenue}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d{0,30}$/.test(value)) {
+                        setForm({ ...form, currentRevenue: value });
+                      }
+                    }}
+                    name="currentRevenue"
+                    placeholder="e.g..., ₦500,000"
+                  />
+                </FieldRow>
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                <SectionTitle>Document & Attachment</SectionTitle>
+                <h3>Upload Supporting Document</h3>
+                <p>
+                  Add pitch deck, business plan, financial statments or other
+                  relevant document
+                </p>
+                <FieldRow>
+                  <Label>Upload Pitch Deck</Label>
+                  <UploadWrapper>
+                    <input
+                      type="file"
+                      ref={pitchDeckInputRef}
+                      style={{ display: "none" }}
+                      onChange={(e) => handleFileChange(e, "pitchDeck")}
+                      name="pitchDeck"
+                    />
+                    <UploadBox
+                      onClick={() => pitchDeckInputRef.current.click()}
+                    >
+                      <MdOutlineFileUpload size={40} color="blue" />
+                      {form.pitchDeck ? form.pitchDeck.name : "Click to upload"}
+                    </UploadBox>
+                  </UploadWrapper>
+                  <Label>Business Registration Certificate</Label>
+                  <UploadWrapper>
+                    <input
+                      type="file"
+                      ref={certInputRef}
+                      style={{ display: "none" }}
+                      onChange={(e) =>
+                        handleFileChange(e, "businessRegistrationCertificate")
+                      }
+                      name="businessRegistrationCertificate"
+                    />
+                    <UploadBox onClick={() => certInputRef.current.click()}>
+                      <MdOutlineFileUpload size={40} color="blue" />
+                      {form.businessRegistrationCertificate
+                        ? form.businessRegistrationCertificate.name
+                        : "Click to upload"}
+                    </UploadBox>
+                  </UploadWrapper>
+                  <div className="submission">
+                    <p
+                      style={{
+                        fontWeight: "500",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Submission Guidelines
+                    </p>
+                    <ul>
+                      <li>Ensure all information is accurate and up to date</li>
+                      <li>
+                        Your business profile will be reviews between 24-48
+                        hours
+                      </li>
+                      <li>You can edit or delete your profile anytime</li>
+                      <li>
+                        You will be notified when investors want to contact you
+                      </li>
+                    </ul>
                   </div>
                 </FieldRow>
-              </FieldRow>
-              <FieldRow>
-                <Label>Current Revenue</Label>
-                <Input
-                  value={form.currentRevenue}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (/^\d{0,30}$/.test(value)) {
-                      setForm({ ...form, currentRevenue: value });
-                    }
-                  }}
-                  name="currentRevenue"
-                  placeholder="e.g..., ₦500,000"
-                />
-              </FieldRow>
-            </>
-          )}
+              </>
+            )}
+          </FormArea>
 
-          {step === 3 && (
-            <>
-              <SectionTitle>Document & Attachment</SectionTitle>
-              <h3>Upload Supporting Document</h3>
-              <p>
-                Add pitch deck, business plan, financial statments or other
-                relevant document
-              </p>
-              <FieldRow>
-                <Label>Upload Pitch Deck</Label>
-                <UploadWrapper>
-                  <input
-                    type="file"
-                    ref={pitchDeckInputRef}
-                    style={{ display: "none" }}
-                    onChange={(e) => handleFileChange(e, "pitchDeck")}
-                    name="pitchDeck"
-                  />
-                  <UploadBox onClick={() => pitchDeckInputRef.current.click()}>
-                    <MdOutlineFileUpload size={40} color="blue" />
-                    {form.pitchDeck ? form.pitchDeck.name : "Click to upload"}
-                  </UploadBox>
-                </UploadWrapper>
-                <Label>Business Registration Certificate</Label>
-                <UploadWrapper>
-                  <input
-                    type="file"
-                    ref={certInputRef}
-                    style={{ display: "none" }}
-                    onChange={(e) =>
-                      handleFileChange(e, "businessRegistrationCertificate")
-                    }
-                    name="businessRegistrationCertificate"
-                  />
-                  <UploadBox onClick={() => certInputRef.current.click()}>
-                    <MdOutlineFileUpload size={40} color="blue" />
-                    {form.businessRegistrationCertificate
-                      ? form.businessRegistrationCertificate.name
-                      : "Click to upload"}
-                  </UploadBox>
-                </UploadWrapper>
-                <div className="submission">
-                  <p
-                    style={{
-                      fontWeight: "500",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Submission Guidelines
-                  </p>
-                  <ul>
-                    <li>Ensure all information is accurate and up to date</li>
-                    <li>
-                      Your business profile will be reviews between 24-48 hours
-                    </li>
-                    <li>You can edit or delete your profile anytime</li>
-                    <li>
-                      You will be notified when investors want to contact you
-                    </li>
-                  </ul>
-                </div>
-              </FieldRow>
-            </>
-          )}
-        </FormArea>
+          {/* Buttons */}
+          <ActionRow>
+            {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
 
-        {/* Buttons */}
-        <ActionRow>
-          {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
-
-          <NextButton onClick={handleNext}>
-            {step < totalSteps
-              ? "Next Step"
-              : loading
-              ? "Submiting..."
-              : "Submit"}
-          </NextButton>
-        </ActionRow>
-      </Card>
-    </PageWrap>
+            <NextButton onClick={handleNext}>
+              {step < totalSteps
+                ? "Next Step"
+                : loading
+                ? "Submiting..."
+                : "Submit"}
+            </NextButton>
+          </ActionRow>
+        </Card>
+      </PageWrap>
+    </>
   );
 };
 

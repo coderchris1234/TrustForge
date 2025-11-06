@@ -5,9 +5,9 @@ const BusinessList = ({ overviewData }) => {
   return (
     <RecentIdeas>
       {overviewData?.business?.length > 0
-        ? overviewData?.businesses
+        ? overviewData?.business
             ?.reverse()
-            .splice(1, 5)
+            .splice(0, 5)
             .map((item) => (
               <div key={item.id} className="wow">
                 <p className="title">{item.title}</p>
