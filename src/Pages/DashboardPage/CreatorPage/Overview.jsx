@@ -94,7 +94,9 @@ const Overview = () => {
             className="quick"
           >
             <MdOutlineFileUpload width={"20px"} />
-            <p>Add Business Profile</p>
+            <NavLink to={"/dashboard/business_owner/addbusiness"}>
+              <p>Add Business Profile</p>
+            </NavLink>
           </div>
           <div
             style={{
