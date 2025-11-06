@@ -33,6 +33,7 @@ import Subscription2 from "./Pages/DashboardPage/InvestorPage/Subscription2";
 import KycVerification2 from "./Pages/DashboardPage/InvestorPage/KycVerification2";
 import HelpSupport2 from "./Pages/DashboardPage/InvestorPage/HelpSupport2";
 import ScrollToTop from "./Config/Scroll_to_top";
+import BusinessDetailPage from "./Pages/DashboardPage/CreatorPage/BusinessDetail";
 
 const App = () => {
   return (
@@ -58,8 +59,9 @@ const App = () => {
             <Route path="addbusiness" element={<AddBusiness />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="notification" element={<Notification1 />} />
+            <Route path="businessDetail/:id" element={<BusinessDetailPage />} />
             <Route path="meeting" element={<Meeting />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<BusinessDetailPage />} />
             <Route path="subscription" element={<Subscription />} />
             <Route path="kycverification" element={<KycVerification />} />
             <Route path="helpsupport" element={<HelpSupport />} />

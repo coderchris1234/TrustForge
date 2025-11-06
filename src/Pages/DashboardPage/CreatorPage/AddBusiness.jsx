@@ -61,7 +61,7 @@ const AddBusiness = () => {
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
     if (file) {
-      setForm((f) => ({ ...f, [fieldName]: file }));
+      setForm((f) => ({ ...f, [fieldName]: file.name }));
       toast.success(`${file.name} uploaded successfully`);
     }
   };
@@ -230,6 +230,7 @@ const AddBusiness = () => {
                 <FieldRow>
                   <Label>Year Founded</Label>
                   <Input
+                    type="date"
                     name="yearFounded"
                     value={form.yearFounded}
                     onChange={(e) => {
