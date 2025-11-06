@@ -44,11 +44,10 @@ const ForgotPassword = () => {
     }
 
     const BaseUrl = import.meta.env.VITE_BaseUrl;
-
     const endpoint =
       role?.data?.role === "Investor"
-        ? ⁠ ${BaseUrl}/forgoti ⁠
-        : ⁠ ${BaseUrl}/forgot ⁠;
+        ? `${BaseUrl}/forgoti`
+        : `${BaseUrl}/forgot`;
 
     try {
       setLoading(true);
