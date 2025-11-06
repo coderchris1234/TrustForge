@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   KycContainer,
   PageWrap,
@@ -22,39 +22,50 @@ import {
 import toast from "react-hot-toast";
 import { GoUpload } from "react-icons/go";
 import { MdOutlinePayment } from "react-icons/md";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const KycVerification = () => {
+  const governmentIssuedRef = useRef(null);
+  const proofOfAdressRef = useRef(null);
+  const ProfilePicRef = useRef(null);
+  const [profilePics, setProfilePics] = useState(null);
+  const [user, setUser] = useState("");
   const [formData, setFormData] = useState({
     profilePic: null,
     firstName: "",
     lastName: "",
     dateOfBirth: "",
     phoneNumber: "",
-    emailAddress: "",
+    email: "",
     nationality: "",
     residentialAddress: "",
     city: "",
     state: "",
-    companyName: "",
-    businessRegistrationNumber: "",
-    businessAddress: "",
-    companyWebsite: "",
-    businessDescription: "",
     bankName: "",
     accountNumber: "",
     accountName: "",
     accountType: "",
-    governmentIssuedId: null,
+    governmentId: null,
     proofOfAddress: null,
-    businessRegistrationCertificate: null,
   });
   const handleChange = (e) => {
     setFormData((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
-  const totalSteps = 5;
+  const totalSteps = 4;
   const [step, setStep] = useState(1);
 
   const progressPercent = (step / totalSteps) * 100;
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files[0];
+    const imageData = URL.createObjectURL(file);
+    setProfilePics(imageData);
+    console.log("file", imageData);
+    if (file) {
+      setFormData((f) => ({ ...f, [fieldName]: file }));
+      toast.success(`${file.name} uploaded successfully`);
+    }
+  };
 
   const handleBack = () => {
     if (step > 1) setStep((s) => s - 1);
@@ -68,7 +79,7 @@ const KycVerification = () => {
         !formData.lastName ||
         !formData.dateOfBirth ||
         !formData.phoneNumber ||
-        !formData.emailAddress ||
+        !formData.email ||
         !formData.nationality ||
         !formData.residentialAddress ||
         !formData.city ||
@@ -80,38 +91,14 @@ const KycVerification = () => {
 
     if (
       step === 2 &&
-      (!formData.companyName ||
-        !formData.industry ||
-        !formData.businessRegistrationNumber ||
-        !formData.businessAddress ||
-        !formData.yearFounded ||
-        !formData.teamSize ||
-        !formData.companyWebsite ||
-        !formData.businessAddress)
-    ) {
-      toast.error("Please fill all required fields in step 2");
-      return;
-    }
-
-    if (
-      step === 3 &&
       (!formData.bankName || !formData.accountNumber || !formData.accountType)
     ) {
       toast.error("Please fill all required fields in step 3");
       return;
     }
 
-    if (
-      step === 4 &&
-      (!formData.governmentIssuedId ||
-        !formData.proofOfAddress ||
-        !formData.businessRegistrationCertificate)
-    ) {
-      toast.error("Please fill all required fields in step 4");
-    }
-
-    if (formData.yearFounded.length < 4) {
-      toast.error("year should be 4 digits");
+    if (step === 3 && (!formData.governmentId || !formData.proofOfAddress)) {
+      toast.error("Please fill all required fields in step 3");
     }
 
     if (step < totalSteps) {
@@ -120,38 +107,75 @@ const KycVerification = () => {
       handleSubmit();
     }
   };
-  const handleSubmit = () => {
-    toast.success("KYC submitted successfully");
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  const user1 = useSelector((state) => state.TrustForge.user);
+  const userId = user1?.data?.id;
 
-    setFormData({
-      profilePic: null,
-      firstName: "",
-      lastName: "",
-      dateOfBirth: "",
-      phoneNumber: "",
-      emailAddress: "",
-      nationality: "",
-      residentialAddress: "",
-      city: "",
-      state: "",
-      companyName: "",
-      industry: "",
-      businessRegistrationNumber: "",
-      businessAddress: "",
-      yearFounded: "",
-      teamSize: "",
-      companyWebsite: "",
-      businessDescription: "",
-      bankName: "",
-      accountNumber: "",
-      accountName: "",
-      accountType: "",
-      governmentIssuedId: null,
-      proofOfAddress: null,
-      businessRegistrationCertificate: null,
+  const handleSubmit = async () => {
+    const formData2 = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formData2.append(key, value);
     });
-    setStep(1);
+    try {
+      const res = await axios.post(`${BaseUrl}/kyc`, formData2, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      setStep(4);
+      console.log("omo", res);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setFormData({
+        profilePic: null,
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        phoneNumber: "",
+        email: "",
+        nationality: "",
+        residentialAddress: "",
+        city: "",
+        state: "",
+        bankName: "",
+        accountNumber: "",
+        accountName: "",
+        accountType: "",
+        governmentId: null,
+        proofOfAddress: null,
+      });
+    }
   };
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    try {
+      const endpoint =
+        user?.data?.role === "Investor"
+          ? `${BaseUrl}/investor/${userId}`
+          : `${BaseUrl}/user/${userId}`;
+
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(endpoint);
+          console.log("omo", res);
+          setUser(res.data.data || {});
+        } catch (err) {
+          console.error("Error fetching overview data:", err);
+        } finally {
+          // setLoading(false);
+        }
+      };
+
+      fetchData();
+    } catch (error) {
+      console.error("Error reading persisted user:", error);
+      // setLoading(false);
+    }
+  }, [userId]);
   return (
     <KycContainer>
       <h2>KYC Verification</h2>
@@ -178,10 +202,9 @@ const KycVerification = () => {
           </ProgressBar>
           <StepNames>
             <StepName active={step === 1}>Personal</StepName>
-            <StepName active={step === 2}>Business</StepName>
-            <StepName active={step === 3}>Banking</StepName>
-            <StepName active={step === 4}>Document</StepName>
-            <stepName active={step === 5}>Review</stepName>
+            <StepName active={step === 2}>Banking</StepName>
+            <StepName active={step === 3}>Document</StepName>
+            <StepName active={step === 4}>Review</StepName>
           </StepNames>
         </StepInfo>
 
@@ -196,18 +219,14 @@ const KycVerification = () => {
                     style={{ display: "none" }}
                     type="file"
                     name="profilePic"
-                    onChange={(e) =>
-                      setFormData((f) => ({
-                        ...f,
-                        profilePic: e.target.files[0],
-                      }))
-                    }
-                    id="profilePicInput"
+                    onChange={(e) => handleFileChange(e, "profilePic")}
+                    // id="profilePicInput"
+                    ref={ProfilePicRef}
                   />
                   <div className="imageContainer">
                     {formData.profilePic ? (
                       <img
-                        src={URL.createObjectURL(formData.profilePic)}
+                        src={profilePics}
                         alt="Profile Preview"
                         style={{
                           width: "150px",
@@ -220,11 +239,7 @@ const KycVerification = () => {
                       <GoUpload size={30} color="grey" />
                     )}
                   </div>
-                  <span
-                    onClick={() =>
-                      document.getElementById("profilePicInput").click()
-                    }
-                  >
+                  <span onClick={() => ProfilePicRef.current.click()}>
                     <GoUpload color="#ffff" />
                   </span>
                   <p>Upload a professional photo</p>
@@ -236,6 +251,7 @@ const KycVerification = () => {
                       <Label>First Name</Label>
                       <Input
                         type="text"
+                        name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
                       />
@@ -244,6 +260,7 @@ const KycVerification = () => {
                       <Label>Last Name</Label>
                       <Input
                         type="text"
+                        name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
                       />
@@ -254,6 +271,7 @@ const KycVerification = () => {
                 <FieldRow>
                   <Label>Date Of Birth</Label>
                   <Input
+                    type="date"
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleChange}
@@ -275,8 +293,8 @@ const KycVerification = () => {
                   <Label>Email Address</Label>
                   <Input
                     type="email"
-                    name="emailAddress"
-                    value={formData.emailAddress}
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
                   />
                 </FieldRow>
@@ -309,7 +327,11 @@ const KycVerification = () => {
                     </div>
                     <div>
                       <Label>State</Label>
-                      <Input value={formData.state} onChange={handleChange} />
+                      <Input
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                 </FieldRow>
@@ -317,52 +339,6 @@ const KycVerification = () => {
             )}
 
             {step === 2 && (
-              <>
-                <SectionTitle>Company Information</SectionTitle>
-
-                <FieldRow>
-                  <Label>Company Name</Label>
-                  <Input
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                  />
-                </FieldRow>
-
-                <FieldRow>
-                  <div className="Name">
-                    <div>
-                      <Label>Business registration number</Label>
-                      <Input
-                        value={formData.businessRegistrationNumber}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                </FieldRow>
-
-                <FieldRow>
-                  <Label>Company Website</Label>
-                  <Input
-                    value={formData.companyWebsite}
-                    onChange={handleChange}
-                    placeholder="https://example.com"
-                    type="text"
-                  />
-                </FieldRow>
-
-                <FieldRow>
-                  <Label>Business Description</Label>
-                  <Input
-                    name="businessDescription"
-                    value={formData.businessDescription}
-                    placeholder="Describe your business, products, services..."
-                  />
-                </FieldRow>
-              </>
-            )}
-
-            {step === 3 && (
               <>
                 <div className="Bank">
                   <div className="bankDetails">
@@ -395,7 +371,7 @@ const KycVerification = () => {
                   <Input
                     value={formData.accountName}
                     onChange={handleChange}
-                    name="accountNumber"
+                    name="accountName"
                     placeholder="Must match business name"
                   />
                 </FieldRow>
@@ -420,7 +396,7 @@ const KycVerification = () => {
               </>
             )}
 
-            {step === 4 && (
+            {step === 3 && (
               <>
                 <SectionTitle>Verification Document</SectionTitle>
                 <FieldRow>
@@ -429,25 +405,19 @@ const KycVerification = () => {
                   <input
                     type="file"
                     accept=".jpg,.jpeg,.png,.pdf"
-                    id="governmentId"
+                    ref={governmentIssuedRef}
                     style={{ display: "none" }}
-                    onChange={(e) =>
-                      setFormData((f) => ({
-                        ...f,
-                        governmentIssuedId: e.target.files[0],
-                      }))
-                    }
+                    onChange={(e) => handleFileChange(e, "governmentId")}
+                    name="governmentId"
                   />
                   <div
-                    onClick={() =>
-                      document.getElementById("governmentId").click()
-                    }
+                    onClick={() => governmentIssuedRef.current.click()}
                     className="Upload"
                   >
                     <GoUpload size={50} color="lightGrey" />
                     <p style={{ color: "lightgray" }}>
-                      {formData.governmentIssuedId
-                        ? formData.governmentIssuedId.name
+                      {formData.governmentId
+                        ? formData.governmentId.name
                         : "Click to upload"}
                     </p>
                   </div>
@@ -457,54 +427,19 @@ const KycVerification = () => {
                   <input
                     type="file"
                     accept=".jpg,.jpeg,.png,.pdf"
-                    id="proofOfAddress"
+                    ref={proofOfAdressRef}
                     style={{ display: "none" }}
-                    onChange={(e) =>
-                      setFormData((f) => ({
-                        ...f,
-                        proofOfAddress: e.target.files[0],
-                      }))
-                    }
+                    onChange={(e) => handleFileChange(e, "proofOfAddress")}
+                    name="proofOfAddress"
                   />
                   <div
-                    onClick={() =>
-                      document.getElementById("proofOfAddress").click()
-                    }
+                    onClick={() => proofOfAdressRef.current.click()}
                     className="Upload"
                   >
                     <GoUpload size={50} color="lightGrey" />
                     <p style={{ color: "lightgray" }}>
                       {formData.proofOfAddress
                         ? formData.proofOfAddress.name
-                        : "Click to upload"}
-                    </p>
-                  </div>
-
-                  <h3>Business registration Certificate</h3>
-                  <p>Certificate of Incorporation or Business License</p>
-                  <input
-                    type="file"
-                    accept=".jpg,.jpeg,.png,.pdf"
-                    id="businessCert"
-                    style={{ display: "none" }}
-                    onChange={(e) =>
-                      setFormData((f) => ({
-                        ...f,
-                        businessRegistrationCertificate: e.target.files[0],
-                      }))
-                    }
-                  />
-
-                  <div
-                    onClick={() =>
-                      document.getElementById("businessCert").click()
-                    }
-                    className="Upload"
-                  >
-                    <GoUpload size={50} color="lightGrey" />
-                    <p style={{ color: "lightgray" }}>
-                      {formData.businessRegistrationCertificate
-                        ? formData.businessRegistrationCertificate.name
                         : "Click to upload"}
                     </p>
                   </div>

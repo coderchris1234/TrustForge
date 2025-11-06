@@ -5,7 +5,9 @@ import { GoTrash } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 const BusinessCard = (props) => {
+  const nav = useNavigate();
   const getStatusClass = (status) => {
     if (!status) return "status";
 
@@ -36,6 +38,7 @@ const BusinessCard = (props) => {
               icon={<GoTrash />}
               Btntext="Delete"
               className="deleteBtn bt"
+              onClick={() => nav(`/businessDetail/${props.id}`)}
             />
           </div>
         </div>

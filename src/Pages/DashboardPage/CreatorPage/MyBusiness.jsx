@@ -47,6 +47,7 @@ const MyBusiness = () => {
       const fetchData = async () => {
         try {
           const res = await axios.get(endpoint);
+          console.log("omo", res);
           setAllBusiness(res.data.data || {});
         } catch (err) {
           console.error("Error fetching overview data:", err);
@@ -101,7 +102,9 @@ const MyBusiness = () => {
 
       <BusinessWrapper>
         {filteredBusiness.length > 0 ? (
-          filteredBusiness.map((biz) => <BusinessCard key={biz.id} {...biz} />)
+          filteredBusiness.map((biz) => (
+            <BusinessCard key={biz.id} {...biz} id={biz.id} />
+          ))
         ) : allBusiness?.businesses?.length > 0 ? (
           allBusiness.businesses
             .slice()
