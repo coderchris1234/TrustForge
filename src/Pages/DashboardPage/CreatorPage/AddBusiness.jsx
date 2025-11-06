@@ -61,7 +61,7 @@ const AddBusiness = () => {
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
     if (file) {
-      setForm((f) => ({ ...f, [fieldName]: file.name }));
+      setForm((f) => ({ ...f, [fieldName]: file }));
       toast.success(`${file.name} uploaded successfully`);
     }
   };
