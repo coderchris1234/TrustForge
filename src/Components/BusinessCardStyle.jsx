@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const BusinessContainer = styled.div`
-  background-color: red;
   /* margin-bottom: 0.3rem; */
   padding: 0.5rem;
   width: 100%;
@@ -28,6 +27,11 @@ export const BusinessContainer = styled.div`
           }
           .active {
             background-color: #b8f7b8;
+            border: none;
+          }
+
+          .under-review {
+            background-color: #ffcc80;
             border: none;
           }
 

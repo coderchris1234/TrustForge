@@ -6,6 +6,15 @@ import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
 const BusinessCard = (props) => {
+  const getStatusClass = (status) => {
+    if (!status) return "status";
+
+    const lower = status.toLowerCase();
+    if (lower === "active") return "active status";
+    if (lower === "under review") return "under-review status";
+
+    return "status";
+  };
   return (
     <BusinessContainer>
       <div className="businessContainer">
@@ -13,9 +22,11 @@ const BusinessCard = (props) => {
           <div className="business">
             <p style={{ marginBottom: "2px" }}>{props.title}</p>
             <div className="set">
-              <span className="retail status">{props.category}</span>
-              <span className="active status">{props.status}</span>
-              <span className="seed status">{props.stage}</span>
+              <span className="retail status">{props.industry}</span>
+              <span className={getStatusClass(props.businessStatus)}>
+                {props.businessStatus}
+              </span>
+              <span className="seed status">{props.fundingStage}</span>
             </div>
             <p style={{ paddingTop: "20px" }}>{props.description}</p>
           </div>
@@ -37,7 +48,7 @@ const BusinessCard = (props) => {
               <CiHeart /> {props.likes} likes
             </div>
             <div>
-              <FiMessageSquare /> {props.messages} messages
+              <FiMessageSquare /> {props.messages} Save
             </div>
           </div>
           <div>

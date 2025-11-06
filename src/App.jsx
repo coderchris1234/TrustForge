@@ -16,7 +16,7 @@ import MyBusiness from "./Pages/DashboardPage/CreatorPage/MyBusiness";
 import AddBusiness from "./Pages/DashboardPage/CreatorPage/AddBusiness";
 import Analytics from "./Pages/DashboardPage/CreatorPage/Analytics";
 import Overview from "./Pages/DashboardPage/CreatorPage/Overview";
-import Notification from "./Pages/DashboardPage/CreatorPage/Notification";
+import Notification1 from "./Pages/DashboardPage/CreatorPage/Notification";
 import Meeting from "./Pages/DashboardPage/CreatorPage/Meeting";
 import Profile from "./Pages/DashboardPage/CreatorPage/Profile";
 import Subscription from "./Pages/DashboardPage/CreatorPage/Subscription";
@@ -57,7 +57,7 @@ const App = () => {
             <Route path="mybusiness" element={<MyBusiness />} />
             <Route path="addbusiness" element={<AddBusiness />} />
             <Route path="analytics" element={<Analytics />} />
-            <Route path="notification" element={<Notification />} />
+            <Route path="notification" element={<Notification1 />} />
             <Route path="meeting" element={<Meeting />} />
             <Route path="profile" element={<Profile />} />
             <Route path="subscription" element={<Subscription />} />
