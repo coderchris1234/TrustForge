@@ -1,13 +1,8 @@
 import React from "react";
-import { KycContainer } from "./KycVerification2Style";
-import KycVerify from "../../../Components/KycVerify";
+import KycVerification from "../../../Components/KycVerify";
 
 const KycVerification2 = () => {
-  return (
-    <KycContainer>
-      <KycVerify />
-    </KycContainer>
-  );
+  return <KycVerification />;
 };
 
 export default KycVerification2;

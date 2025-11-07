@@ -33,12 +33,15 @@ const BusinessCard = (props) => {
             <p style={{ paddingTop: "20px" }}>{props.description}</p>
           </div>
           <div className="btn">
-            <CustomButton Btntext="View Details" className="bt" />
+            <CustomButton
+              Btntext="View Details"
+              className="bt"
+              onClick={() => nav(`${props.businessName}/${props.id}`)}
+            />
             <CustomButton
               icon={<GoTrash />}
               Btntext="Delete"
               className="deleteBtn bt"
-              onClick={() => nav(`/businessDetail/${props.id}`)}
             />
           </div>
         </div>
