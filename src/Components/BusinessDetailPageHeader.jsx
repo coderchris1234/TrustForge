@@ -17,19 +17,17 @@ import {
   Date,
 } from "./BusinessDetailPageHeaderStyle";
 
-const BusinessDetailPageHeader = () => {
+const BusinessDetailPageHeader = ({ data }) => {
   return (
     <Card>
       <TopRow>
-        <Category>Supermarket / Mini Mart</Category>
+        <Category>{data.businessName}</Category>
         <Status>Active</Status>
       </TopRow>
 
-      <RetailLabel>Retail</RetailLabel>
+      <RetailLabel>{data.industry}</RetailLabel>
 
-      <Description>
-        Neighborhood store selling groceries and daily essentials.
-      </Description>
+      <Description>{data.description}</Description>
 
       <BottomRow>
         <Poster>
@@ -38,7 +36,7 @@ const BusinessDetailPageHeader = () => {
             alt="James Victoria"
           />
           <PosterDetails>
-            <PosterName>James Victoria</PosterName>
+            <PosterName>{data?.user?.fullName}</PosterName>
             <PosterRole>Fashion Designer</PosterRole>
           </PosterDetails>
         </Poster>
