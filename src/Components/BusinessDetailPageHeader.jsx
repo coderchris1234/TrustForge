@@ -36,7 +36,7 @@ const BusinessDetailPageHeader = ({ data }) => {
             alt="James Victoria"
           />
           <PosterDetails>
-            <PosterName>{data?.user?.fullName}</PosterName>
+            <PosterName>{data?.fullName}</PosterName>
             <PosterRole>Fashion Designer</PosterRole>
           </PosterDetails>
         </Poster>
