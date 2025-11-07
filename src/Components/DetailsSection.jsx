@@ -10,7 +10,10 @@ import {
   SectionText,
 } from "./DetailsSectionStyle";
 
-const DetailsSection = () => {
+const DetailsSection = ({ data }) => {
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat("en-NG").format(num);
+  };
   return (
     <Wrapper>
       <TopRow>
@@ -18,7 +21,7 @@ const DetailsSection = () => {
           <StatIcon>₦</StatIcon>
           <div>
             <StatLabel>Funding Sought</StatLabel>
-            <StatValue>₦500,000</StatValue>
+            <StatValue>₦{formatNumber(data?.fundingSought)}</StatValue>
           </div>
         </StatBox>
 
@@ -26,7 +29,7 @@ const DetailsSection = () => {
           <StatIcon>📈</StatIcon>
           <div>
             <StatLabel>Current Revenue</StatLabel>
-            <StatValue>₦750,000</StatValue>
+            <StatValue>{formatNumber(data?.currentRevenue)}</StatValue>
           </div>
         </StatBox>
 
@@ -34,33 +37,19 @@ const DetailsSection = () => {
           <StatIcon>📅</StatIcon>
           <div>
             <StatLabel>Founded</StatLabel>
-            <StatValue>2022</StatValue>
+            <StatValue>{data?.yearFounded}</StatValue>
           </div>
         </StatBox>
       </TopRow>
 
       <SectionTitle>Business Model</SectionTitle>
-      <SectionText>
-        We operate as a B2B SaaS company, offering subscription-based access to
-        our AI-powered supply chain optimization platform. Our clients are
-        primarily mid to large-size manufacturing companies looking to reduce
-        costs and improve efficiency.
-      </SectionText>
+      <SectionText>{data?.businessModel}</SectionText>
 
       <SectionTitle>Revenue Model</SectionTitle>
-      <SectionText>
-        We generate revenue through monthly and annual subscription plans, with
-        pricing based on company size and feature needed. Additional revenue
-        comes from implementation services and premium support packages.
-      </SectionText>
+      <SectionText>{data?.revenueModel}</SectionText>
 
       <SectionTitle>Target Market</SectionTitle>
-      <SectionText>
-        Mid to large-size manufacturing and retail companies with complex supply
-        chains. The global supply chain management market is valued at ₦15.85
-        billion and growing at 11.2% CAGR. Our target customers have annual
-        revenues of ₦50M+.
-      </SectionText>
+      <SectionText>{data?.targetMarket}</SectionText>
     </Wrapper>
   );
 };

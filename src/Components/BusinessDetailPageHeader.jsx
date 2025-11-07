@@ -37,14 +37,14 @@ const BusinessDetailPageHeader = ({ data }) => {
             alt="James Victoria"
           />
           <PosterDetails>
-            {/* <PosterName>{data?.fullName}</PosterName> */}
-            <PosterRole>Fashion Designer</PosterRole>
+            <PosterName>{data?.fullName}</PosterName>
+            <PosterRole>{data?.businessName}</PosterRole>
           </PosterDetails>
         </Poster>
 
         <Stats>
-          <Stat>👁 30</Stat>
-          <Stat>❤️ 12</Stat>
+          <Stat>👁 {data?.viewCount}</Stat>
+          <Stat>❤️ {data?.likeCount}</Stat>
           <Stat>💬 6</Stat>
         </Stats>
 

@@ -29,7 +29,7 @@ const BusinessTabs = ({ data }) => {
       <TabContent>
         {activeTab === "Details" && <DetailsTab data={data} />}
         {activeTab === "Document" && <DocumentTab data={data} />}
-        {activeTab === "Engagement" && <EngagementTab />}
+        {activeTab === "Engagement" && <EngagementTab data={data} />}
         {activeTab === "Investors" && <div>Investor info coming soon</div>}
       </TabContent>
     </TabContainer>

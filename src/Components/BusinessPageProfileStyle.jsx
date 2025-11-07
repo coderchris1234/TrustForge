@@ -5,7 +5,7 @@ export const CardWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 880px;
+  width: 100%;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(21, 32, 43, 0.06);
@@ -91,11 +91,16 @@ export const StatsRow = styled.div`
   gap: 16px;
   align-items: center;
   margin-top: 6px;
+  display: flex;
+  align-items: center;
 `;
 
 export const Stat = styled.span`
   font-size: 0.82rem;
   color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 export const ActionColumn = styled.div`
