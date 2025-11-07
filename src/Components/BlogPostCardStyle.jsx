@@ -129,6 +129,7 @@ export const BlogPostCardStyle = styled.div`
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
     .Insight_card_contents {
+      /* background-color: red; */
       .Insight_card_text_holder {
         padding: 20px;
 
@@ -150,6 +151,7 @@ export const BlogPostCardStyle = styled.div`
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        /* background-color: blue; */
 
         .Profile_insight,
         .Profile_insight1 {
