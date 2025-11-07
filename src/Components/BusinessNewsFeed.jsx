@@ -2,8 +2,10 @@ import { BusinessPost } from "../Config/Data";
 import { Newsfeed_container } from "./BusinessNewsFeedStyle";
 import { CiHeart } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 const BusinessNewsFeed = ({ data }) => {
-  console.log(data);
+  const nav = useNavigate();
+  // console.log(data);
   return (
     <Newsfeed_container>
       {data?.map((post, index) => (
@@ -50,7 +52,12 @@ const BusinessNewsFeed = ({ data }) => {
             </div>
           </div>
           <div className="busines_right">
-            <div className="post_view">View details</div>
+            <div
+              onClick={() => nav(`business/${post.businessName}/${post.id}`)}
+              className="post_view"
+            >
+              View details
+            </div>
             <div className="love">
               <CiHeart size={40} />
             </div>
