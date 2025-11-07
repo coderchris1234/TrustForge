@@ -59,7 +59,10 @@ const App = () => {
             <Route path="addbusiness" element={<AddBusiness />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="notification" element={<Notification1 />} />
-            <Route path="businessDetail/:id" element={<BusinessDetailPage />} />
+            <Route
+              path="mybusiness/:bussName/:id"
+              element={<BusinessDetailPage />}
+            />
             <Route path="meeting" element={<Meeting />} />
             <Route path="profile" element={<BusinessDetailPage />} />
             <Route path="subscription" element={<Subscription />} />
