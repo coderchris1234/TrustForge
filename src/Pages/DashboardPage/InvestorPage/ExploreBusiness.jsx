@@ -13,6 +13,7 @@ const ExploreBusiness = () => {
     const fetchBusinesses = async () => {
       try {
         const res = await axios.get(`${BaseUrl}/businesses`);
+        console.log("all", res?.data);
         setBusinesses(res?.data?.data || []);
       } catch (error) {
         console.error("Error fetching businesses:", error);

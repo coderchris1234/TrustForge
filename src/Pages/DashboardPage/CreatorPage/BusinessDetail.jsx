@@ -14,7 +14,9 @@ const BusinessDetailPage = () => {
   useEffect(() => {
     const fetchBusiness = async () => {
       const res = await axios.get(`${BaseUrl}/Abusiness/${id}`);
+      console.log(res?.data?.data);
       setBusiness(res?.data?.data);
+      console.log("bus", business);
     };
 
     fetchBusiness();
@@ -22,8 +24,8 @@ const BusinessDetailPage = () => {
   return (
     <BusinessContainer>
       <BusinessDetailPageHeader data={business} />
-      <InvestmentProgress />
-      <BusinessTabs />
+      <InvestmentProgress data={business} />
+      <BusinessTabs data={business} />
     </BusinessContainer>
   );
 };

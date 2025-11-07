@@ -18,16 +18,17 @@ import {
 } from "./BusinessDetailPageHeaderStyle";
 
 const BusinessDetailPageHeader = ({ data }) => {
+  console.log("data", data);
   return (
     <Card>
       <TopRow>
-        <Category>{data.businessName}</Category>
-        <Status>Active</Status>
+        <Category>{data?.businessName}</Category>
+        <Status>{data?.businessStatus}</Status>
       </TopRow>
 
-      <RetailLabel>{data.industry}</RetailLabel>
+      <RetailLabel>{data?.industry}</RetailLabel>
 
-      <Description>{data.description}</Description>
+      {/* <Description>{data.description}</Description> */}
 
       <BottomRow>
         <Poster>
@@ -36,14 +37,14 @@ const BusinessDetailPageHeader = ({ data }) => {
             alt="James Victoria"
           />
           <PosterDetails>
-            <PosterName>{data?.user?.fullName}</PosterName>
-            <PosterRole>Fashion Designer</PosterRole>
+            <PosterName>{data?.fullName}</PosterName>
+            <PosterRole>{data?.businessName}</PosterRole>
           </PosterDetails>
         </Poster>
 
         <Stats>
-          <Stat>👁 30</Stat>
-          <Stat>❤️ 12</Stat>
+          <Stat>👁 {data?.viewCount}</Stat>
+          <Stat>❤️ {data?.likeCount}</Stat>
           <Stat>💬 6</Stat>
         </Stats>
 

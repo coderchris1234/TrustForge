@@ -9,7 +9,7 @@ import DetailsTab from "./DetailsTab";
 import DocumentTab from "./DocumentTab";
 import EngagementTab from "./EngagementTab";
 
-const BusinessTabs = () => {
+const BusinessTabs = ({ data }) => {
   const [activeTab, setActiveTab] = useState("Details");
 
   return (
@@ -27,9 +27,9 @@ const BusinessTabs = () => {
       </TabHeader>
 
       <TabContent>
-        {activeTab === "Details" && <DetailsTab />}
-        {activeTab === "Document" && <DocumentTab />}
-        {activeTab === "Engagement" && <EngagementTab />}
+        {activeTab === "Details" && <DetailsTab data={data} />}
+        {activeTab === "Document" && <DocumentTab data={data} />}
+        {activeTab === "Engagement" && <EngagementTab data={data} />}
         {activeTab === "Investors" && <div>Investor info coming soon</div>}
       </TabContent>
     </TabContainer>

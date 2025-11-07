@@ -4,7 +4,11 @@ import { CiHeart } from "react-icons/ci";
 import { LuMessageSquare } from "react-icons/lu";
 import { IoEyeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setbusinessOwnerId } from "../Pages/Global/Slice";
 const BusinessNewsFeed = ({ data }) => {
+  const dispatch = useDispatch();
+  console.log("data", data);
   const nav = useNavigate();
   // console.log(data);
   return (
@@ -60,7 +64,10 @@ const BusinessNewsFeed = ({ data }) => {
           </div>
           <div className="busines_right">
             <div
-              onClick={() => nav(`business/${post.businessName}/${post.id}`)}
+              onClick={() => {
+                nav(`business/${post.businessName}/${post.id}`),
+                  dispatch(setbusinessOwnerId(post?.businessOwner));
+              }}
               className="post_view"
             >
               View details

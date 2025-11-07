@@ -212,7 +212,9 @@ const KycVerification = () => {
             <StepName active={step === 1}>Personal</StepName>
             <StepName active={step === 2}>Banking</StepName>
             <StepName active={step === 3}>Document</StepName>
-            <StepName active={step === 4}>Review</StepName>
+            <StepName active={step === 4}>
+              {userKYC?.includes("review") ? "Pending" : "Review"}
+            </StepName>
           </StepNames>
         </StepInfo>
 

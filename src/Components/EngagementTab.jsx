@@ -15,13 +15,13 @@ const EngagementItem = styled.div`
   border-radius: 8px;
 `;
 
-const EngagementTab = () => (
+const EngagementTab = ({ data }) => (
   <EngagementList>
     {[
-      { date: "2025-10-15", views: 30, likes: 12 },
-      { date: "2025-10-18", views: 20, likes: 8 },
-      { date: "2025-10-20", views: 32, likes: 10 },
-      { date: "2025-10-24", views: 18, likes: 11 },
+      { date: "2025-10-15", views: data?.viewCount, likes: data?.likeCount },
+      { date: "2025-10-18", views: data?.viewCount, likes: data?.likeCount },
+      { date: "2025-10-20", views: data?.viewCount, likes: data?.likeCount },
+      { date: "2025-10-24", views: data?.viewCount, likes: data?.likeCount },
     ].map(({ date, views, likes }) => (
       <EngagementItem key={date}>
         <span>{date}</span>

@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const Explorecontainer = styled.div`
+  height: 100vh;
   width: 100%;
   padding: 1rem;
 
   .exploreText {
-    max-width: 100%;
-    margin-bottom: 1rem;
-
+    height: 70px;
+    width: max-content;
     h1 {
       color: #1b1b1b;
       font-family: Poppins;
       font-size: 22px;
+      font-style: normal;
       font-weight: 600;
       line-height: 125%;
     }
-
     p {
       color: #1b1b1b;
       font-family: Poppins;
@@ -24,127 +24,65 @@ export const Explorecontainer = styled.div`
       line-height: 150%;
     }
   }
-
-  @media (max-width: 768px) {
-    .exploreText {
-      h1 {
-        font-size: 18px;
-      }
-
-      p {
-        font-size: 14px;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .exploreText {
-      h1 {
-        font-size: 16px;
-      }
-
-      p {
-        font-size: 13px;
-      }
-    }
-  }
 `;
 
 export const SearchContainer = styled.div`
   margin-top: 20px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-
+  align-items: center;
+  gap: 0.4rem;
   .search {
     background-color: rgba(227, 227, 227, 0.8);
-    /* flex: 1 1 300px; */
+    height: 2rem;
+    width: 45rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.6rem 10px;
+    padding: 0 10px;
     border-radius: 0.4rem;
-    /* background-color: green; */
-    height: 50px;
+  }
 
-    .input {
-      background-color: transparent;
-      outline: none;
-      border: none;
-      width: 100%;
-      font-size: 1rem;
-    }
+  .input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
   }
 
   .trending {
+    height: 100%;
+    width: 11rem;
     background-color: rgba(227, 227, 227, 0.8);
+    margin-left: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 3.5rem;
     border-radius: 0.4rem;
-    padding: 0.6rem 0.7rem;
-    height: 50px;
-    /* background-color: red; */
-
+    padding-inline: 0.7rem;
     p {
       margin: 0;
       line-height: 1;
       white-space: nowrap;
-      font-size: 0.95rem;
+      display: inline-block;
     }
   }
 
   .filter {
-    background-color: rgba(227, 227, 227, 0.8);
-
+    height: 100%;
+    width: 7rem;
+    background-color: #fff;
+    margin-left: 2rem;
     display: flex;
-    align-items: center;
-    gap: 1rem;
     border-radius: 0.4rem;
-    padding: 0.6rem 0.8rem;
-    height: 50px;
-
+    align-items: center;
+    gap: 2rem;
+    padding-inline: 0.8rem;
     p {
       margin: 0;
       line-height: 1;
       white-space: nowrap;
-      font-size: 0.95rem;
-      color: 000;
-    }
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-
-    .search,
-    .trending,
-    .filter {
-      width: 100%;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.6rem 0.8rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .search,
-    .trending,
-    .filter {
-      padding: 0.5rem;
-      gap: 0.5rem;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .input {
-      font-size: 14px;
-    }
-
-    p {
-      font-size: 13px;
+      display: inline-block;
     }
   }
 `;

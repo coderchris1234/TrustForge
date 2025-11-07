@@ -15,7 +15,8 @@ export const Newsfeed_container = styled.div`
     border-radius: 10px;
     background-color: #ffffff;
     padding: 1rem;
-
+    height: max-content;
+    /* background-color: red; */
     .busines_left {
       flex: 1 1 70%;
       display: flex;
