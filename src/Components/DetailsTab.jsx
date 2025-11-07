@@ -19,36 +19,27 @@ const Section = styled.div`
   border-radius: 8px;
 `;
 
-const DetailsTab = () => (
+const DetailsTab = ({ data }) => (
   <DetailsWrapper>
     <MetricRow>
-      <div>Funding Sought: $900k</div>
-      <div>Current Revenue: $120k</div>
-      <div>Year Founded: 2025</div>
+      <div>Funding Sought: ${data?.fundingSought}</div>
+      <div>Current Revenue: ${data?.currentRevenue}</div>
+      <div>Year Founded: {data?.yearFounded}</div>
     </MetricRow>
 
     <Section>
       <h4>Business Model</h4>
-      <p>
-        We operate as a B2B SaaS company, offering subscription based access to
-        our AI-powered supply chain optimization platform...
-      </p>
+      <p>{data?.businessModel}</p>
     </Section>
 
     <Section>
       <h4>Revenue Model</h4>
-      <p>
-        We operate as a B2B SaaS company, offering subscription based access to
-        our AI-powered supply chain optimization platform...
-      </p>
+      <p>{data?.revenueModel}</p>
     </Section>
 
     <Section>
       <h4>Target Market</h4>
-      <p>
-        We operate as a B2B SaaS company, offering subscription based access to
-        our AI-powered supply chain optimization platform...
-      </p>
+      <p>{data?.targetMarket}</p>
     </Section>
   </DetailsWrapper>
 );

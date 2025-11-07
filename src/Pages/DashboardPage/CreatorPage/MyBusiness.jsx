@@ -107,7 +107,7 @@ const MyBusiness = () => {
           ))
         ) : allBusiness?.businesses?.length > 0 ? (
           allBusiness.businesses
-            .slice()
+            .slice(1, 5)
             .reverse()
             .map((biz) => <BusinessCard key={biz.id} {...biz} />)
         ) : (

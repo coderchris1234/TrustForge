@@ -22,17 +22,22 @@ const DocumentInfo = styled.div`
   flex-direction: column;
 `;
 
-const DocumentTab = () => (
+const DocumentTab = ({ data }) => (
   <DocumentList>
-    {["Business Plan", "Financial Projections", "Pitch deck"].map((doc) => (
-      <DocumentItem key={doc}>
-        <DocumentInfo>
-          <strong>{doc}</strong>
-          <span>PDF, 2.5MB</span>
-        </DocumentInfo>
-        <FiDownload size={20} />
-      </DocumentItem>
-    ))}
+    <DocumentItem>
+      <DocumentInfo>
+        <strong>{data?.pitchDeck?.split("/").pop()}</strong>
+        <span>PDF, 2.5MB</span>
+      </DocumentInfo>
+      <a
+        href={data?.pitchDeck}
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FiDownload size={20} style={{ cursor: "pointer" }} />
+      </a>
+    </DocumentItem>
   </DocumentList>
 );
 
