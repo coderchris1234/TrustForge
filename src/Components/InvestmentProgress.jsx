@@ -12,9 +12,9 @@ import {
   LabelRight,
 } from "./InvestmentProgressStyle";
 
-const InvestmentProgress = () => {
-  const goal = 900000;
-  const raised = 400000;
+const InvestmentProgress = ({ data }) => {
+  const goal = data?.fundingSought;
+  const raised = 0;
   const remaining = goal - raised;
   const percentage = Math.round((raised / goal) * 100);
 
@@ -24,7 +24,7 @@ const InvestmentProgress = () => {
 
       <Metrics>
         <MetricItem>
-          <strong>Funding Goal:</strong> ₦{goal.toLocaleString()}
+          <strong>Funding Goal:</strong> ₦{goal?.toLocaleString()}
         </MetricItem>
         <MetricItem>
           <strong>Raised:</strong> ₦{raised.toLocaleString()}
@@ -33,7 +33,7 @@ const InvestmentProgress = () => {
           <strong>Remaining:</strong> ₦{remaining.toLocaleString()}
         </MetricItem>
         <MetricItem>
-          <strong>Investors:</strong> 2
+          <strong>Investors:</strong> 0
         </MetricItem>
       </Metrics>
 
