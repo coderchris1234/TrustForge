@@ -1,6 +1,9 @@
 import { BusinessPost } from "../Config/Data";
 import { Newsfeed_container } from "./BusinessNewsFeedStyle";
+import { CiHeart } from "react-icons/ci";
+import { IoEyeOutline } from "react-icons/io5";
 const BusinessNewsFeed = ({ data }) => {
+  console.log(data);
   return (
     <Newsfeed_container>
       {data.map((post, index) => (
@@ -9,7 +12,7 @@ const BusinessNewsFeed = ({ data }) => {
             <div className="supplychain">
               <div className="icon">
                 {post.icon1}
-                <h3>{post.title}</h3>
+                <h3>{post.businessName}</h3>
               </div>
               <div className="trendsection">
                 <>{post.trendicon}</>
@@ -17,34 +20,40 @@ const BusinessNewsFeed = ({ data }) => {
               </div>
             </div>
             <div className="details">
-              <div className="ai">{post.ai}</div>
-              <div className="series">{post.series}</div>
-              <div className="founded">{post.founded}</div>
+              <div className="ai">{post.industry}</div>
+              <div className="series">{post.fundingStage}</div>
+              <div className="founded">Founded {post.yearFounded}</div>
             </div>
             <div className="about">
-              <small>{post.about}</small>
+              <small>{post.description}</small>
             </div>
             <div className="engagement">
               <div className="reactions">
                 <div className="viewnum">
-                  <div>{post.views}</div>
-                  <div>{post.viewNum}</div>
+                  <div>
+                    <IoEyeOutline />
+                  </div>
+                  <div>{post.viewCount}</div>
                 </div>
                 <div className="like">
-                  <div>{post.like}</div>
-                  <div>{post.likeNum}</div>
+                  <div>
+                    <CiHeart />
+                  </div>
+                  <div>{post.likeCount}</div>
                 </div>
                 <div className="comment">
                   <div>{post.comment}</div>
                   <div>{post.commentNum}</div>
                 </div>
               </div>
-              <div className="seeking">{post.seeking}</div>
+              <div className="seeking">seeking: ${post.fundingSought}</div>
             </div>
           </div>
           <div className="busines_right">
-            <div className="post_view">{post.view}</div>
-            <div className="love">{post.love}</div>
+            <div className="post_view">View details</div>
+            <div className="love">
+              <CiHeart size={40} />
+            </div>
           </div>
         </div>
       ))}
