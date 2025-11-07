@@ -36,7 +36,7 @@ const BusinessCard = (props) => {
             <CustomButton
               Btntext="View Details"
               className="bt"
-              onClick={() => nav(`${props.businessName}/${props.id}`)}
+              onClick={() => nav(`mybusiness/${props.bussName}/${props.id}`)}
             />
             <CustomButton
               icon={<GoTrash />}
