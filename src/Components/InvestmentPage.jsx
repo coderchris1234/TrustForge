@@ -12,13 +12,14 @@ import {
   RightNote,
 } from "./InvestmentPageStyle";
 
-const ProgressComponent = ({
-  fundingGoal = "₦500k",
-  raised = "₦200k",
-  remaining = "₦300k",
-  investors = 8,
-  percent = 40,
-}) => {
+const ProgressComponent = ({ data }) => {
+  const goal = data?.fundingSought;
+  const raised = 50000;
+  const remaining = goal - raised;
+  const percentage = Math.round((raised / goal) * 100);
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat("en-NG").format(num);
+  };
   return (
     <ProgressCard>
       <Header>Investment Progress</Header>
@@ -26,33 +27,33 @@ const ProgressComponent = ({
       <GridRow>
         <GridItem>
           <Label>Funding Goal</Label>
-          <Amount>{fundingGoal}</Amount>
+          <Amount>₦{formatNumber(data?.fundingSought)}</Amount>
         </GridItem>
 
         <GridItem>
           <Label>Raised</Label>
-          <Amount>{raised}</Amount>
+          <Amount>₦{formatNumber(raised)}</Amount>
         </GridItem>
 
         <GridItem>
           <Label>Remaining</Label>
-          <Amount>{remaining}</Amount>
+          <Amount>₦{formatNumber(remaining)}</Amount>
         </GridItem>
 
         <GridItem>
           <Label>Investors</Label>
-          <Amount>{investors}</Amount>
+          <Amount></Amount>
         </GridItem>
       </GridRow>
 
       <BarWrap>
         <BarTrack>
-          <BarFill style={{ width: `${percent}%` }} />
+          <BarFill style={{ width: `${percentage}%` }} />
         </BarTrack>
       </BarWrap>
 
-      <ProgressNote>{percent}% funded</ProgressNote>
-      <RightNote>{remaining}</RightNote>
+      <ProgressNote>{percentage}% funded</ProgressNote>
+      <RightNote>₦{formatNumber(remaining)}</RightNote>
     </ProgressCard>
   );
 };
