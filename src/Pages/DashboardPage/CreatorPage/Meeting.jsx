@@ -42,6 +42,24 @@ const Meeting = () => {
       console.log("this is error", err);
     }
   };
+  const declineMeeting = async (id) => {
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/decline-meeting`,
+        { meetingId: id },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success(res?.data?.message);
+      fetchData();
+      console.log(res);
+    } catch (err) {
+      console.log("this is error", err);
+    }
+  };
 
   useEffect(() => {
     if (!userId) {
@@ -92,6 +110,7 @@ const Meeting = () => {
             {...biz}
             key={biz.id}
             approvedMeeting={approvedMeeting}
+            declineMeeting={declineMeeting}
           />
         ))
       ) : (
