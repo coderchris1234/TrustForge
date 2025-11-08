@@ -32,10 +32,7 @@ const BusinessDetailPageHeader = ({ data }) => {
 
       <BottomRow>
         <Poster>
-          <ProfileImage
-            src="/images/james-victoria.jpg" // Replace with actual image path
-            alt="James Victoria"
-          />
+          <ProfileImage src="/images/james-victoria.jpg" alt="James Victoria" />
           <PosterDetails>
             <PosterName>{data?.fullName}</PosterName>
             <PosterRole>{data?.businessName}</PosterRole>
