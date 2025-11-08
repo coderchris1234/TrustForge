@@ -37,38 +37,40 @@ const InvestorMeeting = ({
                   ? "pending"
                   : meetingStatus === "Approved and Upcoming"
                   ? "conf"
-                  : InvestorStatus === "Reschedule Requested"
+                  : meetingStatus === "Reschedule Requested"
                   ? "Reschedule"
-                  : InvestorStatus === "Declined"
+                  : meetingStatus === "Declined"
                   ? "Decl"
                   : "cencl"
               }
             >
-              {InvestorStatus}
+              {meetingStatus}
             </div>
           </div>
           <div className="tittle_right">
-            {InvestorStatus === "Approved and Upcoming" ? (
+            {meetingStatus === "Approved and Upcoming" ? (
               <div className="join_meetings" onClick={userJoinMeeting}>
                 Join Meeting
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {InvestorStatus === "Awaiting Approval" ? (
+            {meetingStatus === "Awaiting Approval" ? (
               <div className="awaiting">
                 Awaiting Response
                 <CiClock2 />
               </div>
             ) : null}
-            {InvestorStatus === "Awaiting Approval" ? (
+            {meetingStatus === "Awaiting Approval" ? (
               <div className="cancel" onClick={userJoinMeeting}>
                 Cancel
               </div>
             ) : null}
-            <div className="schedule_meetings">
-              Reschedule
-              <FiRefreshCw size={20} />
-            </div>
+            {meetingStatus === "Declined" ? null : (
+              <div className="schedule_meetings">
+                Reschedule
+                <FiRefreshCw size={20} />
+              </div>
+            )}
           </div>
         </div>
         <div className="name_container">

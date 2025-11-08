@@ -18,6 +18,7 @@ const InvestorMeeting2 = ({
   businessName,
   meetingLink,
   approvedMeeting,
+  declineMeeting,
 }) => {
   // const textMeetingStatus = "Approved and Upcoming";
 
@@ -81,7 +82,12 @@ const InvestorMeeting2 = ({
               <FiRefreshCw size={15} />
             </div>
             {meetingStatus !== "Awaiting Approval" ? null : (
-              <div className="decline_button">
+              <div
+                className="decline_button"
+                onClick={() => {
+                  declineMeeting(id);
+                }}
+              >
                 Decline
                 <MdOutlineCancel size={15} />
               </div>
