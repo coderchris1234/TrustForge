@@ -23,6 +23,16 @@ export const InvestorMeeting_container = styled.div`
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+        align-items: center;
+
+        .pending {
+          background-color: transparent;
+          border: 1px solid grey;
+          padding: 5px;
+          border-radius: 8px;
+          /* display: flex; */
+          /* align-items: center; */
+        }
 
         .confirm,
         .first {
@@ -34,9 +44,11 @@ export const InvestorMeeting_container = styled.div`
           padding: 0.4rem 0.8rem;
         }
 
-        .confirm {
+        .conf {
           background-color: #4eca7c;
           color: #035003;
+          padding: 0.3rem;
+          border-radius: 8px;
         }
 
         .first {
@@ -48,6 +60,26 @@ export const InvestorMeeting_container = styled.div`
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+
+        .awaiting {
+          background-color: transparent;
+          border: 1px solid grey;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
+
+        .cancel {
+          background-color: transparent;
+          border: 1px solid grey;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          padding: 0.5rem;
+          gap: 0.5rem;
+        }
 
         .join_meetings,
         .schedule_meetings {

@@ -31,7 +31,37 @@ export const InvestorMeeting_container = styled.div`
           justify-content: center;
           align-items: center;
           border-radius: 8px;
-          background-color: #fac96f;
+          background-color: #f6b131ff;
+          padding: 5px;
+          border: none;
+        }
+        .cencl {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #cbcbcbff;
+          padding: 5px;
+          border: none;
+        }
+        .Reschedule {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #f5e5c6ff;
+          padding: 5px;
+          border: none;
+        }
+        .Decl {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #730000ff;
           padding: 5px;
           border: none;
         }
@@ -43,7 +73,7 @@ export const InvestorMeeting_container = styled.div`
           align-items: center;
           border-radius: 8px;
           background-color: #1fe91f;
-          padding: 2px;
+          padding: 0.5rem;
         }
 
         .pending,
@@ -64,7 +94,7 @@ export const InvestorMeeting_container = styled.div`
         flex-wrap: wrap;
         gap: 1rem;
 
-        .join_meetings,
+        .accept_meetings,
         .schedule_meetings {
           display: flex;
           align-items: center;
@@ -75,15 +105,30 @@ export const InvestorMeeting_container = styled.div`
           cursor: pointer;
           border: 1px solid gray;
         }
-
         .join_meetings {
+          background-color: #0046ff;
+          color: white;
+          border-radius: 0.4rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.7rem;
+          cursor: pointer;
+          padding: 0.6rem 1rem;
+        }
+
+        .accept_meetings {
           background-color: transparent;
           color: black;
           gap: 0.5rem;
+          cursor: pointer;
         }
 
         .schedule_meetings {
           background-color: transparent;
+          display: flex;
+          gap: 0.5rem;
+          cursor: pointer;
         }
         .decline_button {
           border: 1px solid gray;
