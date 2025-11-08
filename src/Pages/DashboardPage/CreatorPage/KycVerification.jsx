@@ -29,8 +29,13 @@ const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
   const proofOfAdressRef = useRef(null);
   const ProfilePicRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [profilePics, setProfilePics] = useState(null);
   const [userKYC, setUserKYC] = useState(null);
+  const kycLocked =
+    userKYC?.toLowerCase().includes("review") ||
+    userKYC?.toLowerCase().includes("verified");
+
   const [formData, setFormData] = useState({
     profilePic: null,
     firstName: "",
@@ -118,6 +123,7 @@ const KycVerification = () => {
       formData2.append(key, value);
     });
     try {
+      setLoading(true);
       const res = await axios.post(`${BaseUrl}/kyc`, formData2, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -126,6 +132,7 @@ const KycVerification = () => {
       setStep(4);
       console.log("omo", res);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     } finally {
       setFormData({
@@ -161,7 +168,6 @@ const KycVerification = () => {
       const fetchData = async () => {
         try {
           const res = await axios.get(endpoint);
-          // console.log("omo", res);
           setUserKYC(res?.data?.data?.user?.kycStatus || "");
         } catch (err) {
           console.error("Error fetching overview data:", err);
@@ -179,10 +185,10 @@ const KycVerification = () => {
 
   console.log("this is user", userKYC);
   useEffect(() => {
-    if (userKYC?.includes("review")) {
+    if (kycLocked) {
       setStep(4);
     }
-  }, [userKYC]);
+  }, [kycLocked]);
 
   return (
     <KycContainer>
@@ -213,7 +219,11 @@ const KycVerification = () => {
             <StepName active={step === 2}>Banking</StepName>
             <StepName active={step === 3}>Document</StepName>
             <StepName active={step === 4}>
-              {userKYC?.includes("review") ? "Pending" : "Review"}
+              {userKYC?.toLowerCase().includes("review")
+                ? "Pending"
+                : userKYC?.toLowerCase().includes("verified")
+                ? "Approved"
+                : "Review"}
             </StepName>
           </StepNames>
         </StepInfo>
@@ -460,10 +470,18 @@ const KycVerification = () => {
 
           {/* Buttons */}
           <ActionRow>
-            {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
+            {step > 1 && (
+              <BackButton disabled={kycLocked} onClick={handleBack}>
+                Previous
+              </BackButton>
+            )}
 
-            <NextButton onClick={handleNext}>
-              {step < totalSteps ? "Next Step" : "Submit for Verification"}
+            <NextButton disabled={kycLocked} onClick={handleNext}>
+              {step < totalSteps
+                ? "Next Step"
+                : loading
+                ? "Submitting  Verification..."
+                : "Submit for Verification"}
             </NextButton>
           </ActionRow>
         </Card>

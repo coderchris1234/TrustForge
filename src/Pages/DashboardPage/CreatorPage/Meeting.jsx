@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MeetingContainer } from "./MeetingStyle";
-import MeetingCard from "../../../Components/MeetingCard";
-import { Meetings } from "../../../Config/Data";
+import InvestorMeeting2 from "../../../Components/InvestorMeeting2";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -58,20 +57,20 @@ const Meeting = () => {
             className={activeTab === "upcoming" ? "active" : ""}
             onClick={() => setActiveTab("upcoming")}
           >
-            <p>Upcoming ({allMeeting?.upcomingMeetings?.length || 0})</p>
+            <p>Upcoming ({allMeeting?.meetings?.length || 0})</p>
           </div>
 
           <div
             className={activeTab === "past" ? "active" : ""}
             onClick={() => setActiveTab("past")}
           >
-            <p>Past ({allMeeting?.pastMeetings?.length || 0})</p>
+            {/* <p>Past ({allMeeting?.meetings?.length || 0})</p> */}
           </div>
         </div>
       </div>
       {allMeeting?.meetings?.length > 0 ? (
         allMeeting?.meetings?.map((biz) => (
-          <MeetingCard {...biz} key={biz.id} />
+          <InvestorMeeting2 {...biz} key={biz.id} />
         ))
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>
