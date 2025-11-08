@@ -36,6 +36,7 @@ import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
 import { MdOutlineShowChart } from "react-icons/md";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
+import { MdOutlineCancel } from "react-icons/md";
 import picture from "../assets/picture.png";
 import picture1 from "../assets/picture1.png";
 import picture2 from "../assets/picture2.png";
@@ -54,6 +55,7 @@ import Ovie from "../assets/Ovie.jpg";
 import Evans from "../assets/Evans.jpg";
 import Favour from "../assets/Favour.jpg";
 import alfred from "../assets/alfred.jpg";
+import { IoCheckmarkOutline } from "react-icons/io5";
 
 import { IoMdTime } from "react-icons/io";
 import { FaRegFileAlt } from "react-icons/fa";
@@ -882,7 +884,7 @@ export const SavedFunds = [
   },
 ];
 
-export const Meetings = [
+export const Meetings1 = [
   {
     id: 1,
     title: "Investment Discussion",
@@ -1204,9 +1206,11 @@ export const meetings2 = [
     clock: <CiClock2 />,
     pending: "Pending",
     first: "1st Meeting",
-    clock2: <CiClock2 />,
-    await: "Awaiting Response",
+    clock2: <IoCheckmarkOutline />,
+    await: "Accept",
     cancel: "Cancel Request",
+    declineIcon: <MdOutlineCancel />,
+    decline: "Decline",
     profile: "DSC",
     name: "Dr. Sarah Chen",
     supply: "MediConnect Health",

@@ -22,7 +22,29 @@ export const InvestorMeeting_container = styled.div`
       .tittle_left {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         gap: 1rem;
+
+        .await {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #fac96f;
+          padding: 5px;
+          border: none;
+        }
+
+        .conf {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #1fe91f;
+          padding: 2px;
+        }
 
         .pending,
         .first {
@@ -55,13 +77,23 @@ export const InvestorMeeting_container = styled.div`
         }
 
         .join_meetings {
-          background-color: #0046ff;
-          color: white;
+          background-color: transparent;
+          color: black;
           gap: 0.5rem;
         }
 
         .schedule_meetings {
           background-color: transparent;
+        }
+        .decline_button {
+          border: 1px solid gray;
+          background-color: transparent;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          padding: 0.5rem;
+          gap: 5px;
+          cursor: pointer;
         }
       }
     }

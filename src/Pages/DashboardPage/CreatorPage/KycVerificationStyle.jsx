@@ -315,6 +315,10 @@ export const NextButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
   &:hover {
     background: #007ad9;
   }
