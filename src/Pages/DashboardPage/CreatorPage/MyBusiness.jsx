@@ -48,7 +48,7 @@ const MyBusiness = () => {
         try {
           const res = await axios.get(endpoint);
           console.log("omo", res);
-          setAllBusiness(res.data.data || {});
+          setAllBusiness(res.data.data || []);
         } catch (err) {
           console.error("Error fetching overview data:", err);
         } finally {
@@ -106,10 +106,9 @@ const MyBusiness = () => {
             <BusinessCard key={biz.id} {...biz} id={biz.id} />
           ))
         ) : allBusiness?.businesses?.length > 0 ? (
-          allBusiness.businesses
-            .slice(1, 5)
-            .reverse()
-            .map((biz) => <BusinessCard key={biz.id} {...biz} />)
+          allBusiness.businesses.map((biz) => (
+            <BusinessCard key={biz.id} {...biz} />
+          ))
         ) : (
           <p>No Business Found</p>
         )}

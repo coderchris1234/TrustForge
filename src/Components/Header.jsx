@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HeaderContainer } from "./HeaderStyle";
 import { MenuNav } from "../Config/Data";
 import CustomButton from "./CustomButton";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setBlogIndex } from "../Pages/Global/Slice";
@@ -19,7 +19,9 @@ const Header = () => {
     <HeaderContainer>
       <section className="Header_Wrapper">
         <div className="AppLogo">
-          <img src={Logo} alt="Logo" />
+          <Link to={"/"}>
+            <img src={Logo} alt="Logo" />
+          </Link>
         </div>
 
         <nav className={showMenu ? "MobileNav" : ""}>

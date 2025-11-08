@@ -17,8 +17,8 @@ import {
   ActionButton,
   PillSmall,
 } from "./InvestorSubscriptionStyle";
-import { annualPlans } from "../Config/Data"
-import { monthlyPlans } from "../Config/Data"
+import { annualPlans } from "../Config/Data";
+import { monthlyPlans } from "../Config/Data";
 const InvestorSubscription = () => {
   const [mode, setMode] = useState("monthly"); // "monthly" | "annual"
   const plans = mode === "monthly" ? monthlyPlans : annualPlans;
@@ -71,7 +71,7 @@ const InvestorSubscription = () => {
             <Features>
               {p.features.map((f, i) => (
                 <FeatureItem key={i}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M20 6L9 17l-5-5"
                       stroke="currentColor"
@@ -99,6 +99,5 @@ const InvestorSubscription = () => {
       </CardsRow>
     </Page>
   );
-}
-export default InvestorSubscription
- 
+};
+export default InvestorSubscription;

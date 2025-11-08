@@ -5,11 +5,11 @@ import { GoTrash } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const BusinessCard = (props) => {
   const nav = useNavigate();
-  const { mybusiness } = useParams();
-  console.log("wow", mybusiness);
+  // const { mybusiness } = useParams();
+  // console.log("wow", mybusiness);
 
   const getStatusClass = (status) => {
     if (!status) return "status";
@@ -21,7 +21,7 @@ const BusinessCard = (props) => {
     return "status";
   };
 
-  console.log(props);
+  // console.log(props);
   return (
     <BusinessContainer>
       <div className="businessContainer">

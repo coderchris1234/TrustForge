@@ -20,7 +20,6 @@ export const Explorecontainer = styled.div`
       color: #1b1b1b;
       font-family: Poppins;
       font-size: 16px;
-      font-style: normal;
       font-weight: 400;
       line-height: 150%;
     }
@@ -29,8 +28,7 @@ export const Explorecontainer = styled.div`
 
 export const SearchContainer = styled.div`
   margin-top: 20px;
-  height: 2rem;
-  width: 66rem;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -88,6 +86,8 @@ export const SearchContainer = styled.div`
     }
   }
 `;
+
 export const Text = styled.div`
   margin-top: 20px;
+  width: 100%;
 `;

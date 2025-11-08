@@ -1,18 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 
 export const ProfileStyle = styled.div`
   width: 80%;
-  height: 85vh;
-  /* background-color: red; */
+  height: max-content;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2rem;
 
   .Profile_heading {
     width: 100%;
-    height: max-content;
-    /* background-color: pink; */
     display: flex;
     flex-direction: column;
 
@@ -34,19 +30,19 @@ export const ProfileStyle = styled.div`
       margin-top: 0.2rem;
       display: flex;
       gap: 10px;
-      /* justify-content: space-around; */
       align-items: center;
       padding: 0.5rem;
       border-radius: 50px;
 
-      .Personal_info {
+      .Personal_info,
+      .Professional_info {
         width: 50%;
         height: 100%;
-        background-color: var(--main_white);
         border-radius: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         p {
           font-size: 18px;
@@ -55,55 +51,40 @@ export const ProfileStyle = styled.div`
         }
       }
 
-      .Professional_info {
-        width: 50%;
-        height: 100%;
-        /* background-color: var(--main_white); */
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        p {
-          font-size: 18px;
-          font-weight: 500;
-          margin: 0;
-        }
+      .Personal_info {
+        background-color: var(--main_white);
       }
     }
   }
 
   .Profile_info {
     width: 100%;
-    height: 83%;
-    /* background-color: blue; */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2rem;
 
     .Profile_image {
       width: 100%;
-      height: max-content;
       background-color: #ffffff;
       border-radius: 12px;
       display: flex;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 2rem;
       justify-content: center;
       align-items: center;
-      /* background-color: red; */
+      height: 12rem;
 
       .Profile_img_holder {
-        width: 20%;
-        height: 100%;
+        width: 180px;
+        height: 170px;
         padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
 
         .Image_holder {
-          width: 140px;
-          height: 120px;
-          background-color: pink;
+          width: 100%;
+          height: 100%;
           border-radius: 50%;
         }
 
@@ -115,70 +96,52 @@ export const ProfileStyle = styled.div`
       }
 
       .Profile_content_holder {
-        width: 80%;
-        height: max-content;
+        flex: 1;
         display: flex;
         flex-direction: column;
-        /* padding: 8px; */
+        gap: 1rem;
 
         .Kyc_verified {
-          width: 100%;
-          height: 2rem;
           display: flex;
-          /* justify-content: center; */
           align-items: center;
           gap: 20px;
-          /* background-color: red; */
-          /* margin-top: 0.3rem; */
 
           h3 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin: 0;
           }
 
           span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: #c6f6a1;
             width: 117px;
             height: 30px;
             border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
 
         .Profile_info_holder {
-          width: 100%;
-          height: 50%;
-          /* background-color: pink; */
-          /* margin-top: 10px; */
-          /* padding: 1rem; */
-          /* margin-bottom: 1rem; */
           display: flex;
           flex-direction: column;
           justify-content: center;
-          /* align-items: center; */
         }
       }
     }
+
     .Profile_content_info {
-      width: 100%;
-      height: 75%;
       background-color: #ffffff;
       border-radius: 12px;
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 2rem;
+      margin-top: 2rem;
+      box-sizing: border-box;
 
       .Personal_infos {
-        width: 100%;
-        height: 3rem;
         display: flex;
         justify-content: space-between;
-        /* background-color: red; */
         align-items: center;
 
         h4 {
@@ -190,67 +153,178 @@ export const ProfileStyle = styled.div`
 
         span {
           background-color: #ffffff;
-          width: 89px;
+          width: 100px;
           height: 32px;
           border: 1px solid var(--main_black);
           border-radius: 8px;
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 400;
           color: var(--main_black);
+          padding: 5px;
+        }
+      }
+
+      .First_name {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .First {
+          flex: 1;
+          min-width: 250px;
+
+          .First_informations {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            span {
+              font-size: 18px;
+              font-weight: 400;
+              color: #777777;
+            }
+
+            p {
+              font-size: 18px;
+              font-weight: 400;
+              color: var(--neutral_black_color);
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .Update {
+        background-color: #eceffa;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          color: #9c9c9c;
+          margin: 0;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 95%;
+
+    .Profile_heading {
+      .Profssional {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem;
+
+        .Personal_info,
+        .Professional_info {
+          width: 80%;
+          height: 40px;
+          padding: 0.4rem 0;
         }
       }
     }
 
-    .First_name {
-      width: 100%;
-      height: 80%;
-      /* background-color: green; */
-      display: flex;
-      gap: 10px;
+    .Profile_info {
+      .Profile_image {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-      .First {
-        width: 50%;
-        height: 100%;
-        /* background-color: purple; */
+        .Profile_img_holder {
+          width: 30%;
+          justify-content: flex-start;
+        }
 
-        .First_informations {
-          display: flex;
+        .Profile_content_holder {
+          width: 100%;
+          margin-top: 2rem;
+        }
+      }
+
+      .Profile_content_info {
+        gap: 2rem;
+        .First_name {
           flex-direction: column;
-          /* gap: 5px; */
+          gap: 2rem;
 
-          span {
-            font-size: 18px;
-            font-weight: 400;
-            color: #777777;
+          .First {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
           }
+        }
+
+        .Update {
+          padding: 0.8rem;
 
           p {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--neutral_black_color);
+            font-size: 14px;
           }
         }
       }
     }
+  }
 
-    .Update {
-      width: 100%;
-      height: 3rem;
-      background-color: #eceffa;
-      border-radius: 8px;
-      display: flex;
-      /* justify-content: center; */
-      align-items: center;
-      padding: 10px;
+  @media (max-width: 480px) {
+    .Profile_heading {
+      h1 {
+        font-size: 18px;
+      }
 
       p {
-        font-size: 16px;
-        font-weight: 400;
-        color: #9c9c9c;
-        margin: 0px;
+        font-size: 14px;
+      }
+
+      .Profssional {
+        .Personal_info p,
+        .Professional_info p {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .Profile_info {
+      .Profile_content_info {
+        .Personal_infos {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+
+          h4 {
+            font-size: 18px;
+          }
+
+          span {
+            font-size: 14px;
+            width: auto;
+            padding: 0.4rem 0.8rem;
+          }
+        }
+
+        .Update {
+          padding: 0.6rem;
+
+          p {
+            font-size: 13px;
+            line-height: 1.5;
+          }
+        }
       }
     }
   }

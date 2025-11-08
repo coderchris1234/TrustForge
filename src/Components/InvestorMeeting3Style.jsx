@@ -1,61 +1,62 @@
 import styled from "styled-components";
+
 export const InvestorMeeting_container = styled.div`
-  height: 100%;
   width: 100%;
   margin-top: 1rem;
 
   .Invetor_wrapper {
-    height: 14rem;
     width: 100%;
     padding: 1rem;
     background-color: #ffffff;
     border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     .tittle {
-      height: 20%;
-      width: 100%;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
 
       .tittle_left {
-        height: 100%;
-        width: 70%;
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
 
         .confirm {
           background-color: #4eca7c;
           color: #035003;
-          height: 60%;
-          width: 5rem;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 0.5rem;
           font-size: 0.9rem;
+          padding: 0.4rem 0.8rem;
         }
       }
+
       .tittle_right {
-        height: 100%;
-        width: 30%;
+        display: flex;
+        flex-wrap: wrap;
 
         .schedule_meetings {
-          height: 100%;
-          width: 10rem;
-          border-radius: 0.4rem;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.7rem;
+          border-radius: 0.4rem;
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
           cursor: pointer;
           border: 1px solid gray;
+          gap: 0.5rem;
         }
       }
     }
+
     .name_container {
-      height: 33%;
-      width: 100%;
       display: flex;
+      flex-wrap: wrap;
       gap: 0.7rem;
 
       .profile_text {
@@ -67,57 +68,133 @@ export const InvestorMeeting_container = styled.div`
         align-items: center;
         justify-content: center;
       }
+
       .solution {
         color: blue;
       }
     }
 
     .calender {
-      height: 30%;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
 
       .date_container {
-        height: 50%;
-        width: 100%;
         .date {
-          height: 100%;
-          width: 100%;
-          gap: 0.7rem;
           display: flex;
+          flex-wrap: wrap;
+          gap: 0.7rem;
         }
       }
 
       .video_call_continer {
-        height: 50%;
-        width: 100%;
         display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
 
-        .video_call {
-          height: 100%;
-          width: 40%;
-          gap: 0.7rem;
-          display: flex;
-        }
+        .video_call,
         .time_container {
-          height: 100%;
-          width: 40%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.7rem;
 
           .time {
-            height: 100%;
-            width: 40%;
-            gap: 0.7rem;
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
           }
         }
       }
     }
 
     .discuss_text {
-      height: 2rem;
-      width: 75%;
       border-radius: 8px;
       background: #eceff4;
       padding: 0.3rem;
+      width: 100%;
+      max-width: 600px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .Invetor_wrapper {
+      padding: 0.8rem;
+
+      .tittle {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .tittle_left,
+        .tittle_right {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .confirm,
+        .schedule_meetings {
+          font-size: 0.85rem;
+          padding: 0.4rem 0.6rem;
+          gap: 0.5rem;
+        }
+      }
+
+      .name_container {
+        gap: 0.5rem;
+
+        .profile_text {
+          height: 1.8rem;
+          width: 1.8rem;
+        }
+      }
+
+      .discuss_text {
+        font-size: 0.9rem;
+        height: 40px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .Invetor_wrapper {
+      padding: 0.6rem;
+
+      .tittle_left,
+      .tittle_right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .confirm,
+      .schedule_meetings {
+        width: 100%;
+        font-size: 0.8rem;
+      }
+
+      .name_container {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .discuss_text {
+        font-size: 0.85rem;
+        width: 100%;
+      }
+
+      .video_call_continer {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .time_container .time {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   }
 `;

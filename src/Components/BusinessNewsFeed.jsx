@@ -1,6 +1,7 @@
 import { BusinessPost } from "../Config/Data";
 import { Newsfeed_container } from "./BusinessNewsFeedStyle";
 import { CiHeart } from "react-icons/ci";
+import { LuMessageSquare } from "react-icons/lu";
 import { IoEyeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -39,13 +40,19 @@ const BusinessNewsFeed = ({ data }) => {
                   <div>
                     <IoEyeOutline />
                   </div>
-                  <div>{post.viewCount}</div>
+                  <span>{post.viewCount}</span>
                 </div>
                 <div className="like">
                   <div>
                     <CiHeart />
                   </div>
-                  <div>{post.likeCount}</div>
+                  <span>{post.likeCount}</span>
+                </div>
+                <div className="like">
+                  <div>
+                    <LuMessageSquare />
+                  </div>
+                  <span>{post.likeCount}</span>
                 </div>
                 <div className="comment">
                   <div>{post.comment}</div>

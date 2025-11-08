@@ -254,10 +254,11 @@ const KycVerification = () => {
                     ) : (
                       <GoUpload size={30} color="grey" />
                     )}
+                    <span onClick={() => ProfilePicRef.current.click()}>
+                      <GoUpload color="#ffff" />
+                    </span>
                   </div>
-                  <span onClick={() => ProfilePicRef.current.click()}>
-                    <GoUpload color="#ffff" />
-                  </span>
+
                   <p>Upload a professional photo</p>
                 </FieldRow>
 

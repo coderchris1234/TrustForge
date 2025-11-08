@@ -8,15 +8,15 @@ import { CiCalendar } from "react-icons/ci";
 import { CiClock2 } from "react-icons/ci";
 
 const MeetingCard = ({
-  title,
-  status,
+  meetingTitle,
+  meetingStatus,
   name,
   company,
   link,
   date,
   time,
-  type,
-  description,
+  meetingType,
+  note,
   // meetingType,
 }) => {
   const initials = name
@@ -32,9 +32,9 @@ const MeetingCard = ({
         <div className="MeetingWrapper">
           <div className="meetingHeader">
             <div className="busTitle">
-              <p>{title}</p>
-              <p className={status === "Confirmed" ? "conf" : "past"}>
-                {status}
+              <p>{meetingTitle}</p>
+              <p className={meetingStatus === "Confirmed" ? "conf" : "past"}>
+                {meetingStatus}
               </p>
               {/* <span>{meetingType}</span> */}
               <span></span>
@@ -69,7 +69,7 @@ const MeetingCard = ({
                   <CiCalendar size={"20"} /> {date}
                 </div>
                 <div>
-                  <IoVideocamOutline size={"20"} /> {type}
+                  <IoVideocamOutline size={"20"} /> {meetingType}
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ const MeetingCard = ({
                 <CiClock2 /> {time}
               </div>
             </div>
-            <p className="discussion">{description}</p>
+            <p className="discussion">{note}</p>
           </section>
         </div>
       </MeetingContainer>
