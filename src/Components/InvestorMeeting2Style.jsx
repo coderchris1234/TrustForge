@@ -61,9 +61,10 @@ export const InvestorMeeting_container = styled.div`
           justify-content: center;
           align-items: center;
           border-radius: 8px;
-          background-color: #730000ff;
+          background-color: #e80606ff;
           padding: 5px;
           border: none;
+          color: white;
         }
 
         .conf {
