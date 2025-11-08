@@ -99,6 +99,7 @@ export const HeroContainer = styled.div`
     .Hero_content {
       padding: 30px;
       gap: 15px;
+      width: 100%;
 
       h3 {
         font-size: clamp(1.8rem, 6vw, 2.8rem);

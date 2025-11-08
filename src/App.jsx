@@ -35,6 +35,7 @@ import HelpSupport2 from "./Pages/DashboardPage/InvestorPage/HelpSupport2";
 import ScrollToTop from "./Config/Scroll_to_top";
 import BusinessDetailPage from "./Pages/DashboardPage/CreatorPage/BusinessDetail";
 import BusinessPage from "./Pages/DashboardPage/InvestorPage/BusinessPage";
+import VerifiedKyc from "./Components/VerifiedKyc";
 
 const App = () => {
   return (

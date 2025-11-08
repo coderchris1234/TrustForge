@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const BlogPostCardStyle = styled.div`
   width: 32%;
-  height: max-content;
-  min-height: 70%;
+  height: 100%;
+  /* min-height: 70%; */
   background-color: var(--main_white);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  /* overflow: hidden; */
 
   .Insight_Card_image {
     width: 100%;
@@ -32,7 +32,7 @@ export const BlogPostCardStyle = styled.div`
     height: max-content;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 10px;
 
     .Insight_card_text_holder {
@@ -40,19 +40,20 @@ export const BlogPostCardStyle = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
+      height: 60%;
       padding: 15px 20px 0px 20px;
       margin-top: 15px;
 
       .Read_me_blog {
         p {
-          font-size: 14px;
+          font-size: 18px;
           font-weight: 400;
           display: flex;
           flex-direction: column;
 
           .Read_More {
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             color: var(--secondary_color_600);
           }
@@ -64,12 +65,13 @@ export const BlogPostCardStyle = styled.div`
         padding: 4px 12px;
         background-color: var(--neutral_gray_color_700);
         border-radius: 10px;
-        font-size: 12px;
+        font-size: 14px;
         color: var(--netural_black_color);
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 500;
+        height: 25px;
       }
 
       h3 {
@@ -103,7 +105,7 @@ export const BlogPostCardStyle = styled.div`
 
         p,
         span {
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 400;
           color: var(--main_black);
           margin: 0;
@@ -124,34 +126,45 @@ export const BlogPostCardStyle = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    height: auto;
     border-radius: 15px;
     margin-bottom: 1.5rem;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* remove gap between children */
 
     .Insight_card_contents {
-      /* background-color: red; */
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
       .Insight_card_text_holder {
-        padding: 20px;
+        padding: 16px 20px 0px 20px; /* remove bottom padding */
+        margin-top: 0; /* remove top margin */
+        gap: 0.5rem;
+        height: auto;
 
         h3 {
-          font-size: 17px;
+          font-size: 18px;
+          margin: 0;
         }
 
         p {
-          font-size: 14px;
+          font-size: 15px;
+          margin: 0;
         }
 
         span {
-          font-size: 12px;
+          font-size: 14px;
+          margin-top: 6px;
         }
       }
 
       .Insight_card_footer {
-        padding: 10px 20px 20px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        /* background-color: blue; */
+        margin-top: 0; /* remove top margin */
+        padding: 12px 20px 16px 20px;
+        gap: 8px;
 
         .Profile_insight,
         .Profile_insight1 {

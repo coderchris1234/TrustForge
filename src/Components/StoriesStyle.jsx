@@ -7,8 +7,8 @@ export const StoriesContainer = styled.div`
   background: url(${Success});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
+  background-size: contain;
+  object-fit: contain;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,13 +78,13 @@ export const StoriesContainer = styled.div`
           height: 55%;
           border-top-right-radius: 12px;
           border-top-left-radius: 12px;
+          background-position: cover;
 
           img {
             width: 100%;
             height: 100%;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            object-fit: cover;
           }
         }
 
