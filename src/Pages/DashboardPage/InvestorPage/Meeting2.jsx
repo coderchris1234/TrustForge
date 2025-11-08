@@ -1,9 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Meeting_container } from "./MeetingStyle";
-import InvestorMeeting from "../../../Components/InvestorMeeting"
-import InvestorMeeting2 from "../../../Components/InvestorMeeting2"
-import InvestorMeeting3 from "../../../Components/InvestorMeeting3";
+import InvestorMeeting from "../../../Components/InvestorMeeting";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 const Meeting2 = () => {
+  const [allMeeting, setAllMeeting] = useState({});
+  const user = useSelector((state) => state.TrustForge.user);
+  const userId = user?.data?.id;
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  console.log("userId", userId);
+
+  const endpoint = `${BaseUrl}/investor/${userId}`;
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(endpoint);
+      console.log(res);
+      setAllMeeting(res.data.data || {});
+      // console.log(allMeeting?.meetings);
+    } catch (err) {
+      console.error("Error fetching overview data:", err);
+    }
+  };
+
+  const approvedMeeting = async (id) => {
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/approve-meeting`,
+        { meetingId: id },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success(res?.data?.message);
+      fetchData();
+      console.log(res);
+    } catch (err) {
+      console.log("this is error", err);
+    }
+  };
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    try {
+      fetchData();
+    } catch (error) {
+      console.error("Error reading persisted user:", error);
+      // setLoading(false);
+    }
+  }, [userId]);
+
   return (
     <Meeting_container>
       <div className="meeting">
@@ -20,9 +74,19 @@ const Meeting2 = () => {
           Coming <span></span>
         </div>
       </div>
-      <InvestorMeeting />
-      <InvestorMeeting2 />
-      <InvestorMeeting3 />
+      {allMeeting?.meetings?.length > 0 ? (
+        allMeeting?.meetings?.map((biz) => (
+          <InvestorMeeting
+            {...biz}
+            key={biz.id}
+            approvedMeeting={approvedMeeting}
+          />
+        ))
+      ) : (
+        <p style={{ textAlign: "center", marginTop: "1rem" }}>
+          No meetings found.
+        </p>
+      )}
     </Meeting_container>
   );
 };

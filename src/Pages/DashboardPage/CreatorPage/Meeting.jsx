@@ -3,6 +3,7 @@ import { MeetingContainer } from "./MeetingStyle";
 import InvestorMeeting2 from "../../../Components/InvestorMeeting2";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Meeting = () => {
   const [activeTab, setActiveTab] = useState("upcoming");
@@ -10,26 +11,43 @@ const Meeting = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
   const userId = user?.data?.id;
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const endpoint = `${BaseUrl}/user/${userId}`;
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(endpoint);
+      setAllMeeting(res.data.data || {});
+    } catch (err) {
+      console.error("Error fetching overview data:", err);
+    }
+  };
+
+  const approvedMeeting = async (id) => {
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/approve-meeting`,
+        { meetingId: id },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success(res?.data?.message);
+      fetchData();
+      console.log(res);
+    } catch (err) {
+      console.log("this is error", err);
+    }
+  };
 
   useEffect(() => {
     if (!userId) {
       return;
     }
     try {
-      const endpoint =
-        user?.data?.role === "Investor"
-          ? `${BaseUrl}/investor/${userId}`
-          : `${BaseUrl}/user/${userId}`;
-
-      const fetchData = async () => {
-        try {
-          const res = await axios.get(endpoint);
-          setAllMeeting(res.data.data || {});
-        } catch (err) {
-          console.error("Error fetching overview data:", err);
-        }
-      };
-
       fetchData();
     } catch (error) {
       console.error("Error reading persisted user:", error);
@@ -70,7 +88,11 @@ const Meeting = () => {
       </div>
       {allMeeting?.meetings?.length > 0 ? (
         allMeeting?.meetings?.map((biz) => (
-          <InvestorMeeting2 {...biz} key={biz.id} />
+          <InvestorMeeting2
+            {...biz}
+            key={biz.id}
+            approvedMeeting={approvedMeeting}
+          />
         ))
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>

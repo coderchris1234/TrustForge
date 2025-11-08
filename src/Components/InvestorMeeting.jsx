@@ -1,59 +1,106 @@
 import React from "react";
 import { InvestorMeeting_container } from "./InvestorMeetingStyle";
-import { meetings } from "../Config/Data";
-const InvestorMeeting = () => {
+import { FaVideo } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
+import { CiCalendar, CiClock2 } from "react-icons/ci";
+const InvestorMeeting = ({
+  meetingTitle,
+  meetingType,
+  note,
+  time,
+  meetingStatus,
+  date,
+  businessName,
+  businessOwnerName,
+  meetingLink,
+  // approvedMeeting,
+}) => {
+  const InvestorStatus = "Awaiting Approval";
+  const initials = businessOwnerName
+    ?.split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
+  const userJoinMeeting = () => {
+    window.location.href = meetingLink;
+  };
   return (
     <InvestorMeeting_container>
-      {meetings.map((i, index) => (
-        <div className="Invetor_wrapper" key={index}>
-          <div className="tittle">
-            <div className="tittle_left">
-              <div className="invest">{i.invest}</div>
-              <div className="confirm">{i.confirm}</div>
-              <div className="first">{i.first}</div>
-            </div>
-            <div className="tittle_right">
-              <div className="join_meetings">
-                {i.icon1}
-                {i.join}
-              </div>
-              <div className="schedule_meetings">
-                {i.icon2}
-                {i.reschedule}
-              </div>
-            </div>
-          </div>
-          <div className="name_container">
-            <div className="profile_text">{i.profile}</div>
-            <div className="name_details">
-              <div className="name">{i.name}</div>
-              <div className="business">{i.supply}</div>
-              <div className="solution">{i.solution}</div>
+      <div className="Invetor_wrapper">
+        <div className="tittle">
+          <div className="tittle_left">
+            <div className="invest">{meetingTitle}</div>
+            <div
+              className={
+                meetingStatus === "Awaiting Approval"
+                  ? "pending"
+                  : meetingStatus === "Approved and Upcoming"
+                  ? "conf"
+                  : InvestorStatus === "Reschedule Requested"
+                  ? "Reschedule"
+                  : InvestorStatus === "Declined"
+                  ? "Decl"
+                  : "cencl"
+              }
+            >
+              {InvestorStatus}
             </div>
           </div>
-          <div className="calender">
-            <div className="date_container">
-              <div className="date">
-                {i.calender}
-                {i.date}
+          <div className="tittle_right">
+            {InvestorStatus === "Approved and Upcoming" ? (
+              <div className="join_meetings" onClick={userJoinMeeting}>
+                Join Meeting
+                <FaVideo size={15} />
               </div>
-            </div>
-            <div className="video_call_continer">
-              <div className="video_call">
-                {i.icon3}
-                {i.video}
+            ) : null}
+            {InvestorStatus === "Awaiting Approval" ? (
+              <div className="awaiting">
+                Awaiting Response
+                <CiClock2 />
               </div>
-              <div className="time_container">
-                <div className="time">
-                  {i.icon4}
-                  {i.time}
-                </div>
+            ) : null}
+            {InvestorStatus === "Awaiting Approval" ? (
+              <div className="cancel" onClick={userJoinMeeting}>
+                Cancel
               </div>
+            ) : null}
+            <div className="schedule_meetings">
+              Reschedule
+              <FiRefreshCw size={20} />
             </div>
           </div>
-          <div className="discuss_text">{i.discussion}</div>
         </div>
-      ))}
+        <div className="name_container">
+          <div className="profile_text">{initials}</div>
+          <div className="name_details">
+            <div className="name">{businessOwnerName}</div>
+            <div className="business">{businessName}</div>
+            {/* <div className="solution">{i.solution}</div> */}
+          </div>
+        </div>
+        <div className="calender">
+          <div className="date_container">
+            <div className="date">
+              <CiCalendar size={20} />
+              {date}
+            </div>
+          </div>
+          <div className="video_call_continer">
+            <div className="video_call">
+              <FaVideo size={20} />
+              {meetingType}
+            </div>
+            <div className="time_container">
+              <div className="time">
+                <CiClock2 />
+                {time}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="discuss_text">{note}</div>
+      </div>
     </InvestorMeeting_container>
   );
 };
