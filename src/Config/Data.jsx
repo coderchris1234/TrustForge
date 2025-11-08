@@ -61,6 +61,7 @@ import { BsLightbulb } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
+import { CiCreditCard1 } from "react-icons/ci";
 
 export const MenuNav = ["Home", "About", "Insights"];
 

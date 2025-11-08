@@ -42,6 +42,7 @@ export const ProfileStyle = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         p {
           font-size: 18px;
@@ -152,7 +153,7 @@ export const ProfileStyle = styled.div`
 
         span {
           background-color: #ffffff;
-          width: 89px;
+          width: 100px;
           height: 32px;
           border: 1px solid var(--main_black);
           border-radius: 8px;
@@ -162,6 +163,7 @@ export const ProfileStyle = styled.div`
           font-size: 18px;
           font-weight: 400;
           color: var(--main_black);
+          padding: 5px;
         }
       }
 
@@ -177,6 +179,7 @@ export const ProfileStyle = styled.div`
           .First_informations {
             display: flex;
             flex-direction: column;
+            gap: 1.5rem;
 
             span {
               font-size: 18px;

@@ -44,12 +44,10 @@ export const KycContainer = styled.div`
 
 export const PageWrap = styled.div`
   width: 100%;
-  padding: 32px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding-right: 5rem;
 
   @media (max-width: 480px) {
     padding: 24px;
@@ -74,7 +72,7 @@ export const StepInfo = styled.div`
   margin-bottom: 24px;
   background-color: #fff;
   border-radius: 8px;
-  width: 98%;
+  width: 100%;
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -142,7 +140,6 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 
     .imageContainer {
       width: 150px;
@@ -152,6 +149,7 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
     span {
@@ -160,8 +158,8 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 25rem;
-      top: 9rem;
+      left: 6rem;
+      top: 7rem;
       display: flex;
       justify-content: center;
       align-items: center;

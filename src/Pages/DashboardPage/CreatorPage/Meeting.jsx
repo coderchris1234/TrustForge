@@ -38,11 +38,13 @@ const Meeting = () => {
     }
   }, [userId]);
 
-  const upcomingMeetings = Meetings.filter((m) => m.status === "Confirmed");
-  const pastMeetings = Meetings.filter((m) => m.status !== "Confirmed");
+  // const upcomingMeetings = Meetings.filter((m) => m.status === "Confirmed");
+  // const pastMeetings = Meetings.filter((m) => m.status !== "Confirmed");
 
-  const displayedMeetings =
-    activeTab === "upcoming" ? upcomingMeetings : pastMeetings;
+  // const displayedMeetings =
+  //   activeTab === "upcoming" ? upcomingMeetings : pastMeetings;
+
+  console.log("allMeeting", allMeeting.meetings);
 
   return (
     <MeetingContainer>
@@ -67,8 +69,10 @@ const Meeting = () => {
           </div>
         </div>
       </div>
-      {allMeeting?.displayedMeetings?.length > 0 ? (
-        displayedMeetings.map((biz) => <MeetingCard {...biz} key={biz.id} />)
+      {allMeeting?.meetings?.length > 0 ? (
+        allMeeting?.meetings?.map((biz) => (
+          <MeetingCard {...biz} key={biz.id} />
+        ))
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>
           No meetings found.

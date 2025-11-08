@@ -36,14 +36,13 @@ export const DashboardLayoutContainer = styled.div`
       .image-logo {
         display: flex;
         gap: 6px;
-      }
-    }
+        margin-bottom: 10px;
 
-    .image {
-      background-color: blue;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
 
     .LogoName {
@@ -124,7 +123,9 @@ export const DashboardLayoutContainer = styled.div`
       position: sticky;
       top: 0;
       left: 0;
-      height: 4rem;
+      height: 70px;
+      /* align-items: center; */
+      justify-content: center;
 
       .top-bar {
         display: none;

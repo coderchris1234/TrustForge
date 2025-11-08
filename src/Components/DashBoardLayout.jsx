@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DashboardLayoutContainer } from "./DashBoardLayoutStyle";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Pages/Global/Slice";
+import Logo from "../assets/Logo.png";
 import axios from "axios";
 
 const DashBoardLayout = (props) => {
@@ -46,8 +47,9 @@ const DashBoardLayout = (props) => {
 
         <div className="leftSidedContent">
           <div className="image-logo">
-            <div className="image"></div>
-            <h2 className="LogoName">TrustForge</h2>
+            <Link to={"/"}>
+              <img src={Logo} alt="" />
+            </Link>
           </div>
           <p className="DashboardName">{props.dashboard}</p>
         </div>
