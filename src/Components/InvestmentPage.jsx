@@ -14,7 +14,7 @@ import {
 
 const ProgressComponent = ({ data }) => {
   const goal = data?.fundingSought;
-  const raised = 50000;
+  const raised = 0;
   const remaining = goal - raised;
   const percentage = Math.round((raised / goal) * 100);
   const formatNumber = (num) => {
