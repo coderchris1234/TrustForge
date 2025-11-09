@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const InvestorMeeting_container = styled.div`
   width: 100%;
   margin-top: 1rem;
@@ -248,5 +249,64 @@ export const InvestorMeeting_container = styled.div`
         gap: 0.5rem;
       }
     }
+  }
+`;
+
+export const ModalOverLay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+`;
+
+export const ModalBox = styled.div`
+  background: white;
+  width: 30%;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: pop 0.25s ease;
+
+  .workin {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .InputContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #ddd;
+  }
+
+  button {
+    background-color: blue;
+    border: none;
+    color: #ffff;
+    padding: 1rem;
+    border-radius: 8px;
   }
 `;

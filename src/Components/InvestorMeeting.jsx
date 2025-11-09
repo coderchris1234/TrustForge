@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { InvestorMeeting_container } from "./InvestorMeetingStyle";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
 import { CiCalendar, CiClock2 } from "react-icons/ci";
+import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
+import { MdOutlineCancel } from "react-icons/md";
 const InvestorMeeting = ({
   meetingTitle,
   meetingType,
@@ -15,6 +17,21 @@ const InvestorMeeting = ({
   meetingLink,
   // approvedMeeting,
 }) => {
+  const [openModal, setOpenModal] = React.useState(false);
+  const [form, setForm] = useState({
+    date: "",
+    time: "",
+    note: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   const InvestorStatus = "Awaiting Approval";
   const initials = businessOwnerName
     ?.split(" ")
@@ -66,7 +83,10 @@ const InvestorMeeting = ({
               </div>
             ) : null}
             {meetingStatus === "Declined" ? null : (
-              <div className="schedule_meetings">
+              <div
+                onClick={() => setOpenModal(true)}
+                className="schedule_meetings"
+              >
                 Reschedule
                 <FiRefreshCw size={20} />
               </div>
@@ -103,6 +123,57 @@ const InvestorMeeting = ({
         </div>
         <div className="discuss_text">{note}</div>
       </div>
+
+      {openModal && (
+        <ModalOverLay>
+          <ModalBox>
+            <div className="workin">
+              <div>
+                <h3>Re-schedule Meeting</h3>
+                <p>Set up a meeting with the Investor.</p>
+              </div>
+
+              <MdOutlineCancel
+                style={{ cursor: "pointer" }}
+                size={30}
+                onClick={() => setOpenModal(false)}
+              />
+            </div>
+
+            <div className="InputContainer">
+              <div>
+                <label>New Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  onChange={handleChange}
+                  value={form.date}
+                />
+              </div>
+
+              <div>
+                <label>New Time</label>
+                <input
+                  type="time"
+                  name="time"
+                  onChange={handleChange}
+                  value={form.time}
+                />
+              </div>
+            </div>
+            <label>Notes (optional)</label>
+            <input
+              type="text"
+              value={form.note}
+              placeholder="Add agenda or notes for the meeting"
+              name="note"
+              onChange={handleChange}
+            />
+
+            <button>Send Re-schedule Request</button>
+          </ModalBox>
+        </ModalOverLay>
+      )}
     </InvestorMeeting_container>
   );
 };
