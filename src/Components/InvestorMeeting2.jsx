@@ -77,10 +77,12 @@ const InvestorMeeting2 = ({
               </div>
             )}
 
-            <div className="schedule_meetings">
-              Reschedule
-              <FiRefreshCw size={15} />
-            </div>
+            {meetingStatus === "Declined" ? null : (
+              <div className="schedule_meetings">
+                Reschedule
+                <FiRefreshCw size={15} />
+              </div>
+            )}
             {meetingStatus !== "Awaiting Approval" ? null : (
               <div
                 className="decline_button"
