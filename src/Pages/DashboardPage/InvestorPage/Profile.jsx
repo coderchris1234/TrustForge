@@ -1,13 +1,9 @@
 import React from "react";
 import { ProfileStyle } from "./ProfileStyle";
-<<<<<<< HEAD
-import Uchechi from "../../../assets/Uchechi.jpg";
 import  { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-=======
 import Uchechi from "/Uchechi.jpg";
->>>>>>> 4bc705f054520214b0d2639ccfacc2ba73b1c2b7
 
 const Profile = () => {
 
