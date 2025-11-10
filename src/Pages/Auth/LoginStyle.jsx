@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import login from "../../assets/login.jpg";
+import login from "/login.jpg";
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ export const LoginLeft = styled.div`
 
   @media (max-width: 1024px) {
     width: 100%;
-    height: 40vh;
+    height: 60vh;
     border-radius: 0; /* Full rectangular image */
   }
 

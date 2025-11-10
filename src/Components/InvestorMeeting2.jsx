@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { meetings2 } from "../Config/Data";
 import { CiCalendar, CiClock2 } from "react-icons/ci";
 
@@ -6,6 +6,7 @@ import { InvestorMeeting_container } from "./InvestorMeeting2Style";
 import { MdOutlineCancel } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
+import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
 const InvestorMeeting2 = ({
   id,
   meetingTitle,
@@ -19,7 +20,25 @@ const InvestorMeeting2 = ({
   meetingLink,
   approvedMeeting,
   declineMeeting,
+  rescheduleMeeting,
 }) => {
+  const [openModal, setOpenModal] = React.useState(false);
+  const [form, setForm] = useState({
+    date: "",
+    time: "",
+    note: "",
+    meetingId: id,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   // const textMeetingStatus = "Approved and Upcoming";
 
   console.log(meetingStatus);
@@ -65,7 +84,8 @@ const InvestorMeeting2 = ({
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {meetingStatus !== "Awaiting Approval" ? null : (
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
               <div
                 className="accept_meetings"
                 onClick={() => {
@@ -77,13 +97,19 @@ const InvestorMeeting2 = ({
               </div>
             )}
 
-            {meetingStatus === "Declined" ? null : (
-              <div className="schedule_meetings">
+            {meetingStatus === "Declined" ||
+            meetingStatus === "Reschedule Requested" ? null : (
+              <div
+                onClick={() => setOpenModal(true)}
+                className="schedule_meetings"
+              >
                 Reschedule
                 <FiRefreshCw size={15} />
               </div>
             )}
-            {meetingStatus !== "Awaiting Approval" ? null : (
+
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
               <div
                 className="decline_button"
                 onClick={() => {
@@ -126,6 +152,62 @@ const InvestorMeeting2 = ({
         </div>
         <div className="discuss_text">{note}</div>
       </div>
+      {openModal && (
+        <ModalOverLay>
+          <ModalBox>
+            <div className="workin">
+              <div>
+                <h3>Re-schedule Meeting</h3>
+                <p>Set up a meeting with the Investor.</p>
+              </div>
+
+              <MdOutlineCancel
+                style={{ cursor: "pointer" }}
+                size={30}
+                onClick={() => setOpenModal(false)}
+              />
+            </div>
+
+            <div className="InputContainer">
+              <div>
+                <label>New Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  onChange={handleChange}
+                  value={form.date}
+                />
+              </div>
+
+              <div>
+                <label>New Time</label>
+                <input
+                  type="time"
+                  name="time"
+                  onChange={handleChange}
+                  value={form.time}
+                />
+              </div>
+            </div>
+            <label>Notes (optional)</label>
+            <input
+              type="text"
+              value={form.note}
+              placeholder="Add agenda or notes for the meeting"
+              name="note"
+              onChange={handleChange}
+            />
+
+            <button
+              onClick={() => {
+                rescheduleMeeting(form);
+              }}
+            >
+              Send Re-schedule Request
+            </button>
+          </ModalBox>
+        </ModalOverLay>
+      )}
     </InvestorMeeting_container>
   );
 };

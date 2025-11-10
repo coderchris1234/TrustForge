@@ -60,6 +60,20 @@ const Meeting = () => {
       console.log("this is error", err);
     }
   };
+  const rescheduleMeeting = async (data) => {
+    try {
+      const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success(res?.data?.message);
+      fetchData();
+      console.log(res);
+    } catch (err) {
+      console.log("this is error", err);
+    }
+  };
 
   useEffect(() => {
     if (!userId) {
@@ -111,6 +125,7 @@ const Meeting = () => {
             key={biz.id}
             approvedMeeting={approvedMeeting}
             declineMeeting={declineMeeting}
+            rescheduleMeeting={rescheduleMeeting}
           />
         ))
       ) : (

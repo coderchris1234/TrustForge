@@ -1,6 +1,6 @@
 import React from "react";
 import { SolutionContainer } from "./SolutionStyle";
-import Woman from "../../assets/Woman.jpg";
+import Woman from "/Woman.jpg";
 
 const Solution = () => {
   return (

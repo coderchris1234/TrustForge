@@ -1,6 +1,6 @@
 import React from "react";
 import { ProfileStyle } from "./ProfileStyle";
-import Uchechi from "../../../assets/Uchechi.jpg";
+import Uchechi from "/Uchechi.jpg";
 
 const Profile = () => {
   return (

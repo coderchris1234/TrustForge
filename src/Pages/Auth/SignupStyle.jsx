@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import signup from "../../assets/signup.jpg";
+import signup from "/signup.jpg";
 
 export const SignupContainer = styled.div`
   display: flex;

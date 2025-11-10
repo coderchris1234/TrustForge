@@ -6,12 +6,21 @@ import { IoEyeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setbusinessOwnerId } from "../Pages/Global/Slice";
+// import axios from "axios";
 const BusinessNewsFeed = ({ data }) => {
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const dispatch = useDispatch();
   console.log("data", data);
   const nav = useNavigate();
   // console.log(data);
   return (
+    //  const saveBusiness = async (businessId) => {
+    //   const res = await axios.post(`${BaseUrl}/save`,
+    //      { businessId },
+
+    //   )
+    //  }
+
     <Newsfeed_container>
       {data?.map((post, index) => (
         <div key={index} className="postCard">
@@ -44,7 +53,7 @@ const BusinessNewsFeed = ({ data }) => {
                 </div>
                 <div className="like">
                   <div>
-                    <CiHeart />
+                    {/* <CiHeart size={40} onClick={() => saveBusiness(post.id)} /> */}
                   </div>
                   <span>{post.likeCount}</span>
                 </div>
