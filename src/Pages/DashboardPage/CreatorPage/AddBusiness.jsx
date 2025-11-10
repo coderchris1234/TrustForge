@@ -126,7 +126,7 @@ const AddBusiness = () => {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log("res", res?.data);
+      console.log(" Business", res?.data);
 
       toast.success(res?.data?.message || "Business created successfully");
     } catch (error) {

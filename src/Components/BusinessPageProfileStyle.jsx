@@ -148,3 +148,113 @@ export const InvestButton = styled(ButtonBase)`
   padding: 12px 14px;
   box-shadow: 0 6px 12px rgba(46, 160, 67, 0.12);
 `;
+
+export const ModalOverLay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+`;
+
+export const ModalBox = styled.div`
+  background: white;
+  width: 30%;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  animation: pop 0.25s ease;
+
+  .amount {
+    input {
+      width: 100%;
+      border: none;
+      border: 1px solid grey;
+      padding: 1rem;
+      border-radius: 8px;
+      outline: none;
+    }
+  }
+
+  .payment {
+    display: flex;
+    justify-content: space-between;
+  }
+  .option-box {
+    padding: 15px 12px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .option-box.selected {
+    border: 2px solid #1e90ff;
+    background: #e8f2ff;
+  }
+
+  /* Row layout */
+  .option-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Circle */
+  .circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circle-active {
+    border-color: #1e90ff;
+  }
+
+  .inner-circle {
+    width: 12px;
+    height: 12px;
+    background: #1e90ff;
+    border-radius: 50%;
+  }
+
+  /* Choose Button */
+  .choose-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 20px;
+    font-size: 16px;
+
+    background: #ddd;
+    color: #777;
+    cursor: not-allowed;
+    transition: 0.2s ease;
+  }
+
+  .choose-btn.active {
+    background: #1e90ff;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Go Back */
+  .go-back {
+    margin-top: 12px;
+    color: #1e90ff;
+    cursor: pointer;
+    text-align: center;
+  }
+`;

@@ -9,19 +9,15 @@ const Notification1 = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
   const token = user?.token;
-  const role = user?.role;
 
   useEffect(() => {
     const fetchNotification = async () => {
       try {
-        const url =
-          role === "BusinessOwner"
-            ? `${BaseUrl}/allNotificationsById`
-            : `${BaseUrl}/allNotificationsByI`;
+        const url = `${BaseUrl}/allNotificationsById`;
 
         const res = await axios.get(url, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
         });
         console.log(res);
@@ -33,7 +29,7 @@ const Notification1 = () => {
       }
     };
     fetchNotification();
-  }, [token, role, BaseUrl]);
+  }, [token, BaseUrl]);
   return (
     <NotificationContainer>
       {notification.length === 0 ? (
