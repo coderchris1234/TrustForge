@@ -122,8 +122,6 @@ export const SmartContainer = styled.div`
     }
   }
 
-  /* ✅ Responsive Adjustments */
-
   @media (max-width: 1024px) {
     height: auto;
     padding: 4rem 0;
