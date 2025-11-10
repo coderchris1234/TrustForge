@@ -1,8 +1,41 @@
 import React from "react";
 import { ProfileStyle } from "./ProfileStyle";
 import Uchechi from "../../../assets/Uchechi.jpg";
+import  { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Profile = () => {
+
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const [kyc, setKyc] = useState(null);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchKyc = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/oneKyc`, userId, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // backend returns: { message: "...", kyc: {...} }
+        setKyc(res.data.kyc);
+        console.log("KYC fetched:", res.data.kyc);
+      } catch (error) {
+        console.error("Error fetching KYC:", error);
+      }
+    };
+
+    fetchKyc();
+  }, [userId, token, BaseUrl]);
+ 
+
   return (
     <ProfileStyle>
       <div className="Profile_heading">

@@ -20,10 +20,9 @@ const Notification = () => {
             authorization: `Bearer ${token}`,
           },
         });
-        console.log(res);
 
-        setNotification(res?.data?.data || []);
-        console.log(Notification);
+        setNotification(res?.data?.data?.notifications || []);
+        console.log("notification", notification);
       } catch (error) {
         console.log(error);
       }

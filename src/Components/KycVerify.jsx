@@ -23,7 +23,8 @@ import toast from "react-hot-toast";
 import { GoUpload } from "react-icons/go";
 import { MdOutlinePayment } from "react-icons/md";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserDetailss } from "../Pages/Global/Slice";
 
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
@@ -32,6 +33,8 @@ const KycVerification = () => {
   const [profilePics, setProfilePics] = useState(null);
   const [userKYC, setUserKYC] = useState(null);
   const isUnderReview = userKYC?.toLowerCase().includes("review");
+  const dispatch = useDispatch();
+
 
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -123,11 +126,16 @@ const KycVerification = () => {
       formData2.append(key, value);
     });
     try {
-      const res = await axios.post(`${BaseUrl}/kycI`, formData2, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
+      const  res = await axios.post(`${BaseUrl}/kycI`, formData2, {
+        headers: { authorization: `Bearer ${token}` },
       });
+
+
+      const profileData = res?.data;
+
+      dispatch(setUserDetailss(profileData));
+
+      console.log("responseee", res?.data);
       setStep(4);
       console.log("omo", res);
     } catch (error) {
