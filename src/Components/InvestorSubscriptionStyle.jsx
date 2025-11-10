@@ -7,7 +7,7 @@ export const Page = styled.div`
   padding: 20px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   /* background-color: red; */
-  height: 100%;
+  height: 700px;
 `;
 
 /* Toggle buttons row */
@@ -57,7 +57,7 @@ export const Card = styled.div`
   border-radius: 12px;
   background: #fff;
   padding: 18px;
-  min-height: 460px;
+  min-height: 600px;
   border: 2px solid #e5e7eb;
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@ export const FeatureItem = styled.div`
   font-size: 13px;
 
   svg {
-    color: #34d399;
+    color: blue;
     flex-shrink: 0;
   }
 `;
@@ -180,8 +180,8 @@ export const ActionButton = styled.button`
     p.variant === "outline" &&
     css`
       background: transparent;
-      color: #10b981;
-      border-color: #10b981;
+      color: blue;
+      border-color: blue;
       font-weight: 600;
     `}
 

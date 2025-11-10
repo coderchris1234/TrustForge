@@ -37,16 +37,6 @@ flex-direction: column;
             border-radius: 0.8rem;
             font-size: 12px;
         }
-        .download_view{
-            height: 2.7rem;
-            width: 7rem;
-            gap: 0.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.6rem;
-            border: 1px solid gray;
-        }
         .view{
             height: 2rem;
             width: 4rem;

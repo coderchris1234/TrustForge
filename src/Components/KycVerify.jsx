@@ -8,7 +8,6 @@ const KycVerify = () => {
         <h3>Kyc Verification</h3>
         <p>Complete your Kyc verification to unlock more features</p>
       </div>
-
       <section className="why_verification">
         <h3>Why KYC Verfification</h3>
         <ul className="Verify_listing">
@@ -20,7 +19,6 @@ const KycVerify = () => {
           </li>
         </ul>
       </section>
-
       <section className="Kyc_steps"></section>
 
       <section className="Profile_photo_kyc">
@@ -34,7 +32,6 @@ const KycVerify = () => {
           </div>
           <span>Upload a professional photo</span>
         </div>
-
         <article className="Photo_input">
           <div className="Input_kyc">
             <label>full name</label>
