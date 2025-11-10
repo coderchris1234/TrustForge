@@ -646,7 +646,7 @@ export const getOverviewBusiness = (overviewData) => [
   {
     id: 4,
     title: "Investor Connections",
-    num: overviewData?.meetings?.length ?? 0,
+    num: overviewData?.investorInterests,
     icon: people,
     bgColor: "#e6b5e6",
     color: "#8a38f5",

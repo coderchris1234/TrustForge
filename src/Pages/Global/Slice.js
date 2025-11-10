@@ -8,6 +8,7 @@ const initialState = {
   likedBusinesses: [],
   savedBusinesses: [],
   userDetailss: null,
+  deletedBusinesses: [],
 };
 
 const authSlice = createSlice({
@@ -46,7 +47,26 @@ const authSlice = createSlice({
       }
     },
     setUserDetailss: (state, action) => {
-      state.userDetails = action.payload;
+      state.userDetailss = action.payload;
+    },
+    toggleLikedBusiness: (state, action) => {
+      const businessId = action.payload;
+
+      const exists = state.likedBusinesses.includes(businessId);
+
+      if (exists) {
+        state.likedBusinesses = state.likedBusinesses.filter(
+          (id) => id !== businessId
+        );
+      } else {
+        state.likedBusinesses.push(businessId);
+      }
+    },
+    addDeletedBusiness: (state, action) => {
+      const businessId = action.payload;
+      if (!state.deletedBusinesses.includes(businessId)) {
+        state.deletedBusinesses.push(businessId);
+      }
     },
   },
 });
@@ -59,5 +79,7 @@ export const {
   setbusinessOwnerId,
   toggleSavedBusiness,
   setUserDetailss,
+  toggleLikedBusiness,
+  addDeletedBusiness,
 } = authSlice.actions;
 export default authSlice.reducer;
