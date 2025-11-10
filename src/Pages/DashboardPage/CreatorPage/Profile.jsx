@@ -2,8 +2,39 @@ import React, { useState } from "react";
 import { ProfileStyle } from "./ProfileStyle";
 import Professional from "../../../Components/Professional";
 import { CiCamera } from "react-icons/ci";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
 const Profile = () => {
   const [mode, setMode] = useState("personal"); 
+   const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  console.log("userID", userId);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const [kyc, setKyc] = useState(null);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchKyc = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/kyc/${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setKyc(res?.data?.data);
+        console.log("KYC fetched:", res.data.data);
+      } catch (error) {
+        console.error("Error fetching KYC:", error);
+      }
+    };
+
+    fetchKyc();
+  }, [userId, token, BaseUrl]);
+
 
   return (
     <ProfileStyle>
@@ -43,7 +74,7 @@ const Profile = () => {
 
             <div className="Profile_content_holder">
               <article className="Kyc_verified">
-                <h3>Uchechi Ogbonna</h3>
+                <h3>{kyc?.firstName}</h3>
                 <span>KYC Verified</span>
               </article>
 
