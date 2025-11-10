@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import resetPassword from "../../assets/resetpassword.jpg";
+import resetPassword from "/resetpassword.jpg";
 
 export const ResetPasswordContainer = styled.div`
   display: flex;

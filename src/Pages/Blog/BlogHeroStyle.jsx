@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Insight from "../../assets/Insight.png";
+import Insight from "/Insight.png";
 
 export const BlogHeroContainer = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ export const BlogHeroContainer = styled.div`
     }
 
     p {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 400;
       color: var(--main_white);
       line-height: 150%;

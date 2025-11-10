@@ -1,6 +1,6 @@
 import React from "react";
 import { ProblemContainer } from "./ProblemStyle";
-import Frame from "../../assets/Frame.png";
+import Frame from "/Frame.png";
 
 const Problem = () => {
   return (

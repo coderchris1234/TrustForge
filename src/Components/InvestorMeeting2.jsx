@@ -20,12 +20,14 @@ const InvestorMeeting2 = ({
   meetingLink,
   approvedMeeting,
   declineMeeting,
+  rescheduleMeeting,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
     date: "",
     time: "",
     note: "",
+    meetingId: id,
   });
 
   const handleChange = (e) => {
@@ -82,7 +84,8 @@ const InvestorMeeting2 = ({
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {meetingStatus !== "Awaiting Approval" ? null : (
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
               <div
                 className="accept_meetings"
                 onClick={() => {
@@ -94,14 +97,19 @@ const InvestorMeeting2 = ({
               </div>
             )}
 
-            <div
-              onClick={() => setOpenModal(true)}
-              className="schedule_meetings"
-            >
-              Reschedule
-              <FiRefreshCw size={15} />
-            </div>
-            {meetingStatus !== "Awaiting Approval" ? null : (
+            {meetingStatus === "Declined" ||
+            meetingStatus === "Reschedule Requested" ? null : (
+              <div
+                onClick={() => setOpenModal(true)}
+                className="schedule_meetings"
+              >
+                Reschedule
+                <FiRefreshCw size={15} />
+              </div>
+            )}
+
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
               <div
                 className="decline_button"
                 onClick={() => {
@@ -190,7 +198,13 @@ const InvestorMeeting2 = ({
               onChange={handleChange}
             />
 
-            <button>Send Re-schedule Request</button>
+            <button
+              onClick={() => {
+                rescheduleMeeting(form);
+              }}
+            >
+              Send Re-schedule Request
+            </button>
           </ModalBox>
         </ModalOverLay>
       )}

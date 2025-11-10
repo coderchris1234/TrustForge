@@ -36,6 +36,7 @@ import ScrollToTop from "./Config/Scroll_to_top";
 import BusinessDetailPage from "./Pages/DashboardPage/CreatorPage/BusinessDetail";
 import BusinessPage from "./Pages/DashboardPage/InvestorPage/BusinessPage";
 import VerifiedKyc from "./Components/VerifiedKyc";
+import PaymentSuccessful from "./Components/PaymentSuccessfulPage";
 
 const App = () => {
   return (
@@ -65,6 +66,7 @@ const App = () => {
               path="mybusiness/:businessName/:id"
               element={<BusinessDetailPage />}
             />
+            <Route path="payment-success" element={<PaymentSuccessful />} />
             <Route path="meeting" element={<Meeting />} />
             <Route path="profile" element={<Profile />} />
             <Route path="subscription" element={<Subscription />} />
@@ -78,6 +80,10 @@ const App = () => {
             <Route path="" element={<ExploreBusiness />} />
             <Route path="savedbusiness" element={<SavedBusiness />} />
             <Route path="ndamanagement" element={<NdaManagement2 />} />
+            <Route
+              path="payment-success/:id/:investorName/:referenceId/:amount"
+              element={<PaymentSuccessful />}
+            />
             <Route path="notification" element={<Notification2 />} />
             <Route path="meeting" element={<Meeting2 />} />
             <Route path="profile" element={<Profile2 />} />

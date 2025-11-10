@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import HOME from "../assets/HOME.png";
 
-// Subtle entrance animation
 const fadeUp = keyframes`
   from {
     opacity: 0;
@@ -96,14 +95,14 @@ export const TargetContainer = styled.div`
         }
 
         h3 {
-          font-size: clamp(1rem, 2vw, 1.125rem);
+          font-size: 20px;
           font-weight: 600;
           color: var(--netural_black_color);
           margin: 0;
         }
 
         p {
-          font-size: clamp(0.9rem, 2vw, 1rem);
+          font-size: 18px;
           color: var(--netural_black_color);
           line-height: 1.5;
           margin: 0;
@@ -113,7 +112,6 @@ export const TargetContainer = styled.div`
     }
   }
 
-  /* Responsive layout tweaks */
   @media (max-width: 768px) {
     background-size: cover;
     background-position: top center;

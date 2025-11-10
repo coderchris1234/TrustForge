@@ -146,10 +146,14 @@ export const DashboardLayoutContainer = styled.div`
           gap: 8px;
 
           .image {
-            background-color: red;
+            background-color: #303030ff;
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
           }
 
           .UserInfo {

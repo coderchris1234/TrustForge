@@ -240,19 +240,26 @@ export const ProfileStyle = styled.div`
     }
 
     .Profile_info {
+      background-color: red;
+      width: 100%;
+
       .Profile_image {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: max-content;
+        background-color: green;
 
         .Profile_img_holder {
           width: 30%;
-          justify-content: flex-start;
+          height: 70%;
+          padding: 1rem;
         }
 
         .Profile_content_holder {
-          width: 100%;
+          width: 80%;
           margin-top: 2rem;
+          background-color: yellow;
         }
       }
 

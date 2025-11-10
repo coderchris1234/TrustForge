@@ -6,6 +6,7 @@ import { CiCalendar, CiClock2 } from "react-icons/ci";
 import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
 import { MdOutlineCancel } from "react-icons/md";
 const InvestorMeeting = ({
+  id,
   meetingTitle,
   meetingType,
   note,
@@ -15,13 +16,14 @@ const InvestorMeeting = ({
   businessName,
   businessOwnerName,
   meetingLink,
-  // approvedMeeting,
+  rescheduleMeeting,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
     date: "",
     time: "",
     note: "",
+    meetingId: id,
   });
 
   const handleChange = (e) => {
@@ -170,7 +172,13 @@ const InvestorMeeting = ({
               onChange={handleChange}
             />
 
-            <button>Send Re-schedule Request</button>
+            <button
+              onClick={() => {
+                rescheduleMeeting(form);
+              }}
+            >
+              Send Re-schedule Request
+            </button>
           </ModalBox>
         </ModalOverLay>
       )}
