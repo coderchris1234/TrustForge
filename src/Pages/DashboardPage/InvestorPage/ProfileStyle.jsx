@@ -253,7 +253,6 @@ export const ProfileStyle = styled.div`
         .Profile_img_holder {
           width: 30%;
           height: 70%;
-          /* justify-content: flex-start; */
           padding: 1rem;
         }
 
