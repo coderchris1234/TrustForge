@@ -23,6 +23,7 @@ export const Not_container = styled.div`
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+    
 
       .not_top_left {
         display: flex;
