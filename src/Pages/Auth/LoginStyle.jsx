@@ -39,7 +39,6 @@ export const LoginLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-    /* background-color: red; */
   }
 
   @media (max-width: 1024px) {
