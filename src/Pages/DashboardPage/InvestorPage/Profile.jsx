@@ -13,7 +13,7 @@ const Profile = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   const [ mode, setMode] =useState(false)
-  useEffect(() => {git
+  useEffect(() => {
     if (!userId) return;
 
     const fetchKyc = async () => {
@@ -102,7 +102,7 @@ const Profile = () => {
               <div className="First">
                 <aside className="First_informations">
                   <span>First Name</span>
-                  <p>{kyc?.email}</p>
+                  <p>{kyc?.firstName}</p>
                 </aside>
 
                 <aside className="First_informations">
@@ -149,7 +149,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <Professional />
+        <Professional kyc={kyc} />
       )}
     </ProfileStyle>
   );
