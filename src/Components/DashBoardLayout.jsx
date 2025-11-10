@@ -102,7 +102,7 @@ const DashBoardLayout = (props) => {
 
           <div className="header-content">
             <div className="profile-content">
-              <div className="image"></div>
+              <div className="image">{userDetails?.user.fullName[0]}</div>
               <div className="UserInfo">
                 <p>{userDetails?.user?.fullName || "Loading..."}</p>
                 <span>{userDetails?.user?.role}</span>
