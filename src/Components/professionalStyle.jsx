@@ -1,4 +1,3 @@
-// professionalStyle.js
 import styled from "styled-components";
 
 export const Professional_container = styled.div`
@@ -90,7 +89,6 @@ export const Professional_container = styled.div`
     font-size: 13px;
   }
 
-  /* Mobile adjustments */
   @media (max-width: 420px) {
     padding: 12px;
 

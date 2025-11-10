@@ -1,8 +1,8 @@
-// Professional.jsx
 import React from "react";
 import { Professional_container } from "./professionalStyle";
 
 const Professional = () => {
+  
   return (
     <Professional_container>
       <div className="comapny_header_kyc">

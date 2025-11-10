@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ProfileStyle } from "./ProfileStyle";
-import Uchechi from "../../../assets/Uchechi.jpg";
 import Professional from "../../../Components/Professional";
 import { CiCamera } from "react-icons/ci";
 const Profile = () => {
@@ -30,14 +29,12 @@ const Profile = () => {
           </button>
         </div>
       </div>
-
-      {/* conditional rendering: show personal content or professional component */}
       {mode === "personal" ? (
         <div className="Profile_info">
           <article className="Profile_image">
             <div className="Profile_img_holder">
               <aside className="Image_holder">
-                <img src={Uchechi} alt="profile" />
+                <img src="" alt="profile" />
               </aside>
               {/* <div className="ProIcon">
                     <CiCamera size={23}/>
