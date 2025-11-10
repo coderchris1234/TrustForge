@@ -6,16 +6,15 @@ import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FiMessageSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+
 const BusinessCard = (props) => {
   const nav = useNavigate();
-  // const { mybusiness } = useParams();
-  // console.log("wow", mybusiness);
 
   const getStatusClass = (status) => {
     if (!status) return "status";
 
     const lower = status.toLowerCase();
-    if (lower === "active") return "active status";
+    if (lower === "verified") return "active status";
     if (lower === "under review") return "under-review status";
 
     return "status";
@@ -44,7 +43,7 @@ const BusinessCard = (props) => {
           <div className="btn">
             <CustomButton
               Btntext="View Details"
-              className="bt"
+              className="bt view"
               onClick={() =>
                 nav(
                   `/dashboard/business_owner/mybusiness/${props.businessName}/${props.id}`
@@ -61,13 +60,13 @@ const BusinessCard = (props) => {
         <div className="under">
           <div className="extra">
             <div>
-              <IoEyeOutline /> {props.views} views
+              <IoEyeOutline /> {props.viewCount} views
             </div>
             <div>
-              <CiHeart /> {props.likes} likes
+              <CiHeart /> {props.likeCount} likes
             </div>
             <div>
-              <FiMessageSquare /> {props.messages} Save
+              <FiMessageSquare /> {props.investorInterests} Save
             </div>
           </div>
           <div>

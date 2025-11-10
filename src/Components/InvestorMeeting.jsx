@@ -32,7 +32,7 @@ const InvestorMeeting = ({
       [name]: value,
     }));
   };
-  const InvestorStatus = "Awaiting Approval";
+
   const initials = businessOwnerName
     ?.split(" ")
     .map((word) => word[0])

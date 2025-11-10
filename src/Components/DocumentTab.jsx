@@ -11,15 +11,19 @@ const DocumentList = styled.div`
 const DocumentItem = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   background: #f4f4f4;
   padding: 10px 14px;
   border-radius: 8px;
+  background-color: red;
+  flex-direction: column;
 `;
 
 const DocumentInfo = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  background-color: pink;
+  justify-content: space-between;
 `;
 
 const DocumentTab = ({ data }) => (
@@ -27,16 +31,31 @@ const DocumentTab = ({ data }) => (
     <DocumentItem>
       <DocumentInfo>
         <strong>{data?.pitchDeck?.split("/").pop()}</strong>
-        <span>PDF, 2.5MB</span>
+        <span>PDF</span>
+        <a
+          href={data?.pitchDeck}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FiDownload size={20} style={{ cursor: "pointer" }} />
+        </a>
       </DocumentInfo>
-      <a
-        href={data?.pitchDeck}
-        download
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FiDownload size={20} style={{ cursor: "pointer" }} />
-      </a>
+
+      <DocumentInfo>
+        <strong>
+          {data?.businessRegisterationCertificate?.split("/").pop()}
+        </strong>
+        <span>PDF</span>
+        <a
+          href={data?.businessRegisterationCertificate}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FiDownload size={20} style={{ cursor: "pointer" }} />
+        </a>
+      </DocumentInfo>
     </DocumentItem>
   </DocumentList>
 );
