@@ -7,7 +7,8 @@ import Uchechi from "/Uchechi.jpg";
 
 const Profile = () => {
 
-  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+ const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+ console.log("userID", userId)
   const token = useSelector((state) => state.TrustForge.user?.token);
 
   const [kyc, setKyc] = useState(null);
@@ -18,15 +19,15 @@ const Profile = () => {
 
     const fetchKyc = async () => {
       try {
-        const res = await axios.get(`${BaseUrl}/oneKyc`, userId, {
+        const res = await axios.get(`${BaseUrl}/kyc/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        // backend returns: { message: "...", kyc: {...} }
-        setKyc(res.data.kyc);
-        console.log("KYC fetched:", res.data.kyc);
+        // backend returns { message: "...", data: { ...kyc fields } }
+        setKyc(res.data.data);
+        console.log("KYC fetched:", res.data.data);
       } catch (error) {
         console.error("Error fetching KYC:", error);
       }
@@ -34,7 +35,6 @@ const Profile = () => {
 
     fetchKyc();
   }, [userId, token, BaseUrl]);
- 
 
   return (
     <ProfileStyle>
@@ -54,25 +54,25 @@ const Profile = () => {
         <article className="Profile_image">
           <div className="Profile_img_holder">
             <aside className="Image_holder">
-              <img src={Uchechi} alt="" />
+              <img src={kyc?.profilePic} alt="" />
             </aside>
             <div className="ProIcon"></div>
           </div>
           <div className="Profile_content_holder">
             <article className="Kyc_verified">
-              <h3>Uchechi Ogbonna</h3>
-              <span>KYC Verified</span>
+              <h3>{kyc?.firstName}</h3>
+              <span>{kyc?.verificationStatus}</span>
             </article>
 
             <div className="Profile_info_holder">
               <div className="Information_kyc">
-                <p>ogbonnauchechi4@gmail.com</p>
+                <p>{kyc?.email}</p>
               </div>
               <div>
-                <p>Lagos, Nigeria</p>
+                <p>{kyc?.state}</p>
               </div>
               <div>
-                <p>+234 901 7634 832</p>
+                <p>{kyc?.phoneNumber}</p>
               </div>
             </div>
           </div>
@@ -87,35 +87,35 @@ const Profile = () => {
             <div className="First">
               <aside className="First_informations">
                 <span>First Name</span>
-                <p>Uchechi</p>
+                <p>{kyc?.firstName}</p>
               </aside>
               <aside className="First_informations">
                 <span>Email Address</span>
-                <p>ogbonnauchechi4@gmail.com</p>
+                <p>{kyc?.email}</p>
               </aside>
               <aside className="First_informations">
                 <span>Date of birth</span>
-                <p>02-11-1965</p>
+                <p>{kyc?.dateOfBirth}</p>
               </aside>
               <aside className="First_informations">
                 <span>Residential Address</span>
-                <p>15, Church Street New Site Satellite Town</p>
-                <span>Lagos, Nigeria</span>
+                <p>{kyc?.residentialAddress}</p>
+                <span>{kyc?.state}</span>
               </aside>
             </div>
 
             <div className="First">
               <aside className="First_informations">
                 <span>Last Name</span>
-                <p>Ogbonna</p>
+                <p>{kyc?.lastName}</p>
               </aside>
               <aside className="First_informations">
                 <span>Phone number</span>
-                <p>+234 906 0496 537</p>
+                <p>{kyc?.phoneNumber}</p>
               </aside>
               <aside className="First_informations">
                 <span>Nationality</span>
-                <p>Nigerian</p>
+                <p>{kyc?.nationality}</p>
               </aside>
             </div>
           </section>

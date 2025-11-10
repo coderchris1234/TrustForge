@@ -1,53 +1,78 @@
 import React, { useEffect, useState } from "react";
 import { Notification_container } from "./NotificationStyle";
 import Not from "../../../Components/Not";
-import Not2 from "../../../Components/Not2";
 import axios from "axios";
 import { useSelector } from "react-redux";
+
 const Notification = () => {
-  const [notification, setNotification] = useState([]);
+  const [notifications, setNotifications] = useState([]);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
-  const user = useSelector((state) => state.TrustForge.user);
-  const token = user?.token;
+  const token = useSelector((state) => state.TrustForge.user?.token);
 
   useEffect(() => {
-    const fetchNotification = async () => {
-      try {
-        const url = `${BaseUrl}/allNotificationsByI`;
+    if (!token) return;
 
-        const res = await axios.get(url, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
+    const fetchNotifications = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/allNotificationsI`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
 
-        setNotification(res?.data?.data?.notifications || []);
-        console.log("notification", notification);
+        // Merge read and unread notifications into one array
+        const allNotifications = [
+          ...(res.data?.read || []),
+          ...(res.data?.unread || []),
+        ];
+
+        // Sort by newest first
+        allNotifications.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        setNotifications(allNotifications);
+        console.log("Fetched notifications:", allNotifications);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching notifications:", error);
       }
     };
-    fetchNotification();
+
+    fetchNotifications();
   }, [token, BaseUrl]);
+
+  const unreadCount = notifications.filter((n) => n.status === "unread").length;
+
   return (
     <Notification_container>
       <div className="notification_top">
         <div>
-          <h1>Notifications </h1>
+          <h1>Notifications</h1>
           <p>Stay updated with your latest activities.</p>
         </div>
         <div className="mark">Mark All As Read</div>
       </div>
+
       <div className="read_unread">
         <div className="all">
-          All <small>(5)</small>
+          All <small>({notifications.length})</small>
         </div>
         <div className="unread">
-          Unread <small>(3)</small>
+          Unread <small>({unreadCount})</small>
         </div>
       </div>
-      <Not />
-      <Not2 />
+
+      <div className="notification_list">
+        {notifications.length === 0 && <p>No notifications yet.</p>}
+
+        {notifications.map((notif) => (
+          <Not
+            key={notif.id}
+            title={notif.title}
+            message={notif.description}
+            date={new Date(notif.createdAt).toLocaleString()}
+            status={notif.status} // pass read/unread status
+          />
+        ))}
+      </div>
     </Notification_container>
   );
 };
