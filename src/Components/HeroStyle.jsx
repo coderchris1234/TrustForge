@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import HeroBg from "../assets/HeroBg.jpg";
+import HeroBg from "/HeroBg.jpg";
 
 // Text fade/slide animation
 const fadeSlide = keyframes`
@@ -34,7 +34,7 @@ export const HeroContainer = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       text-align: center;
 
       h3 {
@@ -119,19 +119,47 @@ export const HeroContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    .Hero_content h3 {
-      font-size: 1.6rem;
-      line-height: 130%;
-    }
+    .Hero_content {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      text-align: center;
 
-    .Hero_content p {
-      font-size: 0.9rem;
-    }
+      .Hero_content h3 {
+        font-size: 1.6rem;
+        line-height: 130%;
+      }
 
-    .Hero_btn {
-      width: 140px;
-      height: 40px;
-      font-size: 14px;
+      .Hero_content p {
+        font-size: 0.9rem;
+      }
+
+      .Hero_btn {
+        width: 140px;
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 390px) {
+    .Hero_page_wrapper {
+      width: 100%;
+      .Hero_content {
+        width: 100%;
+
+        h3 {
+          font-size: 30px;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
     }
   }
 `;

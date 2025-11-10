@@ -53,7 +53,7 @@ export const BlogPostCardStyle = styled.div`
 
           .Read_More {
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
             color: var(--secondary_color_600);
           }
@@ -75,7 +75,7 @@ export const BlogPostCardStyle = styled.div`
       }
 
       h3 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
         color: var(--netural_black_color);
         line-height: 130%;
@@ -211,6 +211,29 @@ export const BlogPostCardStyle = styled.div`
         p,
         span {
           font-size: 13px;
+        }
+      }
+    }
+
+    @media (max-width: 390px) {
+      .Insight_card_contents {
+        .Insight_card_text_holder {
+          padding: 18px;
+          span {
+            font-size: 11px;
+            padding: 3px 10px;
+            width: 40%;
+            height: 25px;
+            font-size: 13px;
+          }
+          h3 {
+            font-size: 16px;
+          }
+
+          p {
+            font-size: 13px;
+            line-height: 150%;
+          }
         }
       }
     }

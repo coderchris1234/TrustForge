@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import emailverify from "../../assets/emailverify.jpg";
+import emailverify from "/emailverify.jpg";
 
 export const VerifyEmailContainer = styled.div`
   display: flex;

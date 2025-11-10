@@ -97,6 +97,7 @@ const BusinessPageProfile = ({ data }) => {
   const data1 = {
     businessId: form.businessId,
     price: form.price,
+    redirectUrl: `${window.location.origin}/payment-success`,
   };
 
   const handleInvest = async () => {
@@ -106,8 +107,10 @@ const BusinessPageProfile = ({ data }) => {
         headers: { authorization: `Bearer ${token}` },
       });
       console.log("payment", res);
-
-      toast.success("Investment initialized");
+      // toast.success("Investment initialized");
+      if (res.data?.data?.url) {
+        window.location.href = res.data.data.url;
+      }
     } catch (err) {
       setLoading(false);
       console.error(err);
