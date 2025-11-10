@@ -6,7 +6,7 @@ const PaymentSuccessful = () => {
   const navigate = useNavigate();
   const { referenceId, amount, fullName } = useParams();
   const handleContinue = () => {
-    navigate("/dashboard/investor"); // or wherever you want to redirect
+    navigate("/dashboard/investor"); 
   };
 
   return (
