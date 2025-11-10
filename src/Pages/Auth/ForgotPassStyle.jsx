@@ -8,7 +8,7 @@ export const ForgotPasswordContainer = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  /* font-family: "Poppins", sans-serif; */
+
   background-color: #fff;
   font-weight: 400;
   font-size: 20px;
