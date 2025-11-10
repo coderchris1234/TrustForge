@@ -10,12 +10,16 @@ const BusinessDetailPage = () => {
   const { id } = useParams();
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const [business, setBusiness] = useState(null);
+   const [remain, setRemain] = useState(null);
+  const [investorCount, setInvestorCount] = useState([]);
 
   useEffect(() => {
     const fetchBusiness = async () => {
       const res = await axios.get(`${BaseUrl}/Abusiness/${id}`);
-      console.log(res?.data?.data);
+      console.log("remain", res?.data);
       setBusiness(res?.data?.data);
+      setRemain(res?.data?.remaining);
+      setInvestorCount(res?.data?.investorIntrests);
       console.log("bus", business);
     };
 
@@ -24,7 +28,8 @@ const BusinessDetailPage = () => {
   return (
     <BusinessContainer>
       <BusinessDetailPageHeader data={business} />
-      <InvestmentProgress data={business} />
+      <InvestmentProgress data={business}  remain={remain}
+        investor={investorCount} />
       <BusinessTabs data={business} />
     </BusinessContainer>
   );
