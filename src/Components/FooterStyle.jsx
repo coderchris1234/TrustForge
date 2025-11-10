@@ -50,7 +50,7 @@ export const FooterContainer = styled.div`
         }
 
         p {
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 300;
           color: var(--main_white);
           line-height: 150%;
@@ -74,7 +74,7 @@ export const FooterContainer = styled.div`
           .Footer_text_header {
             h3 {
               margin: 0;
-              font-size: 18px;
+              font-size: 20px;
               font-weight: 500;
               color: var(--main_white);
             }
@@ -91,7 +91,7 @@ export const FooterContainer = styled.div`
 
               li {
                 color: var(--main_white);
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: 300;
                 cursor: pointer;
                 position: relative;
@@ -121,7 +121,7 @@ export const FooterContainer = styled.div`
         .Footer_text_header {
           h3 {
             margin: 0;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 500;
             color: var(--main_white);
           }
@@ -134,7 +134,7 @@ export const FooterContainer = styled.div`
 
           p {
             color: var(--main_white);
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 300;
             cursor: pointer;
             position: relative;

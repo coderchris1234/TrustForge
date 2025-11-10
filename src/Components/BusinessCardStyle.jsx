@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const BusinessContainer = styled.div`
-  background-color: red;
   /* margin-bottom: 0.3rem; */
   padding: 0.5rem;
   width: 100%;
@@ -31,6 +30,11 @@ export const BusinessContainer = styled.div`
             border: none;
           }
 
+          .under-review {
+            background-color: #ffcc80;
+            border: none;
+          }
+
           .seed {
             border: 1px solid lightgray;
           }
@@ -54,7 +58,10 @@ export const BusinessContainer = styled.div`
           border-radius: 6px;
           border: 1px solid lightgray;
           cursor: pointer;
-          background: transparent;
+        }
+        .view {
+          background: blue;
+          color: #ffff;
         }
 
         .deleteBtn {

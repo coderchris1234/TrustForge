@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import forgotpassword from "../../assets/forgotpassword.jpg";
+import forgotpassword from "/forgotpassword.jpg";
 
 export const ForgotPasswordContainer = styled.div`
   display: flex;
@@ -8,10 +8,10 @@ export const ForgotPasswordContainer = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
+
   background-color: #fff;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
 
   @media (max-width: 1024px) {
@@ -41,14 +41,14 @@ export const ForgotPasswordLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-    @media (max-width: 1024px) {
-      width: 100%;
-      height: 40vh;
-    }
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 40vh;
+  }
 
-    @media (max-width: 600px) {
-      height: 60vh;
-    }
+  @media (max-width: 600px) {
+    height: 60vh;
   }
 `;
 

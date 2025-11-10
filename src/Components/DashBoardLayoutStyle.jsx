@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DashboardLayoutContainer = styled.div`
   width: 100%;
   background: #eceff4;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   font-family: "Poppins", sans-serif;
   gap: 2px;
@@ -16,30 +16,33 @@ export const DashboardLayoutContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: green; */
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding-top: 1rem;
+
+    .close-btn {
+      display: none;
+    }
 
     .leftSidedContent {
       display: flex;
       flex-direction: column;
       margin-top: 10px;
-      /* background-color: pink; */
       width: 88%;
 
       .image-logo {
         display: flex;
         gap: 6px;
-        /* background-color: green; */
-      }
-    }
+        margin-bottom: 10px;
 
-    .image {
-      background-color: blue;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
 
     .LogoName {
@@ -48,8 +51,6 @@ export const DashboardLayoutContainer = styled.div`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 600;
-      font-style: normal;
-      line-height: 125%;
       font-size: 21px;
     }
 
@@ -57,18 +58,13 @@ export const DashboardLayoutContainer = styled.div`
       color: var(--netural_black_color);
       font-size: 16px;
       font-weight: 400;
-      font-style: normal;
       line-height: 24px;
-      /* text-align: center; */
     }
 
     .sideBarContents {
-      /* background-color: pink; */
       width: 80%;
       display: flex;
       flex-direction: column;
-      height: max-content;
-      cursor: pointer;
       gap: 20px;
       padding-top: 1rem;
 
@@ -79,9 +75,6 @@ export const DashboardLayoutContainer = styled.div`
         flex-direction: column;
         gap: 1.5rem;
         width: 100%;
-        height: max-content;
-        /* background-color: green; */
-        /* padding-bottom: 10px; */
       }
     }
 
@@ -94,7 +87,6 @@ export const DashboardLayoutContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 12px;
-      position: relative;
     }
 
     .business {
@@ -104,10 +96,7 @@ export const DashboardLayoutContainer = styled.div`
       font-size: 14px;
       transition: background 0.2s ease;
 
-      &:hover {
-        color: var(--secondary_color_800);
-      }
-
+      &:hover,
       &.active {
         color: var(--secondary_color_800);
       }
@@ -115,48 +104,61 @@ export const DashboardLayoutContainer = styled.div`
   }
 
   .LayoutPage {
-    width: 88%;
+    flex: 1;
     margin-left: 240px;
-    height: 100vh;
+    min-height: 100vh;
     overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    /* background-color: green; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    transition: all 0.3s ease;
 
     .header {
       width: 100%;
       background-color: var(--main_white);
-      padding: 8px;
+      padding: 1rem;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      left: 0;
+      height: 70px;
+      /* align-items: center; */
+      justify-content: center;
+
+      .top-bar {
+        display: none;
+      }
 
       .header-content {
         width: 98%;
-        /* background-color: grey; */
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
 
         .profile-content {
           display: flex;
-          width: 40%;
+          flex: 1;
+          min-width: 200px;
           align-items: center;
           gap: 8px;
+
           .image {
-            background-color: red;
+            background-color: #303030ff;
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
           }
 
           .UserInfo {
             p {
-              margin: 0px;
+              margin: 0;
             }
             span {
               font-size: 10px;
@@ -165,25 +167,116 @@ export const DashboardLayoutContainer = styled.div`
           }
         }
       }
+    }
+  }
 
-      .notification {
-        /* background-color: red; */
-        position: relative;
+  @media (max-width: 768px) {
+    flex-direction: column;
 
-        .rounded {
-          position: absolute;
-          width: 15px;
-          height: 15px;
-          border-radius: 50%;
-          background-color: red;
-          top: -10px;
-          left: 7px;
+    .aside {
+      left: ${({ showSidebar }) => (showSidebar ? "0" : "-100%")};
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      background-color: var(--main_white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      z-index: 999;
+
+      .close-btn {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        z-index: 1001;
+      }
+    }
+
+    .LayoutPage {
+      margin-left: 0;
+      width: 100%;
+      padding: 10px;
+
+      .header {
+        .top-bar {
+          width: 100%;
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          justify-content: center;
-          color: #ffff;
+          padding: 10px 10px;
+          margin-bottom: 10px;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+
+          .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+          }
+        }
+
+        .notification {
+          position: relative;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+
+          .rounded {
+            position: absolute;
+            top: -6px;
+            left: 14px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+            color: #fff;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+
+          .profile-content {
+            width: 100%;
+          }
         }
       }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .LogoName {
+      font-size: 16px;
+    }
+
+    .DashboardName {
+      font-size: 14px;
+    }
+
+    .header-content {
+      width: 100%;
+    }
+
+    .profile-content {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 `;

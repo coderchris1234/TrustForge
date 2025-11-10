@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 4.3rem;
+  height: 4.5rem;
   background-color: var(--main_white);
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    /* position: relative; */
   }
 
   .AppLogo {
@@ -26,10 +26,9 @@ export const HeaderContainer = styled.header`
     align-items: center;
 
     img {
-      max-height: 2.5rem;
-      max-width: 150px;
-      width: 100%;
-      height: auto;
+      max-height: 4rem;
+      max-width: 230px;
+
       object-fit: contain;
     }
   }
@@ -59,7 +58,7 @@ export const HeaderContainer = styled.header`
 
       li {
         list-style-type: none;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 500;
         cursor: pointer;
         transition: all 350ms ease-in-out;
@@ -85,7 +84,7 @@ export const HeaderContainer = styled.header`
     .Btn_Login,
     .Btn_Login2 {
       height: 2.5rem;
-      font-size: 0.9rem;
+      font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
       transition: all 350ms ease-in-out;
@@ -147,7 +146,8 @@ export const HeaderContainer = styled.header`
       ul {
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem;
+        /* padding: 1rem; */
+        margin-bottom: 1rem;
         width: 100%;
         gap: 2rem;
       }
@@ -169,7 +169,7 @@ export const HeaderContainer = styled.header`
         align-items: stretch;
         justify-content: center;
         width: 100%;
-        padding: 1rem;
+        /* padding: 1rem; */
         gap: 0.75rem;
 
         .Btn_Login,

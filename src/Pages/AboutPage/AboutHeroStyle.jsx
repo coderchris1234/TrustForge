@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FrameBulb from "../../assets/FrameBulb.png";
+import FrameBulb from "/FrameBulb.png";
 
 export const AboutHeroContainer = styled.div`
   width: 100%;

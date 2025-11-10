@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import login from "../../assets/login.jpg";
+import login from "/login.jpg";
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -39,17 +39,16 @@ export const LoginLeft = styled.div`
     margin-top: 2rem;
     margin-left: 2rem;
     cursor: pointer;
-    /* ✅ Responsive image — full width, no border radius */
-    @media (max-width: 1024px) {
-      width: 100%;
-      height: 40vh;
-      border-radius: 0; /* Full rectangular image */
-    }
+  }
 
-    @media (max-width: 600px) {
-      height: 60vh;
-      border-radius: 0; /* Keep full edge-to-edge */
-    }
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 60vh;
+    border-radius: 0; /* Full rectangular image */
+  }
+
+  @media (max-width: 600px) {
+    border-radius: 0; /* Keep full edge-to-edge */
   }
 `;
 

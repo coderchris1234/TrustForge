@@ -10,9 +10,6 @@ import { NavLink } from "react-router-dom";
 
 const Overview = () => {
   const [overviewData, setOverviewData] = useState({});
-  // const [loading, setLoading] = useState(true);
-
-  // console.log("overviewData", overviewData);
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
@@ -97,7 +94,9 @@ const Overview = () => {
             className="quick"
           >
             <MdOutlineFileUpload width={"20px"} />
-            <p>Add Business Profile</p>
+            <NavLink to={"/dashboard/business_owner/addbusiness"}>
+              <p>Add Business Profile</p>
+            </NavLink>
           </div>
           <div
             style={{

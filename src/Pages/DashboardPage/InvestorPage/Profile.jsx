@@ -1,11 +1,41 @@
 // Profile.jsx
 import React, { useState } from "react";
 import { ProfileStyle } from "./ProfileStyle";
-import Uchechi from "../../../assets/Uchechi.jpg";
-import Professional from "../../../Components/Professional";
-import { CiCamera } from "react-icons/ci";
+import  { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Uchechi from "/Uchechi.jpg";
+
 const Profile = () => {
-  const [mode, setMode] = useState("personal"); // "personal" or "professional"
+
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const [kyc, setKyc] = useState(null);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchKyc = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/oneKyc`, userId, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // backend returns: { message: "...", kyc: {...} }
+        setKyc(res.data.kyc);
+        console.log("KYC fetched:", res.data.kyc);
+      } catch (error) {
+        console.error("Error fetching KYC:", error);
+      }
+    };
+
+    fetchKyc();
+  }, [userId, token, BaseUrl]);
+ 
 
   return (
     <ProfileStyle>

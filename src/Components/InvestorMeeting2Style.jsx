@@ -1,145 +1,356 @@
-import styled from "styled-components"
+/* eslint-disable react-refresh/only-export-components */
+import styled from "styled-components";
+
 export const InvestorMeeting_container = styled.div`
- height: 100%;
   width: 100%;
   margin-top: 1rem;
 
   .Invetor_wrapper {
-    height: 14rem;
     width: 100%;
     padding: 1rem;
     background-color: #ffffff;
     border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     .tittle {
-      height: 20%;
-      width: 100%;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
 
       .tittle_left {
-        height: 100%;
-        width: 65%;
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
 
-        .pending {
-          height: 60%;
-          width: 5rem;
+        .await {
+          border: 1px solid grey;
           display: flex;
-          align-items: center;
           justify-content: center;
-          border-radius: 0.5rem;
-          font-size: 0.9rem;
-          border: 1px solid gray;
-          gap: 0.2rem;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #f6b131ff;
+          padding: 5px;
+          border: none;
         }
+        .cencl {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #cbcbcbff;
+          padding: 5px;
+          border: none;
+        }
+        .Reschedule {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #f5e5c6ff;
+          padding: 5px;
+          border: none;
+        }
+        .Decl {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #e80606ff;
+          padding: 5px;
+          border: none;
+          color: white;
+        }
+
+        .conf {
+          border: 1px solid grey;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          background-color: #1fe91f;
+          padding: 0.5rem;
+        }
+
+        .pending,
         .first {
-          height: 60%;
-          width: 6rem;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 0.5rem;
           font-size: 0.9rem;
+          padding: 0.4rem 0.8rem;
           border: 1px solid gray;
+          gap: 0.5rem;
         }
       }
-      .tittle_right {
-        height: 100%;
-        width: 35%;
-        display: flex;
-        gap: 2rem;
 
-        .join_meetings {
-          height: 100%;
-          width: 11rem;
-          border-radius: 0.4rem;
+      .tittle_right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .accept_meetings,
+        .schedule_meetings {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.4rem;
+          border-radius: 0.4rem;
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
           cursor: pointer;
           border: 1px solid gray;
         }
-        .schedule_meetings {
-          height: 100%;
-          width: 10rem;
+        .join_meetings {
+          background-color: #0046ff;
+          color: white;
           border-radius: 0.4rem;
           display: flex;
           align-items: center;
           justify-content: center;
+          gap: 0.7rem;
           cursor: pointer;
+          padding: 0.6rem 1rem;
+        }
+
+        .accept_meetings {
+          background-color: transparent;
+          color: black;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+
+        .schedule_meetings {
+          background-color: transparent;
+          display: flex;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+        .decline_button {
           border: 1px solid gray;
+          background-color: transparent;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          padding: 0.5rem;
+          gap: 5px;
+          cursor: pointer;
         }
       }
     }
+
     .name_container {
-      height: 33%;
-      width: 100%;
       display: flex;
+      flex-wrap: wrap;
       gap: 0.7rem;
 
       .profile_text {
-        background-color: #ECEFF4;
-        height: 2rem;
-        width: 2rem;
+        background-color: #eceff4;
+        height: 2.5rem;
+        width: 2.5rem;
         border-radius: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
       .solution {
         color: blue;
       }
     }
 
     .calender {
-      height: 30%;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
 
       .date_container {
-        height: 50%;
-        width: 100%;
         .date {
-          height: 100%;
-          width: 100%;
-          gap: 0.7rem;
           display: flex;
+          flex-wrap: wrap;
+          gap: 0.7rem;
         }
       }
 
       .video_call_continer {
-        height: 50%;
-        width: 100%;
         display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
 
-        .video_call {
-          height: 100%;
-          width: 40%;
-          gap: 0.7rem;
-          display: flex;
-        }
+        .video_call,
         .time_container {
-          height: 100%;
-          width: 40%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.7rem;
 
           .time {
-            height: 100%;
-            width: 40%;
-            gap: 0.7rem;
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
           }
         }
       }
     }
 
-    .discuss_text{
-        height: 2rem;
-        width: 75%;
-        border-radius: 8px;
-        background: #ECEFF4;
-        padding: 0.3rem;
+    .discuss_text {
+      border-radius: 8px;
+      background: #eceff4;
+      padding: 0.3rem;
+      width: 100%;
+      max-width: 600px;
+      height: 40px;
+      display: flex;
+      align-items: center;
     }
   }
-`
+
+  @media (max-width: 768px) {
+    .Invetor_wrapper {
+      padding: 0.8rem;
+
+      .tittle {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .tittle_left,
+        .tittle_right {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .pending,
+        .first,
+        .join_meetings,
+        .schedule_meetings {
+          font-size: 0.85rem;
+          padding: 0.4rem 0.6rem;
+          gap: 0.5rem;
+        }
+      }
+
+      .name_container {
+        gap: 0.5rem;
+
+        .profile_text {
+          height: 2.5rem;
+          width: 2.5rem;
+        }
+      }
+
+      .discuss_text {
+        font-size: 0.9rem;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        /* justify-content: center; */
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .Invetor_wrapper {
+      padding: 0.6rem;
+
+      .tittle_left,
+      .tittle_right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .pending,
+      .first,
+      .join_meetings,
+      .schedule_meetings {
+        width: 100%;
+        font-size: 0.8rem;
+      }
+
+      .name_container {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .discuss_text {
+        font-size: 0.85rem;
+        width: 100%;
+      }
+
+      .video_call_continer {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .time_container .time {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+`;
+
+export const ModalOverLay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+`;
+
+export const ModalBox = styled.div`
+  background: white;
+  width: 30%;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: pop 0.25s ease;
+
+  .workin {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .InputContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #ddd;
+  }
+
+  button {
+    background-color: blue;
+    border: none;
+    color: #ffff;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+`;

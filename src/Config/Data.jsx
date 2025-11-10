@@ -36,6 +36,7 @@ import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
 import { MdOutlineShowChart } from "react-icons/md";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
+import { MdOutlineCancel } from "react-icons/md";
 import picture from "../assets/picture.png";
 import picture1 from "../assets/picture1.png";
 import picture2 from "../assets/picture2.png";
@@ -43,17 +44,18 @@ import picture4 from "../assets/picture4.png";
 import picture5 from "../assets/picture5.png";
 import picture6 from "../assets/picture6.png";
 import { CiUser } from "react-icons/ci";
-import Olu from "../assets/Olu.jpg";
-import Michael from "../assets/Michael.jpg";
-import Esther from "../assets/Esther.jpg";
-import Uchechi from "../assets/Uchechi.jpg";
-import Daniel from "../assets/Daniel.jpg";
-import VICKY from "../assets/VICKY.jpg";
-import Chris from "../assets/Chris.jpg";
-import Ovie from "../assets/Ovie.jpg";
-import Evans from "../assets/Evans.jpg";
-import Favour from "../assets/Favour.jpg";
-import alfred from "../assets/alfred.jpg";
+import Olu from "/Olu.jpg";
+import Michael from "/Michael.jpg";
+import Esther from "/Esther.jpg";
+import Uchechi from "/Uchechi.jpg";
+import Daniel from "/Daniel.jpg";
+import VICKY from "/VICKY.jpg";
+import Chris from "/Chris.jpg";
+import Ovie from "/Ovie.jpg";
+import Evans from "/Evans.jpg";
+import Favour from "/Favour.jpg";
+import alfred from "/alfred.jpg";
+import { IoCheckmarkOutline } from "react-icons/io5";
 
 import { IoMdTime } from "react-icons/io";
 import { FaRegFileAlt } from "react-icons/fa";
@@ -61,6 +63,7 @@ import { BsLightbulb } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
+import { CiCreditCard1 } from "react-icons/ci";
 
 export const MenuNav = ["Home", "About", "Insights"];
 
@@ -448,6 +451,11 @@ export const CreatorMenu = [
       Icon: meeting,
       label: "Meetings",
       link: "meeting",
+    },
+    {
+      Icon: sub,
+      label: "profile",
+      link: "profile",
     },
     {
       Icon: sub,
@@ -876,7 +884,7 @@ export const SavedFunds = [
   },
 ];
 
-export const Meetings = [
+export const Meetings1 = [
   {
     id: 1,
     title: "Investment Discussion",
@@ -1192,9 +1200,11 @@ export const meetings2 = [
     clock: <CiClock2 />,
     pending: "Pending",
     first: "1st Meeting",
-    clock2: <CiClock2 />,
-    await: "Awaiting Response",
+    clock2: <IoCheckmarkOutline />,
+    await: "Accept",
     cancel: "Cancel Request",
+    declineIcon: <MdOutlineCancel />,
+    decline: "Decline",
     profile: "DSC",
     name: "Dr. Sarah Chen",
     supply: "MediConnect Health",

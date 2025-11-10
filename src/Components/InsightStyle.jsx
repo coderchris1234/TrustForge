@@ -60,13 +60,12 @@ export const InsightContainer = styled.div`
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-      /* background-color: red; */
     }
 
     .Insight_btn {
-      width: 163px;
-      height: 44px;
-      margin-top: 20px;
+      width: 180px;
+      height: 50px;
+      margin-top: 30px;
       border-radius: 8px;
       cursor: pointer;
       background-color: var(--primary_color_500);

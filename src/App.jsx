@@ -16,7 +16,7 @@ import MyBusiness from "./Pages/DashboardPage/CreatorPage/MyBusiness";
 import AddBusiness from "./Pages/DashboardPage/CreatorPage/AddBusiness";
 import Analytics from "./Pages/DashboardPage/CreatorPage/Analytics";
 import Overview from "./Pages/DashboardPage/CreatorPage/Overview";
-import Notification from "./Pages/DashboardPage/CreatorPage/Notification";
+import Notification1 from "./Pages/DashboardPage/CreatorPage/Notification";
 import Meeting from "./Pages/DashboardPage/CreatorPage/Meeting";
 import Profile from "./Pages/DashboardPage/CreatorPage/Profile";
 import Subscription from "./Pages/DashboardPage/CreatorPage/Subscription";
@@ -33,6 +33,10 @@ import Subscription2 from "./Pages/DashboardPage/InvestorPage/Subscription2";
 import KycVerification2 from "./Pages/DashboardPage/InvestorPage/KycVerification2";
 import HelpSupport2 from "./Pages/DashboardPage/InvestorPage/HelpSupport2";
 import ScrollToTop from "./Config/Scroll_to_top";
+import BusinessDetailPage from "./Pages/DashboardPage/CreatorPage/BusinessDetail";
+import BusinessPage from "./Pages/DashboardPage/InvestorPage/BusinessPage";
+import VerifiedKyc from "./Components/VerifiedKyc";
+import PaymentSuccessful from "./Components/PaymentSuccessfulPage";
 
 const App = () => {
   return (
@@ -57,7 +61,12 @@ const App = () => {
             <Route path="mybusiness" element={<MyBusiness />} />
             <Route path="addbusiness" element={<AddBusiness />} />
             <Route path="analytics" element={<Analytics />} />
-            <Route path="notification" element={<Notification />} />
+            <Route path="notification" element={<Notification1 />} />
+            <Route
+              path="mybusiness/:businessName/:id"
+              element={<BusinessDetailPage />}
+            />
+            <Route path="payment-success" element={<PaymentSuccessful />} />
             <Route path="meeting" element={<Meeting />} />
             <Route path="profile" element={<Profile />} />
             <Route path="subscription" element={<Subscription />} />
@@ -71,6 +80,10 @@ const App = () => {
             <Route path="" element={<ExploreBusiness />} />
             <Route path="savedbusiness" element={<SavedBusiness />} />
             <Route path="ndamanagement" element={<NdaManagement2 />} />
+            <Route
+              path="payment-success/:id/:investorName/:referenceId/:amount"
+              element={<PaymentSuccessful />}
+            />
             <Route path="notification" element={<Notification2 />} />
             <Route path="meeting" element={<Meeting2 />} />
             <Route path="profile" element={<Profile2 />} />
@@ -78,6 +91,10 @@ const App = () => {
             <Route path="kycverification" element={<KycVerification2 />} />
             <Route path="helpsupport" element={<HelpSupport2 />} />
             <Route path="fundinghistory" element={<FundingHistory />} />
+            <Route
+              path="business/:businessName/:id"
+              element={<BusinessPage />}
+            />
           </Route>
         </Route>
       </Routes>

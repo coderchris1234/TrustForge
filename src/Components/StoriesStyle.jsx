@@ -7,8 +7,8 @@ export const StoriesContainer = styled.div`
   background: url(${Success});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
+  background-size: contain;
+  object-fit: contain;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,7 @@ export const StoriesContainer = styled.div`
       }
 
       p {
-        font-size: 16px;
+        font-size: 22px;
         font-weight: 400;
         color: var(--netural_black_color);
         text-align: center;
@@ -78,13 +78,13 @@ export const StoriesContainer = styled.div`
           height: 55%;
           border-top-right-radius: 12px;
           border-top-left-radius: 12px;
+          background-position: cover;
 
           img {
             width: 100%;
             height: 100%;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            object-fit: cover;
           }
         }
 
@@ -101,6 +101,7 @@ export const StoriesContainer = styled.div`
             display: flex;
             flex-direction: column;
             gap: 10px;
+            padding: 1rem;
 
             .Story_icon {
               font-size: 25px;
@@ -109,7 +110,7 @@ export const StoriesContainer = styled.div`
             }
 
             p {
-              font-size: 16px;
+              font-size: 20px;
               font-weight: 400;
               color: var(--main_black);
               line-height: 125%;
@@ -122,22 +123,23 @@ export const StoriesContainer = styled.div`
             justify-content: center;
             flex-direction: column;
             gap: 8px;
+            padding: 1rem;
 
             h4 {
-              font-size: 18px;
+              font-size: 22px;
               color: var(--main_black);
               font-weight: 500;
               margin: 0px;
             }
 
             .span {
-              font-size: 16px;
+              font-size: 18px;
               color: var(--main_black);
               font-weight: 400;
             }
 
             p {
-              font-size: 14px;
+              font-size: 16px;
               color: var(--main_black);
               font-weight: 400;
               font-style: italic;

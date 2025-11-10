@@ -12,7 +12,7 @@ export const PageWrap = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 980px;
+  width: 98%;
   background: #ffffff;
   border-radius: 8px;
   padding: 28px 34px;

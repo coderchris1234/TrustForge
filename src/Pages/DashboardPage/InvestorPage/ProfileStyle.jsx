@@ -321,6 +321,7 @@ export const ProfileStyle = styled.div`
       font-size: 12px;
       padding: 5px 8px;
     }
+  }
 
     .Update {
       padding: 10px;
@@ -329,5 +330,4 @@ export const ProfileStyle = styled.div`
     .Update p {
       font-size: 12px;
     }
-  }
 `;

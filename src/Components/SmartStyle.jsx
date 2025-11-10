@@ -43,7 +43,7 @@ export const SmartContainer = styled.div`
         }
 
         p {
-          font-size: 16px;
+          font-size: 20px;
           font-weight: 400;
           line-height: 150%;
           color: var(--netural_black_color);
@@ -67,10 +67,11 @@ export const SmartContainer = styled.div`
 
         .Smart_card {
           width: 50%;
-          height: 100%;
+          height: 90%;
           border-radius: 15px;
           background-color: var(--main_white);
           display: flex;
+          padding: 0.5rem;
           flex-direction: column;
           justify-content: center;
           align-items: center;
@@ -98,7 +99,7 @@ export const SmartContainer = styled.div`
             }
 
             span {
-              font-size: 16px;
+              font-size: 20px;
               font-weight: 400;
               color: var(--netural_black_color);
             }

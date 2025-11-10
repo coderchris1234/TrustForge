@@ -91,8 +91,8 @@ export const MeetingContainer = styled.div`
     align-items: center;
     gap: 1rem;
 
-    p.conf {
-      background-color: #7af3a7;
+    p.Awaiting {
+      background-color: #f8d7da;
       padding: 0.2rem;
       color: #16a34a;
       border-radius: 8px;

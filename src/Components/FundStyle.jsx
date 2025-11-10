@@ -24,7 +24,7 @@ export const FundContainer = styled.div`
 
   .Fund_page_wrapper {
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -33,8 +33,8 @@ export const FundContainer = styled.div`
 
     .Fund_num {
       flex: 1;
-      min-width: 180px;
-      max-width: 250px;
+      /* min-width: 180px; */
+      max-width: 350px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,7 +43,7 @@ export const FundContainer = styled.div`
       animation: ${fadeUp} 1.2s ease forwards;
 
       h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: 45px;
         font-weight: 700;
         color: var(--main_white);
         margin: 0;
@@ -56,7 +56,7 @@ export const FundContainer = styled.div`
       }
 
       p {
-        font-size: clamp(0.9rem, 2vw, 1rem);
+        font-size: 20px;
         font-weight: 400;
         color: var(--main_white);
         margin: 0.5rem 0 0;
@@ -70,13 +70,14 @@ export const FundContainer = styled.div`
 
     .Fund_page_wrapper {
       gap: 1.5rem;
+      flex-direction: column;
 
       .Fund_num h1 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-size: 30px;
       }
 
       .Fund_num p {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
     }
   }

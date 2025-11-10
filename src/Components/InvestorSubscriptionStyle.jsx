@@ -1,13 +1,27 @@
-// styles.js
 import styled, { css } from "styled-components";
 
 /* Page wrapper */
 export const Page = styled.div`
-  max-width: 980px;
+  /* max-width: 980px; */
+  width: 100%;
   padding: 20px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  /* background-color: red; */
-  height: 700px;
+  /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial; */
+  height: 80vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    height: max-content;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px;
+  }
 `;
 
 /* Toggle buttons row */
@@ -16,20 +30,29 @@ export const ToggleRow = styled.div`
   justify-content: center;
   margin-bottom: 22px;
   gap: 10px;
-  /* background-color: blue; */
+  flex-wrap: wrap;
+  /* background-color: red; */
+  width: 100%;
+  height: 50px;
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
 `;
 
 /* Toggle button (pill) */
 export const ToggleButton = styled.button`
   border: 1px solid #d1d5db;
   padding: 6px 20px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: #f3f4f6;
   color: #374151;
   cursor: pointer;
   font-weight: 600;
   outline: none;
   transition: all 150ms ease;
+  font-size: 14px;
+  width: 130px;
 
   ${(props) =>
     props.active &&
@@ -39,15 +62,31 @@ export const ToggleButton = styled.button`
       color: #111827;
       box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
     `}
+
+  @media (max-width: 480px) {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
 `;
 
 /* Cards row */
 export const CardsRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  /* grid-template-columns: repeat(3, 1fr); */
   gap: 20px;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
 
-  @media (max-width: 860px) {
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -62,7 +101,8 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: yellow; */
+  width: 80%;
+  height: 100%;
 
   ${(p) =>
     p.featured &&
@@ -70,6 +110,12 @@ export const Card = styled.div`
       border-color: #2b6bff;
       box-shadow: 0 10px 30px rgba(43, 107, 255, 0.08);
     `}
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    min-height: auto;
+    width: 100%;
+  }
 `;
 
 /* Header row inside card */
@@ -89,7 +135,6 @@ export const CardIcon = styled.div`
   align-items: center;
   justify-content: center;
   color: #1e3a8a;
-  /* background-color: green; */
 `;
 
 /* Title */
@@ -97,6 +142,10 @@ export const CardTitle = styled.h3`
   margin: 0;
   font-size: 16px;
   color: #111827;
+
+  @media (max-width: 480px) {
+    font-size: 15px;
+  }
 `;
 
 /* small pill under title */
@@ -112,6 +161,10 @@ export const Price = styled.div`
   font-weight: 700;
   font-size: 28px;
   color: #0f172a;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 export const PriceUnit = styled.span`
@@ -127,8 +180,11 @@ export const Features = styled.div`
   flex-direction: column;
   gap: 10px;
   padding-right: 4px;
-  /* background-color: green; */
-  height:auto;
+
+  span {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const FeatureItem = styled.div`
@@ -141,6 +197,10 @@ export const FeatureItem = styled.div`
   svg {
     color: blue;
     flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `;
 
@@ -158,7 +218,9 @@ export const ActionButton = styled.button`
   border: 1px solid transparent;
   font-weight: 700;
   cursor: pointer;
-  min-width: 160px;
+  min-width: 170px;
+  font-size: 14px;
+  height: 50px;
 
   ${(p) =>
     p.variant === "primary" &&
@@ -188,5 +250,11 @@ export const ActionButton = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: default;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 14px;
+    font-size: 13px;
+    min-width: 140px;
   }
 `;

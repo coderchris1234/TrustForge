@@ -16,12 +16,13 @@ export const StartBtnContainer = styled.div`
     align-items: center;
 
     .Startup_Header_btns {
-      width: 36%;
+      width: 35%;
       height: 70%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 2rem;
+      padding: 10px;
 
       .Startup_Header_btn1,
       .Startup_Header_btn2,
@@ -31,11 +32,12 @@ export const StartBtnContainer = styled.div`
         cursor: pointer;
         font-size: 18px;
         font-weight: 400;
+        padding: 0.3rem;
       }
 
       .Startup_Header_btn1 {
-        height: 41px;
-        width: 40px;
+        height: 45px;
+        width: 50px;
         background-color: var(--main_white);
         border: 2px solid var(--neutral_gray_color_700);
         color: var(--main_black);
@@ -48,8 +50,9 @@ export const StartBtnContainer = styled.div`
       }
 
       .Startup_Header_btn2 {
-        height: 41px;
-        width: 315px;
+        height: 45px;
+        width: 500px;
+
         background-color: var(--main_white);
         color: var(--main_black);
         border: 2px solid var(--neutral_gray_color_700);
@@ -63,8 +66,8 @@ export const StartBtnContainer = styled.div`
       }
 
       .Startup_Header_btn3 {
-        width: 133px;
-        height: 41px;
+        width: 250px;
+        height: 45px;
         background-color: var(--main_white);
         color: var(--main_black);
         border: 2px solid var(--neutral_gray_color_700);

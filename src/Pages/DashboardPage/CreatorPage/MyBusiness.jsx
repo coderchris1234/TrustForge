@@ -14,13 +14,25 @@ import axios from "axios";
 const MyBusiness = () => {
   // const nav = useNavigate();
   const [allBusiness, setAllBusiness] = useState({});
-  // const [loading, setLoading] = useState(true);
-
-  // console.log("overviewData", overviewData);
+  const [search, setSearch] = useState("");
+  const [filteredBusiness, setFilteredBusiness] = useState([]);
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
   const userId = user?.data?.id;
+
+  const SearchByIndustry = async (value) => {
+    try {
+      const res = await axios.get(`${BaseUrl}/business`, {
+        params: { industry: value },
+      });
+
+      setFilteredBusiness(res?.data?.data || []);
+      console.log("business", filteredBusiness);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (!userId) {
@@ -35,7 +47,8 @@ const MyBusiness = () => {
       const fetchData = async () => {
         try {
           const res = await axios.get(endpoint);
-          setAllBusiness(res.data.data || {});
+          console.log("omo", res);
+          setAllBusiness(res.data.data || []);
         } catch (err) {
           console.error("Error fetching overview data:", err);
         } finally {
@@ -63,7 +76,21 @@ const MyBusiness = () => {
       <SearchBar>
         <div className="searchContainer">
           <CiSearch style={{ cursor: "pointer" }} />
-          <input type="text" />
+          <input
+            type="text"
+            placeholder="Search by industry..."
+            value={search}
+            onChange={(e) => {
+              const value = e.target.value;
+              setSearch(value);
+
+              if (value.trim() === "") {
+                setFilteredBusiness([]);
+                return;
+              }
+              SearchByIndustry(value);
+            }}
+          />
         </div>
         <select>
           <option value="">All Status</option>
@@ -74,12 +101,16 @@ const MyBusiness = () => {
       </SearchBar>
 
       <BusinessWrapper>
-        {allBusiness?.businesses?.length > 0 ? (
-          allBusiness?.businesses
-            ?.reverse()
-            .map((biz) => <BusinessCard key={biz.id} {...biz} />)
+        {filteredBusiness.length > 0 ? (
+          filteredBusiness.map((biz) => (
+            <BusinessCard key={biz.id} {...biz} id={biz.id} />
+          ))
+        ) : allBusiness?.businesses?.length > 0 ? (
+          allBusiness.businesses.map((biz) => (
+            <BusinessCard key={biz.id} {...biz} />
+          ))
         ) : (
-          <p>No Business Added</p>
+          <p>No Business Found</p>
         )}
       </BusinessWrapper>
     </>

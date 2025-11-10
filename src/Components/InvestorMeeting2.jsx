@@ -1,58 +1,215 @@
-import React from 'react'
-import { meetings2 } from '../Config/Data'
-import { InvestorMeeting_container } from "./InvestorMeeting2Style"
-const InvestorMeeting2 = () => {
-  return (
-   <InvestorMeeting_container>
-        {meetings2.map((i, index) => (
-                <div className="Invetor_wrapper" key={index}>
-                    <div className="tittle">
-                        <div className="tittle_left">
-                            <div className="invest">{i.invest}</div>
-                            <div className="pending">{i.clock}{i.pending}</div>
-                            <div className="first">{i.first}</div>
-                        </div>
-                        <div className="tittle_right">
-                            <div className="join_meetings">
-                                {i.clock2}
-                                {i.await}
-                            </div>
-                            <div className="schedule_meetings">
-                                {i.cancel}
-                                {i.reschedule}
-                             </div>
-                        </div>
-                    </div>
-                    <div className="name_container">
-                        <div className="profile_text">
-                            {i.profile}
-                        </div>
-                        <div className="name_details">
-                            <div className="name">{i.name}</div>
-                            <div className="business">{i.supply}</div>
-                            <div className="solution">{i.solution}</div>
-                        </div>
-                    </div>
-                    <div className="calender">
-                        <div className="date_container">
-                            <div className="date">{i.calender}{i.date}</div>
-                        </div>
-                        <div className="video_call_continer">
-                            <div className="video_call">{i.icon3}{i.video}</div>
-                            <div className="time_container">
-                                <div className="time">
-                                    {i.icon4}{i.time}
-                            </div>    
-                            </div>
-                        </div>
-                    </div>
-                    <div className="discuss_text">
-                        {i.discussion}
-                    </div>
-                </div>
-              ))}
-   </InvestorMeeting_container>
-  )
-}
+import React, { useState } from "react";
+// import { meetings2 } from "../Config/Data";
+import { CiCalendar, CiClock2 } from "react-icons/ci";
 
-export default InvestorMeeting2
+import { InvestorMeeting_container } from "./InvestorMeeting2Style";
+import { MdOutlineCancel } from "react-icons/md";
+import { FaVideo } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
+import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
+const InvestorMeeting2 = ({
+  id,
+  meetingTitle,
+  meetingType,
+  note,
+  time,
+  meetingStatus,
+  date,
+  hostName,
+  businessName,
+  meetingLink,
+  approvedMeeting,
+  declineMeeting,
+  rescheduleMeeting,
+}) => {
+  const [openModal, setOpenModal] = React.useState(false);
+  const [form, setForm] = useState({
+    date: "",
+    time: "",
+    note: "",
+    meetingId: id,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // const textMeetingStatus = "Approved and Upcoming";
+
+  console.log(meetingStatus);
+
+  const userJoinMeeting = () => {
+    window.location.href = meetingLink;
+  };
+
+  const initials = hostName
+    ?.split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
+  return (
+    // 'Awaiting Approval','Approved and Upcoming','Reschedule Requested','Declined','Concluded'
+    <InvestorMeeting_container>
+      <div className="Invetor_wrapper">
+        <div className="tittle">
+          <div className="tittle_left">
+            <div className="invest">{meetingTitle}</div>
+            <div
+              className={
+                meetingStatus === "Awaiting Approval"
+                  ? "await"
+                  : meetingStatus === "Approved and Upcoming"
+                  ? "conf"
+                  : meetingStatus === "Reschedule Requested"
+                  ? "Reschedule"
+                  : meetingStatus === "Declined"
+                  ? "Decl"
+                  : "cencl"
+              }
+            >
+              {meetingStatus}
+            </div>
+            {/* <div className="first">{}</div> */}
+          </div>
+          <div className="tittle_right">
+            {meetingStatus === "Approved and Upcoming" ? (
+              <div className="join_meetings" onClick={userJoinMeeting}>
+                Join Meeting
+                <FaVideo size={15} />
+              </div>
+            ) : null}
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
+              <div
+                className="accept_meetings"
+                onClick={() => {
+                  approvedMeeting(id);
+                }}
+              >
+                Accept Meeting
+                <CiClock2 />
+              </div>
+            )}
+
+            {meetingStatus === "Declined" ||
+            meetingStatus === "Reschedule Requested" ? null : (
+              <div
+                onClick={() => setOpenModal(true)}
+                className="schedule_meetings"
+              >
+                Reschedule
+                <FiRefreshCw size={15} />
+              </div>
+            )}
+
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
+              <div
+                className="decline_button"
+                onClick={() => {
+                  declineMeeting(id);
+                }}
+              >
+                Decline
+                <MdOutlineCancel size={15} />
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="name_container">
+          <div className="profile_text">{initials}</div>
+          <div className="name_details">
+            <div className="name">{hostName}</div>
+            <div className="business">{businessName}</div>
+            {/* <div className="solution"></div> */}
+          </div>
+        </div>
+        <div className="calender">
+          <div className="date_container">
+            <div className="date">
+              <CiCalendar size={20} />
+              {date}
+            </div>
+          </div>
+          <div className="video_call_continer">
+            <div className="video_call">
+              <FaVideo size={20} />
+              {meetingType}
+            </div>
+            <div className="time_container">
+              <div className="time">
+                <CiClock2 />
+                {time}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="discuss_text">{note}</div>
+      </div>
+      {openModal && (
+        <ModalOverLay>
+          <ModalBox>
+            <div className="workin">
+              <div>
+                <h3>Re-schedule Meeting</h3>
+                <p>Set up a meeting with the Investor.</p>
+              </div>
+
+              <MdOutlineCancel
+                style={{ cursor: "pointer" }}
+                size={30}
+                onClick={() => setOpenModal(false)}
+              />
+            </div>
+
+            <div className="InputContainer">
+              <div>
+                <label>New Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  onChange={handleChange}
+                  value={form.date}
+                />
+              </div>
+
+              <div>
+                <label>New Time</label>
+                <input
+                  type="time"
+                  name="time"
+                  onChange={handleChange}
+                  value={form.time}
+                />
+              </div>
+            </div>
+            <label>Notes (optional)</label>
+            <input
+              type="text"
+              value={form.note}
+              placeholder="Add agenda or notes for the meeting"
+              name="note"
+              onChange={handleChange}
+            />
+
+            <button
+              onClick={() => {
+                rescheduleMeeting(form);
+              }}
+            >
+              Send Re-schedule Request
+            </button>
+          </ModalBox>
+        </ModalOverLay>
+      )}
+    </InvestorMeeting_container>
+  );
+};
+
+export default InvestorMeeting2;
