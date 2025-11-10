@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const PaymentSuccessful = () => {
   const navigate = useNavigate();
-  const { referenceId, amount, investorName } = useParams();
+  const { referenceId, amount, fullName } = useParams();
   const handleContinue = () => {
     navigate("/dashboard/investor"); // or wherever you want to redirect
   };
@@ -14,7 +14,7 @@ const PaymentSuccessful = () => {
       <Card>
         <h1>🎉 Payment Successful</h1>
         <p>
-          Thank you, <strong>{investorName}</strong>! Your payment has been
+          Thank you, <strong>{fullName}</strong>! Your payment has been
           confirmed.
         </p>
 
