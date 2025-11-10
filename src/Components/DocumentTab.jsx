@@ -11,7 +11,6 @@ const DocumentList = styled.div`
 const DocumentItem = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   background: #f4f4f4;
   padding: 10px 14px;
   border-radius: 8px;
