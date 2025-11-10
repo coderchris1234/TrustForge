@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import HOME from "../assets/HOME.png";
 
-// Subtle entrance animation
 const fadeUp = keyframes`
   from {
     opacity: 0;
@@ -113,7 +112,6 @@ export const TargetContainer = styled.div`
     }
   }
 
-  /* Responsive layout tweaks */
   @media (max-width: 768px) {
     background-size: cover;
     background-position: top center;
