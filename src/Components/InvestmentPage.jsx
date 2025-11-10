@@ -12,11 +12,13 @@ import {
   RightNote,
 } from "./InvestmentPageStyle";
 
-const ProgressComponent = ({ data }) => {
+const ProgressComponent = ({ data, remain, investor }) => {
+  console.log("invest", investor);
   const goal = data?.fundingSought;
-  const raised = 0;
-  const remaining = goal - raised;
+  const raised = data?.fundRaised;
+  const remaining = remain;
   const percentage = Math.round((raised / goal) * 100);
+
   const formatNumber = (num) => {
     return new Intl.NumberFormat("en-NG").format(num);
   };
@@ -37,12 +39,12 @@ const ProgressComponent = ({ data }) => {
 
         <GridItem>
           <Label>Remaining</Label>
-          <Amount>₦{formatNumber(remaining)}</Amount>
+          <Amount>₦{formatNumber(remaining || 0)}</Amount>
         </GridItem>
 
         <GridItem>
           <Label>Investors</Label>
-          <Amount></Amount>
+          <Amount>{investor?.length}</Amount>
         </GridItem>
       </GridRow>
 
@@ -53,7 +55,7 @@ const ProgressComponent = ({ data }) => {
       </BarWrap>
 
       <ProgressNote>{percentage}% funded</ProgressNote>
-      <RightNote>₦{formatNumber(remaining)}</RightNote>
+      <RightNote>₦{formatNumber(remaining || 0)}</RightNote>
     </ProgressCard>
   );
 };

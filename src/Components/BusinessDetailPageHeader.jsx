@@ -34,7 +34,7 @@ const BusinessDetailPageHeader = ({ data }) => {
         <Poster>
           <ProfileImage src="/images/james-victoria.jpg" alt="James Victoria" />
           <PosterDetails>
-            <PosterName>{data?.fullName}</PosterName>
+            <PosterName>{data?.businessOwnerName}</PosterName>
             <PosterRole>{data?.businessName}</PosterRole>
           </PosterDetails>
         </Poster>
@@ -42,7 +42,7 @@ const BusinessDetailPageHeader = ({ data }) => {
         <Stats>
           <Stat>👁 {data?.viewCount}</Stat>
           <Stat>❤️ {data?.likeCount}</Stat>
-          <Stat>💬 6</Stat>
+          <Stat>💬 </Stat>
         </Stats>
 
         <Date>2025-10-14</Date>

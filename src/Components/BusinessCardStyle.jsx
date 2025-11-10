@@ -58,7 +58,10 @@ export const BusinessContainer = styled.div`
           border-radius: 6px;
           border: 1px solid lightgray;
           cursor: pointer;
-          background: transparent;
+        }
+        .view {
+          background: blue;
+          color: #ffff;
         }
 
         .deleteBtn {

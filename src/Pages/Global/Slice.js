@@ -5,6 +5,8 @@ const initialState = {
   blogBtnAction: "",
   blogIndex: null,
   businessOwnerId: null,
+  likedBusinesses: [],
+  savedBusinesses: [],
 };
 
 const authSlice = createSlice({
@@ -27,6 +29,21 @@ const authSlice = createSlice({
     setbusinessOwnerId: (state, action) => {
       state.businessOwnerId = action.payload;
     },
+    toggleSavedBusiness: (state, action) => {
+      const business = action.payload;
+
+      const exists = state.savedBusinesses.find(
+        (item) => item.id === business.id
+      );
+
+      if (exists) {
+        state.savedBusinesses = state.savedBusinesses.filter(
+          (item) => item.id !== business.id
+        );
+      } else {
+        state.savedBusinesses.push(business);
+      }
+    },
   },
 });
 
@@ -36,5 +53,6 @@ export const {
   setUser,
   logOut,
   setbusinessOwnerId,
+  toggleSavedBusiness,
 } = authSlice.actions;
 export default authSlice.reducer;
