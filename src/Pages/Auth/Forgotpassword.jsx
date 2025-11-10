@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import authlogo from "../../assets/authlogo.png";
-
 import {
   ForgotPasswordContainer,
   ForgotPasswordLeft,
@@ -50,9 +48,7 @@ const ForgotPassword = () => {
 
   return (
     <ForgotPasswordContainer>
-      <ForgotPasswordLeft>
-        <img src={authlogo} alt="" onClick={() => navigate("/")} />
-      </ForgotPasswordLeft>
+      <ForgotPasswordLeft />
 
       <ForgotPasswordRight>
         <FormBox>
@@ -60,11 +56,8 @@ const ForgotPassword = () => {
             <div className="title-text">
               Forgot <span>Password.</span>
             </div>
-            <small
-              style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}
-            >
-              Don't worry, it happens! Enter your email address and we'll send a
-              link to reset your password.
+            <small style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}>
+              Don't worry, it happens! Enter your email address and we'll send a link to reset your password.
             </small>
           </FormTitle>
 
@@ -91,16 +84,14 @@ const ForgotPassword = () => {
           <OrText style={{ marginTop: 12 }}> </OrText>
 
           <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
-            Remember password?{" "}
-            <span onClick={() => navigate("/login")}>Log In</span>
+            Remember password? <span onClick={() => navigate("/login")}>Log In</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>
             By requesting a password reset, you agree to our{" "}
             <a href="#" onClick={(e) => e.preventDefault()}>
               Terms and Conditions
-            </a>
-            .
+            </a>.
           </TermsText>
         </FormBox>
       </ForgotPasswordRight>
