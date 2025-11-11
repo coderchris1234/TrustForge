@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import {
@@ -24,32 +24,37 @@ import {
 } from "./BusinessPageProfileStyle";
 import { useDispatch, useSelector } from "react-redux";
 import MeetingModal from "./MeetingModal";
-import { toggleSavedBusiness } from "../Pages/Global/Slice";
+import {
+  toggleSavedBusiness,
+  toggleLikedBusiness,
+} from "../Pages/Global/Slice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MdOutlineCancel } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const BusinessPageProfile = ({ data }) => {
-  const [form, setForm] = useState({
-    price: "",
-    businessId: "",
-  });
-  const [openModal, setOpenModal] = React.useState(false);
-  const [Modal, setModal] = React.useState(false);
-  const [liked, setLiked] = useState(false);
+  const [form, setForm] = useState({ price: "", businessId: "" });
+  const [openModal, setOpenModal] = useState(false);
+  const [Modal, setModal] = useState(false);
   const [selected, setSelected] = useState(false);
   const [likeCount, setLikeCount] = useState(data?.likeCount || 0);
   const [loading, setLoading] = useState(false);
 
-  const token = useSelector((state) => state.TrustForge.user?.token);
-  console.log("token", token);
-  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
+  const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
+  const liked = likedList.includes(data?.id);
+  const isSavedUI = savedList.some((b) => b.id === data?.id);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
-  if (!data) {
-    return <p>Loading business...</p>;
-  }
+  const isLoading = !data;
+
+  useEffect(() => {
+    if (data) setLikeCount(data.likeCount || 0);
+  }, [data]);
 
   const handleLike = async () => {
     try {
@@ -58,41 +63,35 @@ const BusinessPageProfile = ({ data }) => {
         { businessId: data.id },
         { headers: { authorization: `Bearer ${token}` } }
       );
-
-      setLiked(!liked);
-
+      dispatch(toggleLikedBusiness(data.id));
       setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
     } catch (err) {
       console.error(err);
-      alert("Could not update like");
+      toast.error("Could not update like");
     }
   };
 
   const handleSave = async () => {
     const isSaved = savedList.some((b) => b.id === data.id);
-
     try {
       await axios.post(
         `${BaseUrl}/save`,
         { businessId: data.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       dispatch(toggleSavedBusiness(data));
-
       toast.success(isSaved ? "Business unsaved" : "Saved successfully");
     } catch (err) {
       console.error(err);
       toast.error("Could not save business");
     }
   };
+
   const initials = data?.businessOwnerName
     ?.split(" ")
     .map((m) => m[0])
     .join("")
     .toUpperCase();
-
-  const isSavedUI = savedList.some((b) => b.id === data.id);
 
   const data1 = {
     businessId: form.businessId,
@@ -106,70 +105,108 @@ const BusinessPageProfile = ({ data }) => {
       const res = await axios.post(`${BaseUrl}/makeInvestment`, data1, {
         headers: { authorization: `Bearer ${token}` },
       });
-      console.log("payment", res);
-      // toast.success("Investment initialized");
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       }
     } catch (err) {
-      setLoading(false);
       console.error(err);
       toast.error("Could not process investment");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <>
       <CardWrap>
         <div>
           <TopTags>
-            <Tag>{data?.industry}</Tag>
-            <Tag active>{data?.businessStatus}</Tag>
-            <Tag>{data?.fundingStage}</Tag>
+            <Tag>{isLoading ? <Skeleton width={80} /> : data.industry}</Tag>
+            <Tag active>
+              {isLoading ? <Skeleton width={100} /> : data.businessStatus}
+            </Tag>
+            <Tag>{isLoading ? <Skeleton width={80} /> : data.fundingStage}</Tag>
           </TopTags>
 
-          <Title>{data?.businessName}</Title>
-          <Subtitle>{data?.description}</Subtitle>
+          <Title>
+            {isLoading ? <Skeleton width={200} /> : data.businessName}
+          </Title>
+          <Subtitle>
+            {isLoading ? <Skeleton count={3} /> : data.description}
+          </Subtitle>
 
           <ProfileRow>
-            <Avatar>{initials}</Avatar>
+            <Avatar>
+              {isLoading ? (
+                <Skeleton circle width={40} height={40} />
+              ) : (
+                initials
+              )}
+            </Avatar>
             <NameBlock>
-              <Name>{data?.businessOwnerName}</Name>
-              <Role>{data?.businessName}</Role>
+              <Name>
+                {isLoading ? <Skeleton width={120} /> : data.businessOwnerName}
+              </Name>
+              <Role>
+                {isLoading ? <Skeleton width={100} /> : data.businessName}
+              </Role>
             </NameBlock>
           </ProfileRow>
 
           <StatsRow>
             <Stat>
-              <IoEyeOutline /> {data?.viewCount}
+              <CiHeart color={liked ? "red" : "gray"} />{" "}
+              {isLoading ? <Skeleton width={30} /> : likeCount}
             </Stat>
             <Stat>
-              <CiHeart color={liked ? "red" : "gray"} /> {likeCount}
+              {isLoading ? (
+                <Skeleton width={100} />
+              ) : (
+                `Posted ${data.createdAt.slice(0, 10)}`
+              )}
             </Stat>
-            <Stat>Posted {data?.createdAt.slice(0, 10)}</Stat>
           </StatsRow>
         </div>
 
         <ActionColumn>
-          <LikeButton onClick={handleLike}>
-            {liked ? "❤️ Liked" : "🤍 Like"}
+          <LikeButton onClick={handleLike} disabled={isLoading}>
+            {isLoading ? (
+              <Skeleton width={80} />
+            ) : liked ? (
+              "❤️ Liked"
+            ) : (
+              "🤍 Like"
+            )}
           </LikeButton>
-          <SaveButton onClick={handleSave}>
-            {isSavedUI ? "❤️ Unsave" : "🤍  Save"}
+
+          <SaveButton onClick={handleSave} disabled={isLoading}>
+            {isLoading ? (
+              <Skeleton width={80} />
+            ) : isSavedUI ? (
+              "❤️ Unsave"
+            ) : (
+              "🤍 Save"
+            )}
           </SaveButton>
-          <ScheduleButton onClick={() => setOpenModal(true)}>
-            📅 Schedule meeting
+
+          <ScheduleButton
+            onClick={() => setOpenModal(true)}
+            disabled={isLoading}
+          >
+            {isLoading ? <Skeleton width={140} /> : "📅 Schedule meeting"}
           </ScheduleButton>
+
           <InvestButton
             onClick={() => {
               setForm({ ...form, businessId: data.id });
               setModal(true);
             }}
+            disabled={isLoading}
           >
-            ₦ Invest Now
+            {isLoading ? <Skeleton width={120} /> : "₦ Invest Now"}
           </InvestButton>
         </ActionColumn>
+
         {Modal && (
           <ModalOverLay>
             <ModalBox>
@@ -181,6 +218,7 @@ const BusinessPageProfile = ({ data }) => {
                   onClick={() => setModal(false)}
                 />
               </div>
+
               <div className="amount">
                 <p>How much do you want to invest</p>
                 <input
@@ -189,6 +227,7 @@ const BusinessPageProfile = ({ data }) => {
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
                 />
               </div>
+
               <div className="options">
                 <div
                   className={`option-box ${selected ? "selected" : ""}`}
@@ -201,7 +240,6 @@ const BusinessPageProfile = ({ data }) => {
                     >
                       {selected && <div className="inner-circle"></div>}
                     </div>
-
                     <span>Pay with Kora</span>
                   </div>
                 </div>
@@ -223,7 +261,9 @@ const BusinessPageProfile = ({ data }) => {
         )}
       </CardWrap>
 
-      <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+      {!isLoading && (
+        <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+      )}
     </>
   );
 };

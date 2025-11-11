@@ -45,7 +45,7 @@ const BusinessDetailPageHeader = ({ data }) => {
           <Stat>💬 </Stat>
         </Stats>
 
-        <Date>2025-10-14</Date>
+        <Date>{data?.postedDate}</Date>
       </BottomRow>
     </Card>
   );

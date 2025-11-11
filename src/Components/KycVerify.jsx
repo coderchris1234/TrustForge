@@ -26,13 +26,16 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
 
+
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
   const proofOfAdressRef = useRef(null);
   const ProfilePicRef = useRef(null);
   const [profilePics, setProfilePics] = useState(null);
   const [userKYC, setUserKYC] = useState(null);
-  const isUnderReview = userKYC?.toLowerCase().includes("review");
+  const kycLocked =
+    userKYC?.toLowerCase().includes("review") ||
+    userKYC?.toLowerCase().includes("verified");
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
@@ -191,10 +194,10 @@ const KycVerification = () => {
   console.log("this is user", userKYC);
 
   useEffect(() => {
-    if (userKYC?.includes("review")) {
+    if (kycLocked) {
       setStep(4);
     }
-  }, [userKYC]);
+  }, [kycLocked]);
 
   return (
     <KycContainer>
@@ -224,8 +227,12 @@ const KycVerification = () => {
             <StepName active={step === 1}>Personal</StepName>
             <StepName active={step === 2}>Business</StepName>
             <StepName active={step === 3}>Document</StepName>
-            <StepName active={step === 4}>
-              {userKYC?.toLowerCase().includes("review") ? "Pending" : "Review"}
+             <StepName active={step === 4}>
+              {userKYC?.toLowerCase().includes("review")
+                ? "Pending"
+                : userKYC?.toLowerCase().includes("verified")
+                ? "Approved"
+                : "Review"}
             </StepName>
           </StepNames>
         </StepInfo>
@@ -430,23 +437,19 @@ const KycVerification = () => {
           {/* Buttons */}
           <ActionRow>
             {step > 1 && (
-              <BackButton onClick={handleBack} disabled={isUnderReview}>
+              <BackButton disabled={kycLocked} onClick={handleBack}>
                 Previous
               </BackButton>
             )}
 
             <NextButton
-              onClick={handleNext}
-              disabled={isUnderReview}
-              style={{
-                opacity: isUnderReview ? 0.6 : 1,
-                cursor: isUnderReview ? "not-allowed" : "pointer",
-              }}
-            >
-              {step < totalSteps
+             disabled={kycLocked} onClick={handleNext}>
+    
+            
+             {step < totalSteps
                 ? "Next Step"
                 : loading
-                ? "submiting..."
+                ? "Submitting  Verification..."
                 : "Submit for Verification"}
             </NextButton>
           </ActionRow>

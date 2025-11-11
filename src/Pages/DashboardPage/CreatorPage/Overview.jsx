@@ -86,7 +86,8 @@ const Overview = () => {
       <div className="QuickAction">
         <p>Quick Action</p>
         <div className="action">
-          <div
+          <NavLink
+            to={"/dashboard/business_owner/addbusiness"}
             style={{
               backgroundColor: "#0046FF",
               color: "#fff",
@@ -94,10 +95,8 @@ const Overview = () => {
             className="quick"
           >
             <MdOutlineFileUpload width={"20px"} />
-            <NavLink to={"/dashboard/business_owner/addbusiness"}>
-              <p>Add Business Profile</p>
-            </NavLink>
-          </div>
+            <p>Add Business Profile</p>
+          </NavLink>
           {/* <div
             style={{
               border: "1px solid lightGrey",

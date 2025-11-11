@@ -11,6 +11,7 @@ export const BusinessContainer = styled.div`
     background-color: #ffff;
     border-radius: 8px;
     padding: 0.5rem;
+    /* background-color: "red" */
 
     .businessContent {
       display: flex;
@@ -70,6 +71,10 @@ export const BusinessContainer = styled.div`
           justify-content: center;
           gap: 0.5rem;
           color: red;
+        }
+        .deleteBtn:disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
         }
       }
     }

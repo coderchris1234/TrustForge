@@ -17,6 +17,7 @@ const InvestorMeeting = ({
   businessOwnerName,
   meetingLink,
   rescheduleMeeting,
+  loading,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
@@ -177,7 +178,7 @@ const InvestorMeeting = ({
                 rescheduleMeeting(form);
               }}
             >
-              Send Re-schedule Request
+              {loading ? "submiting" : "Send Re-schedule Request"}
             </button>
           </ModalBox>
         </ModalOverLay>

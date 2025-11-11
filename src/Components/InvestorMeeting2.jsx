@@ -7,6 +7,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
 import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
+import toast from "react-hot-toast";
 const InvestorMeeting2 = ({
   id,
   meetingTitle,
@@ -21,6 +22,7 @@ const InvestorMeeting2 = ({
   approvedMeeting,
   declineMeeting,
   rescheduleMeeting,
+  loading,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
@@ -32,6 +34,15 @@ const InvestorMeeting2 = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "date") {
+      const selectedDate = new Date(value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // ignore time
+      if (selectedDate < today) {
+        toast.error("You cannot select a past date");
+        return;
+      }
+    }
 
     setForm((prev) => ({
       ...prev,
@@ -42,6 +53,11 @@ const InvestorMeeting2 = ({
   // const textMeetingStatus = "Approved and Upcoming";
 
   console.log(meetingStatus);
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const minDate = `${year}-${month}-${day}`;
 
   const userJoinMeeting = () => {
     window.location.href = meetingLink;
@@ -176,6 +192,7 @@ const InvestorMeeting2 = ({
                   name="date"
                   onChange={handleChange}
                   value={form.date}
+                  min={minDate}
                 />
               </div>
 
@@ -202,8 +219,11 @@ const InvestorMeeting2 = ({
               onClick={() => {
                 rescheduleMeeting(form);
               }}
+              style={{
+                cursor: "pointer",
+              }}
             >
-              Send Re-schedule Request
+              {loading ? "submiting" : "Send Re-schedule Request"}
             </button>
           </ModalBox>
         </ModalOverLay>

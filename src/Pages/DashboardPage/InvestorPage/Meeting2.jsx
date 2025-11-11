@@ -11,6 +11,7 @@ const Meeting2 = () => {
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const [loading, setLoading] = useState(false);
 
   console.log("userId", userId);
 
@@ -46,6 +47,7 @@ const Meeting2 = () => {
     }
   };
   const rescheduleMeeting = async (data) => {
+    setLoading(true);
     try {
       const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
         headers: {
@@ -94,6 +96,8 @@ const Meeting2 = () => {
             {...biz}
             key={biz.id}
             rescheduleMeeting={rescheduleMeeting}
+            approvedMeeting={approvedMeeting}
+            loading={loading}
           />
         ))
       ) : (

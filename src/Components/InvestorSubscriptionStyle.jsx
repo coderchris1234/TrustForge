@@ -195,7 +195,7 @@ export const FeatureItem = styled.div`
   font-size: 13px;
 
   svg {
-    color: #34d399;
+    color: blue;
     flex-shrink: 0;
   }
 
@@ -242,8 +242,8 @@ export const ActionButton = styled.button`
     p.variant === "outline" &&
     css`
       background: transparent;
-      color: #10b981;
-      border-color: #10b981;
+      color: blue;
+      border-color: blue;
       font-weight: 600;
     `}
 

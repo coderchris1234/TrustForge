@@ -9,11 +9,16 @@ import {
   SectionTitle,
   SectionText,
 } from "./DetailsSectionStyle";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const DetailsSection = ({ data }) => {
+  const isLoading = !data;
+
   const formatNumber = (num) => {
     return new Intl.NumberFormat("en-NG").format(num);
   };
+
   return (
     <Wrapper>
       <TopRow>
@@ -21,7 +26,13 @@ const DetailsSection = ({ data }) => {
           <StatIcon>₦</StatIcon>
           <div>
             <StatLabel>Funding Sought</StatLabel>
-            <StatValue>₦{formatNumber(data?.fundingSought)}</StatValue>
+            <StatValue>
+              {isLoading ? (
+                <Skeleton width={100} />
+              ) : (
+                `₦${formatNumber(data.fundingSought)}`
+              )}
+            </StatValue>
           </div>
         </StatBox>
 
@@ -29,7 +40,13 @@ const DetailsSection = ({ data }) => {
           <StatIcon>📈</StatIcon>
           <div>
             <StatLabel>Current Revenue</StatLabel>
-            <StatValue>{formatNumber(data?.currentRevenue)}</StatValue>
+            <StatValue>
+              {isLoading ? (
+                <Skeleton width={100} />
+              ) : (
+                formatNumber(data.currentRevenue)
+              )}
+            </StatValue>
           </div>
         </StatBox>
 
@@ -37,19 +54,27 @@ const DetailsSection = ({ data }) => {
           <StatIcon>📅</StatIcon>
           <div>
             <StatLabel>Founded</StatLabel>
-            <StatValue>{data?.yearFounded}</StatValue>
+            <StatValue>
+              {isLoading ? <Skeleton width={60} /> : data.yearFounded}
+            </StatValue>
           </div>
         </StatBox>
       </TopRow>
 
       <SectionTitle>Business Model</SectionTitle>
-      <SectionText>{data?.businessModel}</SectionText>
+      <SectionText>
+        {isLoading ? <Skeleton count={2} /> : data.businessModel}
+      </SectionText>
 
       <SectionTitle>Revenue Model</SectionTitle>
-      <SectionText>{data?.revenueModel}</SectionText>
+      <SectionText>
+        {isLoading ? <Skeleton count={2} /> : data.revenueModel}
+      </SectionText>
 
       <SectionTitle>Target Market</SectionTitle>
-      <SectionText>{data?.targetMarket}</SectionText>
+      <SectionText>
+        {isLoading ? <Skeleton count={2} /> : data.targetMarket}
+      </SectionText>
     </Wrapper>
   );
 };

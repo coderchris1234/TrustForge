@@ -92,6 +92,11 @@ export const Newsfeed_container = styled.div`
         flex-wrap: wrap;
         padding-top: 1rem;
 
+        .seeking {
+          display: flex;
+          align-items: center;
+        }
+
         .reactions {
           display: flex;
           gap: 1.5rem;
