@@ -38,7 +38,7 @@ export const Newsfeed_container = styled.div`
           min-width: 0;
         }
 
-        .trendsection {
+        /* .trendsection {
           background-color: #e5f8d6;
           border-radius: 0.7rem;
           color: green;
@@ -51,7 +51,7 @@ export const Newsfeed_container = styled.div`
           flex-shrink: 0;
           width: 120px;
           height: 30px;
-        }
+        } */
       }
 
       .about {

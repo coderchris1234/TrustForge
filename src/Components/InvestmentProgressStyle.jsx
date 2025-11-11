@@ -4,9 +4,8 @@ export const ProgressCard = styled.div`
   background-color: var(--primary_color_300);
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 2rem;
   width: 100%;
-  font-family: "Segoe UI", sans-serif;
 `;
 
 export const Title = styled.h3`
@@ -17,14 +16,16 @@ export const Title = styled.h3`
 `;
 
 export const Metrics = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   gap: 12px;
+  padding: 1rem;
   margin-bottom: 20px;
+  width: 100%;
 `;
 
 export const MetricItem = styled.div`
-  font-size: 14px;
+  font-size: 18px;
   color: #444;
 
   strong {

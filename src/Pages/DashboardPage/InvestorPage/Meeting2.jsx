@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 const Meeting2 = () => {
   const [allMeeting, setAllMeeting] = useState({});
   const user = useSelector((state) => state.TrustForge.user);
+  const [loadingMap, setLoadingMap] = useState({});
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -46,6 +47,8 @@ const Meeting2 = () => {
     }
   };
   const rescheduleMeeting = async (data) => {
+    const { meetingId } = data;
+    setLoadingMap((prev) => ({ ...prev, [meetingId]: true }));
     try {
       const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
         headers: {
@@ -57,6 +60,8 @@ const Meeting2 = () => {
       console.log(res);
     } catch (err) {
       console.log("this is error", err);
+    } finally {
+      setLoadingMap((prev) => ({ ...prev, [meetingId]: false }));
     }
   };
 
@@ -95,6 +100,7 @@ const Meeting2 = () => {
             key={biz.id}
             rescheduleMeeting={rescheduleMeeting}
             approvedMeeting={approvedMeeting}
+            loading={loadingMap[biz.id] || false}
           />
         ))
       ) : (

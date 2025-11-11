@@ -36,6 +36,28 @@ const BusinessNewsFeed = ({ data }) => {
     }
   };
 
+  // const handleView = async (businessId) => {
+  //   try {
+  //     const res = await axios.post(
+  //       `${BaseUrl}/view`,
+  //       { businessId },
+  //       { headers: { Authorization: `Bearer ${token}` } }
+  //     );
+
+  //     console.log("subscribe", res);
+  //     return true;
+  //   } catch (err) {
+  //     console.error(err);
+
+  //     const msg =
+  //       err?.response?.data?.message ||
+  //       "Could not record view. You may need a subscription.";
+
+  //     toast.error(msg);
+  //     return false;
+  //   }
+  // };
+
   return (
     <Newsfeed_container>
       {data?.map((post) => {
@@ -88,16 +110,22 @@ const BusinessNewsFeed = ({ data }) => {
                   </div>
                 </div>
 
-                <div className="seeking">seeking: ${post.fundingSought}</div>
+                <div className="seeking">
+                  seeking: &#8358;{post.fundingSought}
+                </div>
               </div>
             </div>
 
             <div className="busines_right">
               <div
                 onClick={() => {
+                  // const allowed = await handleView(post.id);
+                  // if (!allowed) return;
+
                   nav(
                     `/dashboard/investor/business/${post.businessName}/${post.id}`
                   );
+
                   dispatch(setbusinessOwnerId(post.businessOwner));
                 }}
                 className="post_view"

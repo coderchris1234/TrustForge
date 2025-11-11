@@ -67,7 +67,7 @@ const Overview = () => {
                 borderRadius: "5px",
               }}
             >
-              <img src={section.icon} alt="" />
+              <section.icon size={24} />
             </div>
           </div>
         ))}
@@ -97,15 +97,6 @@ const Overview = () => {
             <NavLink to={"/dashboard/business_owner/addbusiness"}>
               <p>Add Business Profile</p>
             </NavLink>
-          </div>
-          <div
-            style={{
-              border: "1px solid lightGrey",
-            }}
-            className="quick"
-          >
-            <CiCalendar width={"40px"} />
-            <p style={{ color: "black" }}>Scheduled Meeting</p>
           </div>
         </div>
       </div>

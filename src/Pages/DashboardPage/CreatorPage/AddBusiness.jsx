@@ -128,7 +128,7 @@ const AddBusiness = () => {
       });
       console.log(" Business", res?.data);
 
-      toast.success(res?.data?.message || "Business created successfully");
+      toast.success("Business created successfully");
     } catch (error) {
       setLoading(false);
       const msg = error?.response?.data?.message;

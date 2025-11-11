@@ -34,6 +34,19 @@ export const InvestorMeeting_container = styled.div`
           /* display: flex; */
           /* align-items: center; */
         }
+        .Reschedule {
+          background-color: var(--secondary_color_100);
+          padding: 0.3rem;
+          border-radius: 8px;
+          color: #9e9999;
+        }
+
+        .Decl {
+          background-color: var(--error_red_color_400);
+          padding: 0.3rem;
+          border-radius: 8px;
+          color: #ffff;
+        }
 
         .confirm,
         .first {
