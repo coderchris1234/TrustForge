@@ -11,17 +11,21 @@ import {
   ProgressNote,
   RightNote,
 } from "./InvestmentPageStyle";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ProgressComponent = ({ data, remain, investor }) => {
-  console.log("invest", investor);
-  const goal = data?.fundingSought;
-  const raised = data?.fundRaised;
-  const remaining = remain;
-  const percentage = Math.round((raised / goal) * 100);
+  const isLoading = !data || !investor;
+
+  const goal = data?.fundingSought || 0;
+  const raised = data?.fundRaised || 0;
+  const remaining = remain || 0;
+  const percentage = goal > 0 ? Math.round((raised / goal) * 100) : 0;
 
   const formatNumber = (num) => {
     return new Intl.NumberFormat("en-NG").format(num);
   };
+
   return (
     <ProgressCard>
       <Header>Investment Progress</Header>
@@ -29,33 +33,53 @@ const ProgressComponent = ({ data, remain, investor }) => {
       <GridRow>
         <GridItem>
           <Label>Funding Goal</Label>
-          <Amount>₦{formatNumber(data?.fundingSought)}</Amount>
+          <Amount>
+            {isLoading ? <Skeleton width={100} /> : `₦${formatNumber(goal)}`}
+          </Amount>
         </GridItem>
 
         <GridItem>
           <Label>Raised</Label>
-          <Amount>₦{formatNumber(raised)}</Amount>
+          <Amount>
+            {isLoading ? <Skeleton width={100} /> : `₦${formatNumber(raised)}`}
+          </Amount>
         </GridItem>
 
         <GridItem>
           <Label>Remaining</Label>
-          <Amount>₦{formatNumber(remaining || 0)}</Amount>
+          <Amount>
+            {isLoading ? (
+              <Skeleton width={100} />
+            ) : (
+              `₦${formatNumber(remaining)}`
+            )}
+          </Amount>
         </GridItem>
 
         <GridItem>
           <Label>Investors</Label>
-          <Amount>{investor?.length}</Amount>
+          <Amount>
+            {isLoading ? <Skeleton width={40} /> : investor.length}
+          </Amount>
         </GridItem>
       </GridRow>
 
       <BarWrap>
         <BarTrack>
-          <BarFill style={{ width: `${percentage}%` }} />
+          {isLoading ? (
+            <Skeleton height={12} />
+          ) : (
+            <BarFill style={{ width: `${percentage}%` }} />
+          )}
         </BarTrack>
       </BarWrap>
 
-      <ProgressNote>{percentage}% funded</ProgressNote>
-      <RightNote>₦{formatNumber(remaining || 0)}</RightNote>
+      <ProgressNote>
+        {isLoading ? <Skeleton width={80} /> : `${percentage}% funded`}
+      </ProgressNote>
+      <RightNote>
+        {isLoading ? <Skeleton width={100} /> : `₦${formatNumber(remaining)}`}
+      </RightNote>
     </ProgressCard>
   );
 };

@@ -188,7 +188,7 @@ const InvestorMeeting = ({
               }}
               disabled={loading}
             >
-              {loading ? "Sending Reschedule..." : "Send Re-schedule Request"}
+              {loading ? "submiting" : "Send Re-schedule Request"}
             </button>
           </ModalBox>
         </ModalOverLay>

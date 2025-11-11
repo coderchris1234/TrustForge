@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 const Profile = () => {
-  const [mode, setMode] = useState("personal"); 
-   const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  const [mode, setMode] = useState("personal");
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
   console.log("userID", userId);
   const token = useSelector((state) => state.TrustForge.user?.token);
 
@@ -34,7 +34,6 @@ const Profile = () => {
 
     fetchKyc();
   }, [userId, token, BaseUrl]);
-
 
   return (
     <ProfileStyle>
@@ -80,7 +79,7 @@ const Profile = () => {
 
               <div className="Profile_info_holder">
                 <div className="Information_kyc">
-                  <p>ogbonnauchechi4@gmail.com</p>
+                  <p>{kyc?.email}</p>
                 </div>
                 <div>
                   <p>Lagos, Nigeria</p>

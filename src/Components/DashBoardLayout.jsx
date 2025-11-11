@@ -21,6 +21,8 @@ const DashBoardLayout = (props) => {
     dispatch(logOut());
   };
 
+  console.log("userDetails", userDetails);
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!userId) return;

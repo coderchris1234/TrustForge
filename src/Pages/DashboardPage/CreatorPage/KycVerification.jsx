@@ -54,9 +54,40 @@ const KycVerification = () => {
     governmentId: null,
     proofOfAddress: null,
   });
+
+  const [dobError, setDobError] = useState("");
+
   const handleChange = (e) => {
-    setFormData((f) => ({ ...f, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "dateOfBirth") {
+      const error = validateDOB(value);
+      setDobError(error);
+    }
   };
+  const validateDOB = (value) => {
+    if (!value) return "Date of birth is required.";
+
+    const dob = new Date(value);
+    const today = new Date();
+
+    if (dob >= today) return "Date of birth must be in the past.";
+
+    const age = today.getFullYear() - dob.getFullYear();
+    const month = today.getMonth() - dob.getMonth();
+    const day = today.getDate() - dob.getDate();
+    const hasBirthdayPassed = month > 0 || (month === 0 && day >= 0);
+    const actualAge = hasBirthdayPassed ? age : age - 1;
+
+    if (actualAge < 18) return "You must be at least 18 years old.";
+
+    return "";
+  };
+
+  // const handleChange = (e) => {
+  //   setFormData((f) => ({ ...f, [e.target.name]: e.target.value }));
+  // };
   const totalSteps = 4;
   const [step, setStep] = useState(1);
 
@@ -258,10 +289,11 @@ const KycVerification = () => {
                     ) : (
                       <GoUpload size={30} color="grey" />
                     )}
+                    <span onClick={() => ProfilePicRef.current.click()}>
+                      <GoUpload color="#ffff" />
+                    </span>
                   </div>
-                  <span onClick={() => ProfilePicRef.current.click()}>
-                    <GoUpload color="#ffff" />
-                  </span>
+
                   <p>Upload a professional photo</p>
                 </FieldRow>
 
@@ -297,6 +329,9 @@ const KycVerification = () => {
                     onChange={handleChange}
                     placeholder="dd/mm/yyyy"
                   />
+                  {dobError && (
+                    <p style={{ color: "red", marginTop: "4px" }}>{dobError}</p>
+                  )}
                 </FieldRow>
 
                 <FieldRow>

@@ -6,9 +6,20 @@ export const KycContainer = styled.div`
   margin: 1rem auto;
 
   .WhyKyc {
+    /* border-radius: 12px;
+    background: #d6e8ff;
+    padding: 1rem; */
+
     border-radius: 12px;
+    border: 0.5px solid lightgray;
     background: #d6e8ff;
     padding: 1rem;
+    border: none;
+
+    p {
+      color: #0038cc;
+      font-size: 22px;
+    }
 
     ul {
       list-style: none;
@@ -22,6 +33,8 @@ export const KycContainer = styled.div`
       padding-left: 1.5rem;
       display: flex;
       align-items: center;
+      color: #0038cc;
+      font-size: 18px;
     }
 
     ul li::before {

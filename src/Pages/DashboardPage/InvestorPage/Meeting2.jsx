@@ -8,10 +8,11 @@ import toast from "react-hot-toast";
 const Meeting2 = () => {
   const [allMeeting, setAllMeeting] = useState({});
   const user = useSelector((state) => state.TrustForge.user);
-  const [loadingMap, setLoadingMap] = useState({});
+  // const [loadingMap, setLoadingMap] = useState({});
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const [loading, setLoading] = useState(false);
 
   console.log("userId", userId);
 
@@ -47,8 +48,9 @@ const Meeting2 = () => {
     }
   };
   const rescheduleMeeting = async (data) => {
-    const { meetingId } = data;
-    setLoadingMap((prev) => ({ ...prev, [meetingId]: true }));
+    // const { meetingId } = data;
+    // setLoadingMap((prev) => ({ ...prev, [meetingId]: true }));
+    setLoading(true);
     try {
       const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
         headers: {
@@ -61,7 +63,8 @@ const Meeting2 = () => {
     } catch (err) {
       console.log("this is error", err);
     } finally {
-      setLoadingMap((prev) => ({ ...prev, [meetingId]: false }));
+      setLoading(false);
+      // setLoadingMap((prev) => ({ ...prev, [meetingId]: false }));
     }
   };
 
@@ -81,17 +84,17 @@ const Meeting2 = () => {
     <Meeting_container>
       <div className="meeting">
         <div className="meeting_text">
-          <h1>NDA Management</h1>
-          <p>Manage your non-disclosure agreements with startups</p>
+          <h1>Meeting</h1>
+          <p>Connect and Accept meeting with investors</p>
         </div>
       </div>
       <div className="upcoming_coming">
         <div className="upcoming">
           Upcoming <span>3</span>
         </div>
-        <div className="coming">
+        {/* <div className="coming">
           Coming <span></span>
-        </div>
+        </div> */}
       </div>
       {allMeeting?.meetings?.length > 0 ? (
         allMeeting?.meetings?.map((biz) => (
@@ -100,7 +103,8 @@ const Meeting2 = () => {
             key={biz.id}
             rescheduleMeeting={rescheduleMeeting}
             approvedMeeting={approvedMeeting}
-            loading={loadingMap[biz.id] || false}
+            // loading={loadingMap[biz.id] || false}
+            loading={loading}
           />
         ))
       ) : (
