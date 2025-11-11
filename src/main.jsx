@@ -6,6 +6,7 @@ import "antd/dist/reset.css";
 import { Provider } from "react-redux";
 import Store from "./Pages/Global/Store.js";
 import { Toaster } from "react-hot-toast";
+import "react-loading-skeleton/dist/skeleton.css";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={Store}>

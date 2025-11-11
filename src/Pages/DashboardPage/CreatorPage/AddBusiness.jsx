@@ -246,12 +246,33 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Business Model</Label>
-                  <Input
-                    value={form.businessModel}
+                  <select
                     name="businessModel"
+                    value={form.businessModel}
                     onChange={handleChange}
-                    placeholder="Describe your business model (B2B, B2C, Marketplace, etc.)"
-                  />
+                    style={{
+                      height: "40px",
+                      padding: "8px 12px",
+                      borderRadius: "8px",
+                      border: "1px solid #e6e9ef",
+                      background: "#fafafa",
+                      fontSize: "13px",
+                      outline: "none",
+                      width: "100%",
+                    }}
+                  >
+                    <option value="">Select your business model</option>
+                    <option value="B2B">B2B (Business to Business)</option>
+                    <option value="B2C">B2C (Business to Consumer)</option>
+                    <option value="C2C">C2C (Consumer to Consumer)</option>
+                    <option value="Marketplace">Marketplace</option>
+                    <option value="Subscription">Subscription</option>
+                    <option value="Freemium">Freemium</option>
+                    <option value="Commission">Commission-based</option>
+                    <option value="Licensing">Licensing</option>
+                    <option value="Advertising">Advertising</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </FieldRow>
 
                 <FieldRow>

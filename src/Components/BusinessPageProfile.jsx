@@ -32,8 +32,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { MdOutlineCancel } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const BusinessPageProfile = ({ data }) => {
+  const [form, setForm] = useState({ price: "", businessId: "" });
   const [form, setForm] = useState({
     price: "",
     businessId: "",
@@ -46,6 +49,16 @@ const BusinessPageProfile = ({ data }) => {
 
   const dispatch = useDispatch();
   const token = useSelector((state) => state.TrustForge.user?.token);
+  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
+  const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
+  const liked = likedList.includes(data?.id);
+  const isSavedUI = savedList.some((b) => b.id === data?.id);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const isLoading = !data;
+
+  useEffect(() => {
+    if (data) setLikeCount(data.likeCount || 0);
+  }, [data]);
 
   const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
   const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
@@ -83,16 +96,13 @@ const BusinessPageProfile = ({ data }) => {
 
   const handleSave = async () => {
     const isSaved = savedList.some((b) => b.id === data.id);
-
     try {
       await axios.post(
         `${BaseUrl}/save`,
         { businessId: data.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       dispatch(toggleSavedBusiness(data));
-
       toast.success(isSaved ? "Business unsaved" : "Saved successfully");
     } catch (err) {
       console.error(err);
@@ -105,8 +115,6 @@ const BusinessPageProfile = ({ data }) => {
     .map((m) => m[0])
     .join("")
     .toUpperCase();
-
-  const isSavedUI = savedList.some((b) => b.id === data.id);
 
   const data1 = {
     businessId: form.businessId,
@@ -137,41 +145,80 @@ const BusinessPageProfile = ({ data }) => {
       <CardWrap>
         <div>
           <TopTags>
-            <Tag>{data?.industry}</Tag>
-            <Tag active>{data?.businessStatus}</Tag>
-            <Tag>{data?.fundingStage}</Tag>
+            <Tag>{isLoading ? <Skeleton width={80} /> : data.industry}</Tag>
+            <Tag active>
+              {isLoading ? <Skeleton width={100} /> : data.businessStatus}
+            </Tag>
+            <Tag>{isLoading ? <Skeleton width={80} /> : data.fundingStage}</Tag>
           </TopTags>
 
-          <Title>{data?.businessName}</Title>
-          <Subtitle>{data?.description}</Subtitle>
+          <Title>
+            {isLoading ? <Skeleton width={200} /> : data.businessName}
+          </Title>
+          <Subtitle>
+            {isLoading ? <Skeleton count={3} /> : data.description}
+          </Subtitle>
 
           <ProfileRow>
-            <Avatar>{initials}</Avatar>
+            <Avatar>
+              {isLoading ? (
+                <Skeleton circle width={40} height={40} />
+              ) : (
+                initials
+              )}
+            </Avatar>
             <NameBlock>
-              <Name>{data?.businessOwnerName}</Name>
-              <Role>{data?.businessName}</Role>
+              <Name>
+                {isLoading ? <Skeleton width={120} /> : data.businessOwnerName}
+              </Name>
+              <Role>
+                {isLoading ? <Skeleton width={100} /> : data.businessName}
+              </Role>
             </NameBlock>
           </ProfileRow>
 
           <StatsRow>
             <Stat>
+              <CiHeart color={liked ? "red" : "gray"} />{" "}
+              {isLoading ? <Skeleton width={30} /> : likeCount}
+            </Stat>
+            <Stat>
+              {isLoading ? (
+                <Skeleton width={100} />
+              ) : (
+                `Posted ${data.createdAt.slice(0, 10)}`
+              )}
               <CiHeart color={liked ? "red" : "gray"} /> {likeCount}
             </Stat>
-            <Stat>Posted {data?.createdAt.slice(0, 10)}</Stat>
           </StatsRow>
         </div>
 
         <ActionColumn>
-          <LikeButton onClick={handleLike}>
-            {liked ? "❤️ Liked" : "🤍 Like"}
+          <LikeButton onClick={handleLike} disabled={isLoading}>
+            {isLoading ? (
+              <Skeleton width={80} />
+            ) : liked ? (
+              "❤️ Liked"
+            ) : (
+              "🤍 Like"
+            )}
           </LikeButton>
 
-          <SaveButton onClick={handleSave}>
-            {isSavedUI ? "❤️ Unsave" : "🤍 Save"}
+          <SaveButton onClick={handleSave} disabled={isLoading}>
+            {isLoading ? (
+              <Skeleton width={80} />
+            ) : isSavedUI ? (
+              "❤️ Unsave"
+            ) : (
+              "🤍 Save"
+            )}
           </SaveButton>
 
-          <ScheduleButton onClick={() => setOpenModal(true)}>
-            📅 Schedule meeting
+          <ScheduleButton
+            onClick={() => setOpenModal(true)}
+            disabled={isLoading}
+          >
+            {isLoading ? <Skeleton width={140} /> : "📅 Schedule meeting"}
           </ScheduleButton>
 
           <InvestButton
@@ -179,8 +226,9 @@ const BusinessPageProfile = ({ data }) => {
               setForm({ ...form, businessId: data.id });
               setModal(true);
             }}
+            disabled={isLoading}
           >
-            ₦ Invest Now
+            {isLoading ? <Skeleton width={120} /> : "₦ Invest Now"}
           </InvestButton>
         </ActionColumn>
 
@@ -215,7 +263,6 @@ const BusinessPageProfile = ({ data }) => {
                     <div className={`circle ${selected ? "circle-active" : ""}`}>
                       {selected && <div className="inner-circle"></div>}
                     </div>
-
                     <span>Pay with Kora</span>
                   </div>
                 </div>
@@ -237,7 +284,9 @@ const BusinessPageProfile = ({ data }) => {
         )}
       </CardWrap>
 
-      <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+      {!isLoading && (
+        <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+      )}
     </>
   );
 };

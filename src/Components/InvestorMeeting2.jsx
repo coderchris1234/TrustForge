@@ -22,6 +22,7 @@ const InvestorMeeting2 = ({
   approvedMeeting,
   declineMeeting,
   rescheduleMeeting,
+  loading,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
@@ -54,7 +55,7 @@ const InvestorMeeting2 = ({
   console.log(meetingStatus);
   const today = new Date();
   const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+  const month = String(today.getMonth() + 1).padStart(2, "0");
   const day = String(today.getDate()).padStart(2, "0");
   const minDate = `${year}-${month}-${day}`;
 
@@ -218,8 +219,11 @@ const InvestorMeeting2 = ({
               onClick={() => {
                 rescheduleMeeting(form);
               }}
+              style={{
+                cursor: "pointer",
+              }}
             >
-              Send Re-schedule Request
+              {loading ? "submiting" : "Send Re-schedule Request"}
             </button>
           </ModalBox>
         </ModalOverLay>
