@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import {
@@ -24,7 +24,10 @@ import {
 } from "./BusinessPageProfileStyle";
 import { useDispatch, useSelector } from "react-redux";
 import MeetingModal from "./MeetingModal";
-import { toggleSavedBusiness } from "../Pages/Global/Slice";
+import {
+  toggleSavedBusiness,
+  toggleLikedBusiness,
+} from "../Pages/Global/Slice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MdOutlineCancel } from "react-icons/md";
@@ -35,18 +38,28 @@ const BusinessPageProfile = ({ data }) => {
     price: "",
     businessId: "",
   });
-  const [openModal, setOpenModal] = React.useState(false);
-  const [Modal, setModal] = React.useState(false);
-  const [liked, setLiked] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [Modal, setModal] = useState(false);
   const [selected, setSelected] = useState(false);
   const [likeCount, setLikeCount] = useState(data?.likeCount || 0);
   const [loading, setLoading] = useState(false);
 
-  const token = useSelector((state) => state.TrustForge.user?.token);
-  console.log("token", token);
-  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
+  const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
+
+  const liked = likedList.includes(data?.id);
+
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  useEffect(() => {
+    if (data) {
+      setLikeCount(data?.likeCount || 0);
+    }
+  }, [data]);
+
   if (!data) {
     return <p>Loading business...</p>;
   }
@@ -59,12 +72,12 @@ const BusinessPageProfile = ({ data }) => {
         { headers: { authorization: `Bearer ${token}` } }
       );
 
-      setLiked(!liked);
+      dispatch(toggleLikedBusiness(data.id));
 
       setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
     } catch (err) {
       console.error(err);
-      alert("Could not update like");
+      toast.error("Could not update like");
     }
   };
 
@@ -86,6 +99,7 @@ const BusinessPageProfile = ({ data }) => {
       toast.error("Could not save business");
     }
   };
+
   const initials = data?.businessOwnerName
     ?.split(" ")
     .map((m) => m[0])
@@ -106,19 +120,18 @@ const BusinessPageProfile = ({ data }) => {
       const res = await axios.post(`${BaseUrl}/makeInvestment`, data1, {
         headers: { authorization: `Bearer ${token}` },
       });
-      console.log("payment", res);
-      // toast.success("Investment initialized");
+
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       }
     } catch (err) {
-      setLoading(false);
       console.error(err);
       toast.error("Could not process investment");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <>
       <CardWrap>
@@ -142,9 +155,6 @@ const BusinessPageProfile = ({ data }) => {
 
           <StatsRow>
             <Stat>
-              <IoEyeOutline /> {data?.viewCount}
-            </Stat>
-            <Stat>
               <CiHeart color={liked ? "red" : "gray"} /> {likeCount}
             </Stat>
             <Stat>Posted {data?.createdAt.slice(0, 10)}</Stat>
@@ -155,12 +165,15 @@ const BusinessPageProfile = ({ data }) => {
           <LikeButton onClick={handleLike}>
             {liked ? "❤️ Liked" : "🤍 Like"}
           </LikeButton>
+
           <SaveButton onClick={handleSave}>
-            {isSavedUI ? "❤️ Unsave" : "🤍  Save"}
+            {isSavedUI ? "❤️ Unsave" : "🤍 Save"}
           </SaveButton>
+
           <ScheduleButton onClick={() => setOpenModal(true)}>
             📅 Schedule meeting
           </ScheduleButton>
+
           <InvestButton
             onClick={() => {
               setForm({ ...form, businessId: data.id });
@@ -170,6 +183,7 @@ const BusinessPageProfile = ({ data }) => {
             ₦ Invest Now
           </InvestButton>
         </ActionColumn>
+
         {Modal && (
           <ModalOverLay>
             <ModalBox>
@@ -181,6 +195,7 @@ const BusinessPageProfile = ({ data }) => {
                   onClick={() => setModal(false)}
                 />
               </div>
+
               <div className="amount">
                 <p>How much do you want to invest</p>
                 <input
@@ -189,6 +204,7 @@ const BusinessPageProfile = ({ data }) => {
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
                 />
               </div>
+
               <div className="options">
                 <div
                   className={`option-box ${selected ? "selected" : ""}`}
@@ -196,9 +212,7 @@ const BusinessPageProfile = ({ data }) => {
                 >
                   <div className="option-row">
                     <RiSecurePaymentLine />
-                    <div
-                      className={`circle ${selected ? "circle-active" : ""}`}
-                    >
+                    <div className={`circle ${selected ? "circle-active" : ""}`}>
                       {selected && <div className="inner-circle"></div>}
                     </div>
 

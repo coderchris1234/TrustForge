@@ -94,6 +94,7 @@ const Meeting2 = () => {
             {...biz}
             key={biz.id}
             rescheduleMeeting={rescheduleMeeting}
+            approvedMeeting={approvedMeeting}
           />
         ))
       ) : (
