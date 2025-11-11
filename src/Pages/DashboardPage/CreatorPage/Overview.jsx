@@ -98,7 +98,7 @@ const Overview = () => {
               <p>Add Business Profile</p>
             </NavLink>
           </div>
-          <div
+          {/* <div
             style={{
               border: "1px solid lightGrey",
             }}
@@ -106,7 +106,7 @@ const Overview = () => {
           >
             <CiCalendar width={"40px"} />
             <p style={{ color: "black" }}>Scheduled Meeting</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </OverviewContent>

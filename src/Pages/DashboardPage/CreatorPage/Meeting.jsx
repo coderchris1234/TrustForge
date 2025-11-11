@@ -110,12 +110,12 @@ const Meeting = () => {
             <p>Upcoming ({allMeeting?.meetings?.length || 0})</p>
           </div>
 
-          <div
+          {/* <div
             className={activeTab === "past" ? "active" : ""}
             onClick={() => setActiveTab("past")}
           >
-            {/* <p>Past ({allMeeting?.meetings?.length || 0})</p> */}
-          </div>
+            <p>Past ({allMeeting?.meetings?.length || 0})</p>
+          </div> */}
         </div>
       </div>
       {allMeeting?.meetings?.length > 0 ? (

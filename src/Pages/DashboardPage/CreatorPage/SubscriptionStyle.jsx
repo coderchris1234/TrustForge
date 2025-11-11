@@ -1,77 +1,76 @@
 import styled from "styled-components";
 
-export const SubHeader = styled.div`
+export const SubcriptionCard_container = styled.div`
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
+  height: max-content;
 
-  p {
-    font-size: 28px;
-    font-weight: 500;
-    line-height: 35px;
+  h1 {
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0;
   }
 
-  span {
-    text-align: center;
+  p {
     font-size: 16px;
-    font-weight: 500;
-    line-height: 19px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 0.5rem;
   }
-`;
 
-export const SubscriptionDate = styled.div`
-  background-color: #c1c1c1;
-  display: flex;
-  gap: 1rem;
-  border-radius: 8px;
-  width: 20%;
-  margin-bottom: 3rem;
-  margin: 0 auto;
-  margin-top: 2rem;
-  cursor: pointer;
-
-  p {
+  .Ask_question_wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-top: 2rem;
+    gap: 1rem;
     display: flex;
-    flex: 1;
-    justify-content: center;
-    /* background-color: white; */
-    margin: 0.3rem 0.3rem;
-    padding: 0.5rem;
-    border-radius: 8px;
+    flex-direction: column;
+    border-radius: 0.8rem;
+    /* height: auto; */
+    /* min-height: 200px; */
+    box-sizing: border-box;
+    height: max-content;
   }
 
-  p.active {
-    background-color: #ffff;
-    color: #1b1b1b;
-  }
-`;
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    display: flex;
+    gap: 2rem;
 
-export const SubCon = styled.div`
-  /* background-color: pink; */
-  display: flex;
-  gap: 1rem;
-  padding: 2rem;
-  /* align-items: center; */
-`;
+    h1 {
+      font-size: 20px;
+    }
 
-export const FrequentQue = styled.div`
-  background-color: #ffff;
-  width: 95%;
-  margin: 0 auto;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 12px;
+    p {
+      font-size: 15px;
+    }
 
-  h3 {
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 35px;
+    .Ask_question_wrapper {
+      padding: 0.8rem;
+      gap: 0.8rem;
+    }
   }
 
-  p {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 23px;
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .Ask_question_wrapper {
+      padding: 0.6rem;
+      gap: 0.6rem;
+    }
   }
 `;

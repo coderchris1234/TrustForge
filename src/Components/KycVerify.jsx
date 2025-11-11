@@ -35,7 +35,6 @@ const KycVerification = () => {
   const isUnderReview = userKYC?.toLowerCase().includes("review");
   const dispatch = useDispatch();
 
-
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     profilePic: null,
@@ -126,10 +125,9 @@ const KycVerification = () => {
       formData2.append(key, value);
     });
     try {
-      const  res = await axios.post(`${BaseUrl}/kycI`, formData2, {
+      const res = await axios.post(`${BaseUrl}/kycI`, formData2, {
         headers: { authorization: `Bearer ${token}` },
       });
-
 
       const profileData = res?.data;
 

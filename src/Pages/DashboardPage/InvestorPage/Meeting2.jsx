@@ -76,17 +76,17 @@ const Meeting2 = () => {
     <Meeting_container>
       <div className="meeting">
         <div className="meeting_text">
-          <h1>NDA Management</h1>
-          <p>Manage your non-disclosure agreements with startups</p>
+          <h1>Meeting</h1>
+          <p>Connect and Accept meeting with investors</p>
         </div>
       </div>
       <div className="upcoming_coming">
         <div className="upcoming">
           Upcoming <span>3</span>
         </div>
-        <div className="coming">
+        {/* <div className="coming">
           Coming <span></span>
-        </div>
+        </div> */}
       </div>
       {allMeeting?.meetings?.length > 0 ? (
         allMeeting?.meetings?.map((biz) => (
