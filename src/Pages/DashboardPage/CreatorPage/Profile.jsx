@@ -52,9 +52,7 @@ const Profile = () => {
 
           <button
             type="button"
-            className={`Professional_info ${
-              mode === "professional" ? "active" : ""
-            }`}
+            className={`Professional_info ${mode === "professional" ? "active" : ""}`}
             onClick={() => setMode("professional")}
           >
             <p>Professional</p>

@@ -37,6 +37,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const BusinessPageProfile = ({ data }) => {
   const [form, setForm] = useState({ price: "", businessId: "" });
+  const [form, setForm] = useState({
+    price: "",
+    businessId: "",
+  });
   const [openModal, setOpenModal] = useState(false);
   const [Modal, setModal] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -56,6 +60,23 @@ const BusinessPageProfile = ({ data }) => {
     if (data) setLikeCount(data.likeCount || 0);
   }, [data]);
 
+  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
+  const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
+
+  const liked = likedList.includes(data?.id);
+
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  useEffect(() => {
+    if (data) {
+      setLikeCount(data?.likeCount || 0);
+    }
+  }, [data]);
+
+  if (!data) {
+    return <p>Loading business...</p>;
+  }
+
   const handleLike = async () => {
     try {
       await axios.post(
@@ -63,7 +84,9 @@ const BusinessPageProfile = ({ data }) => {
         { businessId: data.id },
         { headers: { authorization: `Bearer ${token}` } }
       );
+
       dispatch(toggleLikedBusiness(data.id));
+
       setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
     } catch (err) {
       console.error(err);
@@ -105,6 +128,7 @@ const BusinessPageProfile = ({ data }) => {
       const res = await axios.post(`${BaseUrl}/makeInvestment`, data1, {
         headers: { authorization: `Bearer ${token}` },
       });
+
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       }
@@ -164,6 +188,7 @@ const BusinessPageProfile = ({ data }) => {
               ) : (
                 `Posted ${data.createdAt.slice(0, 10)}`
               )}
+              <CiHeart color={liked ? "red" : "gray"} /> {likeCount}
             </Stat>
           </StatsRow>
         </div>
@@ -235,9 +260,7 @@ const BusinessPageProfile = ({ data }) => {
                 >
                   <div className="option-row">
                     <RiSecurePaymentLine />
-                    <div
-                      className={`circle ${selected ? "circle-active" : ""}`}
-                    >
+                    <div className={`circle ${selected ? "circle-active" : ""}`}>
                       {selected && <div className="inner-circle"></div>}
                     </div>
                     <span>Pay with Kora</span>
