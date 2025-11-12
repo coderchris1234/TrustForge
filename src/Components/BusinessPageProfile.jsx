@@ -36,7 +36,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const BusinessPageProfile = ({ data }) => {
-  const [form, setForm] = useState({ price: "", businessId: "" });
   const [form, setForm] = useState({
     price: "",
     businessId: "",
@@ -59,13 +58,6 @@ const BusinessPageProfile = ({ data }) => {
   useEffect(() => {
     if (data) setLikeCount(data.likeCount || 0);
   }, [data]);
-
-  const savedList = useSelector((state) => state.TrustForge.savedBusinesses);
-  const likedList = useSelector((state) => state.TrustForge.likedBusinesses);
-
-  const liked = likedList.includes(data?.id);
-
-  const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   useEffect(() => {
     if (data) {
@@ -119,7 +111,7 @@ const BusinessPageProfile = ({ data }) => {
   const data1 = {
     businessId: form.businessId,
     price: form.price,
-    redirectUrl: `${window.location.origin}/payment-success`,
+    // redirectUrl: `${window.location.origin}/payment-success`,
   };
 
   const handleInvest = async () => {
@@ -133,8 +125,10 @@ const BusinessPageProfile = ({ data }) => {
         window.location.href = res.data.data.url;
       }
     } catch (err) {
-      console.error(err);
-      toast.error("Could not process investment");
+      console.log(err);
+      toast.error(
+        err?.response?.data?.message || "Could not process investment"
+      );
     } finally {
       setLoading(false);
     }
@@ -260,7 +254,9 @@ const BusinessPageProfile = ({ data }) => {
                 >
                   <div className="option-row">
                     <RiSecurePaymentLine />
-                    <div className={`circle ${selected ? "circle-active" : ""}`}>
+                    <div
+                      className={`circle ${selected ? "circle-active" : ""}`}
+                    >
                       {selected && <div className="inner-circle"></div>}
                     </div>
                     <span>Pay with Kora</span>

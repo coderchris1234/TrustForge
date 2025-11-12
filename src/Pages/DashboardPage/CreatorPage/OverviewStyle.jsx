@@ -4,6 +4,13 @@ export const OverviewContent = styled.div`
   width: 95%;
   height: 100vh;
   margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   .ContentTitle {
     padding-top: 2rem;
@@ -25,20 +32,21 @@ export const OverviewContent = styled.div`
   .Overview-content {
     width: 100%;
     margin-top: 0;
-    gap: 18px;
+    gap: 1rem;
     height: 20%;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 2rem;
 
     .box {
       width: 25%;
-      height: 16vh;
+      /* height: 16vh; */
       border-radius: 15px;
       background: #fff;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 0 12px;
+      align-items: start;
+      padding: 1rem;
 
       img {
         width: 24px;
@@ -90,7 +98,6 @@ export const OverviewContent = styled.div`
     height: 30vh;
     padding: 1rem 1.5rem;
     border-radius: 15px;
-    margin-bottom: 50px;
 
     p {
       font-size: 18px;
@@ -107,7 +114,6 @@ export const OverviewContent = styled.div`
       gap: 20px;
 
       .quick {
-        /* background-color: pink; */
         border-radius: 10px;
         width: 25%;
         display: flex;

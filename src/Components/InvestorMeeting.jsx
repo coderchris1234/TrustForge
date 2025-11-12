@@ -45,6 +45,11 @@ const InvestorMeeting = ({
   const userJoinMeeting = () => {
     window.location.href = meetingLink;
   };
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const minDate = `${year}-${month}-${day}`;
   return (
     <InvestorMeeting_container>
       <div className="Invetor_wrapper">
@@ -151,6 +156,7 @@ const InvestorMeeting = ({
                   name="date"
                   onChange={handleChange}
                   value={form.date}
+                  min={minDate}
                 />
               </div>
 
@@ -177,6 +183,10 @@ const InvestorMeeting = ({
               onClick={() => {
                 rescheduleMeeting(form);
               }}
+              style={{
+                cursor: "pointer",
+              }}
+              disabled={loading}
             >
               {loading ? "submiting" : "Send Re-schedule Request"}
             </button>

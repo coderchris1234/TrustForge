@@ -67,7 +67,7 @@ const Overview = () => {
                 borderRadius: "5px",
               }}
             >
-              <img src={section.icon} alt="" />
+              <section.icon size={24} />
             </div>
           </div>
         ))}

@@ -6,6 +6,10 @@ export const Not_container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: ${(props) => (props.status === "unread" ? "#e6f3ff" : "white")};
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 
   .not_wrapper {
     width: 100%;
@@ -23,7 +27,6 @@ export const Not_container = styled.div`
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-    
 
       .not_top_left {
         display: flex;
