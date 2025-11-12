@@ -6,6 +6,11 @@ export const Card = styled.div`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 100%;
+
+  .details {
+    display: flex;
+    gap: 0.5rem;
+  }
   /* background-color: pink; */
 `;
 

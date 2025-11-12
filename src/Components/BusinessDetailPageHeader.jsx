@@ -32,7 +32,10 @@ const BusinessDetailPageHeader = ({ data }) => {
         <Status>{data?.businessStatus}</Status>
       </TopRow>
 
-      <RetailLabel>{data?.industry}</RetailLabel>
+      <div className="details">
+        <RetailLabel>{data?.industry}</RetailLabel>
+        <RetailLabel>{data?.businessModel}</RetailLabel>
+      </div>
 
       {/* <Description>{data.description}</Description> */}
 

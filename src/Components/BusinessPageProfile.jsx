@@ -40,6 +40,7 @@ const BusinessPageProfile = ({ data }) => {
     price: "",
     businessId: "",
   });
+  console.log("business ID", data?.id);
   const [openModal, setOpenModal] = useState(false);
   const [Modal, setModal] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -54,10 +55,6 @@ const BusinessPageProfile = ({ data }) => {
   const isSavedUI = savedList.some((b) => b.id === data?.id);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const isLoading = !data;
-
-  useEffect(() => {
-    if (data) setLikeCount(data.likeCount || 0);
-  }, [data]);
 
   useEffect(() => {
     if (data) {
@@ -172,10 +169,10 @@ const BusinessPageProfile = ({ data }) => {
           </ProfileRow>
 
           <StatsRow>
-            <Stat>
+            {/* <Stat>
               <CiHeart color={liked ? "red" : "gray"} />{" "}
               {isLoading ? <Skeleton width={30} /> : likeCount}
-            </Stat>
+            </Stat> */}
             <Stat>
               {isLoading ? (
                 <Skeleton width={100} />

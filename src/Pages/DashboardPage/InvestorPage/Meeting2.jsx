@@ -90,7 +90,7 @@ const Meeting2 = () => {
       </div>
       <div className="upcoming_coming">
         <div className="upcoming">
-          Upcoming <span>3</span>
+          Upcoming <span>{allMeeting?.meetings?.length}</span>
         </div>
         {/* <div className="coming">
           Coming <span></span>

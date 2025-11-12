@@ -22,8 +22,16 @@ const Section = styled.div`
 const DetailsTab = ({ data }) => (
   <DetailsWrapper>
     <MetricRow>
-      <div>Funding Sought: ${data?.fundingSought}</div>
-      <div>Current Revenue: ${data?.currentRevenue}</div>
+      <div>
+        Funding Sought: ₦
+        {data?.fundingSought ? Number(data.fundingSought).toLocaleString() : 0}
+      </div>
+      <div>
+        Current Revenue: ₦
+        {data?.currentRevenue
+          ? Number(data.currentRevenue).toLocaleString()
+          : 0}
+      </div>
       <div>Year Founded: {data?.yearFounded}</div>
     </MetricRow>
 
