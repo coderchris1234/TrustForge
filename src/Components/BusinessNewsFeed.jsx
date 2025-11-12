@@ -194,7 +194,10 @@ const BusinessNewsFeed = ({ data }) => {
                     </div>
 
                     <div className="seeking">
-                      seeking: &#8358;{post.fundingSought}
+                      seeking: &#8358;
+                      {post?.fundingSought
+                        ? Number(post.fundingSought).toLocaleString()
+                        : 0}
                     </div>
                   </div>
                 </div>

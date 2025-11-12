@@ -8,6 +8,7 @@ import {
 import DetailsTab from "./DetailsTab";
 import DocumentTab from "./DocumentTab";
 import EngagementTab from "./EngagementTab";
+import Investor from "./Investor";
 
 const BusinessTabs = ({ data }) => {
   const [activeTab, setActiveTab] = useState("Details");
@@ -30,7 +31,7 @@ const BusinessTabs = ({ data }) => {
         {activeTab === "Details" && <DetailsTab data={data} />}
         {activeTab === "Document" && <DocumentTab data={data} />}
         {activeTab === "Engagement" && <EngagementTab data={data} />}
-        {activeTab === "Investors" && <div>Investor info coming soon</div>}
+        {activeTab === "Investors" && <Investor data={data} />}
       </TabContent>
     </TabContainer>
   );

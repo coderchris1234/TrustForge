@@ -26,7 +26,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
 
-
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
   const proofOfAdressRef = useRef(null);
@@ -50,10 +49,6 @@ const KycVerification = () => {
     residentialAddress: "",
     city: "",
     state: "",
-    bankName: "",
-    accountNumber: "",
-    accountName: "",
-    accountType: "",
     investmentType: "",
     governmentId: null,
     proofOfAddress: null,
@@ -131,6 +126,7 @@ const KycVerification = () => {
       const res = await axios.post(`${BaseUrl}/kycI`, formData2, {
         headers: { authorization: `Bearer ${token}` },
       });
+      toast.success("KYC submitted successfully");
 
       const profileData = res?.data;
 
@@ -227,7 +223,7 @@ const KycVerification = () => {
             <StepName active={step === 1}>Personal</StepName>
             <StepName active={step === 2}>Business</StepName>
             <StepName active={step === 3}>Document</StepName>
-             <StepName active={step === 4}>
+            <StepName active={step === 4}>
               {userKYC?.toLowerCase().includes("review")
                 ? "Pending"
                 : userKYC?.toLowerCase().includes("verified")
@@ -236,6 +232,34 @@ const KycVerification = () => {
             </StepName>
           </StepNames>
         </StepInfo>
+        {userKYC && (
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "0.8rem 1.2rem",
+              borderRadius: "8px",
+              textAlign: "center",
+              backgroundColor: userKYC.toLowerCase().includes("review")
+                ? "rgba(255, 165, 0, 0.15)" // orange tint for pending
+                : userKYC.toLowerCase().includes("verified")
+                ? "rgba(0, 128, 0, 0.15)" // green tint for verified
+                : "transparent",
+              color: userKYC.toLowerCase().includes("review")
+                ? "#e69500"
+                : userKYC.toLowerCase().includes("verified")
+                ? "green"
+                : "inherit",
+              fontWeight: "600",
+              fontSize: "1rem",
+            }}
+          >
+            {userKYC.toLowerCase().includes("review")
+              ? "Your KYC verification is currently under review."
+              : userKYC.toLowerCase().includes("verified")
+              ? "Your KYC has been verified successfully!"
+              : ""}
+          </div>
+        )}
 
         <Card>
           <FormArea>
@@ -442,11 +466,8 @@ const KycVerification = () => {
               </BackButton>
             )}
 
-            <NextButton
-             disabled={kycLocked} onClick={handleNext}>
-    
-            
-             {step < totalSteps
+            <NextButton disabled={kycLocked} onClick={handleNext}>
+              {step < totalSteps
                 ? "Next Step"
                 : loading
                 ? "Submitting  Verification..."

@@ -18,6 +18,12 @@ export const BusinessContainer = styled.div`
       justify-content: space-between;
 
       .business {
+        .heading {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
         .set {
           display: flex;
           gap: 0.5rem;

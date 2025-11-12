@@ -14,7 +14,7 @@ import axios from "axios";
 const MyBusiness = () => {
   // const nav = useNavigate();
   const [allBusiness, setAllBusiness] = useState({});
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [filteredBusiness, setFilteredBusiness] = useState([]);
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -73,7 +73,7 @@ const MyBusiness = () => {
           <button>Add Business Profile</button>
         </NavLink>
       </MyBusinessHeader>
-      <SearchBar>
+      {/* <SearchBar>
         <div className="searchContainer">
           <CiSearch style={{ cursor: "pointer" }} />
           <input
@@ -98,7 +98,7 @@ const MyBusiness = () => {
           <option value="">Under Review</option>
           <option value="">Draft</option>
         </select>
-      </SearchBar>
+      </SearchBar> */}
 
       <BusinessWrapper>
         {filteredBusiness.length > 0 ? (

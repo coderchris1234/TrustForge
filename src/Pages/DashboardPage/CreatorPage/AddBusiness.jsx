@@ -32,6 +32,7 @@ import axios from "axios";
 
 const AddBusiness = () => {
   const token = useSelector((state) => state.TrustForge.user?.token);
+  console.log("userToken", token);
 
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
