@@ -32,11 +32,12 @@ import axios from "axios";
 
 const AddBusiness = () => {
   const token = useSelector((state) => state.TrustForge.user?.token);
+  console.log("userToken", token);
 
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -126,15 +127,18 @@ const AddBusiness = () => {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log(" Business", res?.data);
 
-      toast.success(res?.data?.message || "Business created successfully");
+      if (res?.data?.message?.includes("verification")) {
+        toast.error(res?.data?.message);
+        setLoading(false);
+        return false;
+      } else {
+        toast.success(res?.data?.message);
+      }
+      console.log(" Business", res?.data);
     } catch (error) {
       setLoading(false);
-      const msg = error?.response?.data?.message;
-      setErrorMessage(msg);
-      toast.error(msg);
-      console.log(errorMessage);
+      toast.error(error?.response?.data?.message);
     }
     setStep(1);
     setLoading(false);
@@ -277,11 +281,13 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Revenue Model</Label>
-                  <Input
+                  <Textarea
                     value={form.revenueModel}
                     onChange={handleChange}
                     name="revenueModel"
                     placeholder="How does your business generate revenue?"
+                    rows={4}
+                    style={{ outline: "none" }}
                   />
                 </FieldRow>
 

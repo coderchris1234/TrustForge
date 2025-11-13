@@ -39,24 +39,30 @@ const BusinessNewsFeed = ({ data }) => {
   };
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const isLoading = !data || data.length === 0;
 
-  const handleView = async (businessName, id, businessOwner) => {
+  const handleView = async (businessId) => {
     try {
       const res = await axios.post(
         `${BaseUrl}/view`,
-        { businessId: id },
+        { businessId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      dispatch(setbusinessOwnerId(businessOwner));
-      nav(`/dashboard/investor/business/${businessName}/${id}`);
-      console.log("handleView", res);
+      console.log(res);
+
+      return true;
     } catch (err) {
       console.error(err);
-      // toast.error("Could not save business");
+
+      const msg =
+        err?.response?.data?.message ||
+        "You need an active subscription to view this business.";
+
+      toast.error(msg);
+
+      return false;
     }
   };
-
-  const isLoading = !data || data.length === 0;
 
   return (
     <Newsfeed_container>
@@ -108,12 +114,12 @@ const BusinessNewsFeed = ({ data }) => {
                         <Skeleton width={30} />
                       </span>
                     </div>
-                    <div className="like">
+                    {/* <div className="like">
                       <LuMessageSquare />
                       <span>
                         <Skeleton width={30} />
                       </span>
-                    </div>
+                    </div> */}
                     <div className="comment">
                       <div>
                         <Skeleton width={60} />
@@ -172,33 +178,44 @@ const BusinessNewsFeed = ({ data }) => {
                         <IoEyeOutline />
                         <span>{post.viewCount}</span>
                       </div>
+
                       <div className="like">
                         <CiHeart size={20} />
                         <span>{post.likeCount}</span>
                       </div>
+
                       <div className="like">
                         <LuMessageSquare />
                         <span>{post.likeCount}</span>
                       </div>
+
                       <div className="comment">
                         <div>{post.comment}</div>
                         <div>{post.commentNum}</div>
                       </div>
                     </div>
+
                     <div className="seeking">
-                      seeking: ₦{post.fundingSought}
+                      seeking: &#8358;
+                      {post?.fundingSought
+                        ? Number(post.fundingSought).toLocaleString()
+                        : 0}
                     </div>
                   </div>
                 </div>
 
                 <div className="busines_right">
                   <div
-                    onClick={() => {
-                      handleView(
-                        post.businessOwner,
-                        post.id,
-                        post.businessName
+                    onClick={async () => {
+                      const allowed = await handleView(post.id);
+
+                      if (!allowed) return; // subscription expired, stop everything
+
+                      nav(
+                        `/dashboard/investor/business/${post.businessName}/${post.id}`
                       );
+
+                      dispatch(setbusinessOwnerId(post.businessOwner));
                     }}
                     className="post_view"
                   >

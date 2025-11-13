@@ -17,19 +17,16 @@ const EngagementItem = styled.div`
 
 const EngagementTab = ({ data }) => (
   <EngagementList>
-    {[
-      { date: "2025-10-15", views: data?.viewCount, likes: data?.likeCount },
-      { date: "2025-10-18", views: data?.viewCount, likes: data?.likeCount },
-      { date: "2025-10-20", views: data?.viewCount, likes: data?.likeCount },
-      { date: "2025-10-24", views: data?.viewCount, likes: data?.likeCount },
-    ].map(({ date, views, likes }) => (
-      <EngagementItem key={date}>
-        <span>{date}</span>
-        <span>
-          👁 {views} ❤️ {likes}
-        </span>
-      </EngagementItem>
-    ))}
+    {[{ views: data?.viewCount, likes: data?.likeCount }].map(
+      ({ views, likes }) => (
+        <EngagementItem key={views + likes}>
+          {/* <span>{date}</span> */}
+          <span>
+            👁 {views} ❤️ {likes}
+          </span>
+        </EngagementItem>
+      )
+    )}
   </EngagementList>
 );
 

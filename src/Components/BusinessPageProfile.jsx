@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
-import { AiOutlineUpload } from "react-icons/ai";
+// import { AiOutlineUpload } from "react-icons/ai";
+import { CiHeart } from "react-icons/ci";
 import {
   CardWrap,
   TopTags,
@@ -36,7 +37,11 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const BusinessPageProfile = ({ data }) => {
-  const [form, setForm] = useState({ price: "", businessId: "" });
+  const [form, setForm] = useState({
+    price: "",
+    businessId: "",
+  });
+  console.log("business ID", data?.id);
   const [openModal, setOpenModal] = useState(false);
   const [Modal, setModal] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -53,8 +58,14 @@ const BusinessPageProfile = ({ data }) => {
   const isLoading = !data;
 
   useEffect(() => {
-    if (data) setLikeCount(data.likeCount || 0);
+    if (data) {
+      setLikeCount(data?.likeCount || 0);
+    }
   }, [data]);
+
+  if (!data) {
+    return <p>Loading business...</p>;
+  }
 
   const handleLike = async () => {
     try {
@@ -63,7 +74,9 @@ const BusinessPageProfile = ({ data }) => {
         { businessId: data.id },
         { headers: { authorization: `Bearer ${token}` } }
       );
+
       dispatch(toggleLikedBusiness(data.id));
+
       setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
     } catch (err) {
       console.error(err);
@@ -96,7 +109,7 @@ const BusinessPageProfile = ({ data }) => {
   const data1 = {
     businessId: form.businessId,
     price: form.price,
-    redirectUrl: `${window.location.origin}/payment-success`,
+    // redirectUrl: `${window.location.origin}/payment-success`,
   };
 
   const handleInvest = async () => {
@@ -105,12 +118,15 @@ const BusinessPageProfile = ({ data }) => {
       const res = await axios.post(`${BaseUrl}/makeInvestment`, data1, {
         headers: { authorization: `Bearer ${token}` },
       });
+
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       }
     } catch (err) {
-      console.error(err);
-      toast.error("Could not process investment");
+      console.log(err);
+      toast.error(
+        err?.response?.data?.message || "Could not process investment"
+      );
     } finally {
       setLoading(false);
     }
@@ -154,16 +170,17 @@ const BusinessPageProfile = ({ data }) => {
           </ProfileRow>
 
           <StatsRow>
-            <Stat>
+            {/* <Stat>
               <AiOutlineUpload color={liked ? "red" : "gray"} />{" "}
               {isLoading ? <Skeleton width={30} /> : likeCount}
-            </Stat>
+            </Stat> */}
             <Stat>
               {isLoading ? (
                 <Skeleton width={100} />
               ) : (
                 `Posted ${data.createdAt.slice(0, 10)}`
               )}
+              <CiHeart color={liked ? "red" : "gray"} /> {likeCount}
             </Stat>
           </StatsRow>
         </div>

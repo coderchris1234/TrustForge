@@ -4,12 +4,13 @@ import CustomButton from "./CustomButton";
 import { GoTrash } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
-import { FiMessageSquare } from "react-icons/fi";
+// import { FiMessageSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addDeletedBusiness } from "../Pages/Global/Slice";
+import { IoBusinessOutline } from "react-icons/io5";
 
 const BusinessCard = (props) => {
   const [loading, setLoading] = React.useState(false);
@@ -64,7 +65,10 @@ const BusinessCard = (props) => {
       <div className="businessContainer">
         <div className="businessContent">
           <div className="business">
-            <p style={{ marginBottom: "2px" }}>{props.businessName}</p>
+            <div className="heading">
+              <IoBusinessOutline size={30} />
+              <p style={{ marginBottom: "2px" }}>{props.businessName}</p>
+            </div>
             <div className="set">
               <span className="retail status">{props.industry}</span>
               <span className={getStatusClass(props.businessStatus)}>
@@ -103,7 +107,7 @@ const BusinessCard = (props) => {
               <IoEyeOutline /> {props.viewCount} views
             </div>
             <div>
-              <CiHeart /> {props.likeCount} likes
+              <CiHeart color="red" /> {props.likeCount} likes
             </div>
             <div>
               {/* <FiMessageSquare /> {props.investorInterests} Save */}

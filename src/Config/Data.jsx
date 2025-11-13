@@ -13,19 +13,30 @@ import { RxLightningBolt } from "react-icons/rx";
 import { IoTimeOutline, IoNotificationsOutline } from "react-icons/io5";
 import { TbWorld } from "react-icons/tb";
 import { PiMedalLight } from "react-icons/pi";
-import explore from "../../public/material-symbols-light_explore.svg";
-import save from "../../public/icon-park-outline_like.svg";
-import dollar from "../../public/bx_dollar.svg";
-import nda from "../../public/wpf_note.svg";
-import notification from "../../public/icon.svg";
-import meeting from "../../public/icon.svg";
-import sub from "../../public/octicon_person-24.svg";
-import verify from "../../public/uil_comment-verify.svg";
-import help from "../../public/material-symbols_help-outline.svg";
-import overview from "../../public/material-symbols_overview-key-outline.svg";
-import light from "../../public/akar-icons_light-bulb.svg";
-import add from "../../public/material-symbols_upload-rounded.svg";
-import people from "../../public/bi_people.svg";
+
+import { GrOverview } from "react-icons/gr";
+// import explore from "../../public/material-symbols-light_explore.svg";
+// import save from "../../public/icon-park-outline_like.svg";
+import { RiSaveLine } from "react-icons/ri";
+// import dollar from "../../public/bx_dollar.svg";
+import { BsCurrencyDollar } from "react-icons/bs";
+// import nda from "../../public/wpf_note.svg";
+import { TiDocumentText } from "react-icons/ti";
+// import notification from "../../public/icon.svg";
+import { IoMdNotificationsOutline } from "react-icons/io";
+// import meeting from "../../public/icon.svg";
+
+// import sub from "../../public/octicon_person-24.svg";
+import { CiUser } from "react-icons/ci";
+import { MdPayment } from "react-icons/md";
+import { FaRegCircleCheck } from "react-icons/fa6";
+// import verify from "../../public/uil_comment-verify.svg";
+// import help from "../../public/material-symbols_help-outline.svg";
+import { IoIosHelpCircleOutline } from "react-icons/io";
+// import overview from "../../public/material-symbols_overview-key-outline.svg";
+// import light from "../../public/akar-icons_light-bulb.svg";
+// import add from "../../public/material-symbols_upload-rounded.svg";
+// import people from "../../public/bi_people.svg";
 import eye from "../../public/eye.svg";
 import message from "../../public/mdi_message-outline.svg";
 import { GiConfirmed } from "react-icons/gi";
@@ -43,7 +54,6 @@ import picture2 from "../assets/picture2.png";
 import picture4 from "../assets/picture4.png";
 import picture5 from "../assets/picture5.png";
 import picture6 from "../assets/picture6.png";
-import { CiUser } from "react-icons/ci";
 import Olu from "/Olu.jpg";
 import Michael from "/Michael.jpg";
 import Esther from "/Esther.jpg";
@@ -64,6 +74,10 @@ import { BsPeople } from "react-icons/bs";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
 import { CiCreditCard1 } from "react-icons/ci";
+import { GoLightBulb } from "react-icons/go";
+import { GoUpload } from "react-icons/go";
+import { IoEyeOutline } from "react-icons/io5";
+import { IoPeopleOutline } from "react-icons/io5";
 
 export const MenuNav = ["Home", "About", "Insights", "Pricing"];
 
@@ -370,54 +384,54 @@ export const SmartData = [
 export const InvestorMenu = [
   [
     {
-      Icon: explore,
+      Icon: GrOverview,
       label: "Explore Business",
       link: "",
     },
     {
-      Icon: save,
+      Icon: RiSaveLine,
       label: "Saved Business",
       link: "savedbusiness",
     },
     {
-      Icon: dollar,
+      Icon: BsCurrencyDollar,
       label: "Funding History",
       link: "fundinghistory",
     },
     {
-      Icon: nda,
+      Icon: TiDocumentText,
       label: "NDA Management",
       link: "ndamanagement",
     },
   ],
   [
     {
-      Icon: notification,
+      Icon: IoMdNotificationsOutline,
       label: "Notification",
       link: "notification",
     },
     {
-      Icon: meeting,
+      Icon: CiCalendar,
       label: "Meetings",
       link: "meeting",
     },
     {
-      Icon: sub,
+      Icon: CiUser,
       label: "profile",
       link: "profile",
     },
     {
-      Icon: sub,
+      Icon: MdPayment,
       label: "Subscription",
       link: "subscription",
     },
     {
-      Icon: verify,
+      Icon: FaRegCircleCheck,
       label: "KYC Verification",
       link: "kycverification",
     },
     {
-      Icon: help,
+      Icon: IoIosHelpCircleOutline,
       label: "Help & Support",
       link: "helpsupport",
     },
@@ -426,49 +440,49 @@ export const InvestorMenu = [
 export const CreatorMenu = [
   [
     {
-      Icon: overview,
+      Icon: GrOverview,
       label: "Overview",
       link: "",
     },
     {
-      Icon: light,
+      Icon: GoLightBulb,
       label: "My Business",
       link: "mybusiness",
     },
     {
-      Icon: add,
+      Icon: GoUpload,
       label: "Add Business",
       link: "addbusiness",
     },
   ],
   [
     {
-      Icon: notification,
+      Icon: IoMdNotificationsOutline,
       label: "Notification",
       link: "notification",
     },
     {
-      Icon: meeting,
+      Icon: CiCalendar,
       label: "Meetings",
       link: "meeting",
     },
     {
-      Icon: sub,
+      Icon: CiUser,
       label: "profile",
       link: "profile",
     },
     {
-      Icon: sub,
+      Icon: MdPayment,
       label: "Subscription",
       link: "subscription",
     },
     {
-      Icon: verify,
+      Icon: FaRegCircleCheck,
       label: "KYC Verification",
       link: "kycverification",
     },
     {
-      Icon: help,
+      Icon: IoIosHelpCircleOutline,
       label: "Help & Support",
       link: "helpsupport",
     },
@@ -624,14 +638,14 @@ export const getOverviewBusiness = (overviewData) => [
     id: 1,
     title: "Business Profile",
     num: overviewData?.businesscount ?? 0,
-    icon: light,
+    icon: GoLightBulb,
     bgColor: "#8ab7f4",
   },
   {
     id: 2,
     title: "Total Views",
     num: overviewData?.totalViews ?? 0,
-    icon: eye,
+    icon: IoEyeOutline,
     bgColor: "#90ed49",
     color: "#4a9512",
   },
@@ -639,7 +653,7 @@ export const getOverviewBusiness = (overviewData) => [
     id: 3,
     title: "Total Likes",
     num: overviewData?.totalLikes ?? 0,
-    icon: save,
+    icon: FaHeart,
     bgColor: "#e35151",
     color: "#b01e1e",
   },
@@ -647,7 +661,7 @@ export const getOverviewBusiness = (overviewData) => [
     id: 4,
     title: "Investor Connections",
     num: overviewData?.investorInterests,
-    icon: people,
+    icon: IoPeopleOutline,
     bgColor: "#e6b5e6",
     color: "#8a38f5",
   },
@@ -661,7 +675,7 @@ export const RecentBusiness = [
     isActive: true,
     icon: eye,
     num: 30,
-    icon2: save,
+    icon2: <BsCurrencyDollar />,
     num2: 12,
     icon3: message,
     num3: 6,
@@ -674,7 +688,7 @@ export const RecentBusiness = [
     isActive: true,
     icon: eye,
     num: 30,
-    icon2: save,
+    icon2: <BsCurrencyDollar />,
     num2: 12,
     icon3: message,
     num3: 6,
@@ -687,7 +701,7 @@ export const RecentBusiness = [
     isActive: true,
     icon: eye,
     num: 30,
-    icon2: save,
+    icon2: <BsCurrencyDollar />,
     num2: 12,
     icon3: message,
     num3: 6,
@@ -1283,7 +1297,7 @@ export const monthlyPlans = [
   },
   {
     id: "premium",
-    title: "Premium Promotion",
+    title: "Premium",
     price: "N10,000",
     unit: "/mo",
     highlights: ["For top investors & promotions"],
@@ -1328,7 +1342,7 @@ export const annualPlans = [
     unit: "/yr",
     highlights: ["For active investors"],
     features: [
-      "Up to 3 Business profiles",
+      "Up to 10 Business profiles",
       "Featured listing badge",
       "Prority in search results",
       "Advance analytics & Insights",
