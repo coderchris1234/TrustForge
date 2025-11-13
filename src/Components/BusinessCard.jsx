@@ -4,11 +4,24 @@ import CustomButton from "./CustomButton";
 import { GoTrash } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
-import { FiMessageSquare } from "react-icons/fi";
+// import { FiMessageSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { addDeletedBusiness } from "../Pages/Global/Slice";
+import { IoBusinessOutline } from "react-icons/io5";
 
 const BusinessCard = (props) => {
+  const [loading, setLoading] = React.useState(false);
   const nav = useNavigate();
+  const token = useSelector((state) => state.TrustForge.user?.token);
+
+  const dispatch = useDispatch();
+  const deletedList = useSelector(
+    (state) => state.TrustForge.deletedBusinesses
+  );
+  const isDeleted = deletedList.includes(props.id);
 
   const getStatusClass = (status) => {
     if (!status) return "status";
@@ -20,13 +33,42 @@ const BusinessCard = (props) => {
     return "status";
   };
 
-  // console.log(props);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  const handleDelete = async () => {
+    if (isDeleted) return;
+    setLoading(true);
+    try {
+      const res = await axios.delete(`${BaseUrl}/request`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        data: {
+          businessId: props.id,
+          reason: "User requested deletion from business dashboard",
+        },
+      });
+      console.log("Delete response:", res.data);
+      toast.success(
+        "Your support Ticket has been created, you should receive a response soon"
+      );
+      dispatch(addDeletedBusiness(props.id));
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("An error occurred while deleting the business.");
+      console.log("error", error);
+    }
+  };
   return (
     <BusinessContainer>
       <div className="businessContainer">
         <div className="businessContent">
           <div className="business">
-            <p style={{ marginBottom: "2px" }}>{props.businessName}</p>
+            <div className="heading">
+              <IoBusinessOutline size={30} />
+              <p style={{ marginBottom: "2px" }}>{props.businessName}</p>
+            </div>
             <div className="set">
               <span className="retail status">{props.industry}</span>
               <span className={getStatusClass(props.businessStatus)}>
@@ -42,7 +84,7 @@ const BusinessCard = (props) => {
           </div>
           <div className="btn">
             <CustomButton
-              Btntext="View Details"
+              Btntext="View details"
               className="bt view"
               onClick={() =>
                 nav(
@@ -52,8 +94,10 @@ const BusinessCard = (props) => {
             />
             <CustomButton
               icon={<GoTrash />}
-              Btntext="Delete"
+              Btntext={loading ? "deleting..." : "Delete"}
               className="deleteBtn bt"
+              onClick={handleDelete}
+              disabled={loading || isDeleted}
             />
           </div>
         </div>
@@ -63,21 +107,13 @@ const BusinessCard = (props) => {
               <IoEyeOutline /> {props.viewCount} views
             </div>
             <div>
-              <CiHeart /> {props.likeCount} likes
+              <CiHeart color="red" /> {props.likeCount} likes
             </div>
             <div>
-              <FiMessageSquare /> {props.investorInterests} Save
+              {/* <FiMessageSquare /> {props.investorInterests} Save */}
             </div>
           </div>
-          <div>
-            <p
-              style={{
-                paddingTop: "1rem",
-              }}
-            >
-              {props.postedDate}
-            </p>
-          </div>
+          <div></div>
         </div>
       </div>
     </BusinessContainer>

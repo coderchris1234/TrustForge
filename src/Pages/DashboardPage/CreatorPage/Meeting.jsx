@@ -12,6 +12,7 @@ const Meeting = () => {
   const user = useSelector((state) => state.TrustForge.user);
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
+  const [loading, setLoading] = useState(false);
 
   const endpoint = `${BaseUrl}/user/${userId}`;
 
@@ -61,6 +62,7 @@ const Meeting = () => {
     }
   };
   const rescheduleMeeting = async (data) => {
+    setLoading(true);
     try {
       const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
         headers: {
@@ -68,9 +70,12 @@ const Meeting = () => {
         },
       });
       toast.success(res?.data?.message);
+
+      setLoading(false);
       fetchData();
       console.log(res);
     } catch (err) {
+      setLoading(false);
       console.log("this is error", err);
     }
   };
@@ -110,12 +115,12 @@ const Meeting = () => {
             <p>Upcoming ({allMeeting?.meetings?.length || 0})</p>
           </div>
 
-          <div
+          {/* <div
             className={activeTab === "past" ? "active" : ""}
             onClick={() => setActiveTab("past")}
           >
-            {/* <p>Past ({allMeeting?.meetings?.length || 0})</p> */}
-          </div>
+            <p>Past ({allMeeting?.meetings?.length || 0})</p>
+          </div> */}
         </div>
       </div>
       {allMeeting?.meetings?.length > 0 ? (
@@ -126,6 +131,7 @@ const Meeting = () => {
             approvedMeeting={approvedMeeting}
             declineMeeting={declineMeeting}
             rescheduleMeeting={rescheduleMeeting}
+            loading={loading}
           />
         ))
       ) : (

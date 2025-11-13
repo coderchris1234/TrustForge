@@ -9,12 +9,19 @@ export const BusinessContainer = styled.div`
     background-color: #ffff;
     border-radius: 8px;
     padding: 0.5rem;
+    /* background-color: "red" */
 
     .businessContent {
       display: flex;
       justify-content: space-between;
 
       .business {
+        .heading {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
         .set {
           display: flex;
           gap: 0.5rem;
@@ -69,6 +76,10 @@ export const BusinessContainer = styled.div`
           justify-content: center;
           gap: 0.5rem;
           color: red;
+        }
+        .deleteBtn:disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
         }
       }
     }

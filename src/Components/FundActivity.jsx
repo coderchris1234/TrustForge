@@ -1,40 +1,66 @@
 import React from "react";
-import { SavedFunds } from "../Config/Data";
 import { FundActivity_container } from "./FundActivityStyle";
-const FundActivity = () => {
+import { useNavigate } from "react-router-dom";
+
+const FundActivity = ({ funding }) => {
+  const navigate = useNavigate();
+
+  const investments = funding?.investments;
+
+  if (investments.length === 0) {
+    return (
+      <FundActivity_container>
+        <p>No active investments yet.</p>
+      </FundActivity_container>
+    );
+  }
+
   return (
     <FundActivity_container>
-      {SavedFunds.map((sec, index) => (
+      {investments.map((inv, index) => (
         <div className="sec_wrapper" key={index}>
           <div className="tittle">
             <div className="left_sec">
-              <h3>{sec.tittle}</h3>
-              <small>{sec.tech}</small>
+              <h3>{inv.businessOwnerName}</h3>
+              <p>{inv?.businessName}</p>
+              <p>{inv?.businessModel}</p>
+              <small>{inv.industry}</small>
             </div>
             <div className="right_sec">
-              <div className="activeicon">
-                {sec.icon}
-                {sec.active}
+              <div className="activeicon">{inv.status}</div>
+              <div
+                className="view_details"
+                onClick={() =>
+                  navigate(
+                    `/dashboard/investor/business/${inv.businessName}/${inv.businessId}`
+                  )
+                }
+              >
+                View Details
               </div>
-              <div className="view_details">{sec.detail}</div>
             </div>
           </div>
+
           <div className="investment">
             <div className="invest">
-              <small>{sec.investment}</small>
-              <p>{sec.amount}</p>
-            </div>
-            <div className="equity">
-              <small>{sec.equity}</small>
-              <p>{sec.percent}</p>
+              <small>Investment Amount:</small>
+              <p>
+                &#8358;
+                {Number(inv?.investmentAmount).toLocaleString("en-NG", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
             </div>
             <div className="date">
-              <small>{sec.investtime}</small>
-              <p>{sec.date}</p>
-            </div>
-            <div className="returns">
-              <small>{sec.return}</small>
-              <p>{sec.returns}</p>
+              <small>Invested On</small>
+              <p>
+                {new Date(inv.date).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </p>
             </div>
           </div>
         </div>
@@ -42,5 +68,4 @@ const FundActivity = () => {
     </FundActivity_container>
   );
 };
-
 export default FundActivity;

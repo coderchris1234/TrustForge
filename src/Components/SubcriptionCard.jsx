@@ -13,6 +13,7 @@ const SubcriptionCard = ({
   planType,
 }) => {
   const billingPeriod = planType === "monthly" ? "/mo" : "/yr";
+
   return (
     <SubscribeContainer>
       <div className="subscriptionPlan">

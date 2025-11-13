@@ -21,6 +21,8 @@ const DashBoardLayout = (props) => {
     dispatch(logOut());
   };
 
+  console.log("userDetails", userDetails);
+
   useEffect(() => {
     const fetchUser = async () => {
       if (!userId) return;
@@ -59,7 +61,9 @@ const DashBoardLayout = (props) => {
             {props?.Menu[0]?.map((section, index) => (
               <div key={index} className="businessContainer">
                 <NavLink to={section.link} end className="business">
-                  <img src={section.Icon} alt="" />
+                  <div>
+                    <section.Icon size={24} />
+                  </div>
                   <span>{section.label}</span>
                 </NavLink>
               </div>
@@ -69,19 +73,20 @@ const DashBoardLayout = (props) => {
             {props?.Menu[1]?.map((section, index) => (
               <div key={index} className="businessContainer">
                 <NavLink to={section.link} end className="business">
-                  <img src={section.Icon} alt="" />
+                  <div>
+                    <section.Icon size={24} />
+                  </div>
                   <span>{section.label}</span>
                 </NavLink>
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="logout">
-          <img src="/public/material-symbols_logout.svg" alt="" />
-          <span style={{ cursor: "pointer" }} onClick={userLogout}>
-            Logout
-          </span>
+          <div className="logout">
+            <img src="/public/material-symbols_logout.svg" alt="" />
+            <span style={{ cursor: "pointer" }} onClick={userLogout}>
+              Logout
+            </span>
+          </div>
         </div>
       </aside>
 

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import toast from "react-hot-toast";
 import {
   ForgotPasswordContainer,
@@ -21,10 +23,18 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const user = useSelector((state) => state.TrustForge.user);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  // Dynamic endpoint selection based on role
+  const endpoints =
+    user?.data?.role === "Investor"
+      ? `${BaseUrl}/forgoti`
+      : `${BaseUrl}/forgot`;
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -39,11 +49,19 @@ const ForgotPassword = () => {
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const res = await axios.post(endpoints, { email });
+      console.log("forgot", res?.data);
+
+      toast.success("Password reset link has been sent to your email");
+    } catch (err) {
+      const msg =
+        err.response?.data?.message || "Something went wrong. Try again.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
       setLoading(false);
-      toast.success("Password reset link / code sent to your email (demo)");
-      navigate("/login");
-    }, 1400);
+    }
   };
 
   return (
@@ -56,8 +74,11 @@ const ForgotPassword = () => {
             <div className="title-text">
               Forgot <span>Password.</span>
             </div>
-            <small style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}>
-              Don't worry, it happens! Enter your email address and we'll send a link to reset your password.
+            <small
+              style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}
+            >
+              Don't worry, it happens! Enter your email address and we'll send a
+              link to reset your password.
             </small>
           </FormTitle>
 
@@ -84,14 +105,16 @@ const ForgotPassword = () => {
           <OrText style={{ marginTop: 12 }}> </OrText>
 
           <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
-            Remember password? <span onClick={() => navigate("/login")}>Log In</span>
+            Remember password?{" "}
+            <span onClick={() => navigate("/login")}>Log In</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>
             By requesting a password reset, you agree to our{" "}
             <a href="#" onClick={(e) => e.preventDefault()}>
               Terms and Conditions
-            </a>.
+            </a>
+            .
           </TermsText>
         </FormBox>
       </ForgotPasswordRight>

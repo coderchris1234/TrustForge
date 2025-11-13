@@ -6,6 +6,13 @@ export const OverviewContent = styled.div`
   margin: 0 auto;
   padding-bottom: 48px;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   .ContentTitle {
     padding-top: 1.25rem;
@@ -40,6 +47,18 @@ export const OverviewContent = styled.div`
       flex: 1; 
       min-width: 0;
       height: 7rem; 
+    width: 100%;
+    margin-top: 0;
+    gap: 1rem;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+
+    .box {
+      width: 25%;
+      /* height: 16vh; */
+      border-radius: 15px;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -49,6 +68,8 @@ export const OverviewContent = styled.div`
       padding: 16px 18px;
       transition: all 0.3s ease;
     }
+      align-items: start;
+      padding: 1rem;
 
     .box:hover {
       transform: translateY(-2px);
@@ -117,6 +138,10 @@ export const OverviewContent = styled.div`
     padding: 1.2rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
+    margin-top: 15px;
+    height: 30vh;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
 
     p {
       font-size: 16px;
@@ -132,6 +157,8 @@ export const OverviewContent = styled.div`
 
       .quick {
         flex: 1;
+        border-radius: 10px;
+        width: 25%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -204,4 +231,5 @@ export const OverviewContent = styled.div`
       }
     }
   }
+}
 `;

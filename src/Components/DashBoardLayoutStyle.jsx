@@ -21,7 +21,7 @@ export const DashboardLayoutContainer = styled.div`
     left: 0;
     z-index: 1000;
     transition: left 0.3s ease;
-    padding-top: 1rem;
+    padding-top: 0.3rem;
 
     .close-btn {
       display: none;
@@ -65,7 +65,7 @@ export const DashboardLayoutContainer = styled.div`
       width: 80%;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 1rem;
       padding-top: 1rem;
 
       .ItemList {
@@ -73,7 +73,7 @@ export const DashboardLayoutContainer = styled.div`
         padding-bottom: 3rem;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         width: 100%;
       }
     }

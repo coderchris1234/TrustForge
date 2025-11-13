@@ -27,8 +27,10 @@ const DocumentTab = ({ data }) => (
   <DocumentList>
     <DocumentItem>
       <DocumentInfo>
-        <strong>{data?.pitchDeck?.split("/").pop()}</strong>
-        <span>PDF</span>
+        <strong style={{ color: "blue" }}>
+          {data?.pitchDeck?.split("/").pop()}
+        </strong>
+        <span>Pitch Deck</span>
         <a
           href={data?.pitchDeck}
           download
@@ -40,10 +42,10 @@ const DocumentTab = ({ data }) => (
       </DocumentInfo>
 
       <DocumentInfo>
-        <strong>
+        <strong style={{ color: "blue" }}>
           {data?.businessRegisterationCertificate?.split("/").pop()}
         </strong>
-        <span>PDF</span>
+        <span>Business Registration Certificate</span>
         <a
           href={data?.businessRegisterationCertificate}
           download

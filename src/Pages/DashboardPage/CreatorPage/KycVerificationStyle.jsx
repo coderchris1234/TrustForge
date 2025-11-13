@@ -11,6 +11,11 @@ export const KycContainer = styled.div`
     padding: 1rem;
     border: none;
 
+    p {
+      color: #0038cc;
+      font-size: 22px;
+    }
+
     ul {
       list-style: none;
       display: flex;
@@ -23,6 +28,8 @@ export const KycContainer = styled.div`
       padding-left: 1.5rem;
       display: flex;
       align-items: center;
+      color: #0038cc;
+      font-size: 18px;
     }
 
     ul li::before {
@@ -92,7 +99,7 @@ export const StepInfo = styled.div`
   margin-bottom: 24px;
   background-color: #fff;
   border-radius: 8px;
-  width: 98%;
+  width: 100%;
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -171,7 +178,6 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 
     .imageContainer {
       width: 150px;
@@ -181,6 +187,7 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
     span {
@@ -309,6 +316,7 @@ export const FieldRow = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+
     div {
       width: 30%;
       display: flex;

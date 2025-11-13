@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 const Profile = () => {
-  const [mode, setMode] = useState("personal"); 
-   const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  const [mode, setMode] = useState("personal");
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
   console.log("userID", userId);
   const token = useSelector((state) => state.TrustForge.user?.token);
 
@@ -34,6 +34,7 @@ const Profile = () => {
 
     fetchKyc();
   }, [userId, token, BaseUrl]);
+  const Initials = kyc ? kyc.firstName.charAt(0).toUpperCase() : "";
 
   return (
     <ProfileStyle>
@@ -51,10 +52,12 @@ const Profile = () => {
           </button>
           <button
             type="button"
-            className={`Professional_info ${mode === "professional" ? "active" : ""}`}
+            className={`Professional_info ${
+              mode === "professional" ? "active" : ""
+            }`}
             onClick={() => setMode("professional")}
           >
-            <p>Professional</p>
+            <p>Bank details</p>
           </button>
         </div>
       </div>
@@ -63,7 +66,7 @@ const Profile = () => {
           <article className="Profile_image">
             <div className="Profile_img_holder">
               <aside className="Image_holder">
-                <img src={kyc?.profilePic} alt="profile" />
+                <div>{Initials}</div>
               </aside>
               {/* <div className="ProIcon">
                     <CiCamera size={23}/>

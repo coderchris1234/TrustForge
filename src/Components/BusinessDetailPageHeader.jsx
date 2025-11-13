@@ -8,7 +8,6 @@ import {
   Description,
   BottomRow,
   Poster,
-  ProfileImage,
   PosterDetails,
   PosterName,
   PosterRole,
@@ -16,8 +15,15 @@ import {
   Stat,
   Date,
 } from "./BusinessDetailPageHeaderStyle";
+// import { data } from "react-router-dom";
 
 const BusinessDetailPageHeader = ({ data }) => {
+  const Initials = data?.businessOwnerName
+    ? data?.businessOwnerName
+        .split(" ")
+        .map((namePart) => namePart.charAt(0).toUpperCase())
+        .join("")
+    : "";
   console.log("data", data);
   return (
     <Card>
@@ -26,13 +32,16 @@ const BusinessDetailPageHeader = ({ data }) => {
         <Status>{data?.businessStatus}</Status>
       </TopRow>
 
-      <RetailLabel>{data?.industry}</RetailLabel>
+      <div className="details">
+        <RetailLabel>{data?.industry}</RetailLabel>
+        <RetailLabel>{data?.businessModel}</RetailLabel>
+      </div>
 
       {/* <Description>{data.description}</Description> */}
 
       <BottomRow>
         <Poster>
-          <ProfileImage src="/images/james-victoria.jpg" alt="James Victoria" />
+          <div className="Initials">{Initials}</div>
           <PosterDetails>
             <PosterName>{data?.businessOwnerName}</PosterName>
             <PosterRole>{data?.businessName}</PosterRole>
@@ -42,10 +51,9 @@ const BusinessDetailPageHeader = ({ data }) => {
         <Stats>
           <Stat>👁 {data?.viewCount}</Stat>
           <Stat>❤️ {data?.likeCount}</Stat>
-          <Stat>💬 </Stat>
         </Stats>
 
-        <Date>2025-10-14</Date>
+        <Date>{data?.postedDate}</Date>
       </BottomRow>
     </Card>
   );

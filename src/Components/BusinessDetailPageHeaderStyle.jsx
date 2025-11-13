@@ -6,22 +6,25 @@ export const Card = styled.div`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 100%;
-  /* max-width: 500px; */
-  font-family: "Segoe UI", sans-serif;
+
+  .details {
+    display: flex;
+    gap: 0.5rem;
+  }
+  /* background-color: pink; */
 `;
 
 export const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: red; */
 `;
 
 export const Category = styled.div`
   background-color: #eef4ff;
   color: #2a4eff;
   padding: 6px 12px;
-  border-radius: 20px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
 `;
@@ -44,6 +47,7 @@ export const RetailLabel = styled.div`
   font-size: 13px;
   font-weight: 600;
   width: fit-content;
+  margin-bottom: 0.5rem;
 `;
 
 export const Description = styled.p`
@@ -64,13 +68,18 @@ export const Poster = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`;
 
-export const ProfileImage = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+  .Initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
 `;
 
 export const PosterDetails = styled.div`

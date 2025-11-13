@@ -41,7 +41,7 @@ const InvestorSubscription = () => {
 
       <CardsRow>
         {plans.map((p, idx) => (
-          <Card key={p.id} featured={p.variant === "primary"}>
+          <Card key={idx} featured={p.variant === "primary"}>
             <CardHeader>
               <CardIcon>
                 {/* simple box icon, similar to your screenshot */}
