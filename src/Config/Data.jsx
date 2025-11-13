@@ -1256,7 +1256,7 @@ export const meetings3 = [
 export const monthlyPlans = [
   {
     id: "explorer",
-    title: "Explorer",
+    title: "free",
     price: "N0",
     unit: "/mo",
     highlights: ["Discover investment opportunities"],
@@ -1293,7 +1293,7 @@ export const monthlyPlans = [
   },
   {
     id: "premium",
-    title: "Premium Promotion",
+    title: "Premium",
     price: "N10,000",
     unit: "/mo",
     highlights: ["For top investors & promotions"],
@@ -1316,7 +1316,7 @@ export const monthlyPlans = [
 export const annualPlans = [
   {
     id: "explorer",
-    title: "Explorer",
+    title: "free",
     price: "N0",
     unit: "/yr",
     highlights: ["Discover investment opportunities"],
@@ -1338,7 +1338,7 @@ export const annualPlans = [
     unit: "/yr",
     highlights: ["For active investors"],
     features: [
-      "Up to 3 Business profiles",
+      "Up to 10 Business profiles",
       "Featured listing badge",
       "Prority in search results",
       "Advance analytics & Insights",

@@ -37,7 +37,7 @@ const AddBusiness = () => {
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -127,15 +127,18 @@ const AddBusiness = () => {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log(" Business", res?.data);
 
-      toast.success("Business created successfully");
+      if (res?.data?.message?.includes("verification")) {
+        toast.error(res?.data?.message);
+        setLoading(false);
+        return false;
+      } else {
+        toast.success(res?.data?.message);
+      }
+      console.log(" Business", res?.data);
     } catch (error) {
       setLoading(false);
-      const msg = error?.response?.data?.message;
-      setErrorMessage(msg);
-      toast.error(msg);
-      console.log(errorMessage);
+      toast.error(error?.response?.data?.message);
     }
     setStep(1);
     setLoading(false);

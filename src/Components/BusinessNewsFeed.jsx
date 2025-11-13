@@ -47,7 +47,7 @@ const BusinessNewsFeed = ({ data }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log(res);
-      // If backend responds successfully, allow navigation
+
       return true;
     } catch (err) {
       console.error(err);
@@ -58,7 +58,6 @@ const BusinessNewsFeed = ({ data }) => {
 
       toast.error(msg);
 
-      // Block navigation
       return false;
     }
   };
@@ -113,12 +112,12 @@ const BusinessNewsFeed = ({ data }) => {
                         <Skeleton width={30} />
                       </span>
                     </div>
-                    <div className="like">
+                    {/* <div className="like">
                       <LuMessageSquare />
                       <span>
                         <Skeleton width={30} />
                       </span>
-                    </div>
+                    </div> */}
                     <div className="comment">
                       <div>
                         <Skeleton width={60} />

@@ -102,13 +102,15 @@ const MyBusiness = () => {
 
       <BusinessWrapper>
         {filteredBusiness.length > 0 ? (
-          filteredBusiness.map((biz) => (
-            <BusinessCard key={biz.id} {...biz} id={biz.id} />
-          ))
+          filteredBusiness
+            .slice() // create a copy
+            .reverse() // reverse order (latest first)
+            .map((biz) => <BusinessCard key={biz.id} {...biz} id={biz.id} />)
         ) : allBusiness?.businesses?.length > 0 ? (
-          allBusiness.businesses.map((biz) => (
-            <BusinessCard key={biz.id} {...biz} />
-          ))
+          allBusiness.businesses
+            .slice()
+            .reverse()
+            .map((biz) => <BusinessCard key={biz.id} {...biz} />)
         ) : (
           <p>No Business Found</p>
         )}
