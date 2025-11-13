@@ -4,7 +4,7 @@ export const NotificationContainer = styled.div`
   width: 100%;
 
   .notification_top {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     /* align-items: center; */

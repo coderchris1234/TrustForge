@@ -53,66 +53,70 @@ export const FundActivity_container = styled.div`
         justify-content: center;
         border: 1px solid gray;
         font-size: 0.9rem;
-      }
-    }
-
-    .investment {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .sec_wrapper {
-      padding: 0.8rem;
-
-      .tittle {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-
-        .right_sec {
-          flex-direction: row;
-          gap: 0.5rem;
-        }
-
-        .activeicon,
-        .view_details {
-          width: auto;
-          font-size: 11px;
-          padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        &:hover {
+          background-color: #f0f0f0;
         }
       }
 
       .investment {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
         margin-top: 1rem;
+        gap: 1rem;
       }
     }
-  }
 
-  @media (max-width: 480px) {
-    .sec_wrapper {
-      padding: 0.6rem;
+    @media (max-width: 768px) {
+      .sec_wrapper {
+        padding: 0.8rem;
 
-      .tittle {
-        gap: 0.6rem;
+        .tittle {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
 
-        .activeicon,
-        .view_details {
-          font-size: 10px;
-          padding: 0.3rem 0.5rem;
+          .right_sec {
+            flex-direction: row;
+            gap: 0.5rem;
+          }
+
+          .activeicon,
+          .view_details {
+            width: auto;
+            font-size: 11px;
+            padding: 0.4rem 0.6rem;
+          }
+        }
+
+        .investment {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          margin-top: 1rem;
         }
       }
+    }
 
-      .investment {
-        gap: 0.6rem;
+    @media (max-width: 480px) {
+      .sec_wrapper {
+        padding: 0.6rem;
+
+        .tittle {
+          gap: 0.6rem;
+
+          .activeicon,
+          .view_details {
+            font-size: 10px;
+            padding: 0.3rem 0.5rem;
+          }
+        }
+
+        .investment {
+          gap: 0.6rem;
+        }
       }
     }
   }

@@ -13,6 +13,7 @@ const Not = ({ title, message, date, status }) => {
           </div>
         </div>
         <div className="not_bottom">
+          <p style={{ fontSize: "1rem", fontWeight: "600" }}>{title}</p>
           <p>{message}</p>
           <span>{new Date(date).toLocaleString()}</span>
         </div>
