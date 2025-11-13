@@ -7,7 +7,6 @@ import { SubscriptionDate } from "./SubscriptionStyle";
 const Subscription = () => {
   const [planType, setPlanType] = useState("monthly");
 
-  // Adjust price dynamically based on plan type
   const displayedPlans = SubscriptionPlans.map((plan) => ({
     ...plan,
     displayPrice: planType === "monthly" ? plan.price : plan.yearlyPrice,

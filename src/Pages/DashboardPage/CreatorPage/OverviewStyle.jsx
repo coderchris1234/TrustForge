@@ -2,83 +2,110 @@ import styled from "styled-components";
 
 export const OverviewContent = styled.div`
   width: 95%;
-  height: 100vh;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 48px;
+  font-family: "Poppins", sans-serif;
 
   .ContentTitle {
-    padding-top: 2rem;
+    padding-top: 1.25rem;
+    margin-bottom: 12px;
+
     h1 {
       font-size: 22px;
       font-weight: 600;
-      font-style: normal;
       line-height: 28px;
-      margin-bottom: 0;
+      margin-bottom: 6px;
     }
+
     p {
       color: #1b1b1b;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 24px;
+      line-height: 22px;
+      margin: 0;
     }
   }
 
   .Overview-content {
-    width: 100%;
-    margin-top: 0;
-    gap: 18px;
-    height: 20%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 16px;
+    width: 100%;
+    flex-wrap: nowrap; 
 
     .box {
-      width: 25%;
-      height: 16vh;
-      border-radius: 15px;
+      flex: 1; 
+      min-width: 0;
+      height: 7rem; 
       background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 12px;
+      padding: 16px 18px;
+      transition: all 0.3s ease;
+    }
 
-      img {
-        width: 24px;
-        height: 24px;
-      }
-      span {
-        color: var(--netural_black_color);
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 28px;
-      }
+    .box:hover {
+      transform: translateY(-2px);
+    }
+
+    .box p {
+      color: #666;
+      font-size: 14px;
+      margin: 0 0 4px 0;
+    }
+
+    .box span {
+      color: #111;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    img {
+      width: 28px;
+      height: 28px;
     }
   }
 
   .recentIdeas {
     width: 100%;
     background-color: #fff;
-    padding: 2rem;
-    /* height: 55%; */
+    margin-top: 18px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
 
     .recent {
-      width: 98%;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 12px;
+
+      p {
+        font-weight: 600;
+        margin: 0;
+        font-size: 16px;
+      }
 
       button {
         background-color: transparent;
         border: 1px solid lightgrey;
-        padding: 8px;
+        padding: 8px 12px;
         border-radius: 8px;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        font-size: 14px;
 
         &:hover {
-          background-color: #c7c6c6;
+          background-color: #f3f3f3;
         }
       }
     }
@@ -86,41 +113,94 @@ export const OverviewContent = styled.div`
 
   .QuickAction {
     background-color: #fff;
-    margin-top: 15px;
-    height: 30vh;
-    padding: 1rem 1.5rem;
-    border-radius: 15px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
 
     p {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 23px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
       color: #1b1b1b;
     }
 
     .action {
-      /* background-color: red; */
-      width: 100%;
-      height: 55%;
       display: flex;
-      gap: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
 
       .quick {
-        /* background-color: pink; */
-        border-radius: 10px;
-        width: 25%;
+        flex: 1;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
-      p {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 16px;
+
+      .quick.primary {
+        background: #0046ff;
         color: #fff;
+      }
+
+      .quick.secondary {
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #000;
+      }
+
+      .quick:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .Overview-content {
+      flex-wrap: wrap;
+      .box {
+        flex: 1 1 calc(50% - 10px); 
+        height: 7rem;
+      }
+    }
+
+    .QuickAction .action .quick {
+      flex: 1 1 calc(50% - 10px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .Overview-content {
+      flex-direction: column;
+      gap: 14px;
+
+      .box {
+        width: 100%;
+        flex: none;
+        height: 7rem; 
+      }
+    }
+
+    .recentIdeas {
+      padding: 1rem;
+    }
+
+    .QuickAction {
+      padding: 1rem;
+
+      .action {
+        flex-direction: column;
+        gap: 10px;
+
+        .quick {
+          width: 100%;
+        }
       }
     }
   }

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const SubscribeContainer = styled.div`
-  /* background-color: red; */
   width: 95%;
   margin: 0 auto;
+  
 
   .subHeader {
     display: flex;
@@ -13,19 +13,19 @@ export const SubscribeContainer = styled.div`
 
   .subscriptionPlan {
     .Subscriptions {
-      /* width: 100%; */
-      /* background-color: green; */
+      height: 60rem;
 
       .subCard {
         border: 1px solid blue;
         border-radius: 8px;
-        width: 90%;
+        width: 100%;
         position: relative;
         padding: 1rem;
         display: flex;
         flex-direction: column;
         background-color: #ffff;
         gap: 2rem;
+        height: 100%;
 
         .topSection {
           display: flex;
@@ -60,14 +60,13 @@ export const SubscribeContainer = styled.div`
             li {
               list-style: none;
               font-size: 14px;
-              /* background-color: orange; */
               padding-bottom: 0.5rem;
             }
           }
         }
 
         .featureSection {
-          /* background-color: green; */
+          height: 20rem;
 
           ul {
             display: flex;
@@ -75,6 +74,7 @@ export const SubscribeContainer = styled.div`
             gap: 1rem;
             list-style: none;
             font-size: 13px;
+            height: max-content;
           }
 
           li::before {
@@ -104,12 +104,13 @@ export const SubscribeContainer = styled.div`
 
       p {
         position: absolute;
-        right: 130px;
+        right: 100px;
         top: -10px;
         background-color: blue;
-        border-radius: 8px;
-        padding: 0.2rem;
+        border-radius: 17px;
+        padding: 0.4rem;
         color: white;
+        font-size: 1rem;
       }
     }
   }

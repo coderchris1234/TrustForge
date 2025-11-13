@@ -12,11 +12,15 @@ import {
   LabelRight,
 } from "./InvestmentProgressStyle";
 
-const InvestmentProgress = ({ data }) => {
+const InvestmentProgress = ({ data, remain, investor }) => {
   const goal = data?.fundingSought;
-  const raised = 0;
-  const remaining = goal - raised;
+  const raised = data?.fundRaised;
+  const remaining = remain;
   const percentage = Math.round((raised / goal) * 100);
+
+    const formatNumber = (num) => {
+    return new Intl.NumberFormat("en-NG").format(num);
+  };
 
   return (
     <ProgressCard>
@@ -24,16 +28,16 @@ const InvestmentProgress = ({ data }) => {
 
       <Metrics>
         <MetricItem>
-          <strong>Funding Goal:</strong> ₦{goal?.toLocaleString()}
+          <strong>Funding Goal:</strong> ₦{formatNumber(data?.fundingSought)}
         </MetricItem>
         <MetricItem>
-          <strong>Raised:</strong> ₦{raised.toLocaleString()}
+          <strong>Raised:</strong> ₦{formatNumber(raised)}
         </MetricItem>
         <MetricItem>
-          <strong>Remaining:</strong> ₦{remaining.toLocaleString()}
+          <strong>Remaining:</strong>₦{formatNumber(remaining || 0)}
         </MetricItem>
         <MetricItem>
-          <strong>Investors:</strong> 0
+          <strong>Investors:</strong> {investor?.length}
         </MetricItem>
       </Metrics>
 
@@ -43,7 +47,7 @@ const InvestmentProgress = ({ data }) => {
         </ProgressBar>
         <ProgressLabels>
           <LabelLeft>{percentage}% Funded</LabelLeft>
-          <LabelRight>₦{remaining.toLocaleString()} to go</LabelRight>
+          <LabelRight>₦{formatNumber(remaining || 0)} to go</LabelRight>
         </ProgressLabels>
       </ProgressBarContainer>
     </ProgressCard>

@@ -149,7 +149,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <Professional />
+        <Professional kyc={kyc} />
       )}
     </ProfileStyle>
   );
