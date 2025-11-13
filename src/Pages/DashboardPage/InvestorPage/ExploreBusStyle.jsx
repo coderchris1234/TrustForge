@@ -5,6 +5,31 @@ export const Explorecontainer = styled.div`
   width: 100%;
   padding: 1rem;
 
+  section {
+    /* background-color: grey; */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid lightgray;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
+        font-size: 14px;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+
   .exploreText {
     height: 70px;
     width: max-content;

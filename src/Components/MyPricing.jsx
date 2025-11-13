@@ -18,25 +18,59 @@ import {
 } from "./InvestorSubscriptionStyle";
 import { monthlyPlans, annualPlans, SubscriptionPlans } from "../Config/Data";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const MyPricing = () => {
   const [role, setRole] = useState("investor"); // 'investor' | 'business'
   const [mode, setMode] = useState("monthly"); // 'monthly' | 'annual'
   const nav = useNavigate();
+  const user = useSelector((state) => state.TrustForge.user);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  console.log("omoooo", token);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   const investorPlans = mode === "monthly" ? monthlyPlans : annualPlans;
 
   // For business (creator) plans we have SubscriptionPlans with price/yearlyPrice
   const businessPlans = SubscriptionPlans || [];
 
-  const handleClick = (plan) => {
-    nav("/signup");
+  const handleClick = async (plan) => {
     localStorage.setItem("selectedPlan", JSON.stringify(plan));
 
-    console.log(`Selected plan: ${plan}`);
-    // Add further handling logic here
-  };
+    if (!user) {
+      return nav("/signup");
+    }
 
+    try {
+      const endpoint =
+        user.role === "investor"
+          ? `${BaseUrl}/subscribeInvestor`
+          : `${BaseUrl}/subscribeBusinessOwner`;
+
+      const res = await axios.post(
+        endpoint,
+        {
+          price: plan.price,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res.data?.data?.url) {
+        window.location.href = res.data.data.url;
+      } else {
+        toast.error("Unable to initiate payment.");
+      }
+    } catch (err) {
+      console.error(err.response?.data || err);
+      toast.error("Payment error occurred.");
+    }
+  };
   const renderPlans = () => {
     if (role === "investor") {
       return (
