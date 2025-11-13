@@ -30,7 +30,7 @@ const ExploreBusiness = () => {
         <p>Description of the Explore Business section.</p>
       </div>
 
-      {/* <SearchContainer>
+      <SearchContainer>
         <div className="search">
           <FiSearch />
           <input type="text" placeholder="Search ideas..." className="input" />
@@ -43,7 +43,7 @@ const ExploreBusiness = () => {
           <FiFilter size={20} />
           <p>Filter</p>
         </div>
-      </SearchContainer> */}
+      </SearchContainer>
 
       <Text>
         {businesses.length > 0
