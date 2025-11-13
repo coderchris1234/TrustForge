@@ -7,7 +7,7 @@ import Nda2 from "../../../Components/Nda2";
 const NdaManagement2 = () => {
   return (
     <Nda_Wrapper>
-      < div className="ndaHolder">
+      <div className="ndaHolder">
         <div className="nda_about_text">
           <h1>NDA Management</h1>
           <p>Manage your non-disclosure agreements with startups</p>
@@ -26,9 +26,10 @@ const NdaManagement2 = () => {
             </p>
           </div>
         </div>
+        <p>No agreements yet</p>
       </div>
-      <Nda />
-      <Nda2 />
+      {/* <Nda />
+      <Nda2 /> */}
     </Nda_Wrapper>
   );
 };

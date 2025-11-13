@@ -1,6 +1,6 @@
 import React from "react";
 import { SubcriptionCard_container } from "./SubscriptionStyle";
-import InvestorSubscription from "../../../Components/InvestorSubscription";
+import MyPricing from "../../../Components/MyPricing";
 const Subscription2 = () => {
   return (
     <SubcriptionCard_container>
@@ -8,7 +8,7 @@ const Subscription2 = () => {
         <h1>Subscription Plans</h1>
         <p>Choose the perfect plan for your needs. </p>
       </div>
-      <InvestorSubscription />
+      <MyPricing />
       <div className="Ask_question_wrapper">
         <h2>Frequently Asked Questions</h2>
         <div className="change_plan">

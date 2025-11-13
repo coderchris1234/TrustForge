@@ -52,7 +52,7 @@ export const ToggleButton = styled.button`
   outline: none;
   transition: all 150ms ease;
   font-size: 14px;
-  width: 130px;
+  width: max-content;
 
   ${(props) =>
     props.active &&

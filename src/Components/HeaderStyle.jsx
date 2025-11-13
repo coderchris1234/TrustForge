@@ -27,7 +27,7 @@ export const HeaderContainer = styled.header`
 
     img {
       max-height: 4rem;
-      max-width: 230px;
+      max-width: 200px;
 
       object-fit: contain;
     }
@@ -41,7 +41,8 @@ export const HeaderContainer = styled.header`
     ul {
       width: 100%;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: center;
+      gap: 4rem;
       align-items: center;
       padding: 0;
       margin: 0;
@@ -58,8 +59,8 @@ export const HeaderContainer = styled.header`
 
       li {
         list-style-type: none;
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 400;
         cursor: pointer;
         transition: all 350ms ease-in-out;
 
@@ -92,9 +93,9 @@ export const HeaderContainer = styled.header`
 
     .Btn_Login {
       width: 5rem;
-      border: 2px solid var(--primary_color_500);
+      border: 2px solid var(--neutral_gray_color_500);
       background-color: var(--main_white);
-      color: var(--primary_color_500);
+      color: var(--main_black);
 
       &:hover {
         background-color: var(--primary_color_100);
@@ -103,7 +104,7 @@ export const HeaderContainer = styled.header`
     }
 
     .Btn_Login2 {
-      width: 8rem;
+      width: 12rem;
       background-color: var(--primary_color_500);
       color: var(--main_white);
       border: none;
