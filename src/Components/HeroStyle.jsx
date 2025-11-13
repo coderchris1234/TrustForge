@@ -64,7 +64,7 @@ export const HeroContainer = styled.div`
       }
 
       .Hero_btn {
-        width: 183px;
+        width: 240px;
         height: 52px;
         border-radius: 12px;
         color: var(--main_white);

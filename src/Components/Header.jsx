@@ -55,7 +55,7 @@ const Header = () => {
             />
             <CustomButton
               className="Btn_Login2"
-              Btntext="Get started"
+              Btntext="Get started for free"
               type="button"
               onClick={() => nav("/signup")}
             />
@@ -71,7 +71,7 @@ const Header = () => {
           />
           <CustomButton
             className="Btn_Login2"
-            Btntext="Get started"
+            Btntext="Get started for free"
             type="button"
             onClick={() => nav("/signup")}
           />

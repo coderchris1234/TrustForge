@@ -37,6 +37,7 @@ import BusinessDetailPage from "./Pages/DashboardPage/CreatorPage/BusinessDetail
 import BusinessPage from "./Pages/DashboardPage/InvestorPage/BusinessPage";
 import VerifiedKyc from "./Components/VerifiedKyc";
 import PaymentSuccessful from "./Components/PaymentSuccessfulPage";
+import Pricing from "./Pages/Pricing/Pricing";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path={"/about"} element={<About />} />
         <Route path={"/insights"} element={<BlogPage />} />
         <Route path={"/blog-details/:blogTitle"} element={<CategoryBlog />} />
+        <Route path={"/pricing"} element={<Pricing />} />
 
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignupForm />} />

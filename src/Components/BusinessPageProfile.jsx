@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
+import { AiOutlineUpload } from "react-icons/ai";
 import {
   CardWrap,
   TopTags,
@@ -155,7 +155,7 @@ const BusinessPageProfile = ({ data }) => {
 
           <StatsRow>
             <Stat>
-              <CiHeart color={liked ? "red" : "gray"} />{" "}
+              <AiOutlineUpload color={liked ? "red" : "gray"} />{" "}
               {isLoading ? <Skeleton width={30} /> : likeCount}
             </Stat>
             <Stat>

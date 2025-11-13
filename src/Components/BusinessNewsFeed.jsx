@@ -9,12 +9,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useEffect } from "react";
+import { AiOutlineUpload } from "react-icons/ai";
+import { BsBuildings } from "react-icons/bs";
+// import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.TrustForge.user?.token);
-  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  // const userId = useSelector((state) => state.TrustForge.user?.data?.id);
   const savedList = useSelector(
     (state) => state.TrustForge.savedBusinesses || []
   );
@@ -145,12 +147,13 @@ const BusinessNewsFeed = ({ data }) => {
                   <div className="supplychain">
                     <div className="icon">
                       {post.icon1}
+                      <BsBuildings size={24} />
                       <h3>{post.businessName}</h3>
                     </div>
-                    <div className="trendsection">
+                    {/* <div className="trendsection">
                       {post.trendicon}
                       {post.trend}
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="details">
@@ -203,8 +206,8 @@ const BusinessNewsFeed = ({ data }) => {
                   </div>
 
                   <div className="love">
-                    <CiHeart
-                      size={40}
+                    <AiOutlineUpload
+                      size={20}
                       color={isSaved ? "red" : "black"}
                       onClick={() => handleSave(post)}
                     />
