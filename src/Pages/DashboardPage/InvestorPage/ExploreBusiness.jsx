@@ -5,6 +5,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { FiFilter } from "react-icons/fi";
 import BusinessNewsFeed from "../../../Components/BusinessNewsFeed";
 import axios from "axios";
+
 const ExploreBusiness = () => {
   const [businesses, setBusinesses] = useState([]);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -13,7 +14,6 @@ const ExploreBusiness = () => {
     const fetchBusinesses = async () => {
       try {
         const res = await axios.get(`${BaseUrl}/businesses`);
-        console.log("all", res?.data);
         setBusinesses(res?.data?.data || []);
       } catch (error) {
         console.error("Error fetching businesses:", error);
@@ -22,13 +22,15 @@ const ExploreBusiness = () => {
 
     fetchBusinesses();
   }, []);
+
   return (
     <Explorecontainer>
       <div className="exploreText">
-        <h1>Explore Business </h1>
+        <h1>Explore Business</h1>
         <p>Description of the Explore Business section.</p>
       </div>
-      <SearchContainer>
+
+      {/* <SearchContainer>
         <div className="search">
           <FiSearch />
           <input type="text" placeholder="Search ideas..." className="input" />
@@ -41,9 +43,21 @@ const ExploreBusiness = () => {
           <FiFilter size={20} />
           <p>Filter</p>
         </div>
-      </SearchContainer>
-      <Text>Showing {businesses.length} Businesses </Text>
-      <BusinessNewsFeed data={businesses} />
+      </SearchContainer> */}
+
+      <Text>
+        {businesses.length > 0
+          ? `Showing ${businesses.length} Businesses`
+          : "No business showing"}
+      </Text>
+
+      {businesses.length > 0 ? (
+        <BusinessNewsFeed data={businesses} />
+      ) : (
+        <p style={{ textAlign: "center", marginTop: 20, color: "#555" }}>
+          No business uploaded yet.
+        </p>
+      )}
     </Explorecontainer>
   );
 };
