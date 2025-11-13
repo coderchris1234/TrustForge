@@ -278,11 +278,13 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Revenue Model</Label>
-                  <Input
+                  <Textarea
                     value={form.revenueModel}
                     onChange={handleChange}
                     name="revenueModel"
                     placeholder="How does your business generate revenue?"
+                    rows={4}
+                    style={{ outline: "none" }}
                   />
                 </FieldRow>
 

@@ -41,9 +41,9 @@ const Notification1 = () => {
       <div className="notification_top">
         <div>
           <h1>Notifications</h1>
-          <p>Stay updated with your latest activities.</p>
+          <p>Stay updated with your latest activities around your business.</p>
         </div>
-        <div className="mark">Mark All As Read</div>
+        {/* <div className="mark">Mark All As Read</div> */}
       </div>
       {notifications.length === 0 ? (
         <p>No notifications yet</p>

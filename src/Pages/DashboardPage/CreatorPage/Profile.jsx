@@ -34,6 +34,7 @@ const Profile = () => {
 
     fetchKyc();
   }, [userId, token, BaseUrl]);
+  const Initials = kyc ? kyc.firstName.charAt(0).toUpperCase() : "";
 
   return (
     <ProfileStyle>
@@ -52,10 +53,12 @@ const Profile = () => {
 
           <button
             type="button"
-            className={`Professional_info ${mode === "professional" ? "active" : ""}`}
+            className={`Professional_info ${
+              mode === "professional" ? "active" : ""
+            }`}
             onClick={() => setMode("professional")}
           >
-            <p>Professional</p>
+            <p>Bank details</p>
           </button>
         </div>
       </div>
@@ -64,7 +67,7 @@ const Profile = () => {
           <article className="Profile_image">
             <div className="Profile_img_holder">
               <aside className="Image_holder">
-                <img src="" alt="profile" />
+                <div>{Initials}</div>
               </aside>
               {/* <div className="ProIcon">
                     <CiCamera size={23}/>
@@ -82,10 +85,10 @@ const Profile = () => {
                   <p>{kyc?.email}</p>
                 </div>
                 <div>
-                  <p>Lagos, Nigeria</p>
+                  <p>{kyc?.state}</p>
                 </div>
                 <div>
-                  <p>+234 901 7634 832</p>
+                  <p>{kyc?.phoneNumber}</p>
                 </div>
               </div>
             </div>
@@ -101,40 +104,40 @@ const Profile = () => {
               <div className="First">
                 <aside className="First_informations">
                   <span>First Name</span>
-                  <p>Uchechi</p>
+                  <p>{kyc?.firstName}</p>
                 </aside>
 
                 <aside className="First_informations">
                   <span>Email Address</span>
-                  <p>ogbonnauchechi4@gmail.com</p>
+                  <p>{kyc?.email}</p>
                 </aside>
 
                 <aside className="First_informations">
                   <span>Date of birth</span>
-                  <p>02-11-1965</p>
+                  <p>{kyc?.dateOfBirth}</p>
                 </aside>
 
                 <aside className="First_informations">
                   <span>Residential Address</span>
-                  <p>15, Church Street New Site Satellite Town</p>
-                  <span>Lagos, Nigeria</span>
+                  <p>{kyc?.residentialAddress}</p>
+                  <span>{kyc?.state}</span>
                 </aside>
               </div>
 
               <div className="First">
                 <aside className="First_informations">
                   <span>Last Name</span>
-                  <p>Ogbonna</p>
+                  <p>{kyc?.lastName}</p>
                 </aside>
 
                 <aside className="First_informations">
                   <span>Phone number</span>
-                  <p>+234 906 0496 537</p>
+                  <p>{kyc?.phoneNumber}</p>
                 </aside>
 
                 <aside className="First_informations">
                   <span>Nationality</span>
-                  <p>Nigerian</p>
+                  <p>{kyc?.nationality}</p>
                 </aside>
               </div>
             </section>

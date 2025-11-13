@@ -8,7 +8,8 @@ export const ProfileStyle = styled.div`
   flex-direction: column;
   gap: 18px;
   min-height: 500px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
   color: #111827;
 
   .Profile_heading {
@@ -34,7 +35,7 @@ export const ProfileStyle = styled.div`
       width: 420px;
       max-width: 100%;
       height: 44px;
-      background-color: #d1d5db; 
+      background-color: #d1d5db;
       margin-top: 12px;
       display: flex;
       gap: 8px;
@@ -61,7 +62,7 @@ export const ProfileStyle = styled.div`
     .Profssional button.active {
       background: #ffffff;
       color: #111827;
-      box-shadow: 0 6px 14px rgba(2,6,23,0.06);
+      box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
     }
   }
 
@@ -80,8 +81,8 @@ export const ProfileStyle = styled.div`
     gap: 18px;
     padding: 16px;
     align-items: center;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
-    border: 1px solid rgba(15,23,42,0.03);
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.03);
     box-sizing: border-box;
   }
 
@@ -99,6 +100,10 @@ export const ProfileStyle = styled.div`
     overflow: hidden;
     background: #eee;
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
   }
 
   .Image_holder img {
@@ -169,8 +174,8 @@ export const ProfileStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
-    border: 1px solid rgba(15,23,42,0.03);
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.03);
     box-sizing: border-box;
   }
 
