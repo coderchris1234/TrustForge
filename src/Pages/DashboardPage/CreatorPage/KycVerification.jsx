@@ -294,9 +294,9 @@ const KycVerification = () => {
                 borderRadius: "8px",
                 textAlign: "center",
                 backgroundColor: userKYC.toLowerCase().includes("review")
-                  ? "rgba(255, 165, 0, 0.15)" // orange tint for pending
+                  ? "rgba(255, 165, 0, 0.15)"
                   : userKYC.toLowerCase().includes("verified")
-                  ? "rgba(0, 128, 0, 0.15)" // green tint for verified
+                  ? "rgba(0, 128, 0, 0.15)"
                   : "transparent",
                 color: userKYC.toLowerCase().includes("review")
                   ? "#e69500"

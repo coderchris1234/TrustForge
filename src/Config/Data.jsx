@@ -79,7 +79,7 @@ import { GoUpload } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoPeopleOutline } from "react-icons/io5";
 
-export const MenuNav = ["Home", "About", "Insights"];
+export const MenuNav = ["Home", "About", "Insights", "Pricing"];
 
 export const FundNum = [
   {
@@ -997,10 +997,12 @@ export const SubscriptionPlans = [
     id: 1,
     plan: "Current plan",
     icon: <CiStar />,
-    name: "Basic",
+    name: "Free",
+    title: "free",
     tagline: "Start your fundraising journey",
     price: "₦0",
     yearlyPrice: "₦0",
+    action: "Get started for free",
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1025,6 +1027,7 @@ export const SubscriptionPlans = [
     plan: "Most Popular",
     icon: <MdOutlineShowChart />,
     name: "Growth",
+    title: "growth",
     tagline: "Start your fundraising journey",
     price: "₦10,000",
     yearlyPrice: "₦100,800",
@@ -1055,6 +1058,7 @@ export const SubscriptionPlans = [
     plan: "Premium",
     icon: <MdOutlineWorkspacePremium />,
     name: "Premium",
+    title: "premium",
     tagline: "Start your fundraising journey",
     price: "₦20,000",
     yearlyPrice: "₦204,000",
@@ -1255,8 +1259,8 @@ export const meetings3 = [
 
 export const monthlyPlans = [
   {
-    id: "explorer",
-    title: "free",
+    id: "Free",
+    title: "Free",
     price: "N0",
     unit: "/mo",
     highlights: ["Discover investment opportunities"],
@@ -1268,7 +1272,7 @@ export const monthlyPlans = [
       "Email support (48hr response)",
       "Access to investor directly",
     ],
-    action: "Current Plan",
+    action: "Get started for free",
     variant: "outline",
   },
   {
@@ -1288,7 +1292,7 @@ export const monthlyPlans = [
       "Document sharing & NDA management",
       "Custom business page branding",
     ],
-    action: "Subscribe Now",
+    action: "14-Days Free Trial",
     variant: "primary",
   },
   {
@@ -1308,15 +1312,15 @@ export const monthlyPlans = [
       "Media & PR kit preparation",
       "Priority document review",
     ],
-    action: "Subscribe Now",
+    action: "14-Days Free Trial",
     variant: "ghost",
   },
 ];
 
 export const annualPlans = [
   {
-    id: "explorer",
-    title: "free",
+    id: "Free",
+    title: "Free",
     price: "N0",
     unit: "/yr",
     highlights: ["Discover investment opportunities"],
@@ -1328,7 +1332,7 @@ export const annualPlans = [
       "Email support (48hr response)",
       "Access to investor directly",
     ],
-    action: "Current Plan",
+    action: "Get started for free",
     variant: "outline",
   },
   {

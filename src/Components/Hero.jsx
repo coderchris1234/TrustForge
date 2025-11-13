@@ -36,7 +36,7 @@ const Hero = () => {
           </p>
           <CustomButton
             className="Hero_btn"
-            Btntext="Get started"
+            Btntext="Get started for free"
             type="button"
             icon={<GoArrowRight className="Hero_icon" />}
             onClick={() => nav("/signup")}

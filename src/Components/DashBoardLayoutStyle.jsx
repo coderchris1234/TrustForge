@@ -96,9 +96,11 @@ export const DashboardLayoutContainer = styled.div`
       font-size: 14px;
       transition: background 0.2s ease;
 
-      &:hover,
       &.active {
-        color: var(--secondary_color_800);
+        color: var(--primary_color_500);
+        background-color: var(--primary_color_100);
+        padding: 0.5rem;
+        border-radius: 8px;
       }
     }
   }
