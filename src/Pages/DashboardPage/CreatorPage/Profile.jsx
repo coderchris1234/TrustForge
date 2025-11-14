@@ -50,7 +50,6 @@ const Profile = () => {
           >
             <p>Personal Info</p>
           </button>
-
           <button
             type="button"
             className={`Professional_info ${
@@ -77,7 +76,7 @@ const Profile = () => {
             <div className="Profile_content_holder">
               <article className="Kyc_verified">
                 <h3>{kyc?.firstName}</h3>
-                <span>KYC Verified</span>
+                <span>{kyc?.verificationStatus}</span>
               </article>
 
               <div className="Profile_info_holder">
@@ -151,7 +150,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <Professional />
+        <Professional kyc={kyc} />
       )}
     </ProfileStyle>
   );
