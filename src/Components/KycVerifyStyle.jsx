@@ -166,7 +166,6 @@ export const FormArea = styled.div`
     }
 
     span {
-      background-color: blue;
       width: 35px;
       height: 35px;
       border-radius: 50%;
@@ -242,6 +241,12 @@ export const FieldRow = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 14px;
+
+  .select {
+    height: 40px;
+    padding: 8px 12px;
+    /* background: blue; */
+  }
 
   .Name {
     display: flex;

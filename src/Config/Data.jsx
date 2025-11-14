@@ -79,7 +79,30 @@ import { GoUpload } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoPeopleOutline } from "react-icons/io5";
 
-export const MenuNav = ["Home", "About", "Insights"];
+export const SelectOptions = [
+  {
+    label: "Select Investor Type",
+    value: "",
+  },
+  {
+    label: "Angel Investor",
+    value: "Angel Investor",
+  },
+  {
+    label: "Venture Capital",
+    value: "Venture Capital",
+  },
+  {
+    label: "Private Equity",
+    value: "Private Equity",
+  },
+  {
+    label: "Individual Investor",
+    value: "Individual Investor",
+  },
+];
+
+export const MenuNav = ["Home", "About", "Insights", "Pricing"];
 
 export const FundNum = [
   {
@@ -397,11 +420,6 @@ export const InvestorMenu = [
       Icon: BsCurrencyDollar,
       label: "Funding History",
       link: "fundinghistory",
-    },
-    {
-      Icon: TiDocumentText,
-      label: "NDA Management",
-      link: "ndamanagement",
     },
   ],
   [
@@ -997,10 +1015,12 @@ export const SubscriptionPlans = [
     id: 1,
     plan: "Current plan",
     icon: <CiStar />,
-    name: "Basic",
+    name: "Free",
+    title: "free",
     tagline: "Start your fundraising journey",
-    price: "₦0",
-    yearlyPrice: "₦0",
+    price: 0,
+    yearlyPrice: 0,
+    action: "Get started for free",
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1025,9 +1045,10 @@ export const SubscriptionPlans = [
     plan: "Most Popular",
     icon: <MdOutlineShowChart />,
     name: "Growth",
+    title: "growth",
     tagline: "Start your fundraising journey",
-    price: "₦10,000",
-    yearlyPrice: "₦100,800",
+    price: 10000,
+    yearlyPrice: 100800,
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1055,9 +1076,10 @@ export const SubscriptionPlans = [
     plan: "Premium",
     icon: <MdOutlineWorkspacePremium />,
     name: "Premium",
+    title: "premium",
     tagline: "Start your fundraising journey",
-    price: "₦20,000",
-    yearlyPrice: "₦204,000",
+    price: 20000,
+    yearlyPrice: 204000,
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1255,9 +1277,9 @@ export const meetings3 = [
 
 export const monthlyPlans = [
   {
-    id: "explorer",
-    title: "Explorer",
-    price: "N0",
+    id: "Free",
+    title: "Free",
+    price: 0,
     unit: "/mo",
     highlights: ["Discover investment opportunities"],
     features: [
@@ -1268,13 +1290,13 @@ export const monthlyPlans = [
       "Email support (48hr response)",
       "Access to investor directly",
     ],
-    action: "Current Plan",
+    action: "Get started for free",
     variant: "outline",
   },
   {
     id: "growth",
     title: "Growth",
-    price: "N5,000",
+    price: 5000,
     unit: "/mo",
     highlights: ["For active investors"],
     features: [
@@ -1293,8 +1315,8 @@ export const monthlyPlans = [
   },
   {
     id: "premium",
-    title: "Premium Promotion",
-    price: "N10,000",
+    title: "Premium",
+    price: 10000,
     unit: "/mo",
     highlights: ["For top investors & promotions"],
     features: [
@@ -1315,9 +1337,9 @@ export const monthlyPlans = [
 
 export const annualPlans = [
   {
-    id: "explorer",
-    title: "Explorer",
-    price: "N0",
+    id: "Free",
+    title: "Free",
+    price: 0,
     unit: "/yr",
     highlights: ["Discover investment opportunities"],
     features: [
@@ -1328,17 +1350,17 @@ export const annualPlans = [
       "Email support (48hr response)",
       "Access to investor directly",
     ],
-    action: "Current Plan",
+    action: "Get started for free",
     variant: "outline",
   },
   {
     id: "growth",
     title: "Growth",
-    price: "N54,000",
+    price: 54000,
     unit: "/yr",
     highlights: ["For active investors"],
     features: [
-      "Up to 3 Business profiles",
+      "Up to 10 Business profiles",
       "Featured listing badge",
       "Prority in search results",
       "Advance analytics & Insights",
@@ -1354,7 +1376,7 @@ export const annualPlans = [
   {
     id: "premium",
     title: "Premium Promotion",
-    price: "N108,000",
+    price: 108000,
     unit: "/yr",
     highlights: ["For top investors & promotions"],
     features: [

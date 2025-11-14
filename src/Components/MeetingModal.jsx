@@ -6,7 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
-const MeetingModal = ({ open, close }) => {
+const MeetingModal = ({ open, close, businessId }) => {
   const [loading, setLoading] = useState(false);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const token = useSelector((state) => state.TrustForge.user?.token);
@@ -20,6 +20,7 @@ const MeetingModal = ({ open, close }) => {
     note: "",
     meetingType: "",
     guest: userId,
+    businessId: businessId,
   });
 
   const handleChange = (e) => {

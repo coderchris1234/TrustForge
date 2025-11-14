@@ -2,7 +2,16 @@ import styled from "styled-components";
 
 export const KycContainer = styled.div`
   width: 93%;
-  margin: 1rem auto;
+  margin: 0 auto;
+  margin: 1rem;
+  .inputSelect {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e6e9ef;
+    background: #fafafa;
+    font-size: 13px;
+    outline: none;
+  }
 
   .WhyKyc {
     border-radius: 12px;

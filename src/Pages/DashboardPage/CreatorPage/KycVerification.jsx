@@ -168,6 +168,8 @@ const KycVerification = () => {
       });
       toast.success("KYC has been sent successfully ");
       setLoading(false);
+
+      setUserKYC("under review");
       setStep(4);
       console.log("omo", res);
     } catch (error) {
@@ -196,6 +198,7 @@ const KycVerification = () => {
       });
     }
   };
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -294,9 +297,9 @@ const KycVerification = () => {
                 borderRadius: "8px",
                 textAlign: "center",
                 backgroundColor: userKYC.toLowerCase().includes("review")
-                  ? "rgba(255, 165, 0, 0.15)" // orange tint for pending
+                  ? "rgba(255, 165, 0, 0.15)"
                   : userKYC.toLowerCase().includes("verified")
-                  ? "rgba(0, 128, 0, 0.15)" // green tint for verified
+                  ? "rgba(0, 128, 0, 0.15)"
                   : "transparent",
                 color: userKYC.toLowerCase().includes("review")
                   ? "#e69500"
@@ -501,16 +504,21 @@ const KycVerification = () => {
                       onChange={handleChange}
                       name="accountNumber"
                       placeholder="Enter account number"
+                      maxLength={10}
                     />
                   </FieldRow>
                   <FieldRow>
                     <Label>Account Type</Label>
-                    <Input
+                    <select
+                      name="accountType"
                       value={formData.accountType}
                       onChange={handleChange}
-                      name="accountType"
-                      placeholder="Enter account type"
-                    />
+                      className="inputSelect"
+                    >
+                      <option value="">Select account type</option>
+                      <option value="Current">Current</option>
+                      <option value="Savings">Savings</option>
+                    </select>
                   </FieldRow>
                 </>
               )}

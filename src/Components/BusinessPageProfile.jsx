@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoEyeOutline } from "react-icons/io5";
+// import { AiOutlineUpload } from "react-icons/ai";
 import { CiHeart } from "react-icons/ci";
 import {
   CardWrap,
@@ -170,7 +171,7 @@ const BusinessPageProfile = ({ data }) => {
 
           <StatsRow>
             {/* <Stat>
-              <CiHeart color={liked ? "red" : "gray"} />{" "}
+              <AiOutlineUpload color={liked ? "red" : "gray"} />{" "}
               {isLoading ? <Skeleton width={30} /> : likeCount}
             </Stat> */}
             <Stat>
@@ -278,7 +279,11 @@ const BusinessPageProfile = ({ data }) => {
       </CardWrap>
 
       {!isLoading && (
-        <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+        <MeetingModal
+          open={openModal}
+          close={() => setOpenModal(false)}
+          businessId={data?.id}
+        />
       )}
     </>
   );

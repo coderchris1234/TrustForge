@@ -20,7 +20,6 @@ const Notification1 = () => {
           },
         });
 
-        // API response has "read" and "unread"
         const allNotifications = [
           ...(res.data.read || []),
           ...(res.data.unread || []),
@@ -46,7 +45,7 @@ const Notification1 = () => {
         {/* <div className="mark">Mark All As Read</div> */}
       </div>
       {notifications.length === 0 ? (
-        <p>No notifications yet</p>
+        <p style={{ textAlign: "center" }}>No notifications yet</p>
       ) : (
         notifications.map((n) => (
           <Not

@@ -113,7 +113,13 @@ const BusinessCard = (props) => {
               {/* <FiMessageSquare /> {props.investorInterests} Save */}
             </div>
           </div>
-          <div></div>
+          <div>
+            {new Date(props.createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </div>
         </div>
       </div>
     </BusinessContainer>

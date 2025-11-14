@@ -37,7 +37,7 @@ const AddBusiness = () => {
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -127,15 +127,18 @@ const AddBusiness = () => {
           authorization: `Bearer ${token}`,
         },
       });
-      console.log(" Business", res?.data);
 
-      toast.success("Business created successfully");
+      if (res?.data?.message?.includes("verification")) {
+        toast.error(res?.data?.message);
+        setLoading(false);
+        return false;
+      } else {
+        toast.success(res?.data?.message);
+      }
+      console.log(" Business", res?.data);
     } catch (error) {
       setLoading(false);
-      const msg = error?.response?.data?.message;
-      setErrorMessage(msg);
-      toast.error(msg);
-      console.log(errorMessage);
+      toast.error(error?.response?.data?.message);
     }
     setStep(1);
     setLoading(false);
@@ -159,8 +162,12 @@ const AddBusiness = () => {
     if (step > 1) setStep((s) => s - 1);
   };
 
-  const handleChange = (e) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
+    setForm((prev) => ({ ...prev, [name]: capitalized }));
+  };
+  // setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   return (
     <>
@@ -206,12 +213,24 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Industry</Label>
-                  <Input
+                  <select
                     name="industry"
                     value={form.industry}
                     onChange={handleChange}
-                    placeholder="Enter your industry"
-                  />
+                    className="inputSelect"
+                  >
+                    <option value="">Select industry</option>
+                    <option value="AI">AI</option>
+                    <option value="FinTech">FinTech</option>
+                    <option value="HealthTech">HealthTech</option>
+                    <option value="EdTech">EdTech</option>
+                    <option value="Green Tech / Agriculture">
+                      Green Tech / Agriculture
+                    </option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Retail">Retail</option>
+                  </select>
                 </FieldRow>
 
                 <FieldRow>
@@ -316,7 +335,7 @@ const AddBusiness = () => {
                         </select>
                       </div>
                       <div>
-                        <Label>Funding Sought</Label>
+                        <Label>Capital Needed</Label>
                         <input
                           type="num"
                           placeholder="e.g..., ₦700,000"
@@ -366,6 +385,7 @@ const AddBusiness = () => {
                       style={{ display: "none" }}
                       onChange={(e) => handleFileChange(e, "pitchDeck")}
                       name="pitchDeck"
+                      accept=".pdf"
                     />
                     <UploadBox
                       onClick={() => pitchDeckInputRef.current.click()}
@@ -380,6 +400,7 @@ const AddBusiness = () => {
                       type="file"
                       ref={certInputRef}
                       style={{ display: "none" }}
+                      accept=".pdf"
                       onChange={(e) =>
                         handleFileChange(e, "businessRegistrationCertificate")
                       }
@@ -422,7 +443,7 @@ const AddBusiness = () => {
           <ActionRow>
             {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
 
-            <NextButton onClick={handleNext}>
+            <NextButton onClick={handleNext} disabled={loading}>
               {step < totalSteps
                 ? "Next Step"
                 : loading

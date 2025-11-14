@@ -25,6 +25,7 @@ import { MdOutlinePayment } from "react-icons/md";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
+import { SelectOptions } from "../Config/Data";
 
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
@@ -127,6 +128,7 @@ const KycVerification = () => {
         headers: { authorization: `Bearer ${token}` },
       });
       toast.success("KYC submitted successfully");
+      setUserKYC("Under Review");
 
       const profileData = res?.data;
 
@@ -397,11 +399,18 @@ const KycVerification = () => {
                 <p>Investment Profile</p>
                 <FieldRow>
                   <Label>Investment Type</Label>
-                  <Input
+                  <select
+                    className="select"
                     value={formData.investmentType}
                     onChange={handleChange}
                     name="investmentType"
-                  />
+                  >
+                    {SelectOptions?.map((option, index) => (
+                      <option key={index} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
                 </FieldRow>
               </>
             )}

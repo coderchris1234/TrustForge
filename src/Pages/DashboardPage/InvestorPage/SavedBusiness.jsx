@@ -13,11 +13,10 @@ const SavedBusiness = () => {
         <h1>Saved Businesses</h1>
         <p>Businesses you’ve bookmarked for later review</p>
       </div>
-      <h2>Saved List</h2>
       {savedBusinesses.length > 0 ? (
         <BusinessNewsFeed data={savedBusinesses} />
       ) : (
-        <p>No saved businesses yet.</p>
+        <p style={{ textAlign: "center" }}>No saved businesses yet.</p>
       )}
     </SavedBusiness_container>
   );

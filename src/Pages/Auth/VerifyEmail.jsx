@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../Global/Slice";
+import { setIsLogin, setUser } from "../Global/Slice";
 
 const CODE_LENGTH = 6;
 
@@ -125,6 +125,8 @@ const VerifyEmail = () => {
       setError("Enter the complete 6-digit code.");
       return;
     }
+
+    dispatch(setIsLogin(true));
 
     const BaseUrl = import.meta.env.VITE_BaseUrl;
 

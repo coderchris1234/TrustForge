@@ -9,6 +9,7 @@ const initialState = {
   savedBusinesses: [],
   userDetailss: null,
   deletedBusinesses: [],
+  isLogin: false,
 };
 
 const authSlice = createSlice({
@@ -27,6 +28,9 @@ const authSlice = createSlice({
 
     logOut: (state) => {
       state.user = null;
+    },
+    setIsLogin: (state) => {
+      state.isLogin = true;
     },
     setbusinessOwnerId: (state, action) => {
       state.businessOwnerId = action.payload;
@@ -81,5 +85,6 @@ export const {
   setUserDetailss,
   toggleLikedBusiness,
   addDeletedBusiness,
+  setIsLogin,
 } = authSlice.actions;
 export default authSlice.reducer;

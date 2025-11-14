@@ -28,6 +28,7 @@ import { setUser } from "../Global/Slice";
 
 const Signup = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+  const plan = JSON.parse(localStorage.getItem("selectedPlan"));
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -35,6 +36,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
     phoneNumber: "",
+    subscriptionTier: plan,
   });
 
   const [role, setRole] = useState("");

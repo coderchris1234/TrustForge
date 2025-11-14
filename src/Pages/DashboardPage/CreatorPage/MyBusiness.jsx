@@ -14,8 +14,9 @@ import axios from "axios";
 const MyBusiness = () => {
   // const nav = useNavigate();
   const [allBusiness, setAllBusiness] = useState({});
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [filteredBusiness, setFilteredBusiness] = useState([]);
+  const [statusFilter, setStatusFilter] = useState("");
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
@@ -62,6 +63,16 @@ const MyBusiness = () => {
       // setLoading(false);
     }
   }, [userId]);
+  const displayBusiness = (allBusiness?.businesses || []).filter((biz) => {
+    const statusMatch =
+      !statusFilter ||
+      biz.businessStatus.toLowerCase() === statusFilter.toLowerCase();
+
+    const searchMatch =
+      !search || biz.industry?.toLowerCase().includes(search.toLowerCase());
+
+    return statusMatch && searchMatch;
+  });
   return (
     <>
       <MyBusinessHeader>
@@ -73,7 +84,7 @@ const MyBusiness = () => {
           <button>Add Business Profile</button>
         </NavLink>
       </MyBusinessHeader>
-      {/* <SearchBar>
+      <SearchBar>
         <div className="searchContainer">
           <CiSearch style={{ cursor: "pointer" }} />
           <input
@@ -92,23 +103,22 @@ const MyBusiness = () => {
             }}
           />
         </div>
-        <select>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
           <option value="">All Status</option>
-          <option value="">Active</option>
-          <option value="">Under Review</option>
-          <option value="">Draft</option>
+          <option value="under review">Under Review</option>
+          <option value="verified">Verified</option>
         </select>
-      </SearchBar> */}
+      </SearchBar>
 
       <BusinessWrapper>
-        {filteredBusiness.length > 0 ? (
-          filteredBusiness.map((biz) => (
-            <BusinessCard key={biz.id} {...biz} id={biz.id} />
-          ))
-        ) : allBusiness?.businesses?.length > 0 ? (
-          allBusiness.businesses.map((biz) => (
-            <BusinessCard key={biz.id} {...biz} />
-          ))
+        {displayBusiness.length > 0 ? (
+          displayBusiness
+            .slice()
+            .reverse()
+            .map((biz) => <BusinessCard key={biz.id} {...biz} />)
         ) : (
           <p>No Business Found</p>
         )}

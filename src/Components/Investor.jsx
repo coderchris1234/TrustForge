@@ -52,17 +52,14 @@ const Investor = ({ data }) => {
                 </div>
                 <div>
                   <strong>Amount Invested:</strong> ₦
-                  {Number(investor?.totalInvestment || 0).toLocaleString(
-                    "en-NG",
-                    {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    }
-                  )}
+                  {Number(investor?.amount || 0).toLocaleString("en-NG", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
                 </div>
                 <div>
                   <strong>Date of Investment:</strong>
-                  {new Date(investor?.investmentDate).toLocaleDateString()}
+                  {new Date(investor?.date).toLocaleDateString()}
                 </div>
               </InvestorStyle>
             </div>

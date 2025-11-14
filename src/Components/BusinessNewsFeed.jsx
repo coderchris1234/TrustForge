@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { AiOutlineUpload } from "react-icons/ai";
+import { BsBuildings } from "react-icons/bs";
 // import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
@@ -47,7 +49,7 @@ const BusinessNewsFeed = ({ data }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log(res);
-      // If backend responds successfully, allow navigation
+
       return true;
     } catch (err) {
       console.error(err);
@@ -58,7 +60,6 @@ const BusinessNewsFeed = ({ data }) => {
 
       toast.error(msg);
 
-      // Block navigation
       return false;
     }
   };
@@ -114,7 +115,7 @@ const BusinessNewsFeed = ({ data }) => {
                       </span>
                     </div>
                     <div className="like">
-                      <LuMessageSquare />
+                      <AiOutlineUpload />
                       <span>
                         <Skeleton width={30} />
                       </span>
@@ -152,12 +153,13 @@ const BusinessNewsFeed = ({ data }) => {
                   <div className="supplychain">
                     <div className="icon">
                       {post.icon1}
+                      <BsBuildings size={24} />
                       <h3>{post.businessName}</h3>
                     </div>
-                    <div className="trendsection">
+                    {/* <div className="trendsection">
                       {post.trendicon}
                       {post.trend}
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="details">
@@ -183,8 +185,8 @@ const BusinessNewsFeed = ({ data }) => {
                       </div>
 
                       <div className="like">
-                        <LuMessageSquare />
-                        <span>{post.likeCount}</span>
+                        <AiOutlineUpload />
+                        <span>{post.SaveCount}</span>
                       </div>
 
                       <div className="comment">
@@ -221,8 +223,8 @@ const BusinessNewsFeed = ({ data }) => {
                   </div>
 
                   <div className="love">
-                    <CiHeart
-                      size={40}
+                    <AiOutlineUpload
+                      size={20}
                       color={isSaved ? "red" : "black"}
                       onClick={() => handleSave(post)}
                     />
