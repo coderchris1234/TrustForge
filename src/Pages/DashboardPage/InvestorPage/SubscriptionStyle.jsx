@@ -27,7 +27,6 @@ export const SubcriptionCard_container = styled.div`
     width: 100%;
     background-color: #ffffff;
     padding: 1rem;
-    margin-top: 2rem;
     gap: 1rem;
     display: flex;
     flex-direction: column;

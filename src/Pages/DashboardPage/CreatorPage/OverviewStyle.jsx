@@ -35,18 +35,6 @@ export const OverviewContent = styled.div`
   }
 
   .Overview-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 20px;
-    margin-top: 16px;
-    width: 100%;
-    flex-wrap: nowrap; 
-
-    .box {
-      flex: 1; 
-      min-width: 0;
-      height: 7rem; 
     width: 100%;
     margin-top: 0;
     gap: 1rem;
@@ -68,8 +56,6 @@ export const OverviewContent = styled.div`
       padding: 16px 18px;
       transition: all 0.3s ease;
     }
-      align-items: start;
-      padding: 1rem;
 
     .box:hover {
       transform: translateY(-2px);
@@ -138,10 +124,6 @@ export const OverviewContent = styled.div`
     padding: 1.2rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
-    margin-top: 15px;
-    height: 30vh;
-    padding: 1rem 1.5rem;
-    border-radius: 15px;
 
     p {
       font-size: 16px;
@@ -156,7 +138,6 @@ export const OverviewContent = styled.div`
       flex-wrap: wrap;
 
       .quick {
-        flex: 1;
         border-radius: 10px;
         width: 25%;
         display: flex;
@@ -231,5 +212,4 @@ export const OverviewContent = styled.div`
       }
     }
   }
-}
 `;

@@ -44,7 +44,6 @@ export const KycContainer = styled.div`
     }
   }
 
-  /* 📱 Mobile and tablet responsiveness */
   @media (max-width: 768px) {
     width: 95%;
     margin: 0.5rem auto;
@@ -196,8 +195,8 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 25rem;
-      top: 8rem;
+      right: 4rem;
+      top: 4rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -272,8 +271,8 @@ export const FormArea = styled.div`
       span {
         width: 24px;
         height: 24px;
-        right: 8.2rem;
-        top: 5.2rem;
+        right: 1.7rem;
+        top: 2.1rem;
         position: absolute;
       }
     }

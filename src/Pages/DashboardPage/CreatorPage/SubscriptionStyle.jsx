@@ -6,20 +6,14 @@ export const SubcriptionCard_container = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  height: max-content;
 
-  p {
-    font-size: 28px;
-    font-weight: 600;
-    max-width: 820px;
-    padding-left: 2rem;
-    height: max-content;
-  }
   h1 {
     font-size: 22px;
     font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
+    line-height: 3rem;
   }
 
   p {
@@ -85,28 +79,15 @@ export const SubcriptionCard_container = styled.div`
 
     p {
       font-size: 15px;
+      line-height: 20px;
+      margin-top: 10px;
+      margin-bottom: 6px;
     }
 
-    .Ask_question_wrapper {
-      padding: 0.8rem;
-      gap: 0.8rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 0.6rem;
-
-    h1 {
-      font-size: 18px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-
-    .Ask_question_wrapper {
-      padding: 0.6rem;
-      gap: 0.6rem;
+    span {
+      font-size: 13px;
+      line-height: 18px;
+      margin-bottom: 10px;
     }
   }
 `;
