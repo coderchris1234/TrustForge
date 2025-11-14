@@ -5,10 +5,34 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { FiFilter } from "react-icons/fi";
 import BusinessNewsFeed from "../../../Components/BusinessNewsFeed";
 import axios from "axios";
+import { MdOutlineCancel } from "react-icons/md";
 
 const ExploreBusiness = () => {
   const [businesses, setBusinesses] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState([]);
+  const [search, setSearch] = useState("");
+
   const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  const toggleIndustry = (item) => {
+    if (selected.includes(item)) {
+      setSelected(selected.filter((x) => x !== item));
+    } else {
+      setSelected([...selected, item]);
+    }
+  };
+
+  const industries = [
+    "AI",
+    "FinTech",
+    "HealthTech",
+    "EdTech",
+    "Green Tech / Agriculture",
+    "E-commerce",
+    "Manufacturing",
+    "Retail/Marketing",
+  ];
 
   useEffect(() => {
     const fetchBusinesses = async () => {
@@ -23,6 +47,20 @@ const ExploreBusiness = () => {
     fetchBusinesses();
   }, []);
 
+  const displayBusinesses = businesses.filter((biz) => {
+    const industryMatch =
+      selected.length === 0 || selected.includes(biz.industry);
+
+    const searchTerm = search.toLowerCase();
+
+    const searchMatch =
+      !searchTerm ||
+      biz.businessName?.toLowerCase().includes(searchTerm) ||
+      biz.industry?.toLowerCase().includes(searchTerm);
+
+    return industryMatch && searchMatch;
+  });
+
   return (
     <Explorecontainer>
       <div className="exploreText">
@@ -33,29 +71,60 @@ const ExploreBusiness = () => {
       <SearchContainer>
         <div className="search">
           <FiSearch />
-          <input type="text" placeholder="Search ideas..." className="input" />
+          <input
+            type="text"
+            placeholder="Search ideas..."
+            className="input"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-        {/* <div className="trending">
-          <select name="" id="">
-            <option value="trending">Trending</option>
-            <option value="mostRencent"></option>
-          </select>
-          <RiArrowDropDownLine size={25} />
-        </div> */}
-        <div className="filter">
+
+        <div className="filter" onClick={() => setOpen(true)}>
           <FiFilter size={20} />
           <p>Filter</p>
+        </div>
+        {open && <div className="backdrop" onClick={() => setOpen(false)} />}
+
+        <div className={`drawer ${open ? "show" : ""}`}>
+          <div className="drawerHeader">
+            <h2>Filter Businesses</h2>
+            <button className="closeBtn" onClick={() => setOpen(false)}>
+              ×
+            </button>
+          </div>
+
+          <p className="sub">Refine your search with filters</p>
+
+          <h3 className="title">Industries</h3>
+
+          <div className="list">
+            {industries.map((item) => (
+              <label className="checkbox" key={item}>
+                <input
+                  type="checkbox"
+                  checked={selected.includes(item)}
+                  onChange={() => toggleIndustry(item)}
+                />
+                {item}
+              </label>
+            ))}
+          </div>
+
+          <button className="clearBtn" onClick={() => setSelected([])}>
+            Clear filter
+          </button>
         </div>
       </SearchContainer>
 
       <Text>
-        {businesses.length > 0
-          ? `Showing ${businesses.length} Businesses`
+        {displayBusinesses.length > 0
+          ? `Showing ${displayBusinesses.length} Businesses`
           : "No business showing"}
       </Text>
 
-      {businesses.length > 0 ? (
-        <BusinessNewsFeed data={businesses} />
+      {displayBusinesses.length > 0 ? (
+        <BusinessNewsFeed data={displayBusinesses} />
       ) : (
         <p style={{ textAlign: "center", marginTop: 20, color: "#555" }}>
           No business uploaded yet.

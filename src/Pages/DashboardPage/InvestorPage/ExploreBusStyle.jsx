@@ -72,6 +72,90 @@ export const SearchContainer = styled.div`
   gap: 0.4rem;
   flex-wrap: nowrap;
 
+  .filterBtn {
+    padding: 10px 18px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 20;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    padding: 25px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.35s ease;
+    z-index: 30;
+    overflow-y: auto;
+  }
+
+  .drawer.show {
+    right: 0;
+  }
+
+  .drawerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .closeBtn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sub {
+    margin-top: -10px;
+    font-size: 13px;
+    color: #777;
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  .clearBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
   .search {
     background-color: rgba(227, 227, 227, 0.8);
     height: 3rem;
@@ -139,6 +223,7 @@ export const SearchContainer = styled.div`
     align-items: center;
     gap: 2rem;
     padding-inline: 0.8rem;
+    cursor: pointer;
 
     p {
       margin: 0;

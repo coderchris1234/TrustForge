@@ -398,11 +398,6 @@ export const InvestorMenu = [
       label: "Funding History",
       link: "fundinghistory",
     },
-    {
-      Icon: TiDocumentText,
-      label: "NDA Management",
-      link: "ndamanagement",
-    },
   ],
   [
     {
