@@ -38,6 +38,7 @@ import BusinessPage from "./Pages/DashboardPage/InvestorPage/BusinessPage";
 import VerifiedKyc from "./Components/VerifiedKyc";
 import PaymentSuccessful from "./Components/PaymentSuccessfulPage";
 import Pricing from "./Pages/Pricing/Pricing";
+import SubscriptionSuccess from "./Components/SubscriptionSuccess";
 
 const App = () => {
   return (
@@ -74,6 +75,10 @@ const App = () => {
             <Route path="subscription" element={<Subscription />} />
             <Route path="kycverification" element={<KycVerification />} />
             <Route path="helpsupport" element={<HelpSupport />} />
+            <Route
+              path="subscription-success/:id/:fullName/:referenceId/:amount"
+              element={<SubscriptionSuccess />}
+            />
           </Route>
         </Route>
 
@@ -85,6 +90,10 @@ const App = () => {
             <Route
               path="payment-success/:id/:fullName/:referenceId/:amount"
               element={<PaymentSuccessful />}
+            />
+            <Route
+              path="subscription-success/:id/:fullName/:referenceId/:amount"
+              element={<SubscriptionSuccess />}
             />
             <Route path="notification" element={<Notification2 />} />
             <Route path="meeting" element={<Meeting2 />} />

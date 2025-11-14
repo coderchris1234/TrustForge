@@ -35,10 +35,13 @@ const ExploreBusiness = () => {
           <FiSearch />
           <input type="text" placeholder="Search ideas..." className="input" />
         </div>
-        <div className="trending">
-          <p>Trending</p>
+        {/* <div className="trending">
+          <select name="" id="">
+            <option value="trending">Trending</option>
+            <option value="mostRencent"></option>
+          </select>
           <RiArrowDropDownLine size={25} />
-        </div>
+        </div> */}
         <div className="filter">
           <FiFilter size={20} />
           <p>Filter</p>
