@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Components/Header";
-import MyPricing from "../../Components/MyPricing";
+import MyPricing from "../../Components/MyPricingClean";
 import Footer from "../../Components/Footer";
 
 const Pricing = () => {
