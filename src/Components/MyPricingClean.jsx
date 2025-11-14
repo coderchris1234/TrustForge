@@ -45,14 +45,14 @@ const MyPricingClean = () => {
           ? `${BaseUrl}/subscribeInvestor`
           : `${BaseUrl}/subscribeBusinessOwner`;
 
-      const redirectUrl =
-        user?.data?.role === "Investor"
-          ? `${window.location.origin}/dashboard/investor/subscription-success`
-          : `${window.location.origin}/dashboard/business_owner/subscription-success`;
+      // const redirectUrl =
+      //   user?.data?.role === "Investor"
+      //     ? `${window.location.origin}/dashboard/investor/subscription-success`
+      //     : `${window.location.origin}/dashboard/business_owner/subscription-success`;
 
       const res = await axios.post(
         endpoint,
-        { price: plan.price, redirect_url: redirectUrl },
+        { price: plan.price },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 

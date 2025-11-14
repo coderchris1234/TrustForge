@@ -16,6 +16,7 @@ const MyBusiness = () => {
   const [allBusiness, setAllBusiness] = useState({});
   const [search, setSearch] = useState("");
   const [filteredBusiness, setFilteredBusiness] = useState([]);
+  const [statusFilter, setStatusFilter] = useState("");
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
@@ -62,6 +63,16 @@ const MyBusiness = () => {
       // setLoading(false);
     }
   }, [userId]);
+  const displayBusiness = (allBusiness?.businesses || []).filter((biz) => {
+    const statusMatch =
+      !statusFilter ||
+      biz.businessStatus.toLowerCase() === statusFilter.toLowerCase();
+
+    const searchMatch =
+      !search || biz.industry?.toLowerCase().includes(search.toLowerCase());
+
+    return statusMatch && searchMatch;
+  });
   return (
     <>
       <MyBusinessHeader>
@@ -92,22 +103,19 @@ const MyBusiness = () => {
             }}
           />
         </div>
-        <select>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
           <option value="">All Status</option>
-          <option value="">Active</option>
-          <option value="">Under Review</option>
-          <option value="">Draft</option>
+          <option value="under review">Under Review</option>
+          <option value="verified">Verified</option>
         </select>
       </SearchBar>
 
       <BusinessWrapper>
-        {filteredBusiness.length > 0 ? (
-          filteredBusiness
-            .slice() // create a copy
-            .reverse() // reverse order (latest first)
-            .map((biz) => <BusinessCard key={biz.id} {...biz} id={biz.id} />)
-        ) : allBusiness?.businesses?.length > 0 ? (
-          allBusiness.businesses
+        {displayBusiness.length > 0 ? (
+          displayBusiness
             .slice()
             .reverse()
             .map((biz) => <BusinessCard key={biz.id} {...biz} />)

@@ -105,6 +105,14 @@ export const FieldRow = styled.div`
   gap: 1rem;
   margin-bottom: 14px;
 
+  .inputSelect {
+    background-color: #f3f5f8;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.2rem;
+    border-radius: 5px;
+  }
+
   .fund {
     padding-top: 1rem;
     display: flex;
@@ -242,7 +250,14 @@ export const NextButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+
   &:hover {
     background: #007ad9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #00a3ff; /* optional: keep background same on disabled */
   }
 `;
