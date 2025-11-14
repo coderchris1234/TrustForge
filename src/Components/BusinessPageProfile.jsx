@@ -279,7 +279,11 @@ const BusinessPageProfile = ({ data }) => {
       </CardWrap>
 
       {!isLoading && (
-        <MeetingModal open={openModal} close={() => setOpenModal(false)} />
+        <MeetingModal
+          open={openModal}
+          close={() => setOpenModal(false)}
+          businessId={data?.id}
+        />
       )}
     </>
   );

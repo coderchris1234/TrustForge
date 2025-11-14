@@ -335,7 +335,7 @@ const AddBusiness = () => {
                         </select>
                       </div>
                       <div>
-                        <Label>Funding Sought</Label>
+                        <Label>Capital Needed</Label>
                         <input
                           type="num"
                           placeholder="e.g..., ₦700,000"
@@ -385,6 +385,7 @@ const AddBusiness = () => {
                       style={{ display: "none" }}
                       onChange={(e) => handleFileChange(e, "pitchDeck")}
                       name="pitchDeck"
+                      accept=".pdf"
                     />
                     <UploadBox
                       onClick={() => pitchDeckInputRef.current.click()}
@@ -399,6 +400,7 @@ const AddBusiness = () => {
                       type="file"
                       ref={certInputRef}
                       style={{ display: "none" }}
+                      accept=".pdf"
                       onChange={(e) =>
                         handleFileChange(e, "businessRegistrationCertificate")
                       }

@@ -127,6 +127,7 @@ const KycVerification = () => {
         headers: { authorization: `Bearer ${token}` },
       });
       toast.success("KYC submitted successfully");
+      setUserKYC("Under Review");
 
       const profileData = res?.data;
 
