@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -23,14 +23,14 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const user = useSelector((state) => state.TrustForge.user);
+  // const user = useSelector((state) => state.TrustForge.user);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   // Dynamic endpoint selection based on role
-  const endpoints =
-    user?.data?.role === "Investor"
-      ? `${BaseUrl}/forgoti`
-      : `${BaseUrl}/forgot`;
+  // const endpoints =
+  //   user?.data?.role === "Investor"
+  //     ? `${BaseUrl}/forgoti`
+  //     : `${BaseUrl}/forgot`;
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -50,10 +50,15 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(endpoints, { email });
-      console.log("forgot", res?.data);
-
-      toast.success("Password reset link has been sent to your email");
+      // Try Business Owner first
+      try {
+        await axios.post(`${BaseUrl}/forgot`, { email });
+        toast.success("Password reset link sent");
+      } catch {
+        // If not found, try Investor
+        await axios.post(`${BaseUrl}/forgoti`, { email });
+        toast.success("Password reset link sent");
+      }
     } catch (err) {
       const msg =
         err.response?.data?.message || "Something went wrong. Try again.";

@@ -79,6 +79,29 @@ import { GoUpload } from "react-icons/go";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoPeopleOutline } from "react-icons/io5";
 
+export const SelectOptions = [
+  {
+    label: "Select Investor Type",
+    value: "",
+  },
+  {
+    label: "Angel Investor",
+    value: "Angel Investor",
+  },
+  {
+    label: "Venture Capital",
+    value: "Venture Capital",
+  },
+  {
+    label: "Private Equity",
+    value: "Private Equity",
+  },
+  {
+    label: "Individual Investor",
+    value: "Individual Investor",
+  },
+];
+
 export const MenuNav = ["Home", "About", "Insights", "Pricing"];
 
 export const FundNum = [
