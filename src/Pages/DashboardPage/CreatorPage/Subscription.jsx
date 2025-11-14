@@ -1,14 +1,16 @@
 import React from "react";
 import { SubcriptionCard_container } from "./SubscriptionStyle";
-import MyPricing from "../../../Components/MyPricing";
+import MyPricing from "../../../Components/MyPricingClean";
+import { useSelector } from "react-redux";
 const Subscription2 = () => {
+  const userLogin = useSelector((state) => state.TrustForge.isLogin);
   return (
     <SubcriptionCard_container>
       <div className="Subcription_text">
         <h1>Subscription Plans</h1>
         <p>Choose the perfect plan for your needs. </p>
       </div>
-      <MyPricing />
+      <MyPricing userLogin={userLogin} />
       <div className="Ask_question_wrapper">
         <h2>Frequently Asked Questions</h2>
         <div className="change_plan">

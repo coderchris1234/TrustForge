@@ -15,11 +15,11 @@ import {
   Label,
   ErrorText,
 } from "./LoginStyle";
-import authlogo from "../../assets/authlogo.png"
+import authlogo from "../../assets/authlogo.png";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { setUser } from "../Global/Slice";
+import { setIsLogin, setUser } from "../Global/Slice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -93,6 +93,7 @@ const Login = () => {
       console.log("user", res);
 
       toast.success(res?.data?.message || "Logged in successfully");
+      dispatch(setIsLogin(true));
       role === "BusinessOwner"
         ? navigate("/dashboard/business_owner")
         : navigate("/dashboard/investor");
@@ -115,9 +116,9 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <LoginLeft >
+      <LoginLeft>
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
-      </LoginLeft >
+      </LoginLeft>
       <LoginRight>
         <FormBox>
           <FormTitle>

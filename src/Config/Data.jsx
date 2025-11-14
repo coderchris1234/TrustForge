@@ -1000,8 +1000,8 @@ export const SubscriptionPlans = [
     name: "Free",
     title: "free",
     tagline: "Start your fundraising journey",
-    price: "₦0",
-    yearlyPrice: "₦0",
+    price: 0,
+    yearlyPrice: 0,
     action: "Get started for free",
     metrics: {
       title: "Promotion metrics",
@@ -1029,8 +1029,8 @@ export const SubscriptionPlans = [
     name: "Growth",
     title: "growth",
     tagline: "Start your fundraising journey",
-    price: "₦10,000",
-    yearlyPrice: "₦100,800",
+    price: 10000,
+    yearlyPrice: 100800,
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1060,8 +1060,8 @@ export const SubscriptionPlans = [
     name: "Premium",
     title: "premium",
     tagline: "Start your fundraising journey",
-    price: "₦20,000",
-    yearlyPrice: "₦204,000",
+    price: 20000,
+    yearlyPrice: 204000,
     metrics: {
       title: "Promotion metrics",
       icon: <RiBarChartFill />,
@@ -1261,7 +1261,7 @@ export const monthlyPlans = [
   {
     id: "Free",
     title: "Free",
-    price: "N0",
+    price: 0,
     unit: "/mo",
     highlights: ["Discover investment opportunities"],
     features: [
@@ -1278,7 +1278,7 @@ export const monthlyPlans = [
   {
     id: "growth",
     title: "Growth",
-    price: "N5,000",
+    price: 5000,
     unit: "/mo",
     highlights: ["For active investors"],
     features: [
@@ -1292,13 +1292,13 @@ export const monthlyPlans = [
       "Document sharing & NDA management",
       "Custom business page branding",
     ],
-    action: "14-Days Free Trial",
+    action: "Subscribe Now",
     variant: "primary",
   },
   {
     id: "premium",
     title: "Premium",
-    price: "N10,000",
+    price: 10000,
     unit: "/mo",
     highlights: ["For top investors & promotions"],
     features: [
@@ -1312,7 +1312,7 @@ export const monthlyPlans = [
       "Media & PR kit preparation",
       "Priority document review",
     ],
-    action: "14-Days Free Trial",
+    action: "Subscribe Now",
     variant: "ghost",
   },
 ];
@@ -1321,7 +1321,7 @@ export const annualPlans = [
   {
     id: "Free",
     title: "Free",
-    price: "N0",
+    price: 0,
     unit: "/yr",
     highlights: ["Discover investment opportunities"],
     features: [
@@ -1338,7 +1338,7 @@ export const annualPlans = [
   {
     id: "growth",
     title: "Growth",
-    price: "N54,000",
+    price: 54000,
     unit: "/yr",
     highlights: ["For active investors"],
     features: [
@@ -1358,7 +1358,7 @@ export const annualPlans = [
   {
     id: "premium",
     title: "Premium Promotion",
-    price: "N108,000",
+    price: 108000,
     unit: "/yr",
     highlights: ["For top investors & promotions"],
     features: [
