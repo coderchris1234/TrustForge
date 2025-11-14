@@ -75,7 +75,7 @@ export const SearchContainer = styled.div`
   .search {
     background-color: rgba(227, 227, 227, 0.8);
     height: 3rem;
-    width: 45rem;
+    width: 90%;
     display: flex;
     align-items: center;
     gap: 0.4rem;

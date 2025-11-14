@@ -114,12 +114,12 @@ const BusinessNewsFeed = ({ data }) => {
                         <Skeleton width={30} />
                       </span>
                     </div>
-                    {/* <div className="like">
-                      <LuMessageSquare />
+                    <div className="like">
+                      <AiOutlineUpload />
                       <span>
                         <Skeleton width={30} />
                       </span>
-                    </div> */}
+                    </div>
                     <div className="comment">
                       <div>
                         <Skeleton width={60} />
@@ -185,8 +185,8 @@ const BusinessNewsFeed = ({ data }) => {
                       </div>
 
                       <div className="like">
-                        <LuMessageSquare />
-                        <span>{post.likeCount}</span>
+                        <AiOutlineUpload />
+                        <span>{post.SaveCount}</span>
                       </div>
 
                       <div className="comment">
