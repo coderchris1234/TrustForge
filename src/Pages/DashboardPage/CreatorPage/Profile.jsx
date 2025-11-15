@@ -66,11 +66,8 @@ const Profile = () => {
           <article className="Profile_image">
             <div className="Profile_img_holder">
               <aside className="Image_holder">
-                <div>{Initials}</div>
+                <img src={kyc?.profilePic} alt="" />
               </aside>
-              {/* <div className="ProIcon">
-                    <CiCamera size={23}/>
-                </div> */}
             </div>
 
             <div className="Profile_content_holder">

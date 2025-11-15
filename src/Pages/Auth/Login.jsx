@@ -119,6 +119,12 @@ const Login = () => {
       <LoginLeft>
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </LoginLeft>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       <LoginRight>
         <FormBox>
           <FormTitle>

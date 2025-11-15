@@ -159,6 +159,11 @@ const Signup = () => {
       <SignupLeft>
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </SignupLeft>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
 
       <SignupRight>
         <FormBox>
