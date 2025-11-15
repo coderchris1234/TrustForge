@@ -54,7 +54,7 @@ const MyPricingClean = () => {
         endpoint,
         {
           price: plan.price,
-          redirect_url, // <-- REQUIRED
+          redirect_url,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
