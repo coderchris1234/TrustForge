@@ -39,6 +39,7 @@ const ExploreBusiness = () => {
       try {
         const res = await axios.get(`${BaseUrl}/businesses`);
         setBusinesses(res?.data?.data || []);
+        console.log("businessLand", businesses);
       } catch (error) {
         console.error("Error fetching businesses:", error);
       }
@@ -60,6 +61,8 @@ const ExploreBusiness = () => {
 
     return industryMatch && searchMatch;
   });
+
+  console.log("businesses", businesses);
 
   return (
     <Explorecontainer>

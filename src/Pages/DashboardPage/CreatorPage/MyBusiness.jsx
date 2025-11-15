@@ -118,7 +118,9 @@ const MyBusiness = () => {
           displayBusiness
             .slice()
             .reverse()
-            .map((biz) => <BusinessCard key={biz.id} {...biz} />)
+            .map((biz) => (
+              <BusinessCard allBusiness={allBusiness} key={biz.id} {...biz} />
+            ))
         ) : (
           <p>No Business Found</p>
         )}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InvestorMeeting_container } from "./InvestorMeetingStyle";
 import { FaVideo } from "react-icons/fa";
 import { FiRefreshCw } from "react-icons/fi";
-import { CiCalendar, CiClock2 } from "react-icons/ci";
+import { CiCalendar, CiCircleCheck, CiClock2 } from "react-icons/ci";
 import { ModalBox, ModalOverLay } from "./InvestorMeeting2Style";
 import { MdOutlineCancel } from "react-icons/md";
 const InvestorMeeting = ({
@@ -17,7 +17,9 @@ const InvestorMeeting = ({
   businessOwnerName,
   meetingLink,
   rescheduleMeeting,
+  approvedMeeting,
   loading,
+  rescheduleRole,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
@@ -79,25 +81,48 @@ const InvestorMeeting = ({
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {meetingStatus === "Awaiting Approval" ||
+            {rescheduleRole !== "BusinessOwner" ? null : (
+              <div
+                className="accept_meetings"
+                onClick={() => {
+                  approvedMeeting(id);
+                }}
+                style={{
+                  backgroundColor: "#11d611",
+                }}
+              >
+                Accept Meeting
+                <CiCircleCheck />
+              </div>
+            )}
+            {/* {meetingStatus === "Awaiting Approval" ||
             meetingStatus === "Reschedule Requested" ? (
               <div className="awaiting">
                 Awaiting Response
                 <CiClock2 />
               </div>
-            ) : null}
-            {meetingStatus === "Awaiting Approval" ? (
-              <div className="cancel" onClick={userJoinMeeting}>
-                Cancel
-              </div>
-            ) : null}
-            {meetingStatus === "Declined" ? null : (
+            ) : null} */}
+            {meetingStatus === "Declined" ||
+            rescheduleRole === "Investor" ? null : (
               <div
                 onClick={() => setOpenModal(true)}
                 className="schedule_meetings"
               >
                 Reschedule
                 <FiRefreshCw size={20} />
+              </div>
+            )}
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
+              <div
+                style={{
+                  backgroundColor: "red",
+                }}
+                className="decline_button"
+                onClick={() => {}}
+              >
+                {rescheduleRole === "Investor" ? "Cancel" : "Decline"}
+                <MdOutlineCancel size={15} />
               </div>
             )}
           </div>
