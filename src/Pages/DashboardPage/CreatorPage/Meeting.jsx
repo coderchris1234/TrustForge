@@ -13,6 +13,7 @@ const Meeting = () => {
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const [loading, setLoading] = useState(false);
+  console.log("userToken", token);
 
   const endpoint = `${BaseUrl}/user/${userId}`;
 
@@ -62,12 +63,11 @@ const Meeting = () => {
       console.log("this is error", err);
     }
   };
-  const rescheduleMeeting = async (data, id) => {
+  const rescheduleMeeting = async (id) => {
     setLoading(true);
     try {
       const res = await axios.post(
         `${BaseUrl}/reschedule-meeting`,
-        data,
         { meetingId: id },
         {
           headers: {
