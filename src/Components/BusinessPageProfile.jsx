@@ -35,6 +35,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { CiSaveDown2 } from "react-icons/ci";
 
 const BusinessPageProfile = ({ data }) => {
   const [form, setForm] = useState({
@@ -122,6 +123,12 @@ const BusinessPageProfile = ({ data }) => {
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
       }
+
+      if (res.data?.message.includes("Please submit")) {
+        toast.error(res.data.message);
+      } else {
+        toast.success(res?.data?.message);
+      }
     } catch (err) {
       console.log(err);
       toast.error(
@@ -202,7 +209,7 @@ const BusinessPageProfile = ({ data }) => {
             ) : isSavedUI ? (
               "❤️ Unsave"
             ) : (
-              "🤍 Save"
+              <CiSaveDown2 size={30} />
             )}
           </SaveButton>
 

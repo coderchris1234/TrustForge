@@ -582,13 +582,17 @@ const KycVerification = () => {
                   Previous
                 </BackButton>
               )}
-
-              <NextButton disabled={kycLocked} onClick={handleNext}>
-                {step < totalSteps
-                  ? "Next Step"
-                  : loading
-                  ? "Submitting  Verification..."
-                  : "Submit for Verification"}
+              <NextButton disabled={kycLocked || loading} onClick={handleNext}>
+                {step < totalSteps ? (
+                  "Next Step"
+                ) : loading ? (
+                  <>
+                    <span className="loader"></span>
+                    Submitting Verification...
+                  </>
+                ) : (
+                  "Submit for Verification"
+                )}
               </NextButton>
             </ActionRow>
           </Card>
