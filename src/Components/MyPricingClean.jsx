@@ -38,26 +38,34 @@ const MyPricingClean = () => {
   const handleClick = async (plan) => {
     localStorage.setItem("selectedPlan", JSON.stringify(plan));
     if (!user) return nav("/signup");
-    console.log("user", user?.data?.role);
+
     try {
       const endpoint =
         user?.data?.role === "Investor"
           ? `${BaseUrl}/subscribeInvestor`
           : `${BaseUrl}/subscribeBusinessOwner`;
 
-      // const redirectUrl =
-      //   user?.data?.role === "Investor"
-      //     ? `${window.location.origin}/dashboard/investor/subscription-success`
-      //     : `${window.location.origin}/dashboard/business_owner/subscription-success`;
+      const redirect_url =
+        user?.data?.role === "Investor"
+          ? `${window.location.origin}/dashboard/investor/subscription-success`
+          : `${window.location.origin}/dashboard/business_owner/subscription-success`;
 
       const res = await axios.post(
         endpoint,
-        { price: plan.price },
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          price: plan.price,
+          redirect_url, // <-- REQUIRED
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
-      if (res.data?.data?.url) window.location.href = res.data.data.url;
-      else toast.error("Unable to initiate payment.");
+      if (res.data?.data?.url) {
+        window.location.href = res.data.data.url;
+      } else {
+        toast.error("Unable to initiate payment.");
+      }
     } catch (err) {
       console.error(err.response?.data || err);
       toast.error("Payment error occurred.");
