@@ -105,7 +105,7 @@ export const InvestorMeeting_container = styled.div`
           padding: 0.6rem 1rem;
           font-size: 0.9rem;
           cursor: pointer;
-          border: 1px solid gray;
+          /* border: 1px solid gray; */
         }
         .join_meetings {
           background-color: #0046ff;

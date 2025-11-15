@@ -309,11 +309,12 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Target Market</Label>
-                  <Input
+                  <Textarea
                     value={form.targetMarket}
                     onChange={handleChange}
                     name="targetMarket"
                     placeholder="Who are your target customers?"
+                    row={4}
                   />
                   <FieldRow>
                     <div className="fund">
@@ -385,7 +386,7 @@ const AddBusiness = () => {
                       style={{ display: "none" }}
                       onChange={(e) => handleFileChange(e, "pitchDeck")}
                       name="pitchDeck"
-                      accept=".pdf"
+                      // accept=".pdf"
                     />
                     <UploadBox
                       onClick={() => pitchDeckInputRef.current.click()}
@@ -400,7 +401,7 @@ const AddBusiness = () => {
                       type="file"
                       ref={certInputRef}
                       style={{ display: "none" }}
-                      accept=".pdf"
+                      // accept=".pdf"
                       onChange={(e) =>
                         handleFileChange(e, "businessRegistrationCertificate")
                       }
@@ -444,11 +445,16 @@ const AddBusiness = () => {
             {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
 
             <NextButton onClick={handleNext} disabled={loading}>
-              {step < totalSteps
-                ? "Next Step"
-                : loading
-                ? "Submiting..."
-                : "Submit"}
+              {loading ? (
+                <>
+                  <span className="loader"></span>
+                  Submitting...
+                </>
+              ) : step < totalSteps ? (
+                "Next Step"
+              ) : (
+                "Submit"
+              )}
             </NextButton>
           </ActionRow>
         </Card>

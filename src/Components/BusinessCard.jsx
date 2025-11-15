@@ -109,6 +109,7 @@ const BusinessCard = (props) => {
             <div>
               <CiHeart color="red" /> {props.likeCount} likes
             </div>
+            <div>{props.subscriptionTier === "growth" ? "Trending" : ""}</div>
             <div>
               {/* <FiMessageSquare /> {props.investorInterests} Save */}
             </div>

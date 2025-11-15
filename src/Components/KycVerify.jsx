@@ -291,7 +291,10 @@ const KycVerification = () => {
                         }}
                       />
                     ) : (
-                      <GoUpload size={30} color="grey" />
+                      <span onClick={() => ProfilePicRef.current.click()}>
+                        <GoUpload />
+                      </span>
+                      // <GoUpload size={30} color="blue" />
                     )}
                     <span onClick={() => ProfilePicRef.current.click()}>
                       <GoUpload color="#ffff" />
@@ -396,7 +399,7 @@ const KycVerification = () => {
 
             {step === 2 && (
               <>
-                <p>Investment Profile</p>
+                <h2>Investment Profile</h2>
                 <FieldRow>
                   <Label>Investment Type</Label>
                   <select
@@ -475,12 +478,17 @@ const KycVerification = () => {
               </BackButton>
             )}
 
-            <NextButton disabled={kycLocked} onClick={handleNext}>
-              {step < totalSteps
-                ? "Next Step"
-                : loading
-                ? "Submitting  Verification..."
-                : "Submit for Verification"}
+            <NextButton disabled={kycLocked || loading} onClick={handleNext}>
+              {step < totalSteps ? (
+                "Next Step"
+              ) : loading ? (
+                <>
+                  <span className="loader"></span>
+                  Submitting Verification...
+                </>
+              ) : (
+                "Submit for Verification"
+              )}
             </NextButton>
           </ActionRow>
         </Card>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import { meetings2 } from "../Config/Data";
 import { CiCalendar, CiClock2 } from "react-icons/ci";
+import { CiCircleCheck } from "react-icons/ci";
 
 import { InvestorMeeting_container } from "./InvestorMeeting2Style";
 import { MdOutlineCancel } from "react-icons/md";
@@ -104,17 +105,25 @@ const InvestorMeeting2 = ({
                 onClick={() => {
                   approvedMeeting(id);
                 }}
+                style={{
+                  backgroundColor: "#11d611",
+                }}
               >
                 Accept Meeting
-                <CiClock2 />
+                <CiCircleCheck />
               </div>
             )}
 
             {meetingStatus === "Declined" ||
             meetingStatus === "Reschedule Requested" ? null : (
               <div
-                onClick={() => setOpenModal(true)}
+                onClick={() => {
+                  setOpenModal(true);
+                }}
                 className="schedule_meetings"
+                style={{
+                  backgroundColor: "orange",
+                }}
               >
                 Reschedule
                 <FiRefreshCw size={15} />
@@ -124,6 +133,9 @@ const InvestorMeeting2 = ({
             {meetingStatus !== "Awaiting Approval" &&
             meetingStatus !== "Reschedule Requested" ? null : (
               <div
+                style={{
+                  backgroundColor: "red",
+                }}
                 className="decline_button"
                 onClick={() => {
                   declineMeeting(id);
@@ -214,7 +226,7 @@ const InvestorMeeting2 = ({
 
             <button
               onClick={() => {
-                rescheduleMeeting(form);
+                rescheduleMeeting(id);
               }}
               style={{
                 cursor: "pointer",

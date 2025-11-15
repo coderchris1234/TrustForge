@@ -8,6 +8,55 @@ export const DashboardLayoutContainer = styled.div`
   font-family: "Poppins", sans-serif;
   gap: 2px;
 
+  .logout-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .logout-modal {
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    animation: scaleIn 0.2s ease-out;
+    padding: 3rem 5rem;
+  }
+
+  .logout-modal h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .logout-modal .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logout-btn {
+    background: #e53935;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .cancel-btn {
+    background: #f1f1f1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
   .aside {
     width: 240px;
     height: 100vh;

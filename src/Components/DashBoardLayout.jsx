@@ -7,6 +7,15 @@ import Logo from "../assets/Logo.png";
 import axios from "axios";
 
 const DashBoardLayout = (props) => {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const openLogoutModal = () => setShowLogoutModal(true);
+  const closeLogoutModal = () => setShowLogoutModal(false);
+
+  const confirmLogout = () => {
+    dispatch(logOut());
+    nav("/");
+  };
   const dispatch = useDispatch();
   const nav = useNavigate();
   const user = useSelector((state) => state.TrustForge.user);
@@ -15,11 +24,6 @@ const DashBoardLayout = (props) => {
 
   const [userDetails, setUserDetails] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
-
-  const userLogout = () => {
-    nav("/");
-    dispatch(logOut());
-  };
 
   // console.log("userDetails", userDetails);
 
@@ -83,7 +87,7 @@ const DashBoardLayout = (props) => {
           </div>
           <div className="logout">
             <img src="/public/material-symbols_logout.svg" alt="" />
-            <span style={{ cursor: "pointer" }} onClick={userLogout}>
+            <span style={{ cursor: "pointer" }} onClick={openLogoutModal}>
               Logout
             </span>
           </div>
@@ -117,6 +121,27 @@ const DashBoardLayout = (props) => {
         </header>
         {props.Outlet}
       </div>
+      {showLogoutModal && (
+        <div className="logout-modal-overlay">
+          <div className="logout-modal">
+            <h1>LOG OUT...</h1>
+            <p>
+              Leaving so soon? You'll be logged out of your account, do you want
+              to continue?
+            </p>
+
+            <div className="buttons">
+              <button className="logout-btn" onClick={confirmLogout}>
+                Log me out
+              </button>
+
+              <button className="cancel-btn" onClick={closeLogoutModal}>
+                Stay logged in
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </DashboardLayoutContainer>
   );
 };
