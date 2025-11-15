@@ -14,6 +14,34 @@ export const ForgotPasswordContainer = styled.div`
   font-size: 20px;
   line-height: 24px;
 
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #fff;
+    border-top-color: #00a3ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   @media (max-width: 1024px) {
     flex-direction: column;
     gap: 0;
