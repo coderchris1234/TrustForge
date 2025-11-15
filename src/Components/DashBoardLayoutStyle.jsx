@@ -7,6 +7,7 @@ export const DashboardLayoutContainer = styled.div`
   display: flex;
   font-family: "Poppins", sans-serif;
   gap: 2px;
+  /* background-color: red; */
 
   .logout-modal-overlay {
     position: fixed;
