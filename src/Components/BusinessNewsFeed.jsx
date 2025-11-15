@@ -11,11 +11,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BsBuildings } from "react-icons/bs";
-<<<<<<< HEAD
-=======
 import { CiSaveDown2 } from "react-icons/ci";
 // import { useEffect } from "react";
->>>>>>> 4fc12e5c5283eea95faf177520b0a0f246b1d18c
 
 const BusinessNewsFeed = ({ data }) => {
   const dispatch = useDispatch();
