@@ -3,18 +3,10 @@ import styled from "styled-components";
 export const SubcriptionCard_container = styled.div`
   width: 100%;
   padding: 1rem;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* height: max-content; */
-  background-color: pink;
-
-  .price {
-    background-color: blue;
-    height: max-content;
-    height: 100vh;
-    padding: 2rem;
-  }
+  height: max-content;
 
   h1 {
     font-size: 22px;
