@@ -51,8 +51,6 @@ const InvestorMeeting2 = ({
     }));
   };
 
-  // const textMeetingStatus = "Approved and Upcoming";
-
   console.log(meetingStatus);
   const today = new Date();
   const year = today.getFullYear();
@@ -71,7 +69,6 @@ const InvestorMeeting2 = ({
     .toUpperCase();
 
   return (
-    // 'Awaiting Approval','Approved and Upcoming','Reschedule Requested','Declined','Concluded'
     <InvestorMeeting_container>
       <div className="Invetor_wrapper">
         <div className="tittle">
@@ -171,8 +168,8 @@ const InvestorMeeting2 = ({
               {meetingType}
             </div>
             <div className="time_container">
-              <div className="time">
-                <CiClock2 />
+              <div className="time" style={{display: "flex",width:"4rem", height:"2rem"}}>
+                <CiClock2 size={20} />
                 {time}
               </div>
             </div>

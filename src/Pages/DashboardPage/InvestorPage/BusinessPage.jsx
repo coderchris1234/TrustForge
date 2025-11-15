@@ -23,7 +23,7 @@ const BusinessPage = () => {
       setInvestorCount(res?.data?.investorIntrests);
       console.log("bus", res);
     };
-
+          
     fetchBusiness();
   }, [id]);
   console.log("count", investorCount);
@@ -41,6 +41,8 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
+
+
 
 // import React, { useEffect, useState, useRef } from "react";
 // import BusinessPageProfile from "../../../Components/BusinessPageProfile";
