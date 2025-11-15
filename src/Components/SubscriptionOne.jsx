@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const SubscriptionSuccess = () => {
+const SubscriptionSuccessOne = () => {
   const navigate = useNavigate();
   const { referenceId, amount, fullName } = useParams();
   const handleContinue = () => {
-    navigate("/dashboard/investor");
+    navigate("/dashboard/business_owner");
   };
 
   return (
@@ -33,7 +33,7 @@ const SubscriptionSuccess = () => {
   );
 };
 
-export default SubscriptionSuccess;
+export default SubscriptionSuccessOne;
 
 const SuccessWrapper = styled.div`
   width: 100%;
