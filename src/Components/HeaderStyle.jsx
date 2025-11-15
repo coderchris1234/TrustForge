@@ -17,7 +17,6 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* position: relative; */
   }
 
   .AppLogo {
@@ -28,7 +27,6 @@ export const HeaderContainer = styled.header`
     img {
       max-height: 4rem;
       max-width: 200px;
-
       object-fit: contain;
     }
   }
@@ -122,6 +120,7 @@ export const HeaderContainer = styled.header`
     color: var(--primary_color_500);
   }
 
+  /* ---------- MOBILE ---------- */
   @media (max-width: 768px) {
     .MenuIcon {
       display: block;
@@ -131,6 +130,7 @@ export const HeaderContainer = styled.header`
       display: none;
     }
 
+    /* Mobile nav when open */
     nav.MobileNav {
       display: flex;
       flex-direction: column;
@@ -139,46 +139,85 @@ export const HeaderContainer = styled.header`
       position: absolute;
       top: 4.3rem;
       left: 0;
-      right: 0px;
+      right: 0;
       z-index: 9999;
       height: max-content;
       align-items: center;
 
-      ul {
-        flex-direction: column;
-        align-items: flex-start;
-        /* padding: 1rem; */
-        margin-bottom: 1rem;
-        width: 100%;
-        gap: 2rem;
-      }
+      /* add horizontal padding so items don't touch edges */
+      padding: 12px 14px;
+      box-sizing: border-box;
+      gap: 10px;
+    }
 
-      .Link {
-        width: 100%;
-        height: 40px;
-        li {
-          padding: 0.5rem 0.5rem;
-          border: 1px solid black;
-          width: 100%;
-          border-radius: 8px;
-        }
-      }
+    /* vertical list, tighter spacing */
+    nav.MobileNav ul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem; /* reduced gap */
+      padding: 0;
+      margin: 0;
+    }
 
-      .Auth_Button.mobile {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        width: 100%;
-        /* padding: 1rem; */
-        gap: 0.75rem;
+    /* each link wrapper spans full width and uses box-sizing */
+    nav.MobileNav .Link {
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-        .Btn_Login,
-        .Btn_Login2 {
-          width: 100%;
-          font-size: 1rem;
-        }
-      }
+    /* style individual li as a boxed item (like your screenshot) */
+    nav.MobileNav .Link li {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid #e6e7ea;
+      background: #ffffff;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--neutral_black_color);
+      transition: border-color 140ms ease, color 140ms ease;
+    }
+
+    /* active link look */
+    nav.MobileNav .Link.active li {
+      border-color: var(--primary_color_500);
+      color: var(--primary_color_500);
+      font-weight: 600;
+    }
+
+    /* auth buttons stacked and full-width, slightly tighter */
+    nav.MobileNav .Auth_Button.mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      width: 100%;
+      gap: 0.6rem;
+      margin-top: 6px;
+    }
+
+    /* Login (outline) */
+    nav.MobileNav .Auth_Button.mobile .Btn_Login {
+      width: 100%;
+      height: 2.75rem;
+      border-radius: 10px;
+      border: 2px solid var(--primary_color_500);
+      background: transparent;
+      color: var(--primary_color_500);
+      font-size: 1rem;
+    }
+
+    /* Get started (filled) */
+    nav.MobileNav .Auth_Button.mobile .Btn_Login2 {
+      width: 100%;
+      height: 2.75rem;
+      border-radius: 10px;
+      background: var(--primary_color_500);
+      color: #fff;
+      font-size: 1rem;
+      border: none;
     }
 
     .Auth_Button.desktop {
@@ -186,6 +225,7 @@ export const HeaderContainer = styled.header`
     }
   }
 
+  /* ---------- SMALL PHONES ---------- */
   @media (max-width: 480px) {
     .AppLogo {
       justify-content: flex-start;
@@ -194,6 +234,28 @@ export const HeaderContainer = styled.header`
     .AppLogo img {
       max-width: 100px;
       max-height: 2rem;
+    }
+
+    /* slightly reduce padding on very small screens */
+    nav.MobileNav {
+      padding-left: 10px;
+      padding-right: 10px;
+      gap: 8px;
+    }
+
+    nav.MobileNav ul {
+      gap: 0.5rem;
+    }
+
+    nav.MobileNav .Link li {
+      padding: 0.55rem 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    nav.MobileNav .Auth_Button.mobile .Btn_Login,
+    nav.MobileNav .Auth_Button.mobile .Btn_Login2 {
+      height: 2.4rem;
+      font-size: 0.95rem;
     }
   }
 `;
