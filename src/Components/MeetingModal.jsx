@@ -116,7 +116,6 @@ const MeetingModal = ({ open, close, businessId }) => {
           >
             <option value="">Select meeting type</option>
             <option value="Virtual">Virtual</option>
-            <option value="Physical">Physical</option>
           </select>
 
           <div>
