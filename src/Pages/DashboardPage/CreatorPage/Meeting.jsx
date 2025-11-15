@@ -63,18 +63,14 @@ const Meeting = () => {
       console.log("this is error", err);
     }
   };
-  const rescheduleMeeting = async (id) => {
+  const rescheduleMeeting = async (data) => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        `${BaseUrl}/reschedule-meeting`,
-        { meetingId: id },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
       toast.success("Reschedule meeting sent successfully");
 
       setLoading(false);

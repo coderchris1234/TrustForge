@@ -168,7 +168,10 @@ const InvestorMeeting2 = ({
               {meetingType}
             </div>
             <div className="time_container">
-              <div className="time" style={{display: "flex",width:"4rem", height:"2rem"}}>
+              <div
+                className="time"
+                style={{ display: "flex", width: "4rem", height: "2rem" }}
+              >
                 <CiClock2 size={20} />
                 {time}
               </div>
@@ -226,7 +229,7 @@ const InvestorMeeting2 = ({
 
             <button
               onClick={() => {
-                rescheduleMeeting(id);
+                rescheduleMeeting(form);
               }}
               style={{
                 cursor: "pointer",

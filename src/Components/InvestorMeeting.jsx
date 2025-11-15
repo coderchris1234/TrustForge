@@ -79,7 +79,8 @@ const InvestorMeeting = ({
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {meetingStatus === "Awaiting Approval" ? (
+            {meetingStatus === "Awaiting Approval" ||
+            meetingStatus === "Reschedule Requested" ? (
               <div className="awaiting">
                 Awaiting Response
                 <CiClock2 />
