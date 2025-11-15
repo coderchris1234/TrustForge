@@ -92,9 +92,6 @@ const Meeting2 = () => {
         <div className="upcoming">
           Upcoming <span>{allMeeting?.meetings?.length}</span>
         </div>
-        {/* <div className="coming">
-          Coming <span></span>
-        </div> */}
       </div>
       {allMeeting?.meetings?.length > 0 ? (
         allMeeting?.meetings?.map((biz) => (
