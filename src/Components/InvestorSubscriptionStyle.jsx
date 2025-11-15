@@ -2,13 +2,9 @@ import styled, { css } from "styled-components";
 
 /* Page wrapper */
 export const Page = styled.div`
-  /* max-width: 980px; */
   width: 100%;
   padding: 20px;
-  /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial; */
-  height: 80vh;
-  margin: 0 auto;
+  height: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +12,6 @@ export const Page = styled.div`
 
   @media (max-width: 768px) {
     padding: 16px;
-    height: max-content;
   }
 
   @media (max-width: 480px) {
@@ -28,10 +23,9 @@ export const Page = styled.div`
 export const ToggleRow = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   gap: 10px;
   flex-wrap: wrap;
-  /* background-color: red; */
   width: 100%;
   height: 50px;
 
@@ -40,7 +34,6 @@ export const ToggleRow = styled.div`
   }
 `;
 
-/* Toggle button (pill) */
 export const ToggleButton = styled.button`
   border: 1px solid #d1d5db;
   padding: 6px 20px;
@@ -69,40 +62,35 @@ export const ToggleButton = styled.button`
   }
 `;
 
-/* Cards row */
+/* Cards row: use flex so we can stretch children to same height */
 export const CardsRow = styled.div`
   display: flex;
-  /* grid-template-columns: repeat(3, 1fr); */
   gap: 20px;
-  height: max-content;
+  width: 95%;
   justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 100%;
+  align-items: stretch; /* <-- important: stretch children to same height */
+  flex-wrap: wrap; /* allow wrapping for smaller screens */
+  box-sizing: border-box;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
   }
 `;
 
-/* Individual card */
+/* Each Card is a column flex container so we can manage header/feature/footer layout */
 export const Card = styled.div`
   border-radius: 12px;
   background: #fff;
   padding: 18px;
-  min-height: 600px;
   border: 2px solid #e5e7eb;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 80%;
-  height: 100%;
+  flex-direction: column; /* column layout: header -> features -> footer */
+  justify-content: flex-start;
+  width: calc(33.333% - 13.333px); /* three cards per row by default; adjust as needed */
+  box-sizing: border-box;
+  /* ensure all cards share same available height in a row */
+  flex: 1 1 calc(33.333% - 13.333px);
 
   ${(p) =>
     p.featured &&
@@ -111,21 +99,35 @@ export const Card = styled.div`
       box-shadow: 0 10px 30px rgba(43, 107, 255, 0.08);
     `}
 
-  @media (max-width: 480px) {
-    padding: 16px;
-    min-height: auto;
-    width: 100%;
+  @media (max-width: 1024px) {
+    /* two cards per row on medium screens */
+    width: calc(50% - 10px);
+    flex: 1 1 calc(50% - 10px);
   }
+
+  @media (max-width: 768px) {
+    /* single column on small/mobile */
+    width: 100%;
+    flex: 1 1 100%;
+    padding: 16px;
+  }
+
+  /* IMPORTANT: ensure card takes full height when parent stretches */
+  /* If you need a minimum height for visual balance, set it here */
+  min-height: 18rem;
 `;
 
 /* Header row inside card */
+/* Give header a consistent minimum height so Features start at same vertical offset */
 export const CardHeader = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
+  /* set a min-height so the area above features is consistent across cards */
+  min-height: 4.5rem; /* adjust this value until Features line up perfectly */
 `;
 
-/* small icon square at top-left */
+/* small icon box */
 export const CardIcon = styled.div`
   width: 44px;
   height: 44px;
@@ -137,7 +139,6 @@ export const CardIcon = styled.div`
   color: #1e3a8a;
 `;
 
-/* Title */
 export const CardTitle = styled.h3`
   margin: 0;
   font-size: 16px;
@@ -148,7 +149,6 @@ export const CardTitle = styled.h3`
   }
 `;
 
-/* small pill under title */
 export const PillSmall = styled.div`
   margin-top: 6px;
   font-size: 12px;
@@ -175,16 +175,21 @@ export const PriceUnit = styled.span`
 `;
 
 /* features list */
+/* Keep it a column and allow it to grow/shrink; use padding-top if you need extra spacing */
 export const Features = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-right: 4px;
+  margin-top: 50px; /* small gap between header/price and features */
 
   span {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
+
+  /* make features area flexible so footer stays pinned to bottom */
+  flex: 1 1 auto;
 `;
 
 export const FeatureItem = styled.div`

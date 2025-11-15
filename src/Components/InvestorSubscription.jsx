@@ -1,4 +1,3 @@
-// Pricing.jsx
 import React, { useState } from "react";
 import {
   Page,
@@ -20,7 +19,7 @@ import {
 import { annualPlans } from "../Config/Data";
 import { monthlyPlans } from "../Config/Data";
 const InvestorSubscription = () => {
-  const [mode, setMode] = useState("monthly");
+  const [mode, setMode] = useState("monthly"); 
   const plans = mode === "monthly" ? monthlyPlans : annualPlans;
 
   return (

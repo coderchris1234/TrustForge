@@ -94,16 +94,25 @@ const HelpSupport = () => {
     <Wrapper>
       <h3>Help & Support</h3>
       <p>Get help and answers to common questions</p>
+
       <Section>
         <h2>❓ Frequently Asked Questions</h2>
         {Object.entries(faqs).map(([question, answer], index) => (
-          <FAQItem key={index} onClick={() => toggleFAQ(index)}>
+          <FAQItem
+            key={index}
+            onClick={() => toggleFAQ(index)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => (e.key === "Enter" ? toggleFAQ(index) : null)}
+          >
             <QuestionRow>
-              <span>{question}</span>
+              <QuestionText>{question}</QuestionText>
               <Arrow open={expandedIndex === index}>
                 <RiArrowDropDownLine
                   style={{
-                    fontSize: "25px",
+                    fontSize: "26px",
+                    display: "block",
+                    lineHeight: 1,
                   }}
                 />
               </Arrow>
@@ -116,36 +125,32 @@ const HelpSupport = () => {
       <Section>
         <h2>Submit a Support Ticket</h2>
         <Form onSubmit={handleSubmitTicket}>
-          <label>Subject</label>
+          <label htmlFor="title">Subject</label>
           <input
+            id="title"
             type="text"
             name="title"
             value={ticket.title}
             onChange={handleTicketChange}
             placeholder="Brief discussion of your issue"
           />
-          <label>Message</label>
+          <label htmlFor="description">Message</label>
           <textarea
+            id="description"
             name="description"
             value={ticket.description}
             onChange={handleTicketChange}
             placeholder="Describe your issue in detail"
           />
-          <label>Attachment (optional)</label>
-          <input type="file" name="file" onChange={handleTicketChange} />
+          <label htmlFor="file">Attachment (optional)</label>
+          <input id="file" type="file" name="file" onChange={handleTicketChange} />
           <button type="submit" disabled={submitting}>
             {submitting ? "Submitting..." : "Submit Ticket"}
           </button>
           {feedback && (
-            <p
-              style={{
-                marginTop: "1rem",
-                color: "#f31111ff",
-                fontSize: "18px",
-              }}
-            >
+            <Feedback success={feedback.startsWith("✅")}>
               {feedback}
-            </p>
+            </Feedback>
           )}
         </Form>
       </Section>
@@ -165,25 +170,55 @@ const HelpSupport = () => {
   );
 };
 
+
+const breakpoints = {
+  mobile: "480px",
+  mobileLarge: "720px", 
+  tablet: "1024px", 
+};
+
 const Wrapper = styled.div`
   padding: 2rem;
-  width: 90%;
-  /* max-width: 800px; */
-  margin: auto;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   font-family: Poppins, sans-serif;
-  /* background-color: #f9f9f9; */
+  box-sizing: border-box;
+  color: #1b1b1b;
 
   h3 {
     font-size: 22px;
+    margin: 0 0 6px 0;
+  }
+
+  p {
+    margin: 0 0 18px 0;
+    color: #555;
+    font-size: 15px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1.5rem;
+    max-width: 960px;
+  }
+
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    padding: 1rem;
+    max-width: 95%;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0.8rem;
+    max-width: 100%;
   }
 `;
 
 const Section = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 1.6rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 
   h2 {
     font-size: 20px;
@@ -196,70 +231,185 @@ const Section = styled.div`
     margin-bottom: 0.5rem;
     display: block;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1.25rem;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 1rem;
+  }
 `;
 
 const FAQItem = styled.div`
   border-bottom: 1px solid #eee;
   padding: 1rem 0;
   cursor: pointer;
+  width: 100%;
+  touch-action: manipulation; 
+  user-select: none;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0.9rem 0;
+  }
 `;
 
 const QuestionRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  width: 100%;
   font-weight: 600;
   color: #1b1b1b;
   font-size: 16px;
+  line-height: 1.25;
+  flex-wrap: nowrap; 
+
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    font-size: 15px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 14px;
+  }
+`;
+
+const QuestionText = styled.div`
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 `;
 
 const Arrow = styled.span`
-  font-size: 18px;
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: transform 0.25s ease;
   transform: ${({ open }) => (open ? "rotate(180deg)" : "rotate(0deg)")};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 22px;
+  }
 `;
 
 const Answer = styled.div`
-  margin-top: 0.5rem;
-  padding-left: 1rem;
+  margin-top: 0.6rem;
+  padding-left: 0.6rem;
   color: #333;
   font-size: 14px;
+  line-height: 1.45;
+
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    padding-left: 0.4rem;
+    font-size: 13.5px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding-left: 0;
+    font-size: 13px;
+  }
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  width: 100%;
 
   input,
   textarea {
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #d0d7dd;
     font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
     background-color: #fafafa;
+    min-height: 44px;
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  /* file input - make it easier to tap */
+  input[type="file"] {
+    padding: 0.6rem;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
   }
 
   button {
     background-color: #00a3ff;
     color: white;
     border: none;
-    padding: 0.8rem;
-    border-radius: 8px;
+    padding: 0.95rem 1rem;
+    border-radius: 10px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 15px;
+    min-height: 48px;
+    transition: background-color 140ms ease, transform 80ms ease;
+    width: 220px; /* desktop width */
+    justify-self: start;
+  }
 
-    &:hover {
-      background-color: #007acc;
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  button:active {
+    transform: translateY(1px);
+  }
+
+  button:hover {
+    background-color: #007acc;
+  }
+
+  /* Tablet: button slightly wider and layout comfortable */
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 0.85rem;
+
+    button {
+      width: 260px;
+    }
+  }
+
+  /* Mobile: make button full width so it's easy to tap */
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    button {
+      width: 100%;
+      justify-self: stretch;
     }
   }
 `;
 
+/* feedback text - green for success, red for error */
+const Feedback = styled.p`
+  margin-top: 1rem;
+  color: ${({ success }) => (success ? "#0a8a00" : "#f31111")};
+  font-size: 15px;
+`;
+
+/* Contact */
 const Contact = styled.div`
   p {
     font-size: 14px;
     margin: 0.5rem 0;
     color: #333;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    p {
+      font-size: 13px;
+    }
   }
 `;
 

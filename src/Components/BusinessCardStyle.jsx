@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 export const BusinessContainer = styled.div`
-  /* margin-bottom: 0.3rem; */
   padding: 0.5rem;
   width: 100%;
 
@@ -54,6 +52,7 @@ export const BusinessContainer = styled.div`
           }
         }
       }
+
       .btn {
         display: flex;
         flex-direction: column;
@@ -88,7 +87,6 @@ export const BusinessContainer = styled.div`
     .under {
       display: flex;
       justify-content: space-between;
-      /* background-color: orange; */
       width: 85%;
       align-items: center;
 
@@ -101,6 +99,56 @@ export const BusinessContainer = styled.div`
           align-items: center;
           gap: 0.3rem;
         }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .businessContainer {
+      display: flex;
+      flex-direction: column;
+      padding: 0.8rem;
+      width: 100%;
+    }
+
+    .businessContent {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .business {
+      width: 100%;
+
+      .set {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+    }
+
+    .under {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+
+      .extra {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+    }
+
+    .btn {
+      flex-direction: row; 
+      justify-content: flex-end; 
+      gap: 0.6rem; 
+      margin-top: 0.8rem; 
+      width: 100%;
+
+      .bt {
+        padding: 0.45rem 0.8rem;
       }
     }
   }

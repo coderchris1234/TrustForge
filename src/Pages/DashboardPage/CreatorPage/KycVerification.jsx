@@ -168,6 +168,8 @@ const KycVerification = () => {
       });
       toast.success("KYC has been sent successfully ");
       setLoading(false);
+
+      setUserKYC("under review");
       setStep(4);
       console.log("omo", res);
     } catch (error) {
@@ -196,6 +198,7 @@ const KycVerification = () => {
       });
     }
   };
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -501,16 +504,21 @@ const KycVerification = () => {
                       onChange={handleChange}
                       name="accountNumber"
                       placeholder="Enter account number"
+                      maxLength={10}
                     />
                   </FieldRow>
                   <FieldRow>
                     <Label>Account Type</Label>
-                    <Input
+                    <select
+                      name="accountType"
                       value={formData.accountType}
                       onChange={handleChange}
-                      name="accountType"
-                      placeholder="Enter account type"
-                    />
+                      className="inputSelect"
+                    >
+                      <option value="">Select account type</option>
+                      <option value="Current">Current</option>
+                      <option value="Savings">Savings</option>
+                    </select>
                   </FieldRow>
                 </>
               )}
@@ -574,13 +582,17 @@ const KycVerification = () => {
                   Previous
                 </BackButton>
               )}
-
-              <NextButton disabled={kycLocked} onClick={handleNext}>
-                {step < totalSteps
-                  ? "Next Step"
-                  : loading
-                  ? "Submitting  Verification..."
-                  : "Submit for Verification"}
+              <NextButton disabled={kycLocked || loading} onClick={handleNext}>
+                {step < totalSteps ? (
+                  "Next Step"
+                ) : loading ? (
+                  <>
+                    <span className="loader"></span>
+                    Submitting Verification...
+                  </>
+                ) : (
+                  "Submit for Verification"
+                )}
               </NextButton>
             </ActionRow>
           </Card>

@@ -13,6 +13,7 @@ const Meeting = () => {
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const [loading, setLoading] = useState(false);
+  console.log("userToken", token);
 
   const endpoint = `${BaseUrl}/user/${userId}`;
 
@@ -20,6 +21,7 @@ const Meeting = () => {
     try {
       const res = await axios.get(endpoint);
       setAllMeeting(res.data.data || {});
+      console.log("all meeting", allMeeting);
     } catch (err) {
       console.error("Error fetching overview data:", err);
     }
@@ -69,14 +71,14 @@ const Meeting = () => {
           authorization: `Bearer ${token}`,
         },
       });
-      toast.success(res?.data?.message);
+      toast.success("Reschedule meeting sent successfully");
 
       setLoading(false);
       fetchData();
       console.log(res);
     } catch (err) {
       setLoading(false);
-      console.log("this is error", err);
+      toast.error(err?.res?.message);
     }
   };
 

@@ -9,6 +9,10 @@ export const PageWrap = styled.div`
   justify-content: center;
   box-sizing: border-box;
   padding-right: 5rem;
+
+  @media (max-width: 480px) {
+    padding: 18px 16px;
+  }
 `;
 
 export const Card = styled.div`
@@ -18,6 +22,12 @@ export const Card = styled.div`
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 18px;
+    width: 100%;
+    border-radius: 10px;
+  }
 `;
 
 export const TitleBlock = styled.div`
@@ -29,12 +39,20 @@ export const MainTitle = styled.h1`
   margin: 0;
   color: #111827;
   font-weight: 600;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 export const SubTitle = styled.p`
   margin: 6px 0 0;
   color: #6b7280;
   font-size: 13px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 export const StepInfo = styled.div`
@@ -47,6 +65,11 @@ export const StepInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    gap: 12px;
+  }
 `;
 
 export const StepLabel = styled.div`
@@ -54,6 +77,11 @@ export const StepLabel = styled.div`
   color: #336bff;
   margin-bottom: 8px;
   font-size: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
 `;
 
 export const ProgressBar = styled.div`
@@ -62,6 +90,10 @@ export const ProgressBar = styled.div`
   background: #e6e9ef;
   border-radius: 6px;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    height: 5px;
+  }
 `;
 
 export const ProgressFill = styled.div`
@@ -77,12 +109,27 @@ export const StepNames = styled.div`
   gap: 0;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 480px) {
+    margin-top: 8px;
+    justify-content: flex-start;
+    gap: 8px;
+    /* allow compact appearance on mobile */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
 `;
 
 export const StepName = styled.div`
   font-size: 16px;
   color: ${(p) => (p.active ? "#336bff" : "#9ca3af")};
   font-weight: ${(p) => (p.active ? 600 : 500)};
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    white-space: nowrap;
+  }
 `;
 
 export const FormArea = styled.div`
@@ -91,12 +138,22 @@ export const FormArea = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    gap: 0.9rem;
+    padding-bottom: 18px;
+  }
 `;
 
 export const SectionTitle = styled.h3`
   margin: 6px 0 18px;
   font-size: 1.5rem;
   color: #111827;
+
+  @media (max-width: 480px) {
+    margin: 6px 0 12px;
+    font-size: 1.15rem;
+  }
 `;
 
 export const FieldRow = styled.div`
@@ -104,6 +161,14 @@ export const FieldRow = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 14px;
+
+  .inputSelect {
+    background-color: #f3f5f8;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.2rem;
+    border-radius: 5px;
+  }
 
   .fund {
     padding-top: 1rem;
@@ -149,6 +214,27 @@ export const FieldRow = styled.div`
       gap: 0.5rem;
     }
   }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-bottom: 12px;
+
+    .fund {
+      flex-direction: column;
+      gap: 8px;
+
+      div {
+        width: 100%;
+      }
+    }
+
+    .submission {
+      padding: 12px;
+      ul {
+        padding-left: 1.25rem;
+      }
+    }
+  }
 `;
 
 export const Label = styled.label`
@@ -159,6 +245,11 @@ export const Label = styled.label`
   &::after {
     content: "*";
     color: red;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
   }
 `;
 
@@ -175,6 +266,11 @@ export const Input = styled.input`
     box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
     background: #fff;
   }
+
+  @media (max-width: 480px) {
+    height: 42px;
+    font-size: 13px;
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -189,11 +285,21 @@ export const Textarea = styled.textarea`
     box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
     background: #fff;
   }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
 `;
 
 export const UploadWrapper = styled.div`
   display: flex;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 export const UploadBox = styled.div`
@@ -211,6 +317,12 @@ export const UploadBox = styled.div`
   font-size: 13px;
   background: #fafafa;
   color: var(--primary_color_400);
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 1rem;
+    font-size: 13px;
+  }
 `;
 
 export const ActionRow = styled.div`
@@ -218,6 +330,14 @@ export const ActionRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
+
+  @media (max-width: 480px) {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
 `;
 
 export const BackButton = styled.button`
@@ -232,6 +352,11 @@ export const BackButton = styled.button`
     color: #c7ccd4;
     cursor: not-allowed;
   }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
 `;
 
 export const NextButton = styled.button`
@@ -242,7 +367,20 @@ export const NextButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+
   &:hover {
     background: #007ad9;
   }
+
+  @media (max-width: 480px) {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+    margin-left: auto;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #00a3ff; /* optional: keep background same on disabled */
+  }
+}
 `;

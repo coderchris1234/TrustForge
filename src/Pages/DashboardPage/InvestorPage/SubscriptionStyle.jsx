@@ -27,13 +27,10 @@ export const SubcriptionCard_container = styled.div`
     width: 100%;
     background-color: #ffffff;
     padding: 1rem;
-    margin-top: 2rem;
     gap: 1rem;
     display: flex;
     flex-direction: column;
     border-radius: 0.8rem;
-    /* height: auto; */
-    /* min-height: 200px; */
     box-sizing: border-box;
     height: max-content;
   }

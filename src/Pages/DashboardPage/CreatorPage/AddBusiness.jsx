@@ -162,8 +162,12 @@ const AddBusiness = () => {
     if (step > 1) setStep((s) => s - 1);
   };
 
-  const handleChange = (e) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
+    setForm((prev) => ({ ...prev, [name]: capitalized }));
+  };
+  // setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   return (
     <>
@@ -209,12 +213,24 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Industry</Label>
-                  <Input
+                  <select
                     name="industry"
                     value={form.industry}
                     onChange={handleChange}
-                    placeholder="Enter your industry"
-                  />
+                    className="inputSelect"
+                  >
+                    <option value="">Select industry</option>
+                    <option value="AI">AI</option>
+                    <option value="FinTech">FinTech</option>
+                    <option value="HealthTech">HealthTech</option>
+                    <option value="EdTech">EdTech</option>
+                    <option value="Green Tech / Agriculture">
+                      Green Tech / Agriculture
+                    </option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Retail">Retail</option>
+                  </select>
                 </FieldRow>
 
                 <FieldRow>
@@ -293,11 +309,12 @@ const AddBusiness = () => {
 
                 <FieldRow>
                   <Label>Target Market</Label>
-                  <Input
+                  <Textarea
                     value={form.targetMarket}
                     onChange={handleChange}
                     name="targetMarket"
                     placeholder="Who are your target customers?"
+                    row={4}
                   />
                   <FieldRow>
                     <div className="fund">
@@ -319,7 +336,7 @@ const AddBusiness = () => {
                         </select>
                       </div>
                       <div>
-                        <Label>Funding Sought</Label>
+                        <Label>Capital Needed</Label>
                         <input
                           type="num"
                           placeholder="e.g..., ₦700,000"
@@ -369,6 +386,7 @@ const AddBusiness = () => {
                       style={{ display: "none" }}
                       onChange={(e) => handleFileChange(e, "pitchDeck")}
                       name="pitchDeck"
+                      // accept=".pdf"
                     />
                     <UploadBox
                       onClick={() => pitchDeckInputRef.current.click()}
@@ -383,6 +401,7 @@ const AddBusiness = () => {
                       type="file"
                       ref={certInputRef}
                       style={{ display: "none" }}
+                      // accept=".pdf"
                       onChange={(e) =>
                         handleFileChange(e, "businessRegistrationCertificate")
                       }
@@ -425,12 +444,17 @@ const AddBusiness = () => {
           <ActionRow>
             {step > 1 && <BackButton onClick={handleBack}>Previous</BackButton>}
 
-            <NextButton onClick={handleNext}>
-              {step < totalSteps
-                ? "Next Step"
-                : loading
-                ? "Submiting..."
-                : "Submit"}
+            <NextButton onClick={handleNext} disabled={loading}>
+              {loading ? (
+                <>
+                  <span className="loader"></span>
+                  Submitting...
+                </>
+              ) : step < totalSteps ? (
+                "Next Step"
+              ) : (
+                "Submit"
+              )}
             </NextButton>
           </ActionRow>
         </Card>
