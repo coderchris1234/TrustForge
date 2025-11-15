@@ -9,6 +9,16 @@ export const ProgressCard = styled.div`
   width: 100%;
   box-sizing: border-box;
   position: relative;
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    padding: 20px 18px;
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    padding: 18px 15px;
+  }
 `;
 
 export const Header = styled.h3`
@@ -16,6 +26,11 @@ export const Header = styled.h3`
   font-size: 18px;
   font-weight: 700;
   color: #111827;
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
 `;
 
 export const GridRow = styled.div`
@@ -24,6 +39,18 @@ export const GridRow = styled.div`
   gap: 8px 24px;
   align-items: center;
   margin-bottom: 18px;
+
+  /* Tablet → 2 columns */
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 20px;
+  }
+
+  /* Mobile → 1 column */
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 `;
 
 export const GridItem = styled.div`
@@ -35,12 +62,20 @@ export const Label = styled.span`
   font-size: 13px;
   color: #6b7280;
   margin-bottom: 6px;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 export const Amount = styled.span`
   font-size: 20px;
   font-weight: 700;
   color: #111827;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
 export const BarWrap = styled.div`
@@ -55,6 +90,10 @@ export const BarTrack = styled.div`
   background: rgba(17, 24, 39, 0.08);
   border-radius: 8px;
   overflow: hidden;
+
+  @media (max-width: 600px) {
+    height: 8px;
+  }
 `;
 
 export const BarFill = styled.div`
@@ -68,6 +107,10 @@ export const ProgressNote = styled.div`
   font-size: 14px;
   color: #374151;
   margin-top: 8px;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
 export const RightNote = styled.div`
@@ -76,4 +119,10 @@ export const RightNote = styled.div`
   bottom: 12px;
   font-size: 13px;
   color: #111827;
+
+  @media (max-width: 600px) {
+    right: 10px;
+    bottom: 10px;
+    font-size: 12px;
+  }
 `;

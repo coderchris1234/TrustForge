@@ -296,6 +296,12 @@ export const InvestorMeeting_container = styled.div`
   }
 `;
 
+const breakpoints = {
+  mobile: "480px",
+  mobileLarge: "768px",
+  tablet: "1024px",
+};
+
 export const ModalOverLay = styled.div`
   position: fixed;
   inset: 0;
@@ -304,33 +310,52 @@ export const ModalOverLay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
+  padding: 20px; /* keep some space on small screens */
+  box-sizing: border-box;
+
+  /* allow vertical scrolling on tiny screens and keep modal away from edges */
+  @media (max-width: ${breakpoints.mobile}) {
+    align-items: flex-start;
+    padding-top: 28px;
+    overflow-y: auto;
+  }
 `;
 
 export const ModalBox = styled.div`
   background: white;
   width: 30%;
+  max-width: 900px;
+  min-width: 320px;
   padding: 25px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   animation: pop 0.25s ease;
+  box-sizing: border-box;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
 
   .workin {
     display: flex;
     justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .InputContainer {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+    width: 100%;
 
     div {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
       flex: 1;
+      min-width: 0; /* helps children shrink in flex */
     }
   }
 
@@ -344,6 +369,8 @@ export const ModalBox = styled.div`
     border-radius: 8px;
     outline: none;
     border: 1px solid #ddd;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   button {
@@ -352,5 +379,102 @@ export const ModalBox = styled.div`
     color: #ffff;
     padding: 1rem;
     border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* ---------------- Tablet ---------------- */
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: calc(100vh - 40px);
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .InputContainer {
+      gap: 1rem;
+    }
+
+    input {
+      padding: 9px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 0.9rem;
+      font-size: 14px;
+    }
+  }
+
+  /* --------- Large phones / small tablets --------- */
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    width: 85%;
+    padding: 18px;
+    border-radius: 10px;
+
+    .workin {
+      gap: 8px;
+    }
+
+    .InputContainer {
+      gap: 0.8rem;
+      /* stack inputs vertically on smaller devices for comfortable tap targets */
+      flex-direction: column;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%; /* full-width button for easier tapping */
+      padding: 0.9rem;
+    }
+  }
+
+  /* --------- Small phones --------- */
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    min-width: 0;
+    max-height: calc(100vh - 28px);
+
+    .workin {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .InputContainer {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 15px;
+    }
+  }
+
+  /* small pop animation fallback if needed */
+  @keyframes pop {
+    from {
+      transform: scale(0.98);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 `;

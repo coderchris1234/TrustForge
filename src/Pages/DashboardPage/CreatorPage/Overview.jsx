@@ -32,14 +32,12 @@ const Overview = () => {
         } catch (err) {
           console.error("Error fetching overview data:", err);
         } finally {
-          // setLoading(false);
         }
       };
 
       fetchData();
     } catch (error) {
       console.error("Error reading persisted user:", error);
-      // setLoading(false);
     }
   }, [userId]);
 

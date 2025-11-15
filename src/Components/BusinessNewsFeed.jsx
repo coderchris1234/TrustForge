@@ -11,7 +11,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BsBuildings } from "react-icons/bs";
-// import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
   const dispatch = useDispatch();
@@ -209,7 +208,7 @@ const BusinessNewsFeed = ({ data }) => {
                     onClick={async () => {
                       const allowed = await handleView(post.id);
 
-                      if (!allowed) return; // subscription expired, stop everything
+                      if (!allowed) return; 
 
                       nav(
                         `/dashboard/investor/business/${post.businessName}/${post.id}`
