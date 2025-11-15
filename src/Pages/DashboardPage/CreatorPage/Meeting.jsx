@@ -20,6 +20,7 @@ const Meeting = () => {
     try {
       const res = await axios.get(endpoint);
       setAllMeeting(res.data.data || {});
+      console.log("all meeting", allMeeting);
     } catch (err) {
       console.error("Error fetching overview data:", err);
     }
