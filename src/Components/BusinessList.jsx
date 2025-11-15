@@ -9,7 +9,7 @@ const BusinessList = ({ overviewData }) => {
       {overviewData?.businesses?.length > 0
         ? overviewData.businesses.map((item) => (
             <div className="omo">
-              <BusinessCard {...item} />
+              <BusinessCard allBusiness={overviewData} {...item} />
             </div>
           ))
         : "No Recent Ideas"}

@@ -21,6 +21,21 @@ export const BusinessContainer = styled.div`
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 0.5rem;
+
+          .Trending {
+            font-size: 0.5rem;
+            background: var(--secondary_color_500);
+            padding: 4px;
+            border-radius: 1rem;
+            color: black;
+          }
+          .popular {
+            font-size: 0.5rem;
+            background: var(--accent_color_500);
+            padding: 4px;
+            border-radius: 1rem;
+            color: black;
+          }
         }
         .set {
           display: flex;
@@ -141,10 +156,10 @@ export const BusinessContainer = styled.div`
     }
 
     .btn {
-      flex-direction: row; 
-      justify-content: flex-end; 
-      gap: 0.6rem; 
-      margin-top: 0.8rem; 
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
       width: 100%;
 
       .bt {

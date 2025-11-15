@@ -375,7 +375,6 @@ const Form = styled.form`
     background-color: #007acc;
   }
 
-  /* Tablet: button slightly wider and layout comfortable */
   @media (max-width: ${breakpoints.tablet}) {
     gap: 0.85rem;
 

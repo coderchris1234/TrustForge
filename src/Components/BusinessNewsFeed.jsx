@@ -210,7 +210,7 @@ const BusinessNewsFeed = ({ data }) => {
                     onClick={async () => {
                       const allowed = await handleView(post.id);
 
-                      if (!allowed) return; // subscription expired, stop everything
+                      if (!allowed) return; 
 
                       nav(
                         `/dashboard/investor/business/${post.businessName}/${post.id}`
