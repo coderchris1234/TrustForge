@@ -10,10 +10,7 @@ const Subscription2 = () => {
         <p>Choose the perfect plan for your needs. </p>
       </div>
       {/* Render the two-plan MyPricing component */}
-      <div className="price">
-        <MyPricing />
-      </div>
-
+      <MyPricing />
       {/* <InvestorSubscription /> */}
       <div className="Ask_question_wrapper">
         <h2>Frequently Asked Questions</h2>
