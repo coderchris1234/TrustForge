@@ -175,6 +175,8 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      color: white;
+      background-color: blue;
     }
 
     @media (max-width: 480px) {
@@ -245,6 +247,10 @@ export const FieldRow = styled.div`
   .select {
     height: 40px;
     padding: 8px 12px;
+    border: none;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    outline: none;
     /* background: blue; */
   }
 

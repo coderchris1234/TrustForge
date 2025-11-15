@@ -11,6 +11,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BsBuildings } from "react-icons/bs";
+import { CiSaveDown2 } from "react-icons/ci";
 // import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
@@ -185,7 +186,7 @@ const BusinessNewsFeed = ({ data }) => {
                       </div>
 
                       <div className="like">
-                        <AiOutlineUpload />
+                        <CiSaveDown2 />
                         <span>{post.SaveCount}</span>
                       </div>
 
@@ -223,9 +224,9 @@ const BusinessNewsFeed = ({ data }) => {
                   </div>
 
                   <div className="love">
-                    <AiOutlineUpload
-                      size={20}
-                      color={isSaved ? "red" : "black"}
+                    <CiSaveDown2
+                      size={30}
+                      color={isSaved ? "green" : "black"}
                       onClick={() => handleSave(post)}
                     />
                   </div>
