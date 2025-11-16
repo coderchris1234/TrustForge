@@ -77,7 +77,7 @@ const App = () => {
             <Route path="kycverification" element={<KycVerification />} />
             <Route path="helpsupport" element={<HelpSupport />} />
             <Route
-              path="subscription-success?id?fullName?referenceId?amount"
+              path="subscription-success"
               element={<SubscriptionSuccessOne />}
               t
             />
@@ -89,12 +89,9 @@ const App = () => {
             <Route path="" element={<ExploreBusiness />} />
             <Route path="savedbusiness" element={<SavedBusiness />} />
             <Route path="ndamanagement" element={<NdaManagement2 />} />
+            <Route path="payment-success" element={<PaymentSuccessful />} />
             <Route
-              path="payment-success?id?fullName?reference?amount"
-              element={<PaymentSuccessful />}
-            />
-            <Route
-              path="subscription-success?id?fullName?referenceId?amount"
+              path="subscription-success"
               element={<SubscriptionSuccess />}
             />
             <Route path="notification" element={<Notification2 />} />
