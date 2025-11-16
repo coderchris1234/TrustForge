@@ -1,10 +1,16 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SubscriptionSuccess = () => {
   const navigate = useNavigate();
-  const { referenceId, amount, fullName } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const id = queryParams.get("id");
+  const fullName = queryParams.get("fullName");
+  const reference = queryParams.get("reference");
+  const amount = queryParams.get("amount");
   const handleContinue = () => {
     navigate("/dashboard/investor");
   };
@@ -20,11 +26,15 @@ const SubscriptionSuccess = () => {
         <Details>
           <div>
             <label>Reference:</label>
-            <span>{referenceId}</span>
+            <span>{reference}</span>
           </div>
           <div>
             <label>Amount:</label>
             <span>₦{amount}</span>
+          </div>
+          <div>
+            <label>Investor ID:</label>
+            <span>{id}</span>
           </div>
         </Details>
         <button onClick={handleContinue}>Continue</button>
