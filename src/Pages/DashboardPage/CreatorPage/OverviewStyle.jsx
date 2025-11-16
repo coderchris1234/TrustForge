@@ -45,7 +45,6 @@ export const OverviewContent = styled.div`
 
     .box {
       width: 25%;
-      /* height: 16vh; */
       border-radius: 15px;
       background: #fff;
       border-radius: 12px;
@@ -134,6 +133,7 @@ export const OverviewContent = styled.div`
 
     .action {
       display: flex;
+      flex-direction: column; /* always column */
       gap: 12px;
       flex-wrap: wrap;
 
@@ -141,6 +141,7 @@ export const OverviewContent = styled.div`
         border-radius: 10px;
         width: 25%;
         display: flex;
+        flex-direction: column; /* stack icon + text inside each button */
         justify-content: center;
         align-items: center;
         gap: 10px;
@@ -203,7 +204,6 @@ export const OverviewContent = styled.div`
       padding: 1rem;
 
       .action {
-        flex-direction: column;
         gap: 10px;
 
         .quick {
