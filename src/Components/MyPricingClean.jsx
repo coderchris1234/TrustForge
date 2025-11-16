@@ -26,6 +26,7 @@ const MyPricingClean = () => {
   const [role, setRole] = useState("investor");
   const [mode, setMode] = useState("monthly");
   const [userData, setUserData] = useState(null);
+  const [loadingPlanId, setLoadingPlanId] = useState(null);
 
   const nav = useNavigate();
   const user = useSelector((state) => state.TrustForge.user);
@@ -39,27 +40,29 @@ const MyPricingClean = () => {
     localStorage.setItem("selectedPlan", JSON.stringify(plan));
     if (!user) return nav("/signup");
 
+    setLoadingPlanId(plan.id);
+
     try {
       const endpoint =
         user?.data?.role === "Investor"
           ? `${BaseUrl}/subscribeInvestor`
           : `${BaseUrl}/subscribeBusinessOwner`;
 
-      const redirect_url =
-        user?.data?.role === "Investor"
-          ? `${window.location.origin}/dashboard/investor/subscription-success`
-          : `${window.location.origin}/dashboard/business_owner/subscription-success`;
+      // const redirect_url =
+      //   user?.data?.role === "Investor"
+      //     ? `${window.location.origin}/dashboard/investor/subscription-success?id?fullName?referenceId?amount`
+      //     : `${window.location.origin}/dashboard/business_owner/subscription-success?id?fullName?referenceId?amount`;
 
       const res = await axios.post(
         endpoint,
         {
           price: plan.price,
-          redirect_url,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log("pay", res?.data);
 
       if (res.data?.data?.url) {
         window.location.href = res.data.data.url;
@@ -69,6 +72,8 @@ const MyPricingClean = () => {
     } catch (err) {
       console.error(err.response?.data || err);
       toast.error("Payment error occurred.");
+    } finally {
+      setLoadingPlanId(null);
     }
   };
 
@@ -128,7 +133,7 @@ const MyPricingClean = () => {
           </CardHeader>
 
           <Price>
-            {p.price} <PriceUnit>{p.unit}</PriceUnit>
+            ₦{Number(p.price).toLocaleString()} <PriceUnit>{p.unit}</PriceUnit>
           </Price>
 
           <Features>
@@ -178,8 +183,22 @@ const MyPricingClean = () => {
                 <ActionButton
                   variant={p.variant}
                   onClick={() => handleClick(p)}
+                  disabled={loadingPlanId === p.id}
                 >
-                  {p.action}
+                  {loadingPlanId === p.id ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <div className="spinner" />
+                      Processing...
+                    </div>
+                  ) : (
+                    p.action
+                  )}
                 </ActionButton>
               );
             })()}

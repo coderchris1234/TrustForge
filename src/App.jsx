@@ -90,7 +90,7 @@ const App = () => {
             <Route path="savedbusiness" element={<SavedBusiness />} />
             <Route path="ndamanagement" element={<NdaManagement2 />} />
             <Route
-              path="payment-success?id?fullName?referenceId?amount"
+              path="payment-success?id?fullName?reference?amount"
               element={<PaymentSuccessful />}
             />
             <Route
