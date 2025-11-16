@@ -63,7 +63,7 @@ const Card = styled.div`
   text-align: center;
   max-width: 800px;
   width: 100%;
-  height: 30%;
+  height: max-content;
 
   h1 {
     font-size: 24px;
