@@ -37,6 +37,87 @@ export const BusinessContainer = styled.div`
         font-size: 16px;
         font-weight: 600;
         color: #111827;
+      .business {
+        .heading {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+
+          .Trending {
+            font-size: 0.5rem;
+            background: var(--secondary_color_500);
+            padding: 4px;
+            border-radius: 1rem;
+            color: black;
+          }
+          .popular {
+            font-size: 0.5rem;
+            background: var(--accent_color_500);
+            padding: 4px;
+            border-radius: 1rem;
+            color: black;
+          }
+        }
+        .set {
+          display: flex;
+          gap: 0.5rem;
+
+          .retail {
+            background-color: #e7e6e6;
+            border: none;
+          }
+          .active {
+            background-color: #b8f7b8;
+            border: none;
+          }
+
+          .under-review {
+            background-color: #ffcc80;
+            border: none;
+          }
+
+          .seed {
+            border: 1px solid lightgray;
+          }
+
+          .status {
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 0.3rem;
+            font-size: 12px;
+          }
+        }
+      }
+      }
+      .btn {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .bt {
+          padding: 0.5rem;
+          border-radius: 6px;
+          border: 1px solid lightgray;
+          cursor: pointer;
+        }
+        .view {
+          background: blue;
+          color: #ffff;
+        }
+
+        .deleteBtn {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: center;
+          gap: 0.5rem;
+          color: red;
+        }
+        .deleteBtn:disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
       }
     }
 

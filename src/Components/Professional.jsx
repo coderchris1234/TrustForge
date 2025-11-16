@@ -1,44 +1,45 @@
 import React from "react";
 import { Professional_container } from "./professionalStyle";
 
-const Professional = ({kyc}) => {
-  
+const Professional = ({ kyc }) => {
   return (
     <Professional_container>
       <div className="comapny_header_kyc">
-        <h2>Company Information</h2>
-        <div className="kyc">From KYC</div>
+        <div className="upper">
+          <h2>Banking Informations</h2>
+          <span>Encrypted</span>
+        </div>
+        <p className="secure">
+          Secure: Banking details are encypted and only used for recieving
+          investment funds through TRUSTFORGE platform
+        </p>
       </div>
 
       <div className="details_row">
-        <div className="left_col">
-          {/* <div className="field">
-            <p>Company Name</p>
-            <span>Venture Capital Partners</span>
-          </div> */}
-
-          {/* <div className="field" style={{ marginTop: 18 }}>
-            <p>Total Investments</p>
-            <span>23</span>
-          </div> */}
-
-          {/* <div className="field" style={{ marginTop: 18 }}>
-            <p>Successful Exits</p>
-            <span>7</span>
-          </div> */}
-        </div>
-
-        <div className="right_col">
-          <div className="field">
-            <p>Investor type</p>
-            <span>{kyc?.investmentType}</span>
+        <div>
+          <div>
+            <span>Bank Name</span>
+            <p>{kyc?.bankName}</p>
           </div>
-
-          {/* <div className="field" style={{ marginTop: 18 }}>
-            <p>Preferred Sector</p>
-            <span>Technology, Healthcare</span>
-          </div> */}
+          <div>
+            <span>Account Number</span>
+            <p>{"*".repeat(6) + kyc?.accountNumber?.slice(6)}</p>
+          </div>
+          <div>
+            <span>Account Type</span>
+            <p>{kyc?.accountType}</p>
+          </div>
         </div>
+        <div>
+          <span>Account Name</span>
+          <p>{kyc?.accountName}</p>
+        </div>
+      </div>
+      <div className="security">
+        <p>
+          For security reasons, full account details are hidden. To update
+          banking information, please contact support
+        </p>
       </div>
 
       {/* <div className="business_description">

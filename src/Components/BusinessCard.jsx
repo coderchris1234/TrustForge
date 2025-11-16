@@ -23,6 +23,8 @@ const BusinessCard = (props) => {
   );
   const isDeleted = deletedList.includes(props.id);
 
+  console.log("user from me", props.allBusiness.user.subscriptionTier);
+
   const getStatusClass = (status) => {
     if (!status) return "status";
 
@@ -60,6 +62,8 @@ const BusinessCard = (props) => {
       console.log("error", error);
     }
   };
+
+  // props.allBusiness.user.subscriptionTier
   return (
     <BusinessContainer>
       <div className="businessContainer">
@@ -68,6 +72,23 @@ const BusinessCard = (props) => {
             <div className="heading">
               <IoBusinessOutline size={30} />
               <p style={{ marginBottom: "2px" }}>{props.businessName}</p>
+              {props?.allBusiness?.user?.subscriptionTier !== "free" ? (
+                <span
+                  className={
+                    props.allBusiness?.user?.subscriptionTier === "growth"
+                      ? "popular"
+                      : props.allBusiness?.user?.subscriptionTier === "premium"
+                      ? "Trending"
+                      : null
+                  }
+                >
+                  {props.allBusiness?.user?.subscriptionTier === "growth"
+                    ? "popular"
+                    : props.allBusiness?.user?.subscriptionTier === "premium"
+                    ? "Trending"
+                    : null}
+                </span>
+              ) : null}
             </div>
             <div className="set">
               <span className="retail status">{props.industry}</span>

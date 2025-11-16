@@ -24,6 +24,7 @@ const InvestorMeeting2 = ({
   declineMeeting,
   rescheduleMeeting,
   loading,
+  rescheduleRole,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
   const [form, setForm] = useState({
@@ -98,8 +99,9 @@ const InvestorMeeting2 = ({
                 <FaVideo size={15} />
               </div>
             ) : null}
-            {meetingStatus !== "Awaiting Approval" &&
-            meetingStatus !== "Reschedule Requested" ? null : (
+            {(meetingStatus !== "Awaiting Approval" &&
+              meetingStatus !== "Reschedule Requested") ||
+            rescheduleRole === "BusinessOwner" ? null : (
               <div
                 className="accept_meetings"
                 onClick={() => {
@@ -115,7 +117,8 @@ const InvestorMeeting2 = ({
             )}
 
             {meetingStatus === "Declined" ||
-            meetingStatus === "Reschedule Requested" ? null : (
+            rescheduleRole === "BusinessOwner" ? null : meetingStatus ==
+              "Approved and Upcoming" ? (
               <div
                 onClick={() => {
                   setOpenModal(true);
@@ -128,7 +131,7 @@ const InvestorMeeting2 = ({
                 Reschedule
                 <FiRefreshCw size={15} />
               </div>
-            )}
+            ) : null}
 
             {meetingStatus !== "Awaiting Approval" &&
             meetingStatus !== "Reschedule Requested" ? null : (
@@ -141,7 +144,7 @@ const InvestorMeeting2 = ({
                   declineMeeting(id);
                 }}
               >
-                Decline
+                {rescheduleRole === "BusinessOwner" ? "Cancel" : "Decline"}
                 <MdOutlineCancel size={15} />
               </div>
             )}
@@ -168,7 +171,10 @@ const InvestorMeeting2 = ({
               {meetingType}
             </div>
             <div className="time_container">
-              <div className="time" style={{display: "flex",width:"4rem", height:"2rem"}}>
+              <div
+                className="time"
+                style={{ display: "flex", width: "4rem", height: "2rem" }}
+              >
                 <CiClock2 size={20} />
                 {time}
               </div>
@@ -226,7 +232,7 @@ const InvestorMeeting2 = ({
 
             <button
               onClick={() => {
-                rescheduleMeeting(id);
+                rescheduleMeeting(form);
               }}
               style={{
                 cursor: "pointer",
