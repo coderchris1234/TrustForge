@@ -32,63 +32,64 @@ export const BusinessContainer = styled.div`
       gap: 0.6rem;
       margin-bottom: 6px;
 
+      .popular {
+        font-size: 0.5rem;
+        background: var(--accent_color_500);
+        padding: 4px;
+        border-radius: 1rem;
+        color: black;
+      }
+
+      .trending {
+        font-size: 0.5rem;
+        background: var(--secondary_color_500);
+        padding: 4px;
+        border-radius: 1rem;
+        color: black;
+      }
+
       p {
         margin: 0;
         font-size: 16px;
         font-weight: 600;
         color: #111827;
-      .business {
-        .heading {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-bottom: 0.5rem;
-
-          .Trending {
-            font-size: 0.5rem;
-            background: var(--secondary_color_500);
-            padding: 4px;
-            border-radius: 1rem;
-            color: black;
+        .business {
+          .heading {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
           }
-          .popular {
-            font-size: 0.5rem;
-            background: var(--accent_color_500);
-            padding: 4px;
-            border-radius: 1rem;
-            color: black;
+          .set {
+            display: flex;
+            gap: 0.5rem;
+
+            .retail {
+              background-color: #e7e6e6;
+              border: none;
+            }
+            .active {
+              background-color: #b8f7b8;
+              border: none;
+            }
+
+            .under-review {
+              background-color: #ffcc80;
+              border: none;
+            }
+
+            .seed {
+              border: 1px solid lightgray;
+            }
+
+            .status {
+              border: 1px solid lightgray;
+              border-radius: 8px;
+              padding: 0.3rem;
+              font-size: 12px;
+            }
           }
         }
-        .set {
-          display: flex;
-          gap: 0.5rem;
-
-          .retail {
-            background-color: #e7e6e6;
-            border: none;
-          }
-          .active {
-            background-color: #b8f7b8;
-            border: none;
-          }
-
-          .under-review {
-            background-color: #ffcc80;
-            border: none;
-          }
-
-          .seed {
-            border: 1px solid lightgray;
-          }
-
-          .status {
-            border: 1px solid lightgray;
-            border-radius: 8px;
-            padding: 0.3rem;
-            font-size: 12px;
-          }
-        }
-      }
       }
       .btn {
         display: flex;
@@ -248,7 +249,7 @@ export const BusinessContainer = styled.div`
 
     .btn .bt,
     .btn .deleteBtn {
-      width: 100%;   /* equal width buttons */
+      width: 100%; /* equal width buttons */
       text-align: center;
       padding: 0.55rem 0.75rem;
     }

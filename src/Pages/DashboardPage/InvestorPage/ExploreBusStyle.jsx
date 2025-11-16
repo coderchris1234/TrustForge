@@ -63,18 +63,32 @@ export const Explorecontainer = styled.div`
     }
 
     @media (max-width: ${breakpoints.tablet}) {
-      h1 { font-size: 22px; }
-      p  { font-size: 17px; }
+      h1 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 17px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobileLarge}) {
-      h1 { font-size: 20px; }
-      p  { font-size: 15.5px; }
+      h1 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 15.5px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobile}) {
-      h1 { font-size: 18px; line-height: 120%; }
-      p  { font-size: 14.5px; line-height: 140%; }
+      h1 {
+        font-size: 18px;
+        line-height: 120%;
+      }
+      p {
+        font-size: 14.5px;
+        line-height: 140%;
+      }
     }
   }
 `;
@@ -87,6 +101,13 @@ export const SearchContainer = styled.div`
   gap: 0.6rem;
   flex-wrap: nowrap;
   box-sizing: border-box;
+
+  .mind {
+    background-color: #f0f0f0;
+    border: none;
+    outline: none;
+    padding: 1rem;
+  }
 
   .filterBtn {
     padding: 10px 18px;
@@ -123,7 +144,9 @@ export const SearchContainer = styled.div`
     box-sizing: border-box;
   }
 
-  .drawer.show { right: 0; }
+  .drawer.show {
+    right: 0;
+  }
 
   .drawerHeader {
     display: flex;
@@ -140,10 +163,26 @@ export const SearchContainer = styled.div`
     line-height: 1;
   }
 
-  .sub { margin-top: -10px; font-size: 13px; color: #777; }
-  .title { margin-top: 20px; margin-bottom: 10px; }
-  .list { display: flex; flex-direction: column; gap: 2rem; }
-  .checkbox { display: flex; align-items: center; gap: 10px; font-size: 1rem; }
+  .sub {
+    margin-top: -10px;
+    font-size: 13px;
+    color: #777;
+  }
+  .title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+  }
   .clearBtn {
     margin-top: 25px;
     width: 100%;
@@ -199,15 +238,29 @@ export const SearchContainer = styled.div`
     padding-inline: 0.7rem;
     box-sizing: border-box;
 
-    p { margin: 0; line-height: 1; white-space: nowrap; font-size: 16px; }
+    p {
+      margin: 0;
+      line-height: 1;
+      white-space: nowrap;
+      font-size: 16px;
+    }
 
     @media (max-width: ${breakpoints.tablet}) {
-      gap: 1.25rem; margin-left: 0.6rem; padding-inline: 0.5rem;
-      p { font-size: 15px; }
+      gap: 1.25rem;
+      margin-left: 0.6rem;
+      padding-inline: 0.5rem;
+      p {
+        font-size: 15px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobileLarge}) {
-      width: auto; gap: 1rem; margin-left: 0.5rem; p { font-size: 14px; }
+      width: auto;
+      gap: 1rem;
+      margin-left: 0.5rem;
+      p {
+        font-size: 14px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobile}) {
@@ -236,20 +289,32 @@ export const SearchContainer = styled.div`
     }
 
     @media (max-width: ${breakpoints.tablet}) {
-      gap: 0.5rem; padding-inline: 0.5rem;
-      p { font-size: 15px; }
+      gap: 0.5rem;
+      padding-inline: 0.5rem;
+      p {
+        font-size: 15px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobileLarge}) {
-      gap: 0.4rem; padding-inline: 0.45rem;
-      p { font-size: 14px; }
+      gap: 0.4rem;
+      padding-inline: 0.45rem;
+      p {
+        font-size: 14px;
+      }
     }
 
     @media (max-width: ${breakpoints.mobile}) {
-      gap: 0.25rem; padding-inline: 0.35rem; min-width: 44px;
-      p { font-size: 13px; }
+      gap: 0.25rem;
+      padding-inline: 0.35rem;
+      min-width: 44px;
+      p {
+        font-size: 13px;
+      }
 
-      &.filterIconOnly p { display: none; }
+      &.filterIconOnly p {
+        display: none;
+      }
     }
   }
 
@@ -268,13 +333,23 @@ export const SearchContainer = styled.div`
       width: 100%;
       max-width: 420px;
     }
-    .drawer.show { right: 0; }
+    .drawer.show {
+      right: 0;
+    }
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    .drawer { width: 100%; right: -100%; padding: 18px; }
-    .drawer.show { right: 0; }
-    .search { width: calc(100% - 56px); }
+    .drawer {
+      width: 100%;
+      right: -100%;
+      padding: 18px;
+    }
+    .drawer.show {
+      right: 0;
+    }
+    .search {
+      width: calc(100% - 56px);
+    }
   }
 `;
 

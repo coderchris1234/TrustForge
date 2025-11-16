@@ -64,6 +64,8 @@ const Card = styled.div`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 800px;
+  width: 100%;
+  height: max-content;
 
   h1 {
     font-size: 24px;

@@ -38,7 +38,7 @@ export const OverviewContent = styled.div`
     width: 100%;
     margin-top: 0;
     gap: 1rem;
-    height: 20%;
+    /* height: 20%; */
     display: flex;
     justify-content: space-around;
     margin-bottom: 2rem;
@@ -52,7 +52,7 @@ export const OverviewContent = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 18px;
+      padding: 1rem;
       transition: all 0.3s ease;
     }
 
@@ -174,7 +174,7 @@ export const OverviewContent = styled.div`
     .Overview-content {
       flex-wrap: wrap;
       .box {
-        flex: 1 1 calc(50% - 10px); 
+        flex: 1 1 calc(50% - 10px);
         height: 7rem;
       }
     }
@@ -192,7 +192,7 @@ export const OverviewContent = styled.div`
       .box {
         width: 100%;
         flex: none;
-        height: 7rem; 
+        height: 7rem;
       }
     }
 

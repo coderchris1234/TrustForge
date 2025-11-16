@@ -9,6 +9,23 @@ const Notification = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const token = useSelector((state) => state.TrustForge.user?.token);
 
+  const markAsRead = async (id) => {
+    try {
+      await axios.post(
+        `${BaseUrl}/read`,
+        { notificationId: id }, // 👈 pass ID in body
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      // Update UI after backend confirms
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+    } catch (err) {
+      console.log("Error marking as read", err);
+    }
+  };
+
   useEffect(() => {
     if (!token) return;
 
@@ -39,8 +56,6 @@ const Notification = () => {
     fetchNotifications();
   }, [token, BaseUrl]);
 
-  const unreadCount = notifications.filter((n) => n.status === "unread").length;
-
   return (
     <Notification_container>
       <div className="notification_top">
@@ -55,9 +70,6 @@ const Notification = () => {
         <div className="all">
           All <small>({notifications.length})</small>
         </div>
-        <div className="unread">
-          Unread <small>({unreadCount})</small>
-        </div>
       </div>
 
       <div className="notification_list">
@@ -66,10 +78,13 @@ const Notification = () => {
         {notifications.map((notif) => (
           <Not
             key={notif.id}
+            id={notif.id}
             title={notif.title}
             message={notif.description}
             date={new Date(notif.createdAt).toLocaleString()}
-            status={notif.status} // pass read/unread status
+            status={notif.status}
+            markAsRead={markAsRead}
+            // pass read/unread status
           />
         ))}
       </div>

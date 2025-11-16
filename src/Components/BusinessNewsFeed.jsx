@@ -12,6 +12,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BsBuildings } from "react-icons/bs";
 import { CiSaveDown2 } from "react-icons/ci";
+import { FaFire, FaStar } from "react-icons/fa";
 // import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
@@ -156,6 +157,25 @@ const BusinessNewsFeed = ({ data }) => {
                       {post.icon1}
                       <BsBuildings size={24} />
                       <h3>{post.businessName}</h3>
+                      <span
+                        className={
+                          post.subscriptionTier === "growth"
+                            ? "popular"
+                            : post.subscriptionTier === "premium"
+                            ? "trending"
+                            : ""
+                        }
+                      >
+                        {post.subscriptionTier === "growth" ? (
+                          <span className="flex items-center gap-1">
+                            <FaStar /> Popular
+                          </span>
+                        ) : post.subscriptionTier === "premium" ? (
+                          <span className="flex items-center gap-1">
+                            <FaFire /> Trending
+                          </span>
+                        ) : null}
+                      </span>
                     </div>
                     {/* <div className="trendsection">
                       {post.trendicon}
@@ -210,7 +230,7 @@ const BusinessNewsFeed = ({ data }) => {
                     onClick={async () => {
                       const allowed = await handleView(post.id);
 
-                      if (!allowed) return; 
+                      if (!allowed) return;
 
                       nav(
                         `/dashboard/investor/business/${post.businessName}/${post.id}`

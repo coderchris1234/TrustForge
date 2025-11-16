@@ -31,7 +31,6 @@ const Overview = () => {
           setOverviewData(res.data.data || {});
         } catch (err) {
           console.error("Error fetching overview data:", err);
-        } finally {
         }
       };
 
@@ -93,7 +92,7 @@ const Overview = () => {
             className="quick"
           >
             <MdOutlineFileUpload size={"20px"} />
-            <p style={{color:"white"}}>Add Business Profile</p>
+            <p style={{ color: "white" }}>Add Business Profile</p>
           </NavLink>
           {/* <div
             style={{

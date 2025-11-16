@@ -2,7 +2,8 @@ import { ProfileStyle } from "./ProfileStyle";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import Professional from "../../../Components/Professional"
+// import Professional from "../../../Components/Professional"
+import InvestmentType from "./InvestmentType";
 
 const Profile = () => {
   const userId = useSelector((state) => state.TrustForge.user?.data?.id);
@@ -12,7 +13,7 @@ const Profile = () => {
   const [kyc, setKyc] = useState(null);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
-  const [ mode, setMode] =useState(false)
+  const [mode, setMode] = useState(false);
   useEffect(() => {
     if (!userId) return;
 
@@ -149,7 +150,7 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <Professional kyc={kyc} />
+        <InvestmentType kyc={kyc} />
       )}
     </ProfileStyle>
   );

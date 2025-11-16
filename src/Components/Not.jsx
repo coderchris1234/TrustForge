@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import { Not_container } from "./NotStyle";
 
-const Notification = ({ title, message, date, status }) => {
+const Notification = ({ id, title, message, date, status, markAsRead }) => {
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const closeModal = () => {
+    setLoading(false);
+    setModal(false);
+    markAsRead(id);
+  };
 
   return (
     <Not_container>
       {modal && (
         <div className="notification-modal">
+          omo
           <div className="notification-content">
             <h3>{title}</h3>
             <p>{message}</p>
             <span>{new Date(date).toLocaleString()}</span>
-            <button onClick={() => setModal(false)}>Close</button>
+            <button onClick={closeModal}>
+              {loading ? "Deleting..." : "Delete"}
+            </button>
           </div>
         </div>
       )}
