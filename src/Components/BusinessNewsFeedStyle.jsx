@@ -36,6 +36,28 @@ export const Newsfeed_container = styled.div`
           display: flex;
           gap: 0.4rem;
           min-width: 0;
+
+          .popular {
+            font-size: 0.5rem;
+            background: var(--accent_color_500);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .trending {
+            font-size: 0.5rem;
+            background: var(--secondary_color_500);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
 
         /* .trendsection {

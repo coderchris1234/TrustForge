@@ -11,6 +11,9 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addDeletedBusiness } from "../Pages/Global/Slice";
 import { IoBusinessOutline } from "react-icons/io5";
+import { TbChartBarPopular } from "react-icons/tb";
+import { FaFire, FaStar } from "react-icons/fa";
+import { FiMessageSquare } from "react-icons/fi";
 
 const BusinessCard = (props) => {
   const [loading, setLoading] = React.useState(false);
@@ -75,18 +78,22 @@ const BusinessCard = (props) => {
               {props?.allBusiness?.user?.subscriptionTier !== "free" ? (
                 <span
                   className={
-                    props.allBusiness?.user?.subscriptionTier === "growth"
+                    props.subscriptionTier === "growth"
                       ? "popular"
-                      : props.allBusiness?.user?.subscriptionTier === "premium"
-                      ? "Trending"
-                      : null
+                      : props.subscriptionTier === "premium"
+                      ? "trending"
+                      : ""
                   }
                 >
-                  {props.allBusiness?.user?.subscriptionTier === "growth"
-                    ? "popular"
-                    : props.allBusiness?.user?.subscriptionTier === "premium"
-                    ? "Trending"
-                    : null}
+                  {props.subscriptionTier === "growth" ? (
+                    <span className="flex items-center gap-1">
+                      <FaStar /> Popular
+                    </span>
+                  ) : props.subscriptionTier === "premium" ? (
+                    <span className="flex items-center gap-1">
+                      <FaFire /> Trending
+                    </span>
+                  ) : null}
                 </span>
               ) : null}
             </div>
@@ -131,9 +138,6 @@ const BusinessCard = (props) => {
               <CiHeart color="red" /> {props.likeCount} likes
             </div>
             <div>{props.subscriptionTier === "growth" ? "Trending" : ""}</div>
-            <div>
-              {/* <FiMessageSquare /> {props.investorInterests} Save */}
-            </div>
           </div>
           <div>
             {new Date(props.createdAt).toLocaleDateString("en-US", {
