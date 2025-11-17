@@ -108,7 +108,6 @@ const DashBoardLayout = (props) => {
               <div className="rounded">{props?.notifcationCount || 0}</div>
             </div>
           </div>
-
           <div className="header-content">
             <div className="profile-content">
               <div className="image">{userDetails?.user.fullName[0]}</div>
