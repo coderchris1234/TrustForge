@@ -87,7 +87,9 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column; /* column layout: header -> features -> footer */
   justify-content: flex-start;
-  width: calc(33.333% - 13.333px); /* three cards per row by default; adjust as needed */
+  width: calc(
+    33.333% - 13.333px
+  ); /* three cards per row by default; adjust as needed */
   box-sizing: border-box;
   /* ensure all cards share same available height in a row */
   flex: 1 1 calc(33.333% - 13.333px);
@@ -263,3 +265,4 @@ export const ActionButton = styled.button`
     min-width: 140px;
   }
 `;
+6;

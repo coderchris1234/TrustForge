@@ -159,6 +159,11 @@ const Signup = () => {
       <SignupLeft>
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </SignupLeft>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
 
       <SignupRight>
         <FormBox>
@@ -290,17 +295,6 @@ const Signup = () => {
               {loading ? "Creating..." : "Create Account"}
             </CreateButton>
           </form>
-
-          <OrText style={{ color: "#1B1B1B" }}>
-            Or create an account using
-          </OrText>
-
-          <GoogleBtn>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
-              alt="Google"
-            />
-          </GoogleBtn>
 
           <LoginText>
             Already have an account?{" "}

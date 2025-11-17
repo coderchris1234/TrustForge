@@ -119,6 +119,12 @@ const Login = () => {
       <LoginLeft>
         <img src={authlogo} alt="" onClick={() => navigate("/")} />
       </LoginLeft>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       <LoginRight>
         <FormBox>
           <FormTitle>
@@ -207,21 +213,6 @@ const Login = () => {
               {loading ? "Logging in..." : "Log In"}
             </CreateButton>
           </form>
-
-          <OrText>Or log in with</OrText>
-
-          <GoogleBtn
-            style={{
-              marginTop: "2rem",
-            }}
-            onClick={() => toast("Google login not implemented in demo.")}
-            role="button"
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
-              alt="Google"
-            />
-          </GoogleBtn>
 
           <LoginText style={{ marginTop: 14 }}>
             Don't have an account?{" "}

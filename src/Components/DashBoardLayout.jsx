@@ -8,6 +8,31 @@ import axios from "axios";
 
 const DashBoardLayout = (props) => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  const [kyc, setKyc] = useState(null);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchKyc = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/kyc/${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setKyc(res?.data?.data);
+        console.log("details:", res.data.data);
+      } catch (error) {
+        console.error("Error fetching KYC:", error);
+      }
+    };
+
+    fetchKyc();
+  }, [userId, token, BaseUrl]);
 
   const openLogoutModal = () => setShowLogoutModal(true);
   const closeLogoutModal = () => setShowLogoutModal(false);
@@ -19,13 +44,11 @@ const DashBoardLayout = (props) => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const user = useSelector((state) => state.TrustForge.user);
-  const userId = user?.data?.id;
-  const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   const [userDetails, setUserDetails] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  // console.log("userDetails", userDetails);
+  console.log("userDetails", userDetails);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -54,7 +77,11 @@ const DashBoardLayout = (props) => {
         <div className="leftSidedContent">
           <div className="image-logo">
             <Link to={"/"}>
-              <img src={Logo} alt="" style={{height:"1.4rem",width:"8.8rem"}}/>
+              <img
+                src={Logo}
+                alt=""
+                style={{ height: "1.4rem", width: "8.8rem" }}
+              />
             </Link>
           </div>
           <p className="DashboardName">{props.dashboard}</p>
@@ -111,7 +138,10 @@ const DashBoardLayout = (props) => {
 
           <div className="header-content">
             <div className="profile-content">
-              <div className="image">{userDetails?.user.fullName[0]}</div>
+              <div className="imageContainer">
+                <img src={kyc?.profilePic} alt="" />
+              </div>
+
               <div className="UserInfo">
                 <p>{userDetails?.user?.fullName || "Loading..."}</p>
                 <span>{userDetails?.user?.role}</span>

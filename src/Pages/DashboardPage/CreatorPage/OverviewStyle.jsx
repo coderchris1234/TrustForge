@@ -38,14 +38,13 @@ export const OverviewContent = styled.div`
     width: 100%;
     margin-top: 0;
     gap: 1rem;
-    height: 20%;
+    /* height: 20%; */
     display: flex;
     justify-content: space-around;
     margin-bottom: 2rem;
 
     .box {
       width: 25%;
-      /* height: 16vh; */
       border-radius: 15px;
       background: #fff;
       border-radius: 12px;
@@ -53,7 +52,7 @@ export const OverviewContent = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 18px;
+      padding: 1rem;
       transition: all 0.3s ease;
     }
 
@@ -134,6 +133,7 @@ export const OverviewContent = styled.div`
 
     .action {
       display: flex;
+      flex-direction: column; /* always column */
       gap: 12px;
       flex-wrap: wrap;
 
@@ -141,6 +141,7 @@ export const OverviewContent = styled.div`
         border-radius: 10px;
         width: 25%;
         display: flex;
+        flex-direction: column; /* stack icon + text inside each button */
         justify-content: center;
         align-items: center;
         gap: 10px;
@@ -173,7 +174,7 @@ export const OverviewContent = styled.div`
     .Overview-content {
       flex-wrap: wrap;
       .box {
-        flex: 1 1 calc(50% - 10px); 
+        flex: 1 1 calc(50% - 10px);
         height: 7rem;
       }
     }
@@ -191,7 +192,7 @@ export const OverviewContent = styled.div`
       .box {
         width: 100%;
         flex: none;
-        height: 7rem; 
+        height: 7rem;
       }
     }
 
@@ -203,7 +204,6 @@ export const OverviewContent = styled.div`
       padding: 1rem;
 
       .action {
-        flex-direction: column;
         gap: 10px;
 
         .quick {

@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PaymentSuccessful = () => {
   const navigate = useNavigate();
-  const { referenceId, amount, fullName } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const id = queryParams.get("id");
+  const fullName = queryParams.get("fullName");
+  const reference = queryParams.get("reference");
+  const amount = queryParams.get("amount");
   const handleContinue = () => {
-    navigate("/dashboard/investor"); 
+    navigate("/dashboard/investor");
   };
 
   return (
@@ -21,11 +27,15 @@ const PaymentSuccessful = () => {
         <Details>
           <div>
             <label>Reference:</label>
-            <span>{referenceId}</span>
+            <span>{reference}</span>
           </div>
           <div>
             <label>Amount:</label>
             <span>₦{amount}</span>
+          </div>
+          <div>
+            <label>Investor ID:</label>
+            <span>{id}</span>
           </div>
         </Details>
 
@@ -55,7 +65,7 @@ const Card = styled.div`
   text-align: center;
   max-width: 800px;
   width: 100%;
-  height: 30%;
+  height: max-content;
 
   h1 {
     font-size: 24px;
@@ -89,6 +99,7 @@ const Card = styled.div`
 const Details = styled.div`
   margin-bottom: 2rem;
   text-align: left;
+  height: max-content;
 
   div {
     margin-bottom: 0.5rem;

@@ -12,6 +12,7 @@ const ExploreBusiness = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState([]);
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
@@ -48,21 +49,41 @@ const ExploreBusiness = () => {
     fetchBusinesses();
   }, []);
 
-  const displayBusinesses = businesses.filter((biz) => {
-    const industryMatch =
-      selected.length === 0 || selected.includes(biz.industry);
+  const tierOrder = {
+    premium: 1,
+    growth: 2,
+    free: 3,
+  };
 
-    const searchTerm = search.toLowerCase();
+  const displayBusinesses = businesses
+    .filter((biz) => {
+      const industryMatch =
+        selected.length === 0 || selected.includes(biz.industry);
 
-    const searchMatch =
-      !searchTerm ||
-      biz.businessName?.toLowerCase().includes(searchTerm) ||
-      biz.industry?.toLowerCase().includes(searchTerm);
+      const searchTerm = search.toLowerCase();
+      const searchMatch =
+        !searchTerm ||
+        biz.businessName?.toLowerCase().includes(searchTerm) ||
+        biz.industry?.toLowerCase().includes(searchTerm);
 
-    return industryMatch && searchMatch;
-  });
+      // Sorting filter logic
+      if (sortBy === "trending" && biz.subscriptionTier !== "premium")
+        return false;
 
-  console.log("businesses", businesses);
+      if (sortBy === "popular" && biz.subscriptionTier !== "growth")
+        return false;
+
+      if (sortBy === "free" && biz.subscriptionTier !== "free") return false;
+
+      return industryMatch && searchMatch;
+    })
+    .sort((a, b) => {
+      // Only use sorting when no sortBy is applied
+      if (!sortBy) {
+        return tierOrder[a.subscriptionTier] - tierOrder[b.subscriptionTier];
+      }
+      return 0; // no sorting needed when filter is active
+    });
 
   return (
     <Explorecontainer>
@@ -81,6 +102,18 @@ const ExploreBusiness = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+        </div>
+        <div>
+          <select
+            className="mind"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="">All</option>
+            <option value="trending">Trending</option>
+            <option value="popular">Popular</option>
+            <option value="free">Free</option>
+          </select>
         </div>
 
         <div className="filter" onClick={() => setOpen(true)}>

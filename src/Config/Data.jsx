@@ -1296,7 +1296,7 @@ export const monthlyPlans = [
   {
     id: "growth",
     title: "Growth",
-    price: 5000,
+    price: 10000,
     unit: "/mo",
     highlights: ["For active investors"],
     features: [
@@ -1316,7 +1316,7 @@ export const monthlyPlans = [
   {
     id: "premium",
     title: "Premium",
-    price: 10000,
+    price: 20000,
     unit: "/mo",
     highlights: ["For top investors & promotions"],
     features: [
