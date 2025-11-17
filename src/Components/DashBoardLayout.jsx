@@ -8,6 +8,31 @@ import axios from "axios";
 
 const DashBoardLayout = (props) => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const token = useSelector((state) => state.TrustForge.user?.token);
+  const [kyc, setKyc] = useState(null);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
+
+  const userId = useSelector((state) => state.TrustForge.user?.data?.id);
+  useEffect(() => {
+    if (!userId) return;
+
+    const fetchKyc = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}/kyc/${userId}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        setKyc(res?.data?.data);
+        console.log("details:", res.data.data);
+      } catch (error) {
+        console.error("Error fetching KYC:", error);
+      }
+    };
+
+    fetchKyc();
+  }, [userId, token, BaseUrl]);
 
   const openLogoutModal = () => setShowLogoutModal(true);
   const closeLogoutModal = () => setShowLogoutModal(false);
@@ -19,13 +44,11 @@ const DashBoardLayout = (props) => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const user = useSelector((state) => state.TrustForge.user);
-  const userId = user?.data?.id;
-  const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   const [userDetails, setUserDetails] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  // console.log("userDetails", userDetails);
+  console.log("userDetails", userDetails);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -67,7 +90,11 @@ const DashBoardLayout = (props) => {
         <div className="sideBarContents">
           <div className="ItemList">
             {props?.Menu[0]?.map((section, index) => (
-              <div key={index} className="businessContainer">
+              <div
+                key={index}
+                className="businessContainer"
+                onClick={() => setShowSidebar(false)}
+              >
                 <NavLink to={section.link} end className="business">
                   <div>
                     <section.Icon size={24} />
@@ -79,7 +106,11 @@ const DashBoardLayout = (props) => {
           </div>
           <div className="ItemList">
             {props?.Menu[1]?.map((section, index) => (
-              <div key={index} className="businessContainer">
+              <div
+                key={index}
+                className="businessContainer"
+                onClick={() => setShowSidebar(false)}
+              >
                 <NavLink to={section.link} end className="business">
                   <div>
                     <section.Icon size={24} />
@@ -107,14 +138,17 @@ const DashBoardLayout = (props) => {
               <div className="bar"></div>
             </div>
 
-            <div className="notification">
+            {/* <div className="notification">
               <img src="/public/icon.svg" alt="" />
               <div className="rounded">{props?.notifcationCount || 0}</div>
-            </div>
+            </div> */}
           </div>
           <div className="header-content">
             <div className="profile-content">
-              <div className="image">{userDetails?.user.fullName[0]}</div>
+              <div className="imageContainer">
+                <img src={kyc?.profilePic} alt="" />
+              </div>
+
               <div className="UserInfo">
                 <p>{userDetails?.user?.fullName || "Loading..."}</p>
                 <span>{userDetails?.user?.role}</span>

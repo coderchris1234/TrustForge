@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BusinessContainer } from "./BusinessDetailStyle";
+import { BusinessContainer, SkeletonWrapper } from "./BusinessDetailStyle";
 import BusinessDetailPageHeader from "../../../Components/BusinessDetailPageHeader";
 import InvestmentProgress from "../../../Components/InvestmentProgress";
 import BusinessTabs from "../../../Components/BusinessTabs";
@@ -12,20 +12,38 @@ const BusinessDetailPage = () => {
   const [business, setBusiness] = useState(null);
   const [remain, setRemain] = useState(null);
   const [investorCount, setInvestorCount] = useState([]);
+  const [loading, setLoading] = useState(true);
   console.log("id", id);
 
   useEffect(() => {
     const fetchBusiness = async () => {
-      const res = await axios.get(`${BaseUrl}/Abusiness/${id}`);
-      console.log("remain", res?.data);
-      setBusiness(res?.data?.data);
-      console.log("bus", business);
-      setRemain(res?.data?.remaining);
-      setInvestorCount(res?.data?.investorIntrests);
+      try {
+        setLoading(true);
+        const res = await axios.get(`${BaseUrl}/Abusiness/${id}`);
+
+        setBusiness(res?.data?.data);
+        setRemain(res?.data?.remaining);
+        setInvestorCount(res?.data?.investorIntrests);
+      } catch (error) {
+        console.error("Error fetching business:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchBusiness();
   }, [id]);
+  if (loading) {
+    return (
+      <SkeletonWrapper>
+        <div className="skeleton header"></div>
+        <div className="skeleton line"></div>
+        <div className="skeleton line"></div>
+        <div className="skeleton box"></div>
+      </SkeletonWrapper>
+    );
+  }
+
   return (
     <BusinessContainer>
       <p>

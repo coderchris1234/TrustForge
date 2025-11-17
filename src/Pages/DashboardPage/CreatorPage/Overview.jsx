@@ -58,7 +58,7 @@ const Overview = () => {
             </div>
             <div
               style={{
-                backgroundColor: section.bgColor,
+                // backgroundColor: section.bgColor,
                 padding: "8px",
                 color: section.color,
                 borderRadius: "5px",

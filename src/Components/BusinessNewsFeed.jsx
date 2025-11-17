@@ -205,10 +205,10 @@ const BusinessNewsFeed = ({ data }) => {
                         <span>{post.likeCount}</span>
                       </div>
 
-                      <div className="like">
+                      {/* <div className="like">
                         <CiSaveDown2 />
-                        <span>{post.SaveCount}</span>
-                      </div>
+                        <span>{data?.SaveCount}</span>
+                      </div> */}
 
                       <div className="comment">
                         <div>{post.comment}</div>

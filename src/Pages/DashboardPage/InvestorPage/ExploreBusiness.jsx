@@ -49,28 +49,41 @@ const ExploreBusiness = () => {
     fetchBusinesses();
   }, []);
 
-  const displayBusinesses = businesses.filter((biz) => {
-    const industryMatch =
-      selected.length === 0 || selected.includes(biz.industry);
+  const tierOrder = {
+    premium: 1,
+    growth: 2,
+    free: 3,
+  };
 
-    const searchTerm = search.toLowerCase();
-    const searchMatch =
-      !searchTerm ||
-      biz.businessName?.toLowerCase().includes(searchTerm) ||
-      biz.industry?.toLowerCase().includes(searchTerm);
+  const displayBusinesses = businesses
+    .filter((biz) => {
+      const industryMatch =
+        selected.length === 0 || selected.includes(biz.industry);
 
-    const tierMatch = (() => {
-      if (!sortBy) return true;
-      if (sortBy === "trending") return biz.subscriptionTier === "premium";
-      if (sortBy === "popular") return biz.subscriptionTier === "growth";
-      if (sortBy === "free") return biz.subscriptionTier === "free";
-      return true; // fallback
-    })();
+      const searchTerm = search.toLowerCase();
+      const searchMatch =
+        !searchTerm ||
+        biz.businessName?.toLowerCase().includes(searchTerm) ||
+        biz.industry?.toLowerCase().includes(searchTerm);
 
-    return industryMatch && searchMatch && tierMatch;
-  });
+      // Sorting filter logic
+      if (sortBy === "trending" && biz.subscriptionTier !== "premium")
+        return false;
 
-  console.log("businesses", businesses);
+      if (sortBy === "popular" && biz.subscriptionTier !== "growth")
+        return false;
+
+      if (sortBy === "free" && biz.subscriptionTier !== "free") return false;
+
+      return industryMatch && searchMatch;
+    })
+    .sort((a, b) => {
+      // Only use sorting when no sortBy is applied
+      if (!sortBy) {
+        return tierOrder[a.subscriptionTier] - tierOrder[b.subscriptionTier];
+      }
+      return 0; // no sorting needed when filter is active
+    });
 
   return (
     <Explorecontainer>
@@ -96,7 +109,7 @@ const ExploreBusiness = () => {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
-            <option value="">Sort By</option>
+            <option value="">All</option>
             <option value="trending">Trending</option>
             <option value="popular">Popular</option>
             <option value="free">Free</option>

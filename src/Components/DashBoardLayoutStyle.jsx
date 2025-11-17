@@ -216,14 +216,15 @@ export const DashboardLayoutContainer = styled.div`
       background-color: var(--main_white);
       padding: 1rem;
       display: flex;
-      flex-direction: column;
+      height: max-content;
+      /* flex-direction: column; */
       margin-bottom: 2rem;
       position: sticky;
       top: 0;
       left: 0;
-      height: 70px;
+      /* height: 70px; */
       /* align-items: center; */
-      justify-content: center;
+      justify-content: space-between;
 
       .top-bar {
         display: none;
@@ -241,9 +242,10 @@ export const DashboardLayoutContainer = styled.div`
           flex: 1;
           min-width: 200px;
           align-items: center;
+          justify-content: flex-end;
           gap: 8px;
 
-          .image {
+          .imageContainer {
             background-color: #303030ff;
             width: 40px;
             height: 40px;
@@ -252,6 +254,14 @@ export const DashboardLayoutContainer = styled.div`
             justify-content: center;
             align-items: center;
             color: white;
+            object-fit: cover;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
           }
 
           .UserInfo {
