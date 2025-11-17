@@ -49,28 +49,44 @@ const ExploreBusiness = () => {
     fetchBusinesses();
   }, []);
 
-  const displayBusinesses = businesses.filter((biz) => {
-    const industryMatch =
-      selected.length === 0 || selected.includes(biz.industry);
+  const tierOrder = {
+    premium: 1,
+    growth: 2,
+    free: 3,
+  };
 
-    const searchTerm = search.toLowerCase();
-    const searchMatch =
-      !searchTerm ||
-      biz.businessName?.toLowerCase().includes(searchTerm) ||
-      biz.industry?.toLowerCase().includes(searchTerm);
+  const displayBusinesses = businesses
+    .filter((biz) => {
+      const industryMatch =
+        selected.length === 0 || selected.includes(biz.industry);
 
-    const tierMatch = (() => {
-      if (!sortBy) return true;
-      if (sortBy === "trending") return biz.subscriptionTier === "premium";
-      if (sortBy === "popular") return biz.subscriptionTier === "growth";
-      if (sortBy === "free") return biz.subscriptionTier === "free";
-      return true; // fallback
-    })();
+      const searchTerm = search.toLowerCase();
+      const searchMatch =
+        !searchTerm ||
+        biz.businessName?.toLowerCase().includes(searchTerm) ||
+        biz.industry?.toLowerCase().includes(searchTerm);
 
-    return industryMatch && searchMatch && tierMatch;
-  });
+      return industryMatch && searchMatch;
+    })
+    .sort((a, b) => {
+      if (!sortBy) {
+        return tierOrder[a.subscriptionTier] - tierOrder[b.subscriptionTier];
+      }
 
-  console.log("businesses", businesses);
+      if (sortBy === "trending") {
+        return a.subscriptionTier === "premium" ? -1 : 1;
+      }
+
+      if (sortBy === "popular") {
+        return a.subscriptionTier === "growth" ? -1 : 1;
+      }
+
+      if (sortBy === "free") {
+        return a.subscriptionTier === "free" ? -1 : 1;
+      }
+
+      return 0;
+    });
 
   return (
     <Explorecontainer>

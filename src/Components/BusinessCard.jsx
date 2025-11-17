@@ -137,7 +137,6 @@ const BusinessCard = (props) => {
             <div>
               <CiHeart color="red" /> {props.likeCount} likes
             </div>
-            <div>{props.subscriptionTier === "growth" ? "Trending" : ""}</div>
           </div>
           <div>
             {new Date(props.createdAt).toLocaleDateString("en-US", {
