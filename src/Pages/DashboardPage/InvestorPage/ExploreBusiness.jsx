@@ -12,6 +12,7 @@ const ExploreBusiness = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState([]);
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
@@ -53,13 +54,20 @@ const ExploreBusiness = () => {
       selected.length === 0 || selected.includes(biz.industry);
 
     const searchTerm = search.toLowerCase();
-
     const searchMatch =
       !searchTerm ||
       biz.businessName?.toLowerCase().includes(searchTerm) ||
       biz.industry?.toLowerCase().includes(searchTerm);
 
-    return industryMatch && searchMatch;
+    const tierMatch = (() => {
+      if (!sortBy) return true;
+      if (sortBy === "trending") return biz.subscriptionTier === "premium";
+      if (sortBy === "popular") return biz.subscriptionTier === "growth";
+      if (sortBy === "free") return biz.subscriptionTier === "free";
+      return true; // fallback
+    })();
+
+    return industryMatch && searchMatch && tierMatch;
   });
 
   console.log("businesses", businesses);
@@ -81,6 +89,18 @@ const ExploreBusiness = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+        </div>
+        <div>
+          <select
+            className="mind"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="trending">Trending</option>
+            <option value="popular">Popular</option>
+            <option value="free">Free</option>
+          </select>
         </div>
 
         <div className="filter" onClick={() => setOpen(true)}>
