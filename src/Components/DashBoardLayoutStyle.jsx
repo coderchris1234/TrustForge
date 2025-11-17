@@ -7,7 +7,6 @@ export const DashboardLayoutContainer = styled.div`
   display: flex;
   font-family: "Poppins", sans-serif;
   gap: 2px;
-  /* background-color: red; */
 
 .logout-modal-overlay {
   position: fixed;
@@ -58,11 +57,6 @@ export const DashboardLayoutContainer = styled.div`
   cursor: pointer;
 }
 
-/* --------------------------- */
-/* ------- RESPONSIVE -------- */
-/* --------------------------- */
-
-/* Tablet (≤1024px) */
 @media (max-width: 1024px) {
   .logout-modal {
     width: 40%;
@@ -92,8 +86,6 @@ export const DashboardLayoutContainer = styled.div`
     padding: 10px 0;
   }
 }
-
-/* Mobile (≤480px) */
 @media (max-width: 480px) {
   .logout-modal {
     width: 85%;
