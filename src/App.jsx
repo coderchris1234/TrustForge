@@ -79,7 +79,6 @@ const App = () => {
             <Route
               path="subscription-success"
               element={<SubscriptionSuccessOne />}
-              t
             />
           </Route>
         </Route>

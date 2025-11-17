@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
-/* Container */
 export const KycContainer = styled.div`
   width: 93%;
-  margin: 1rem auto;
+  margin: 0 auto;
+  margin: 1rem;
+  box-sizing: border-box;
+
+  .inputSelect {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e6e9ef;
+    background: #fafafa;
+    font-size: 13px;
+    outline: none;
+  }
 
   .WhyKyc {
-    /* border-radius: 12px;
-    background: #d6e8ff;
-    padding: 1rem; */
-
     border-radius: 12px;
     border: 0.5px solid lightgray;
     background: #d6e8ff;
@@ -19,6 +25,7 @@ export const KycContainer = styled.div`
     p {
       color: #0038cc;
       font-size: 22px;
+      margin: 0 0 8px 0;
     }
 
     ul {
@@ -26,6 +33,8 @@ export const KycContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      margin: 0;
+      padding: 0;
     }
 
     ul li {
@@ -35,6 +44,7 @@ export const KycContainer = styled.div`
       align-items: center;
       color: #0038cc;
       font-size: 18px;
+      margin: 0;
     }
 
     ul li::before {
@@ -49,21 +59,34 @@ export const KycContainer = styled.div`
     }
   }
 
-  @media (max-width: 480px) {
-    width: 100%;
-    padding: 1rem;
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: 0.5rem auto;
+
+    .WhyKyc {
+      padding: 0.8rem;
+      ul {
+        gap: 0.4rem;
+      }
+    }
   }
 `;
 
 export const PageWrap = styled.div`
   width: 100%;
+  padding: 32px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  padding-right: 5rem;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 
   @media (max-width: 480px) {
-    padding: 24px;
+    padding: 16px;
   }
 `;
 
@@ -75,8 +98,13 @@ export const Card = styled.div`
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    border-radius: 10px;
   }
 `;
 
@@ -90,10 +118,16 @@ export const StepInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 1.5rem;
+  }
 
   @media (max-width: 480px) {
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.8rem;
   }
 `;
 
@@ -101,6 +135,10 @@ export const StepLabel = styled.div`
   font-size: 1rem;
   color: #336bff;
   margin-bottom: 8px;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const ProgressBar = styled.div`
@@ -123,6 +161,12 @@ export const StepNames = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -135,10 +179,6 @@ export const StepName = styled.div`
   font-size: 16px;
   color: ${(p) => (p.active ? "#336bff" : "#9ca3af")};
   font-weight: ${(p) => (p.active ? 600 : 500)};
-
-  @media (max-width: 480px) {
-    font-size: 14px;
-  }
 `;
 
 export const FormArea = styled.div`
@@ -146,6 +186,7 @@ export const FormArea = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-sizing: border-box;
 
   .profilePic {
     padding: 2rem;
@@ -153,6 +194,7 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     .imageContainer {
       width: 150px;
@@ -162,30 +204,20 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      overflow: hidden;
     }
 
     span {
+      background-color: blue;
       width: 35px;
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      left: 6rem;
-      top: 7rem;
+      right: 22rem;
+      top: 11.7rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      background-color: blue;
-    }
-
-    @media (max-width: 480px) {
-      padding: 1rem;
-
-      span {
-        right: 2rem;
-        top: 10rem;
-      }
     }
   }
 
@@ -197,10 +229,6 @@ export const FormArea = styled.div`
     .bankDetails {
       display: flex;
       gap: 1rem;
-
-      @media (max-width: 480px) {
-        flex-direction: column;
-      }
     }
 
     .secure {
@@ -221,9 +249,63 @@ export const FormArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 
-    @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    .profilePic {
       padding: 1.5rem;
+      .imageContainer {
+        width: 100px;
+        height: 100px;
+      }
+      span {
+        width: 28px;
+        height: 28px;
+        right: 19rem;
+        top: 6rem;
+        position: absolute;
+      }
+    }
+
+    .Bank {
+      padding: 1.5rem;
+      .bankDetails {
+        flex-direction: column;
+      }
+    }
+
+    .Upload {
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .profilePic {
+      padding: 1rem;
+      position: relative;
+      .imageContainer {
+        width: 80px;
+        height: 80px;
+        
+      }
+      span {
+        width: 24px;
+        height: 24px;
+        right:6.3rem;
+        top:6.8rem;
+        position: absolute;
+      }
+    }
+
+    .Bank {
+      padding: 1rem;
+      .bankDetails {
+        flex-direction: column;
+      }
+    }
+
+    .Upload {
+      padding: 1rem;
     }
   }
 `;
@@ -233,8 +315,13 @@ export const SectionTitle = styled.h3`
   font-size: 1.5rem;
   color: #111827;
 
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
   @media (max-width: 480px) {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    text-align: center;
   }
 `;
 
@@ -243,15 +330,15 @@ export const FieldRow = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 14px;
+  box-sizing: border-box;
 
   .select {
     height: 40px;
     padding: 8px 12px;
-    border: none;
     border: 1px solid lightgrey;
     border-radius: 8px;
     outline: none;
-    /* background: blue; */
+    background: #fff;
   }
 
   .Name {
@@ -264,15 +351,6 @@ export const FieldRow = styled.div`
       display: flex;
       flex-direction: column;
       flex: 1;
-    }
-
-    @media (max-width: 480px) {
-      flex-direction: column;
-      gap: 1rem;
-
-      div {
-        width: 100%;
-      }
     }
   }
 
@@ -289,6 +367,16 @@ export const FieldRow = styled.div`
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .Name {
+      flex-direction: column;
+      gap: 1rem;
+      div {
+        width: 100%;
+      }
     }
   }
 `;
@@ -324,62 +412,7 @@ export const Input = styled.input`
   }
 
   @media (max-width: 480px) {
-    font-size: 12px;
-  }
-`;
-export const ActionRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
-`;
-
-export const BackButton = styled.button`
-  background: transparent;
-  color: #6b7280;
-  border: 1px solid #d1d5db;
-  font-size: 14px;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-
-  &:disabled {
-    color: #c7ccd4;
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-  }
-`;
-
-export const NextButton = styled.button`
-  background: #00a3ff;
-  color: #ffffff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    background: #007ad9;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
+    height: 38px;
   }
 `;
 
@@ -396,17 +429,13 @@ export const Textarea = styled.textarea`
     box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
     background: #fff;
   }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
-  }
 `;
 
 export const UploadWrapper = styled.div`
   display: flex;
   cursor: pointer;
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -425,10 +454,70 @@ export const UploadBox = styled.div`
   color: var(--primary_color_400);
   background: #fafafa;
   font-size: 13px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1.5rem;
+  }
 
   @media (max-width: 480px) {
     width: 100%;
-    padding: 1.5rem;
-    font-size: 12px;
+    padding: 1rem;
+  }
+`;
+
+export const ActionRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
+
+export const BackButton = styled.button`
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  &:disabled {
+    color: #c7ccd4;
+    cursor: not-allowed;
+  }
+`;
+
+export const NextButton = styled.button`
+  background: #00a3ff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:hover {
+    background: #007ad9;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0.9rem;
   }
 `;

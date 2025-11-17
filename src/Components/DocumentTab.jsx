@@ -8,7 +8,7 @@ const breakpoints = {
   tablet: "1024px",
 };
 
-const DocumentList = styled.div`
+export const DocumentList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -26,7 +26,7 @@ const DocumentList = styled.div`
   }
 `;
 
-const DocumentItem = styled.div`
+export const DocumentItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -47,7 +47,7 @@ const DocumentItem = styled.div`
   }
 `;
 
-const DocumentInfo = styled.div`
+export const DocumentInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,16 +72,38 @@ const DocumentInfo = styled.div`
     justify-content: center;
   }
 
+  /* Tablet: reduce spacing slightly */
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 6px;
+    strong {
+      font-size: 13.5px;
+    }
+    span {
+      font-size: 13px;
+    }
+  }
+
+  /* Mobile-Large (≤768px): stack items neatly */
   @media (max-width: ${breakpoints.mobileLarge}) {
+    flex-direction: column; /* stack everything vertically */
+    align-items: flex-start;
+    gap: 8px;
+
     strong {
       font-size: 13px;
     }
 
     span {
       font-size: 12.5px;
+      width: 100%;
+    }
+
+    a {
+      align-self: flex-start; 
     }
   }
 
+  /* Mobile (≤480px): compact and readable */
   @media (max-width: ${breakpoints.mobile}) {
     strong {
       font-size: 12px;
@@ -97,6 +119,7 @@ const DocumentInfo = styled.div`
     }
   }
 `;
+
 
 const DocumentTab = ({ data }) => (
   <DocumentList>
