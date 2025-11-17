@@ -186,6 +186,7 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     .imageContainer {
       width: 150px;
@@ -195,7 +196,6 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
     span {
@@ -204,8 +204,8 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 4rem;
-      top: 4rem;
+      right: 22rem;
+      top: 11.7rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -272,16 +272,16 @@ export const FormArea = styled.div`
   @media (max-width: 480px) {
     .profilePic {
       padding: 1rem;
+      position: relative;
       .imageContainer {
         width: 80px;
         height: 80px;
-        position: relative;
       }
       span {
         width: 24px;
         height: 24px;
-        right: 1.7rem;
-        top: 2.1rem;
+        right:6.3rem;
+        top:6.8rem;
         position: absolute;
       }
     }

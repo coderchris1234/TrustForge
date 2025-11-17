@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const SubscriptionSuccess = () => {
+const SubscriptionSuccessOne = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -11,8 +11,9 @@ const SubscriptionSuccess = () => {
   const fullName = queryParams.get("fullName");
   const reference = queryParams.get("reference");
   const amount = queryParams.get("amount");
+
   const handleContinue = () => {
-    navigate("/dashboard/investor");
+    navigate("/dashboard/business_owner");
   };
 
   return (
@@ -33,7 +34,7 @@ const SubscriptionSuccess = () => {
             <span>₦{amount}</span>
           </div>
           <div>
-            <label>Investor ID:</label>
+            <label>Business_owner ID:</label>
             <span>{id}</span>
           </div>
         </Details>
@@ -43,7 +44,13 @@ const SubscriptionSuccess = () => {
   );
 };
 
-export default SubscriptionSuccess;
+export default SubscriptionSuccessOne;
+
+const breakpoints = {
+  mobile: "480px",
+  mobileLarge: "768px",
+  tablet: "1024px",
+};
 
 const SuccessWrapper = styled.div`
   width: 100%;
@@ -53,6 +60,18 @@ const SuccessWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    padding: 1rem;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0.8rem;
+  }
 `;
 
 const Card = styled.div`
@@ -92,6 +111,62 @@ const Card = styled.div`
       background-color: #007acc;
     }
   }
+
+  /* Tablet (≤1024px) */
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 1.8rem;
+
+    h1 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+
+    button {
+      width: 50%;
+      font-size: 15px;
+    }
+  }
+
+  /* Mobile Large (≤768px) */
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    padding: 1.5rem;
+
+    h1 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    button {
+      width: 70%;
+      height: 45px;
+      font-size: 14px;
+    }
+  }
+
+  /* Mobile (≤480px) */
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 1.2rem;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    button {
+      width: 100%;
+      height: 45px;
+      font-size: 14px;
+    }
+  }
 `;
 
 const Details = styled.div`
@@ -111,6 +186,40 @@ const Details = styled.div`
     span {
       font-weight: 600;
       color: #1b1b1b;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: ${breakpoints.tablet}) {
+    div {
+      label,
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  /* Mobile Large */
+  @media (max-width: ${breakpoints.mobileLarge}) {
+    div {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      label,
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: ${breakpoints.mobile}) {
+    div {
+      label,
+      span {
+        font-size: 12px;
+      }
     }
   }
 `;

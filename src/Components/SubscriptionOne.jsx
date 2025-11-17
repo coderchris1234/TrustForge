@@ -53,6 +53,8 @@ const SuccessWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  /* background-color: red; */
+  
 `;
 
 const Card = styled.div`
