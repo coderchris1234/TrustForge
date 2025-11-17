@@ -66,26 +66,23 @@ const ExploreBusiness = () => {
         biz.businessName?.toLowerCase().includes(searchTerm) ||
         biz.industry?.toLowerCase().includes(searchTerm);
 
+      // Sorting filter logic
+      if (sortBy === "trending" && biz.subscriptionTier !== "premium")
+        return false;
+
+      if (sortBy === "popular" && biz.subscriptionTier !== "growth")
+        return false;
+
+      if (sortBy === "free" && biz.subscriptionTier !== "free") return false;
+
       return industryMatch && searchMatch;
     })
     .sort((a, b) => {
+      // Only use sorting when no sortBy is applied
       if (!sortBy) {
         return tierOrder[a.subscriptionTier] - tierOrder[b.subscriptionTier];
       }
-
-      if (sortBy === "trending") {
-        return a.subscriptionTier === "premium" ? -1 : 1;
-      }
-
-      if (sortBy === "popular") {
-        return a.subscriptionTier === "growth" ? -1 : 1;
-      }
-
-      if (sortBy === "free") {
-        return a.subscriptionTier === "free" ? -1 : 1;
-      }
-
-      return 0;
+      return 0; // no sorting needed when filter is active
     });
 
   return (
@@ -112,7 +109,7 @@ const ExploreBusiness = () => {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
-            <option value="">Sort By</option>
+            <option value="">All</option>
             <option value="trending">Trending</option>
             <option value="popular">Popular</option>
             <option value="free">Free</option>
