@@ -80,6 +80,7 @@ const DashBoardLayout = (props) => {
               src={Logo}
               alt=""
               style={{ height: "1.4rem", width: "8.8rem" }}
+              onClick={() => setShowSidebar(false)}
             />
           </div>
           <p className="DashboardName">{props.dashboard}</p>
