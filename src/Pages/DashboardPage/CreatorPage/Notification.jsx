@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { NotificationContainer } from "./NotificationStyle";
+import { Notificationcontainer } from "./NotificationStyle";
 import Not from "../../../Components/Not"; // Use the Not component we updated
 
 const Notification1 = () => {
@@ -9,6 +9,23 @@ const Notification1 = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
   const token = user?.token;
+
+  const markAsRead = async (id) => {
+    try {
+      await axios.post(
+        `${BaseUrl}/read`,
+        { notificationId: id }, // 👈 pass ID in body
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      // Update UI after backend confirms
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+    } catch (err) {
+      console.log("Error marking as read", err);
+    }
+  };
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -36,28 +53,37 @@ const Notification1 = () => {
   }, [token, BaseUrl]);
 
   return (
-    <NotificationContainer>
+    <Notificationcontainer>
       <div className="notification_top">
         <div>
           <h1>Notifications</h1>
-          <p>Stay updated with your latest activities around your business.</p>
+          <p>Stay updated with your latest activities.</p>
         </div>
-        {/* <div className="mark">Mark All As Read</div> */}
+        <div className="mark">Mark All As Read</div>
       </div>
-      {notifications.length === 0 ? (
-        <p style={{ textAlign: "center" }}>No notifications yet</p>
-      ) : (
-        notifications.map((n) => (
+
+      <div className="read_unread">
+        <div className="all">
+          All <small>({notifications.length})</small>
+        </div>
+      </div>
+
+      <div className="notification_list">
+        {notifications.length === 0 && <p>No notifications yet.</p>}
+
+        {notifications.map((notif) => (
           <Not
-            key={n.id}
-            title={n.title}
-            message={n.description}
-            date={n.createdAt}
-            status={n.status}
+            key={notif.id}
+            id={notif.id}
+            title={notif.title}
+            message={notif.description}
+            date={new Date(notif.createdAt).toLocaleString()}
+            status={notif.status}
+            markAsRead={markAsRead}
           />
-        ))
-      )}
-    </NotificationContainer>
+        ))}
+      </div>
+    </Notificationcontainer>
   );
 };
 
