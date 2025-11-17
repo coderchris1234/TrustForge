@@ -194,7 +194,6 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 
     .imageContainer {
       width: 150px;
@@ -204,7 +203,8 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      position: relative; // REQUIRED for positioning the span
+      /* overflow: hidden; */
     }
 
     span {
@@ -213,11 +213,13 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 22rem;
-      top: 11.7rem;
+      right: 10px; // fix position to inside the edge
+      bottom: 10px; // fix position to inside the edge
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      z-index: 1;
     }
   }
 
@@ -261,9 +263,8 @@ export const FormArea = styled.div`
       span {
         width: 28px;
         height: 28px;
-        right: 19rem;
-        top: 6rem;
-        position: absolute;
+        right: 10px; // fix position to inside the edge
+        bottom: 10px;
       }
     }
 
@@ -286,14 +287,12 @@ export const FormArea = styled.div`
       .imageContainer {
         width: 80px;
         height: 80px;
-        
       }
       span {
-        width: 24px;
-        height: 24px;
-        right:6.3rem;
-        top:6.8rem;
-        position: absolute;
+        width: 28px;
+        height: 28px;
+        right: 6px; // fix position to inside the edge
+        bottom: 2px;
       }
     }
 

@@ -342,20 +342,21 @@ const KycVerification = () => {
                     <div className="imageContainer">
                       {formData.profilePic ? (
                         <img
-                          src={profilePics}
+                          src={URL.createObjectURL(formData.profilePic)}
                           alt="Profile Preview"
                           style={{
-                            width: "150px",
-                            height: "150px",
+                            width: "100%",
+                            height: "100%",
                             borderRadius: "50%",
                             objectFit: "cover",
                           }}
                         />
                       ) : (
-                        <GoUpload size={30} color="grey" />
+                        <GoUpload size={40} color="white" />
                       )}
+
                       <span onClick={() => ProfilePicRef.current.click()}>
-                        <GoUpload color="#ffff" />
+                        <GoUpload color="#fff" size={18} />
                       </span>
                     </div>
 
