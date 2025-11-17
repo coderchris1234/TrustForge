@@ -90,7 +90,11 @@ const DashBoardLayout = (props) => {
         <div className="sideBarContents">
           <div className="ItemList">
             {props?.Menu[0]?.map((section, index) => (
-              <div key={index} className="businessContainer">
+              <div
+                key={index}
+                className="businessContainer"
+                onClick={() => setShowSidebar(false)}
+              >
                 <NavLink to={section.link} end className="business">
                   <div>
                     <section.Icon size={24} />
@@ -102,7 +106,11 @@ const DashBoardLayout = (props) => {
           </div>
           <div className="ItemList">
             {props?.Menu[1]?.map((section, index) => (
-              <div key={index} className="businessContainer">
+              <div
+                key={index}
+                className="businessContainer"
+                onClick={() => setShowSidebar(false)}
+              >
                 <NavLink to={section.link} end className="business">
                   <div>
                     <section.Icon size={24} />
@@ -130,10 +138,10 @@ const DashBoardLayout = (props) => {
               <div className="bar"></div>
             </div>
 
-            <div className="notification">
+            {/* <div className="notification">
               <img src="/public/icon.svg" alt="" />
               <div className="rounded">{props?.notifcationCount || 0}</div>
-            </div>
+            </div> */}
           </div>
 
           <div className="header-content">

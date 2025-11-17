@@ -170,14 +170,15 @@ export const DashboardLayoutContainer = styled.div`
       background-color: var(--main_white);
       padding: 1rem;
       display: flex;
-      flex-direction: column;
+      height: max-content;
+      /* flex-direction: column; */
       margin-bottom: 2rem;
       position: sticky;
       top: 0;
       left: 0;
-      height: 70px;
+      /* height: 70px; */
       /* align-items: center; */
-      justify-content: center;
+      justify-content: space-between;
 
       .top-bar {
         display: none;
@@ -195,6 +196,7 @@ export const DashboardLayoutContainer = styled.div`
           flex: 1;
           min-width: 200px;
           align-items: center;
+          justify-content: flex-end;
           gap: 8px;
 
           .imageContainer {
