@@ -42,19 +42,23 @@ export const DashboardLayoutContainer = styled.div`
 
   .logout-btn {
     background: #e53935;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    width: 50%;
+    font-size: 15px;
   }
 
   .cancel-btn {
     background: #f1f1f1;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    width: 50%;
+    font-size: 15px;
   }
 
   @media (max-width: 1024px) {

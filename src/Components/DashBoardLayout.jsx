@@ -76,13 +76,11 @@ const DashBoardLayout = (props) => {
 
         <div className="leftSidedContent">
           <div className="image-logo">
-            <Link to={"/"}>
-              <img
-                src={Logo}
-                alt=""
-                style={{ height: "1.4rem", width: "8.8rem" }}
-              />
-            </Link>
+            <img
+              src={Logo}
+              alt=""
+              style={{ height: "1.4rem", width: "8.8rem" }}
+            />
           </div>
           <p className="DashboardName">{props.dashboard}</p>
         </div>
