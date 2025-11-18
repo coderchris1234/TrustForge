@@ -40,7 +40,8 @@ const AddBusiness = () => {
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState("");
+
+  const [errorModal, setErrorModal] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -140,7 +141,7 @@ const AddBusiness = () => {
       }
     } catch (error) {
       setLoading(false);
-      toast.error(error?.response?.data?.message);
+      setErrorModal(error?.response?.data?.message || "Something went wrong");
     }
     setStep(1);
     setLoading(false);
@@ -466,13 +467,27 @@ const AddBusiness = () => {
             <div className="logout-modal">
               <h1>Business Upload.</h1>
               <p>
-                Your business has beenn uploaded successfully. Our team is
+                Your business has been uploaded successfully. Our team is
                 reviewing it.
               </p>
 
               <div className="buttons">
-                <button className="view" onClick={() => nav("mybusiness")}>
+                <button className="view1" onClick={() => nav("../mybusiness")}>
                   View Business Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {errorModal && (
+          <div className="modal-overlay">
+            <div className="logout-modal">
+              <h2>Error</h2>
+              <p>{errorModal}</p>
+
+              <div className="buttons">
+                <button className="view" onClick={() => setErrorModal("")}>
+                  Close
                 </button>
               </div>
             </div>

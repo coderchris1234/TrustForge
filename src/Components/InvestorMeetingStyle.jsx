@@ -27,10 +27,12 @@ export const InvestorMeeting_container = styled.div`
         align-items: center;
 
         .pending {
-          background-color: transparent;
+          background-color: yellow;
           border: 1px solid grey;
           padding: 5px;
           border-radius: 8px;
+          border: none;
+          color: #ffff;
           /* display: flex; */
           /* align-items: center; */
         }
@@ -75,6 +77,17 @@ export const InvestorMeeting_container = styled.div`
         flex-wrap: wrap;
         gap: 1rem;
 
+        .decline_button {
+          color: #ffff;
+          background-color: #ff0000d8;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.5rem;
+          gap: 0.2rem;
+        }
+
         .awaiting {
           background-color: transparent;
           border: 1px solid grey;
@@ -109,9 +122,10 @@ export const InvestorMeeting_container = styled.div`
         }
 
         .schedule_meetings {
-          background-color: transparent;
-          color: black;
+          background-color: orange;
+          color: #ffff;
           border: 1px solid gray;
+          border: none;
         }
       }
     }

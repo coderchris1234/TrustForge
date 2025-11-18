@@ -32,7 +32,7 @@ export const InvestorMeeting_container = styled.div`
           justify-content: center;
           align-items: center;
           border-radius: 8px;
-          background-color: #f6b131ff;
+          background-color: yellow;
           padding: 5px;
           border: none;
         }
@@ -76,6 +76,7 @@ export const InvestorMeeting_container = styled.div`
           border-radius: 8px;
           background-color: #1fe91f;
           padding: 0.5rem;
+          border: none;
         }
 
         .pending,
@@ -105,8 +106,10 @@ export const InvestorMeeting_container = styled.div`
           padding: 0.6rem 1rem;
           font-size: 0.9rem;
           cursor: pointer;
+          color: #ffff;
           /* border: 1px solid gray; */
         }
+
         .join_meetings {
           background-color: #0046ff;
           color: white;
@@ -141,6 +144,8 @@ export const InvestorMeeting_container = styled.div`
           padding: 0.5rem;
           gap: 5px;
           cursor: pointer;
+          border: none;
+          color: #ffff;
         }
       }
     }

@@ -40,6 +40,21 @@ export const ModalBox = styled.div`
   max-height: calc(100vh - 48px);
   overflow-y: auto;
 
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   /* header area alignment helper */
   .upCase {
     display: flex;
