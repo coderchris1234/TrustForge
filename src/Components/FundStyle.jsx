@@ -23,17 +23,12 @@ export const FundContainer = styled.div`
   animation: ${fadeUp} 1s ease forwards;
 
   .Fund_page_wrapper {
-    width: 100%;
-    /* max-width: 1200px; */
+    width: 90%;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 2rem;
 
     .Fund_num {
-      flex: 1;
-      /* min-width: 180px; */
       max-width: 350px;
       display: flex;
       justify-content: center;
@@ -56,7 +51,7 @@ export const FundContainer = styled.div`
       }
 
       p {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
         color: var(--main_white);
         margin: 0.5rem 0 0;

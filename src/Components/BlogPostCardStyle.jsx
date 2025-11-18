@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const BlogPostCardStyle = styled.div`
   width: 32%;
   height: 100%;
-  /* min-height: 70%; */
   background-color: var(--main_white);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* gap: 10px; */
+  margin-bottom: 2rem;
+
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
-  /* overflow: hidden; */
 
   .Insight_Card_image {
     width: 100%;
@@ -29,31 +29,33 @@ export const BlogPostCardStyle = styled.div`
 
   .Insight_card_contents {
     width: 100%;
-    height: max-content;
+    height: 60%;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
-    gap: 10px;
+    /* gap: 10px; */
+    padding: 1rem;
 
     .Insight_card_text_holder {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      height: 60%;
-      padding: 15px 20px 0px 20px;
+      gap: 1rem;
+      height: max-content;
+      /* padding: 0.5rem; */
+      /* padding: 15px 20px 0px 20px; */
       margin-top: 15px;
 
       .Read_me_blog {
         p {
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 400;
           display: flex;
           flex-direction: column;
 
           .Read_More {
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             color: var(--secondary_color_600);
           }
@@ -75,14 +77,15 @@ export const BlogPostCardStyle = styled.div`
       }
 
       h3 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 600;
         color: var(--netural_black_color);
         line-height: 130%;
+        margin: 0;
       }
 
       p {
-        font-size: 15px;
+        font-size: 10px;
         font-weight: 400;
         color: var(--netural_black_color);
         line-height: 160%;
@@ -94,8 +97,8 @@ export const BlogPostCardStyle = styled.div`
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-top: 15px;
-      padding: 0 20px 20px 20px;
+      /* margin-top: 10px; */
+      /* padding: 0.5rem; */
 
       .Profile_insight,
       .Profile_insight1 {
@@ -132,7 +135,7 @@ export const BlogPostCardStyle = styled.div`
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 0; /* remove gap between children */
+    gap: 0;
 
     .Insight_card_contents {
       width: 100%;
@@ -140,8 +143,8 @@ export const BlogPostCardStyle = styled.div`
       flex-direction: column;
 
       .Insight_card_text_holder {
-        padding: 16px 20px 0px 20px; /* remove bottom padding */
-        margin-top: 0; /* remove top margin */
+        padding: 16px 20px 0px 20px;
+        margin-top: 0;
         gap: 0.5rem;
         height: auto;
 
@@ -198,7 +201,7 @@ export const BlogPostCardStyle = styled.div`
         span {
           font-size: 11px;
           padding: 3px 10px;
-          width: 30%;
+          width: 50%;
           height: 25px;
           font-size: 13px;
         }
@@ -218,7 +221,7 @@ export const BlogPostCardStyle = styled.div`
     @media (max-width: 390px) {
       .Insight_card_contents {
         .Insight_card_text_holder {
-          padding: 18px;
+          /* padding: 18px; */
           span {
             font-size: 11px;
             padding: 3px 10px;

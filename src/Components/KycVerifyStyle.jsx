@@ -6,6 +6,73 @@ export const KycContainer = styled.div`
   margin: 1rem;
   box-sizing: border-box;
 
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+
+    .logout-modal {
+      background: #fff;
+      padding: 3rem 5rem;
+      border-radius: 10px;
+      width: 50%;
+      animation: scaleIn 0.2s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        text-align: center;
+        width: 80%;
+      }
+    }
+
+    .logout-modal .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 60%;
+    }
+
+    .logout-btn {
+      background: #0046ff;
+      padding: 10px;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .cancel-btn {
+      background: transparent;
+      padding: 10px;
+      border: 1px solid grey;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .okay {
+      background-color: #0046ff;
+      width: 50%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+
   .inputSelect {
     padding: 1rem;
     border-radius: 8px;
@@ -74,12 +141,13 @@ export const KycContainer = styled.div`
 
 export const PageWrap = styled.div`
   width: 100%;
-  padding: 32px 48px;
+  /* padding: 32px 48px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding-right: 5rem;
+  /* padding-right: 5rem; */
+  /* background-color: yellow; */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -97,6 +165,7 @@ export const Card = styled.div`
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
+  /* background-color: green; */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -109,9 +178,10 @@ export const Card = styled.div`
 `;
 
 export const StepInfo = styled.div`
-  margin-top: 12px;
-  margin-bottom: 24px;
+  margin-top: 1rem;
+  margin-bottom: 12px;
   background-color: #fff;
+  /* background-color: red; */
   border-radius: 8px;
   width: 100%;
   padding: 1rem 0.5rem;
@@ -194,17 +264,17 @@ export const FormArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 
     .imageContainer {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      background-color: grey;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      position: relative; // REQUIRED for positioning the span
+      object-fit: cover;
+      /* overflow: hidden; */
     }
 
     span {
@@ -213,11 +283,13 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 22rem;
-      top: 11.7rem;
+      right: 10px; // fix position to inside the edge
+      bottom: 10px; // fix position to inside the edge
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      z-index: 1;
     }
   }
 
@@ -261,9 +333,8 @@ export const FormArea = styled.div`
       span {
         width: 28px;
         height: 28px;
-        right: 19rem;
-        top: 6rem;
-        position: absolute;
+        right: 10px; // fix position to inside the edge
+        bottom: 10px;
       }
     }
 
@@ -286,14 +357,12 @@ export const FormArea = styled.div`
       .imageContainer {
         width: 80px;
         height: 80px;
-        
       }
       span {
-        width: 24px;
-        height: 24px;
-        right:6.3rem;
-        top:6.8rem;
-        position: absolute;
+        width: 28px;
+        height: 28px;
+        right: 6px; // fix position to inside the edge
+        bottom: 2px;
       }
     }
 
@@ -416,6 +485,26 @@ export const Input = styled.input`
   }
 `;
 
+export const SelectInput = styled.select`
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+  background: #fafafa;
+  outline: none;
+  font-size: 13px;
+
+  &:focus {
+    border-color: #c7ddff;
+    box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
+    background: #fff;
+  }
+
+  @media (max-width: 480px) {
+    height: 38px;
+  }
+`;
+
 export const Textarea = styled.textarea`
   padding: 10px 12px;
   border-radius: 8px;
@@ -486,7 +575,8 @@ export const ActionRow = styled.div`
 export const BackButton = styled.button`
   background: transparent;
   color: #6b7280;
-  border: none;
+  border: 1px solid var(--neutral_gray_color_600);
+
   font-size: 14px;
   padding: 8px 12px;
   cursor: pointer;

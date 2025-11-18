@@ -84,7 +84,6 @@ const Notification = () => {
             date={new Date(notif.createdAt).toLocaleString()}
             status={notif.status}
             markAsRead={markAsRead}
-            // pass read/unread status
           />
         ))}
       </div>

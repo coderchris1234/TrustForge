@@ -26,6 +26,7 @@ const ForgotPassword = () => {
   const user = useSelector((state) => state.TrustForge.user);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
+  // Dynamic endpoint selection based on role
   const endpoints =
     user?.data?.role === "Investor"
       ? `${BaseUrl}/forgoti`
@@ -116,11 +117,6 @@ const ForgotPassword = () => {
             .
           </TermsText>
         </FormBox>
-        {loading && (
-          <div className="loading-overlay">
-            <div className="spinner"></div>
-          </div>
-        )}
       </ForgotPasswordRight>
     </ForgotPasswordContainer>
   );

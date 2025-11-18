@@ -13,6 +13,7 @@ export const StartupBlogContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
     background-color: var(--neutral_gray_color_500);
   }
 `;

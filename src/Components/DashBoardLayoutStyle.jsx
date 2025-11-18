@@ -8,101 +8,104 @@ export const DashboardLayoutContainer = styled.div`
   font-family: "Poppins", sans-serif;
   gap: 2px;
 
-.logout-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  animation: fadeIn 0.2s ease-out;
-}
+  .logout-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+  }
 
-.logout-modal {
-  background: #fff;
-  padding: 3rem 5rem;
-  border-radius: 10px;
-  width: 30%;
-  text-align: center;
-  animation: scaleIn 0.2s ease-out;
-}
-
-.logout-modal h3 {
-  margin-bottom: 20px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.logout-modal .buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.logout-btn {
-  background: #e53935;
-  padding: 10px 20px;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cancel-btn {
-  background: #f1f1f1;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-@media (max-width: 1024px) {
   .logout-modal {
-    width: 40%;
-    padding: 2.5rem 3.5rem;
+    background: #fff;
+    padding: 3rem 5rem;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    animation: scaleIn 0.2s ease-out;
   }
 
   .logout-modal h3 {
-    font-size: 17px;
-  }
-}
-
-/* Mobile Large (≤768px) */
-@media (max-width: 768px) {
-  .logout-modal {
-    width: 60%;
-    padding: 2rem 3rem;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
   }
 
   .logout-modal .buttons {
-    flex-direction: column;
-    gap: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
 
-  .logout-btn,
+  .logout-btn {
+    background: #e53935;
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 15px;
+  }
+
   .cancel-btn {
-    width: 100%;
-    padding: 10px 0;
-  }
-}
-@media (max-width: 480px) {
-  .logout-modal {
-    width: 85%;
-    padding: 1.8rem 1.5rem;
-  }
-
-  .logout-modal h3 {
-    font-size: 16px;
+    background: #f1f1f1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 15px;
   }
 
-  .logout-btn,
-  .cancel-btn {
-    padding: 9px 0;
-    font-size: 14px;
-  }
-}
+  @media (max-width: 1024px) {
+    .logout-modal {
+      width: 40%;
+      padding: 2.5rem 3.5rem;
+    }
 
+    .logout-modal h3 {
+      font-size: 17px;
+    }
+  }
+
+  /* Mobile Large (≤768px) */
+  @media (max-width: 768px) {
+    .logout-modal {
+      width: 60%;
+      padding: 2rem 3rem;
+    }
+
+    .logout-modal .buttons {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .logout-btn,
+    .cancel-btn {
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .logout-modal {
+      width: 85%;
+      padding: 1.8rem 1.5rem;
+    }
+
+    .logout-modal h3 {
+      font-size: 16px;
+    }
+
+    .logout-btn,
+    .cancel-btn {
+      padding: 9px 0;
+      font-size: 14px;
+    }
+  }
 
   .aside {
     width: 240px;
@@ -246,7 +249,6 @@ export const DashboardLayoutContainer = styled.div`
           gap: 8px;
 
           .imageContainer {
-            background-color: #303030ff;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -385,6 +387,12 @@ export const DashboardLayoutContainer = styled.div`
     .profile-content {
       flex-direction: column;
       align-items: flex-start;
+
+      .UserInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 `;

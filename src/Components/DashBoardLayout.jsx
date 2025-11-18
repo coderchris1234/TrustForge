@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Pages/Global/Slice";
 import Logo from "../assets/Logo.png";
 import axios from "axios";
+import profileHolder from "../assets/profileHolder.png";
 
 const DashBoardLayout = (props) => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -48,7 +49,7 @@ const DashBoardLayout = (props) => {
   const [userDetails, setUserDetails] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  console.log("userDetails", userDetails);
+  // console.log("userDetails", userDetails?.user?.kycStatus);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -76,50 +77,93 @@ const DashBoardLayout = (props) => {
 
         <div className="leftSidedContent">
           <div className="image-logo">
-            <Link to={"/"}>
-              <img
-                src={Logo}
-                alt=""
-                style={{ height: "1.4rem", width: "8.8rem" }}
-              />
-            </Link>
+            <img
+              src={Logo}
+              alt=""
+              style={{ height: "1.4rem", width: "8.8rem" }}
+              onClick={() => setShowSidebar(false)}
+            />
           </div>
           <p className="DashboardName">{props.dashboard}</p>
         </div>
 
         <div className="sideBarContents">
           <div className="ItemList">
-            {props?.Menu[0]?.map((section, index) => (
-              <div
-                key={index}
-                className="businessContainer"
-                onClick={() => setShowSidebar(false)}
-              >
-                <NavLink to={section.link} end className="business">
-                  <div>
-                    <section.Icon size={24} />
-                  </div>
-                  <span>{section.label}</span>
-                </NavLink>
-              </div>
-            ))}
+            {props?.Menu[0]?.map((section, index) => {
+              const isKycIncomplete =
+                userDetails?.user?.kycStatus.includes("not");
+              const isKycRoute = section.link === "kycverification";
+
+              const isDisabled = isKycIncomplete && !isKycRoute;
+
+              return (
+                <div
+                  key={index}
+                  className={`businessContainer ${
+                    isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  onClick={() => {
+                    if (!isDisabled) setShowSidebar(false);
+                  }}
+                >
+                  {isDisabled ? (
+                    <div className="business">
+                      <div>
+                        <section.Icon size={24} />
+                      </div>
+                      <span>{section.label}</span>
+                    </div>
+                  ) : (
+                    <NavLink to={section.link} end className="business">
+                      <div>
+                        <section.Icon size={24} />
+                      </div>
+                      <span>{section.label}</span>
+                    </NavLink>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
           <div className="ItemList">
-            {props?.Menu[1]?.map((section, index) => (
-              <div
-                key={index}
-                className="businessContainer"
-                onClick={() => setShowSidebar(false)}
-              >
-                <NavLink to={section.link} end className="business">
-                  <div>
-                    <section.Icon size={24} />
-                  </div>
-                  <span>{section.label}</span>
-                </NavLink>
-              </div>
-            ))}
+            {props?.Menu[1]?.map((section, index) => {
+              const isKycIncomplete =
+                userDetails?.user?.kycStatus.includes("not");
+              const isKycRoute = section.link === "kycverification";
+
+              const isDisabled = isKycIncomplete && !isKycRoute;
+
+              return (
+                <div
+                  key={index}
+                  className={`businessContainer ${
+                    isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  onClick={() => {
+                    if (!isDisabled) setShowSidebar(false);
+                  }}
+                >
+                  {isDisabled ? (
+                    <div className="business">
+                      <div>
+                        <section.Icon size={24} />
+                      </div>
+                      <span>{section.label}</span>
+                    </div>
+                  ) : (
+                    <NavLink to={section.link} end className="business">
+                      <div>
+                        <section.Icon size={24} />
+                      </div>
+                      <span>{section.label}</span>
+                    </NavLink>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
           <div className="logout">
             <img src="/public/material-symbols_logout.svg" alt="" />
             <span style={{ cursor: "pointer" }} onClick={openLogoutModal}>
@@ -146,7 +190,10 @@ const DashBoardLayout = (props) => {
           <div className="header-content">
             <div className="profile-content">
               <div className="imageContainer">
-                <img src={kyc?.profilePic} alt="" />
+                <img
+                  src={kyc?.profilePic ? kyc?.profilePic : profileHolder}
+                  alt=""
+                />
               </div>
 
               <div className="UserInfo">
