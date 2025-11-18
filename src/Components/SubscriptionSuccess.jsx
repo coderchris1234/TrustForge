@@ -15,7 +15,6 @@ const SubscriptionSuccessOne = () => {
   const handleContinue = () => {
     navigate("/dashboard/business_owner");
   };
-
   return (
     <SuccessWrapper>
       <Card>
