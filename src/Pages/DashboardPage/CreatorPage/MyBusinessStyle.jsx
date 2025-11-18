@@ -63,12 +63,12 @@ export const MyBusinessHeader = styled.div`
 export const SearchBar = styled.div`
   background-color: #fff;
   width: 95%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 1rem;
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  /* gap: 2rem; */
 
   select {
     width: 15%;
@@ -86,7 +86,7 @@ export const SearchBar = styled.div`
 
   .searchContainer {
     background-color: #eceff4;
-    width: 85%;
+    width: 80%;
     display: flex;
     padding: 0.5rem;
     border-radius: 8px;
@@ -146,6 +146,8 @@ export const BusinessWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 2rem;
   padding: 1rem;
+  justify-content: center;
+  align-items: center;
 
   p {
     color: gray;

@@ -46,6 +46,7 @@ const InvestorMeeting = ({
 
   const userJoinMeeting = () => {
     window.location.href = meetingLink;
+    console.log("meetingLink", meetingLink);
   };
   const today = new Date();
   const year = today.getFullYear();

@@ -303,12 +303,12 @@ const VerifyEmail = () => {
                 background: "none",
                 border: "none",
                 padding: 0,
-                color: "#ff3c00",
+                color: "#0046ff",
                 cursor: "pointer",
                 fontWeight: 500,
               }}
             >
-              Log In
+              Login
             </button>
           </LoginText>
 
