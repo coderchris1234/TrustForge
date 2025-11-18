@@ -13,10 +13,12 @@ export const SmartContainer = styled.div`
   align-items: center;
 
   .Smart_wrapper {
-    width: 80%;
+    width: 90%;
     height: 60%;
     display: flex;
     gap: 20px;
+    justify-content: space-between;
+    /* background-color: green; */
 
     .Smart_left {
       width: 40%;
@@ -28,8 +30,8 @@ export const SmartContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        margin-top: 1rem;
+        /* align-items: center; */
+        margin-top: 3rem;
 
         h3 {
           font-size: 36px;
@@ -43,11 +45,11 @@ export const SmartContainer = styled.div`
         }
 
         p {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 400;
           line-height: 150%;
           color: var(--netural_black_color);
-          text-align: center;
+          /* text-align: center; */
         }
       }
     }
@@ -58,6 +60,7 @@ export const SmartContainer = styled.div`
       display: flex;
       flex-direction: column;
       gap: 15px;
+      /* background-color: red; */
 
       .Smart_right_content {
         width: 100%;
@@ -92,14 +95,14 @@ export const SmartContainer = styled.div`
             padding: 10px;
 
             h3 {
-              font-size: 22px;
+              font-size: 20px;
               font-weight: 500;
               color: var(--netural_black_color);
               margin: 0px;
             }
 
             span {
-              font-size: 20px;
+              font-size: 15px;
               font-weight: 400;
               color: var(--netural_black_color);
             }

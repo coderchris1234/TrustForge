@@ -3,7 +3,7 @@ import InsightBg from "../assets/InsightBg.png";
 
 export const InsightContainer = styled.div`
   width: 100%;
-  height: 107vh;
+  height: max-content;
   /* background: linear-gradient(to right, #f5b301, #8ab7f4, #8ab7f4); */
   background: url(${InsightBg});
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@ export const InsightContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
+  padding: 3rem;
 
   .Insight_wrapper {
     width: 90%;

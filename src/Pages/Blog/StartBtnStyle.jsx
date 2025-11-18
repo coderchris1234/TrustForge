@@ -16,7 +16,7 @@ export const StartBtnContainer = styled.div`
     align-items: center;
 
     .Startup_Header_btns {
-      width: 35%;
+      width: 50%;
       height: 70%;
       display: flex;
       justify-content: center;

@@ -128,13 +128,9 @@ const Login = () => {
       <LoginRight>
         <FormBox>
           <FormTitle>
-            <div className="title-text">
-              Log <span>In.</span>
-            </div>
-            <small>
-              Good to see you again. <br /> Log in to pick up where you left
-              off.
-            </small>
+            <div className="title-text">Login to Trustforge</div>
+            {/* <div className="title-text">Welcome Back</div> */}
+            {/* <small>login to continue</small> */}
           </FormTitle>
 
           <form onSubmit={onSubmit}>
@@ -218,7 +214,7 @@ const Login = () => {
             Don't have an account?{" "}
             <span
               onClick={() => navigate("/signup")}
-              style={{ color: "#DC2626" }}
+              style={{ color: "#0046ff" }}
             >
               Create one
             </span>

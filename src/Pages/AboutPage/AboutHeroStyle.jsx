@@ -39,7 +39,6 @@ export const AboutHeroContainer = styled.div`
     }
   }
 
-  /* ✅ Tablet View */
   @media (max-width: 1024px) {
     height: 45vh;
 
@@ -54,7 +53,6 @@ export const AboutHeroContainer = styled.div`
     }
   }
 
-  /* ✅ Mobile View */
   @media (max-width: 768px) {
     height: auto;
     padding: 4rem 1rem;
@@ -81,7 +79,6 @@ export const AboutHeroContainer = styled.div`
     }
   }
 
-  /* ✅ Small Mobile */
   @media (max-width: 480px) {
     padding: 3rem 1rem;
 

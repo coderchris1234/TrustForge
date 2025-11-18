@@ -3,49 +3,72 @@ import Success from "../assets/Success.png";
 
 export const StoriesContainer = styled.div`
   width: 100%;
-  min-height: 100vh;
-  padding: 4rem 0;
-  background-image: url(${Success});
-  background-size: cover;
+  height: 110vh;
+  background: url(${Success});
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  object-fit: contain;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 
   .Story_wrapper {
     width: 90%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20px;
 
     .Story_header {
-      text-align: center;
+      width: 100%;
+      height: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
       h3 {
         font-size: 36px;
-        margin: 0;
+        font-weight: 600;
+        margin: 0px;
+        text-align: center;
       }
+
       span {
         color: var(--primary_color_500);
       }
+
       p {
-        max-width: 700px;
-        margin: 0 auto;
         font-size: 20px;
+        font-weight: 400;
+        color: var(--netural_black_color);
+        text-align: center;
+        max-width: 700px;
       }
     }
 
     .Story_card_holder {
+      width: 100%;
+      height: 80%;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 20px;
+      flex-wrap: wrap;
+      /* gap: 15px; */
+      /* background-color: green; */
 
       .Story_card {
         width: 32%;
-        background-color: var(--main_white);
-        border: 1px solid var(--neutral_gray_color_700);
+        height: 100%;
         border-radius: 12px;
-        overflow: hidden;
-        transition: 0.3s;
+        border: 1px solid var(--neutral_gray_color_700);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: var(--main_white);
+        transition: all 0.3s ease;
 
         &:hover {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -53,41 +76,90 @@ export const StoriesContainer = styled.div`
 
         .Story_image {
           width: 100%;
-          height: 220px;
+          height: 50%;
+          border-top-right-radius: 12px;
+          border-top-left-radius: 12px;
+          background-position: cover;
+
           img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            position: center;
+            border-top-right-radius: 12px;
+            border-top-left-radius: 12px;
           }
         }
 
         .Story_contents {
-          padding: 1rem;
+          width: 100%;
+          height: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          /* padding: 10px; */
+          /* background-color: red; */
 
           .Story_cont1 {
-            margin-bottom: 1rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0.7rem;
+
             .Story_icon {
+              font-size: 25px;
               color: var(--primary_color_500);
-              font-size: 24px;
+              padding-top: 20px;
             }
+
             p {
-              font-size: 18px;
-              line-height: 130%;
+              font-size: 16px;
+              font-weight: 400;
+              color: var(--main_black);
+              line-height: 125%;
             }
           }
 
           .Story_cont2 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            padding: 1rem;
+            /* background-color: blue; */
+
             h4 {
-              margin: 0;
               font-size: 20px;
+              color: var(--main_black);
+              font-weight: 500;
+              margin: 0px;
             }
-            span {
+
+            .span {
               font-size: 16px;
+              color: var(--main_black);
+              font-weight: 400;
             }
+
             p {
-              font-size: 14px;
+              font-size: 16px;
+              color: var(--main_black);
+              font-weight: 400;
               font-style: italic;
+            }
+
+            .Linediv {
+              width: 100%;
+              height: 3px;
+              display: flex;
+              justify-content: center;
+              margin-bottom: 1rem;
+
+              .Line {
+                width: 90%;
+                height: 1px;
+                background-color: var(--netural_black_color);
+              }
             }
           }
         }
@@ -95,47 +167,120 @@ export const StoriesContainer = styled.div`
     }
   }
 
-  /* ----------- TABLET 1024px ----------- */
+  /* ✅ Responsive Breakpoints */
+
   @media (max-width: 1024px) {
-    .Story_wrapper .Story_card_holder .Story_card {
-      width: 45%;
+    height: auto;
+    padding: 4rem 0;
+
+    .Story_wrapper {
+      height: auto;
+      .Story_card_holder {
+        justify-content: center;
+        gap: 25px;
+
+        .Story_card {
+          width: 45%;
+          height: auto;
+        }
+      }
     }
   }
 
-  /* ----------- MOBILE LARGE 768px ----------- */
   @media (max-width: 768px) {
-    .Story_wrapper .Story_header h3 {
-      font-size: 28px;
-    }
-    .Story_wrapper .Story_header p {
-      font-size: 16px;
-    }
+    height: auto;
+    padding: 3rem 0;
 
-    .Story_wrapper .Story_card_holder {
-      flex-direction: column;
-      align-items: center;
-    }
+    .Story_wrapper {
+      width: 95%;
+      .Story_header {
+        h3 {
+          font-size: 28px;
+        }
 
-    .Story_wrapper .Story_card_holder .Story_card {
-      width: 90%;
+        p {
+          font-size: 15px;
+          max-width: 500px;
+        }
+      }
+
+      .Story_card_holder {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        .Story_card {
+          width: 90%;
+          height: auto;
+
+          .Story_contents {
+            padding: 15px;
+
+            .Story_cont1 p {
+              font-size: 15px;
+            }
+
+            .Story_cont2 {
+              h4 {
+                font-size: 17px;
+              }
+
+              .span {
+                font-size: 15px;
+              }
+
+              p {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
-  /* ----------- MOBILE SMALL 480px ----------- */
   @media (max-width: 480px) {
-    .Story_wrapper .Story_header h3 {
-      font-size: 24px;
-    }
-    .Story_wrapper .Story_header p {
-      font-size: 14px;
-    }
+    .Story_wrapper {
+      width: 90%;
+      gap: 25px;
 
-    .Story_wrapper .Story_card_holder .Story_card {
-      width: 100%;
-    }
+      .Story_header {
+        h3 {
+          font-size: 24px;
+        }
 
-    .Story_wrapper .Story_card_holder .Story_card .Story_contents p {
-      font-size: 14px;
+        p {
+          font-size: 14px;
+          line-height: 140%;
+        }
+      }
+
+      .Story_card_holder {
+        .Story_card {
+          width: 100%;
+          .Story_contents {
+            padding: 12px;
+
+            .Story_cont1 p {
+              font-size: 14px;
+            }
+
+            .Story_cont2 {
+              h4 {
+                font-size: 16px;
+              }
+
+              .span {
+                font-size: 14px;
+              }
+
+              p {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

@@ -102,7 +102,7 @@ export const TargetContainer = styled.div`
         }
 
         p {
-          font-size: 18px;
+          font-size: 16px;
           color: var(--netural_black_color);
           line-height: 1.5;
           margin: 0;
