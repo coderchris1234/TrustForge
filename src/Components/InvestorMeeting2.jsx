@@ -27,6 +27,8 @@ const InvestorMeeting2 = ({
   rescheduleRole,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [joining, setJoining] = useState(false);
+
   const [form, setForm] = useState({
     date: "",
     time: "",
@@ -60,7 +62,12 @@ const InvestorMeeting2 = ({
   const minDate = `${year}-${month}-${day}`;
 
   const userJoinMeeting = () => {
-    window.location.href = meetingLink;
+    setJoining(true);
+
+    // small delay so the UI updates before redirect happens
+    setTimeout(() => {
+      window.location.href = meetingLink;
+    }, 500);
   };
 
   const initials = hostName
@@ -94,11 +101,31 @@ const InvestorMeeting2 = ({
           </div>
           <div className="tittle_right">
             {meetingStatus === "Approved and Upcoming" ? (
-              <div className="join_meetings" onClick={userJoinMeeting}>
-                Join Meeting
-                <FaVideo size={15} />
+              <div
+                className="join_meetings"
+                onClick={!joining ? userJoinMeeting : null}
+                style={{
+                  cursor: joining ? "not-allowed" : "pointer",
+                  opacity: joining ? 0.7 : 1,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
+                {joining ? (
+                  <>
+                    Joining...
+                    <div className="spinner"></div>
+                  </>
+                ) : (
+                  <>
+                    Join Meeting
+                    <FaVideo size={15} />
+                  </>
+                )}
               </div>
             ) : null}
+
             {(meetingStatus !== "Awaiting Approval" &&
               meetingStatus !== "Reschedule Requested") ||
             rescheduleRole === "BusinessOwner" ? null : (
@@ -109,6 +136,7 @@ const InvestorMeeting2 = ({
                 }}
                 style={{
                   backgroundColor: "#11d611",
+                  color: "#ffff",
                 }}
               >
                 Accept Meeting
@@ -171,10 +199,7 @@ const InvestorMeeting2 = ({
               {meetingType}
             </div>
             <div className="time_container">
-              <div
-                className="time"
-                style={{ display: "flex", width: "4rem", height: "2rem" }}
-              >
+              <div className="time">
                 <CiClock2 size={20} />
                 {time}
               </div>

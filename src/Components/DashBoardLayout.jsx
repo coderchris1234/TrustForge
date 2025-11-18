@@ -77,12 +77,13 @@ const DashBoardLayout = (props) => {
 
         <div className="leftSidedContent">
           <div className="image-logo">
-            <img
-              src={Logo}
-              alt=""
-              style={{ height: "1.4rem", width: "8.8rem" }}
-              onClick={() => setShowSidebar(false)}
-            />
+            <Link to={"/"}>
+              <img
+                src={Logo}
+                alt=""
+                style={{ height: "1.4rem", width: "8.8rem" }}
+              />
+            </Link>
           </div>
           <p className="DashboardName">{props.dashboard}</p>
         </div>
@@ -182,11 +183,12 @@ const DashBoardLayout = (props) => {
               <div className="bar"></div>
             </div>
 
-            {/* <div className="notification">
+            <div className="notification">
               <img src="/public/icon.svg" alt="" />
               <div className="rounded">{props?.notifcationCount || 0}</div>
-            </div> */}
+            </div>
           </div>
+
           <div className="header-content">
             <div className="profile-content">
               <div className="imageContainer">

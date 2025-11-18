@@ -13,6 +13,7 @@ const Meeting = () => {
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const [loading, setLoading] = useState(false);
+  const [declineLoading, setDeclineLoading] = useState(false);
   console.log("userToken", token);
 
   const endpoint = `${BaseUrl}/user/${userId}`;
@@ -46,6 +47,7 @@ const Meeting = () => {
     }
   };
   const declineMeeting = async (id) => {
+    setDeclineLoading(true);
     try {
       const res = await axios.post(
         `${BaseUrl}/decline-meeting`,
@@ -134,6 +136,7 @@ const Meeting = () => {
             declineMeeting={declineMeeting}
             rescheduleMeeting={rescheduleMeeting}
             loading={loading}
+            declineLoading={declineLoading}
           />
         ))
       ) : (

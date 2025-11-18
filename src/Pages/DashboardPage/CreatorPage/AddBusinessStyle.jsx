@@ -64,9 +64,9 @@ export const PageWrap = styled.div`
       font-size: 15px;
     }
 
-    .view {
+    .view1 {
       background-color: #0046ff;
-      width: 50%;
+      width: 80%;
       margin: 0 auto;
       color: #ffff;
       border: none;
