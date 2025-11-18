@@ -35,7 +35,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [role, setRole] = useState(null);
-  console.log(role);
+  // console.log(role);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -90,13 +90,19 @@ const Login = () => {
       });
 
       dispatch(setUser(res?.data));
-      console.log("user", res);
-
+      // console.log("user", res);
       toast.success(res?.data?.message || "Logged in successfully");
+
       dispatch(setIsLogin(true));
+
       role === "BusinessOwner"
-        ? navigate("/dashboard/business_owner")
+        ? res?.data?.data?.kycStatus.includes("not")
+          ? navigate("/dashboard/business_owner/kycverification")
+          : navigate("/dashboard/business_owner")
+        : res?.data?.data?.kycStatus.includes("not")
+        ? navigate("/dashboard/investor/kycverification")
         : navigate("/dashboard/investor");
+
       localStorage.removeItem("verifiedEmail");
       localStorage.removeItem("role");
     } catch (err) {

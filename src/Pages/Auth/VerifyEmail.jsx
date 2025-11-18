@@ -150,16 +150,15 @@ const VerifyEmail = () => {
       localStorage.setItem("userData", JSON.stringify(res.data.data));
       console.log("from verify", res);
       console.log("userDetails", res);
-
       setLoading(false);
 
-      navigate(
-        `${
-          res?.data?.role === "Investor"
-            ? "/dashboard/investor"
-            : "/dashboard/business_owner"
-        }`
-      );
+      res?.data?.role === "Investor"
+        ? res?.data?.data?.kycStatus.includes("not")
+          ? navigate("/dashboard/investor/kycverification")
+          : navigate("/dashboard/investor")
+        : res?.data?.data?.kycStatus.includes("not")
+        ? navigate("/dashboard/business_owner/kycverification")
+        : navigate("/dashboard/business_owner");
     } catch (err) {
       console.log(err);
       setLoading(false);

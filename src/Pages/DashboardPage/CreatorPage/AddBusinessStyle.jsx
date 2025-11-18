@@ -9,9 +9,75 @@ export const PageWrap = styled.div`
   justify-content: center;
   box-sizing: border-box;
   padding-right: 5rem;
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
 
-  @media (max-width: 480px) {
-    padding: 18px 16px;
+    .logout-modal {
+      background: #fff;
+      padding: 3rem 5rem;
+      border-radius: 10px;
+      width: 50%;
+      animation: scaleIn 0.2s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        text-align: center;
+        width: 80%;
+      }
+    }
+
+    .logout-modal .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 60%;
+    }
+
+    .logout-btn {
+      background: #0046ff;
+      padding: 10px;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .cancel-btn {
+      background: transparent;
+      padding: 10px;
+      border: 1px solid grey;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .view {
+      background-color: #0046ff;
+      width: 50%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      padding: 18px 16px;
+    }
   }
 `;
 
@@ -377,10 +443,10 @@ export const NextButton = styled.button`
     font-size: 13px;
     border-radius: 8px;
     margin-left: auto;
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    background: #00a3ff; /* optional: keep background same on disabled */
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background: #00a3ff; /* optional: keep background same on disabled */
+    }
   }
-}
 `;
