@@ -36,7 +36,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
     phoneNumber: "",
-    subscriptionTier: plan,
+    subscriptionTier: plan || "free",
   });
 
   const [role, setRole] = useState("");

@@ -249,7 +249,6 @@ export const DashboardLayoutContainer = styled.div`
           gap: 8px;
 
           .imageContainer {
-            background-color: #303030ff;
             width: 40px;
             height: 40px;
             border-radius: 50%;

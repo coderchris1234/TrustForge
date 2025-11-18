@@ -4,6 +4,73 @@ export const KycContainer = styled.div`
   width: 93%;
   margin: 0 auto;
   margin: 1rem;
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+
+    .logout-modal {
+      background: #fff;
+      padding: 3rem 5rem;
+      border-radius: 10px;
+      width: 50%;
+      animation: scaleIn 0.2s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        text-align: center;
+        width: 80%;
+      }
+    }
+
+    .logout-modal .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 60%;
+    }
+
+    .logout-btn {
+      background: #0046ff;
+      padding: 10px;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .cancel-btn {
+      background: transparent;
+      padding: 10px;
+      border: 1px solid grey;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 15px;
+    }
+
+    .okay {
+      background-color: #0046ff;
+      width: 50%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
   .inputSelect {
     padding: 1rem;
     border-radius: 8px;
@@ -191,7 +258,7 @@ export const FormArea = styled.div`
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      background-color: grey;
+      /* background-color: grey; */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -396,6 +463,25 @@ export const Input = styled.input`
     height: 38px;
   }
 `;
+export const SelectInput = styled.select`
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+  background: #fafafa;
+  outline: none;
+  font-size: 13px;
+
+  &:focus {
+    border-color: #c7ddff;
+    box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
+    background: #fff;
+  }
+
+  @media (max-width: 480px) {
+    height: 38px;
+  }
+`;
 
 export const Textarea = styled.textarea`
   padding: 10px 12px;
@@ -461,7 +547,7 @@ export const ActionRow = styled.div`
 export const BackButton = styled.button`
   background: transparent;
   color: #6b7280;
-  border: none;
+  border: 1px solid var(--neutral_gray_color_600);
   font-size: 14px;
   padding: 8px 12px;
   cursor: pointer;
