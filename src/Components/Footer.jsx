@@ -40,7 +40,7 @@ const Footer = () => {
                     <li>About Us</li>
                   </Link>
                   <Link to={"/insights"}>
-                    <li>Insight</li>
+                    <li>Insights</li>
                   </Link>
                 </ul>
               </div>

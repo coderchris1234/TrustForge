@@ -167,9 +167,7 @@ const Signup = () => {
 
       <SignupRight>
         <FormBox>
-          <FormTitle>
-            Welcome to <span>TrustForge!</span>
-          </FormTitle>
+          <FormTitle>Welcome to TrustForge</FormTitle>
 
           <form onSubmit={handleSubmit} noValidate>
             <Label>
@@ -300,7 +298,7 @@ const Signup = () => {
             Already have an account?{" "}
             <span
               onClick={() => navigate("/login")}
-              style={{ color: "#DC2626" }}
+              style={{ color: "#0046ff" }}
             >
               Log in
             </span>

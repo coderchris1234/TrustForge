@@ -120,10 +120,6 @@ export const FormTitle = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   font-weight: 600;
-
-  span {
-    color: #0066ff;
-  }
 `;
 
 export const InputField = styled.input`
