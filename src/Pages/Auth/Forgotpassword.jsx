@@ -26,6 +26,7 @@ const ForgotPassword = () => {
   const user = useSelector((state) => state.TrustForge.user);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
+  // Dynamic endpoint selection based on role
   const endpoints =
     user?.data?.role === "Investor"
       ? `${BaseUrl}/forgoti`
@@ -103,9 +104,9 @@ const ForgotPassword = () => {
 
           <OrText style={{ marginTop: 12 }}> </OrText>
 
-          <LoginText style={{ marginTop: 8, color: "#0046ff" }}>
+          <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
             Remember password?{" "}
-            <span onClick={() => navigate("/login")}>Login</span>
+            <span onClick={() => navigate("/login")}>Log In</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>
