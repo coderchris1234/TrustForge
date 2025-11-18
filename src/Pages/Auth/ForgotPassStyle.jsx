@@ -201,7 +201,7 @@ export const LoginText = styled.p`
   font-size: 14px;
 
   span {
-    color: #ff3c00;
+    color: #0046ff;
     cursor: pointer;
     font-weight: 500;
   }
