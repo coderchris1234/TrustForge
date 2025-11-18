@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 export const ProfileStyle = styled.div`
   width: 92%;
-  max-width: 960px;
+  /* max-width: 960px; */
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  min-height: 500px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  /* min-height: 500px; */
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
   color: #111827;
 
   .Profile_heading {
@@ -62,7 +63,7 @@ export const ProfileStyle = styled.div`
     .Profssional button.active {
       background: #ffffff;
       color: #111827;
-      box-shadow: 0 6px 14px rgba(2,6,23,0.06);
+      box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
     }
   }
 
@@ -81,8 +82,8 @@ export const ProfileStyle = styled.div`
     gap: 18px;
     padding: 16px;
     align-items: center;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
-    border: 1px solid rgba(15,23,42,0.03);
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.03);
     box-sizing: border-box;
   }
 
@@ -170,8 +171,8 @@ export const ProfileStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
-    border: 1px solid rgba(15,23,42,0.03);
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.03);
     box-sizing: border-box;
   }
 
@@ -323,11 +324,11 @@ export const ProfileStyle = styled.div`
     }
   }
 
-    .Update {
-      padding: 10px;
-    }
+  .Update {
+    padding: 10px;
+  }
 
-    .Update p {
-      font-size: 12px;
-    }
+  .Update p {
+    font-size: 12px;
+  }
 `;

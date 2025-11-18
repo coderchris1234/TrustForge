@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const ProfileStyle = styled.div`
   width: 92%;
-  max-width: 960px;
+  /* max-width: 960px; */
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  min-height: 500px;
+  /* min-height: 500px; */
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
   color: #111827;

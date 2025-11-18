@@ -301,7 +301,7 @@ const Signup = () => {
               onClick={() => navigate("/login")}
               style={{ color: "#0046ff" }}
             >
-              Log in
+              Login
             </span>
           </LoginText>
 

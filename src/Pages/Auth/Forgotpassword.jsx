@@ -121,9 +121,9 @@ const ForgotPassword = () => {
 
           <OrText style={{ marginTop: 12 }}> </OrText>
 
-          <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
+          <LoginText style={{ marginTop: 8, color: "#0046ff" }}>
             Remember password?{" "}
-            <span onClick={() => navigate("/login")}>Log In</span>
+            <span onClick={() => navigate("/login")}>Login</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>

@@ -99,10 +99,10 @@ const BusinessCard = (props) => {
             </div>
             <div className="set">
               <span className="retail status">{props.industry}</span>
+              <span className="seed status">{props.fundingStage}</span>
               <span className={getStatusClass(props.businessStatus)}>
                 {props.businessStatus}
               </span>
-              <span className="seed status">{props.fundingStage}</span>
             </div>
             <p style={{ paddingTop: "20px" }}>
               {props.description?.length > 73
@@ -138,12 +138,15 @@ const BusinessCard = (props) => {
               <CiHeart color="red" /> {props.likeCount} likes
             </div>
           </div>
-          <div>
-            {new Date(props.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+          <div className="Date_posted">
+            posted:
+            <span>
+              {new Date(props.createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </span>
           </div>
         </div>
       </div>

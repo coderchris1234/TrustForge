@@ -212,7 +212,7 @@ const Login = () => {
             </div>
 
             <CreateButton type="submit" disabled={!isFormValid}>
-              {loading ? "Logging in..." : "Log In"}
+              {loading ? "Logging in..." : "Login"}
             </CreateButton>
           </form>
 

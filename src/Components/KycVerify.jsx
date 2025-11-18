@@ -27,7 +27,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
 import { NigeriaCities, NigeriaStates, SelectOptions } from "../Config/Data";
-import profileHolder from "../assets/profileHolder.png";
+import profileHolder from "../assets/ProfileHolder.png";
 
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
@@ -312,7 +312,7 @@ const KycVerification = () => {
             {userKYC.toLowerCase().includes("review")
               ? "Your KYC verification is currently under review."
               : userKYC.toLowerCase().includes("verified")
-              ? "Your KYC has been verified successfully!"
+              ? "Congratulations! Your KYC has been successfully verified. You can now access all TrustForge features."
               : ""}
           </div>
         )}

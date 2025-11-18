@@ -213,7 +213,7 @@ const ResetPassword = () => {
 
           <LoginText style={{ marginTop: 8 }}>
             Already have an account?{" "}
-            <span onClick={() => navigate("/login")}>Log In</span>
+            <span onClick={() => navigate("/login")}>Login</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>

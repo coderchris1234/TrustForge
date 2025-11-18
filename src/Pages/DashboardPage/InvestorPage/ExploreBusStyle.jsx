@@ -103,10 +103,17 @@ export const SearchContainer = styled.div`
   box-sizing: border-box;
 
   .mind {
-    background-color: #f0f0f0;
+    /* background-color: #ffffff; */
+    background-color: rgba(227, 227, 227, 0.8);
+
+    /* background-color: green; */
     border: none;
     outline: none;
     padding: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 18px;
+    min-height: 44px;
   }
 
   .filterBtn {

@@ -170,7 +170,16 @@ export const PageWrap = styled.div`
   }
 
   @media (max-width: 480px) {
+    /* width: 100%; */
+    /* padding: 32px 48px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    /* padding-right: 5rem; */
+    /* background-color: yellow; */
     padding: 16px;
+    width: 100%;
   }
 `;
 
@@ -181,7 +190,6 @@ export const Card = styled.div`
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
-  /* background-color: green; */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -213,6 +221,8 @@ export const StepInfo = styled.div`
 
   @media (max-width: 480px) {
     gap: 1rem;
+    width: 100%;
+
     padding: 0.8rem;
   }
 `;

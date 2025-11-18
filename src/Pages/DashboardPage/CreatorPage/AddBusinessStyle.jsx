@@ -408,8 +408,8 @@ export const ActionRow = styled.div`
 
 export const BackButton = styled.button`
   background: transparent;
-  color: #6b7280;
-  border: none;
+  color: #0046ff;
+  border: 1px solid #0046ff;
   font-size: 14px;
   padding: 8px 12px;
   cursor: pointer;
@@ -426,7 +426,7 @@ export const BackButton = styled.button`
 `;
 
 export const NextButton = styled.button`
-  background: #00a3ff;
+  background: #0046ff;
   color: #ffffff;
   border: none;
   padding: 10px 18px;
