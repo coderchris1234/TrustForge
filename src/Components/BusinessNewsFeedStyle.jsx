@@ -11,7 +11,7 @@ export const Newsfeed_container = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid gray;
+    border: 1px solid #1b1b1b4d;
     border-radius: 10px;
     background-color: #ffffff;
     padding: 1rem;

@@ -82,7 +82,7 @@ export const LoginLeft = styled.div`
 export const LoginRight = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   border-radius: 8px;
   background: #fff;

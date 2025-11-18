@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
 export const BusinessContainer = styled.div`
-  padding: 0.5rem;
-  width: 100%;
+  /* padding: 0.5rem; */
+  width: 97%;
   box-sizing: border-box;
 
   .businessContainer {
-    width: 97%;
+    width: 100%;
     margin: 0.75rem auto;
     background-color: #ffffff;
     border-radius: 8px;
     padding: 0.75rem;
     box-sizing: border-box;
     position: relative;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
   }
 
   .businessContent {
@@ -124,15 +127,15 @@ export const BusinessContainer = styled.div`
 
     .set {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 8px;
+      gap: 1rem;
+      margin-top: 1rem;
       flex-wrap: wrap;
 
       .status {
         border: 1px solid lightgray;
         border-radius: 8px;
         padding: 0.25rem 0.5rem;
-        font-size: 12px;
+        font-size: 15px;
         background: transparent;
         color: #374151;
       }
@@ -211,7 +214,7 @@ export const BusinessContainer = styled.div`
   .under {
     display: flex;
     justify-content: space-between;
-    width: 85%;
+    width: 100%;
     align-items: center;
     margin-top: 0.6rem;
     gap: 1rem;
@@ -236,6 +239,14 @@ export const BusinessContainer = styled.div`
           color: #6b7280;
         }
       }
+    }
+    .Date_posted {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      /* justify-content: space-between; */
     }
   }
 

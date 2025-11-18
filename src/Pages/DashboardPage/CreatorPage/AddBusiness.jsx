@@ -342,7 +342,7 @@ const AddBusiness = () => {
                         <Label>Capital Needed</Label>
                         <input
                           type="num"
-                          placeholder="e.g..., ₦700,000"
+                          placeholder="e.g...₦700,000"
                           onChange={(e) => {
                             const value = e.target.value;
                             if (/^\d{0,30}$/.test(value)) {
@@ -356,7 +356,7 @@ const AddBusiness = () => {
                   </FieldRow>
                 </FieldRow>
                 <FieldRow>
-                  <Label>Current Revenue</Label>
+                  <Label>Expected Current Revenue</Label>
                   <Input
                     value={form.currentRevenue}
                     onChange={(e) => {
@@ -366,7 +366,7 @@ const AddBusiness = () => {
                       }
                     }}
                     name="currentRevenue"
-                    placeholder="e.g..., ₦500,000"
+                    placeholder="How much your business is projected to generate every year. e.g...₦500,000,"
                   />
                 </FieldRow>
               </>

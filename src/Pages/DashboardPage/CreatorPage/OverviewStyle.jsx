@@ -14,23 +14,89 @@ export const OverviewContent = styled.div`
     height: 0;
   }
 
-  .ContentTitle {
-    padding-top: 1.25rem;
-    margin-bottom: 12px;
+  .Contenttitle_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 
-    h1 {
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 28px;
-      margin-bottom: 6px;
+    .ContentTitle {
+      padding-top: 1.25rem;
+      margin-bottom: 12px;
+
+      h1 {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-bottom: 6px;
+      }
+
+      p {
+        color: #1b1b1b;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 22px;
+        margin: 0;
+      }
     }
+  }
+
+  .QuickAction {
+    /* background-color: #fff; */
+    margin-top: 20px;
+    border-radius: 12px;
+    display: flex;
+    width: 35%;
+
+    /* flex-direction: column; */
+    justify-content: flex-end;
+    /* box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04); */
 
     p {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
       color: #1b1b1b;
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 22px;
-      margin: 0;
+    }
+
+    .action {
+      display: flex;
+      flex-direction: column; /* always column */
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      /* flex-wrap: wrap; */
+
+      .quick {
+        border-radius: 10px;
+        width: 100%;
+        display: flex;
+        /* flex-direction: column; stack icon + text inside each button */
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .quick.primary {
+        background: #0046ff;
+        color: #fff;
+      }
+
+      .quick.secondary {
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #000;
+      }
+
+      .quick:hover {
+        opacity: 0.9;
+      }
     }
   }
 
@@ -45,6 +111,7 @@ export const OverviewContent = styled.div`
 
     .box {
       width: 25%;
+      height: 20vh;
       border-radius: 15px;
       background: #fff;
       border-radius: 12px;
@@ -62,13 +129,13 @@ export const OverviewContent = styled.div`
 
     .box p {
       color: #666;
-      font-size: 14px;
+      font-size: 18px;
       margin: 0 0 4px 0;
     }
 
     .box span {
       color: #111;
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 600;
     }
 
@@ -116,60 +183,6 @@ export const OverviewContent = styled.div`
       }
     }
   }
-
-  .QuickAction {
-    background-color: #fff;
-    margin-top: 20px;
-    padding: 1.2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
-
-    p {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #1b1b1b;
-    }
-
-    .action {
-      display: flex;
-      flex-direction: column; /* always column */
-      gap: 12px;
-      flex-wrap: wrap;
-
-      .quick {
-        border-radius: 10px;
-        width: 25%;
-        display: flex;
-        flex-direction: column; /* stack icon + text inside each button */
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        padding: 14px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .quick.primary {
-        background: #0046ff;
-        color: #fff;
-      }
-
-      .quick.secondary {
-        border: 1px solid #ccc;
-        background: #fff;
-        color: #000;
-      }
-
-      .quick:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-
   @media (max-width: 992px) {
     .Overview-content {
       flex-wrap: wrap;
