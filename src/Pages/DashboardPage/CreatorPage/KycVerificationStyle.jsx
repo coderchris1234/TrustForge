@@ -195,7 +195,8 @@ export const FormArea = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      position: relative; // REQUIRED for positioning the span
+      /* overflow: hidden; */
     }
 
     span {
@@ -204,11 +205,13 @@ export const FormArea = styled.div`
       height: 35px;
       border-radius: 50%;
       position: absolute;
-      right: 4rem;
-      top: 4rem;
+      right: 10px; // fix position to inside the edge
+      bottom: 10px; // fix position to inside the edge
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      z-index: 1;
     }
   }
 
@@ -252,8 +255,8 @@ export const FormArea = styled.div`
       span {
         width: 28px;
         height: 28px;
-        right: 19rem;
-        top: 6rem;
+        right: 10px; // fix position to inside the edge
+        bottom: 10px;
       }
     }
 
@@ -272,17 +275,16 @@ export const FormArea = styled.div`
   @media (max-width: 480px) {
     .profilePic {
       padding: 1rem;
+      position: relative;
       .imageContainer {
         width: 80px;
         height: 80px;
-        position: relative;
       }
       span {
-        width: 24px;
-        height: 24px;
-        right: 1.7rem;
-        top: 2.1rem;
-        position: absolute;
+        width: 28px;
+        height: 28px;
+        right: 6px; // fix position to inside the edge
+        bottom: 2px;
       }
     }
 

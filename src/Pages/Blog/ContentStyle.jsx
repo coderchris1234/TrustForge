@@ -8,7 +8,6 @@ export const ContentContainer = styled.div`
   /* padding: 50px; */
   margin-bottom: 3rem;
   margin-top: 3rem;
-  /* background-color: red; */
   gap: 3rem;
 
   .Startup_content {
@@ -17,6 +16,6 @@ export const ContentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    /* gap: 2rem; */
   }
 `;

@@ -7,7 +7,6 @@ export const DashboardLayoutContainer = styled.div`
   display: flex;
   font-family: "Poppins", sans-serif;
   gap: 2px;
-  /* background-color: red; */
 
   .logout-modal-overlay {
     position: fixed;
@@ -22,12 +21,11 @@ export const DashboardLayoutContainer = styled.div`
 
   .logout-modal {
     background: #fff;
-    padding: 24px;
+    padding: 3rem 5rem;
     border-radius: 10px;
     width: 30%;
     text-align: center;
     animation: scaleIn 0.2s ease-out;
-    padding: 3rem 5rem;
   }
 
   .logout-modal h3 {
@@ -39,23 +37,74 @@ export const DashboardLayoutContainer = styled.div`
   .logout-modal .buttons {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
   }
 
   .logout-btn {
     background: #e53935;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    width: 50%;
+    font-size: 15px;
   }
 
   .cancel-btn {
     background: #f1f1f1;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    width: 50%;
+    font-size: 15px;
+  }
+
+  @media (max-width: 1024px) {
+    .logout-modal {
+      width: 40%;
+      padding: 2.5rem 3.5rem;
+    }
+
+    .logout-modal h3 {
+      font-size: 17px;
+    }
+  }
+
+  /* Mobile Large (≤768px) */
+  @media (max-width: 768px) {
+    .logout-modal {
+      width: 60%;
+      padding: 2rem 3rem;
+    }
+
+    .logout-modal .buttons {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .logout-btn,
+    .cancel-btn {
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .logout-modal {
+      width: 85%;
+      padding: 1.8rem 1.5rem;
+    }
+
+    .logout-modal h3 {
+      font-size: 16px;
+    }
+
+    .logout-btn,
+    .cancel-btn {
+      padding: 9px 0;
+      font-size: 14px;
+    }
   }
 
   .aside {
@@ -170,14 +219,15 @@ export const DashboardLayoutContainer = styled.div`
       background-color: var(--main_white);
       padding: 1rem;
       display: flex;
-      flex-direction: column;
+      height: max-content;
+      /* flex-direction: column; */
       margin-bottom: 2rem;
       position: sticky;
       top: 0;
       left: 0;
-      height: 70px;
+      /* height: 70px; */
       /* align-items: center; */
-      justify-content: center;
+      justify-content: space-between;
 
       .top-bar {
         display: none;
@@ -195,6 +245,7 @@ export const DashboardLayoutContainer = styled.div`
           flex: 1;
           min-width: 200px;
           align-items: center;
+          justify-content: flex-end;
           gap: 8px;
 
           .imageContainer {
@@ -337,6 +388,12 @@ export const DashboardLayoutContainer = styled.div`
     .profile-content {
       flex-direction: column;
       align-items: flex-start;
+
+      .UserInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 `;

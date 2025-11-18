@@ -134,11 +134,6 @@ const ForgotPassword = () => {
             .
           </TermsText>
         </FormBox>
-        {loading && (
-          <div className="loading-overlay">
-            <div className="spinner"></div>
-          </div>
-        )}
       </ForgotPasswordRight>
     </ForgotPasswordContainer>
   );

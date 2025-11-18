@@ -82,7 +82,7 @@ export const LoginLeft = styled.div`
 export const LoginRight = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 8px;
   background: #fff;
@@ -115,6 +115,7 @@ export const FormTitle = styled.h2`
   font-weight: 400;
   line-height: 150%;
   color: #1b1b1b;
+  margin: 0 0 3rem 0;
 
   .title-text {
     /* color: #0046ff; */
@@ -124,7 +125,7 @@ export const FormTitle = styled.h2`
   }
 
   span {
-    color: #0066ff;
+    /* color: #0066ff; */
   }
 
   small {

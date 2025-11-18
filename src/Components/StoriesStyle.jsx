@@ -42,7 +42,7 @@ export const StoriesContainer = styled.div`
       }
 
       p {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 400;
         color: var(--netural_black_color);
         text-align: center;
@@ -56,7 +56,8 @@ export const StoriesContainer = styled.div`
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 20px;
+      /* gap: 15px; */
+      /* background-color: green; */
 
       .Story_card {
         width: 32%;
@@ -75,7 +76,7 @@ export const StoriesContainer = styled.div`
 
         .Story_image {
           width: 100%;
-          height: 55%;
+          height: 50%;
           border-top-right-radius: 12px;
           border-top-left-radius: 12px;
           background-position: cover;
@@ -94,14 +95,15 @@ export const StoriesContainer = styled.div`
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 10px;
+          /* padding: 10px; */
+          /* background-color: red; */
 
           .Story_cont1 {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding: 1rem;
+            padding: 0.7rem;
 
             .Story_icon {
               font-size: 25px;
@@ -110,7 +112,7 @@ export const StoriesContainer = styled.div`
             }
 
             p {
-              font-size: 20px;
+              font-size: 16px;
               font-weight: 400;
               color: var(--main_black);
               line-height: 125%;
@@ -124,16 +126,17 @@ export const StoriesContainer = styled.div`
             flex-direction: column;
             gap: 8px;
             padding: 1rem;
+            /* background-color: blue; */
 
             h4 {
-              font-size: 22px;
+              font-size: 20px;
               color: var(--main_black);
               font-weight: 500;
               margin: 0px;
             }
 
             .span {
-              font-size: 18px;
+              font-size: 16px;
               color: var(--main_black);
               font-weight: 400;
             }
