@@ -613,8 +613,12 @@ const KycVerification = () => {
             </p>
 
             <div className="buttons">
-              <button className="logout-btn" onClick={handleSubmit}>
-                {loading ? "Submiting..." : "Submit"}
+              <button
+                className="logout-btn"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
+                {loading ? <div className="spinner"></div> : "Submit"}
               </button>
 
               <button

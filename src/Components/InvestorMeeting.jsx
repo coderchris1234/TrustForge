@@ -114,13 +114,7 @@ const InvestorMeeting = ({
             )}
             {meetingStatus !== "Awaiting Approval" &&
             meetingStatus !== "Reschedule Requested" ? null : (
-              <div
-                style={{
-                  backgroundColor: "red",
-                }}
-                className="decline_button"
-                onClick={() => {}}
-              >
+              <div className="decline_button" onClick={() => {}}>
                 {rescheduleRole === "Investor" ? "Cancel" : "Decline"}
                 <MdOutlineCancel size={15} />
               </div>

@@ -49,6 +49,22 @@ export const KycContainer = styled.div`
       cursor: pointer;
       width: 50%;
       font-size: 15px;
+
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin: 0 auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     }
 
     .cancel-btn {
