@@ -123,7 +123,7 @@ const ForgotPassword = () => {
 
           <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
             Remember password?{" "}
-            <span onClick={() => navigate("/login")}>Log In</span>
+            <span onClick={() => navigate("/login")}>LogIn</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>
