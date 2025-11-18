@@ -29,14 +29,17 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddBusiness = () => {
   const token = useSelector((state) => state.TrustForge.user?.token);
   console.log("userToken", token);
+  const nav = useNavigate();
 
   const pitchDeckInputRef = useRef(null);
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   // const [errorMessage, setErrorMessage] = useState("");
 
   const totalSteps = 3;
@@ -61,10 +64,7 @@ const AddBusiness = () => {
 
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
-    if (file) {
-      setForm((f) => ({ ...f, [fieldName]: file }));
-      toast.success(`${file.name} uploaded successfully`);
-    }
+    setForm((f) => ({ ...f, [fieldName]: file }));
   };
 
   const handleNext = () => {
@@ -128,14 +128,16 @@ const AddBusiness = () => {
         },
       });
 
-      if (res?.data?.message?.includes("verification")) {
+      if (res?.data?.message?.includes("pending")) {
         toast.error(res?.data?.message);
         setLoading(false);
         return false;
+      } else if (res?.data?.message?.includes("under review ")) {
+        setLoading(false);
+        toast.error(res?.data?.message);
       } else {
-        toast.success(res?.data?.message);
+        setOpenModal(true);
       }
-      console.log(" Business", res?.data);
     } catch (error) {
       setLoading(false);
       toast.error(error?.response?.data?.message);
@@ -327,6 +329,7 @@ const AddBusiness = () => {
                           value={form.fundingStage}
                           onChange={handleChange}
                         >
+                          <option value="">Select</option>
                           <option value="Pre-Seed">Pre-Seed</option>
                           <option value="Seed">Seed</option>
                           <option value="Series A">Series A</option>
@@ -458,6 +461,23 @@ const AddBusiness = () => {
             </NextButton>
           </ActionRow>
         </Card>
+        {openModal && (
+          <div className="modal-overlay">
+            <div className="logout-modal">
+              <h1>Business Upload.</h1>
+              <p>
+                Your business has beenn uploaded successfully. Our team is
+                reviewing it.
+              </p>
+
+              <div className="buttons">
+                <button className="view" onClick={() => nav("mybusiness")}>
+                  View Business Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </PageWrap>
     </>
   );

@@ -18,6 +18,7 @@ import {
   ActionRow,
   NextButton,
   BackButton,
+  SelectInput,
 } from "./KycVerifyStyle";
 import toast from "react-hot-toast";
 import { GoUpload } from "react-icons/go";
@@ -25,7 +26,8 @@ import { MdOutlinePayment } from "react-icons/md";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
-import { SelectOptions } from "../Config/Data";
+import { NigeriaCities, NigeriaStates, SelectOptions } from "../Config/Data";
+import profileHolder from "../assets/profileHolder.png";
 
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
@@ -39,10 +41,14 @@ const KycVerification = () => {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
+  const [dobError, setDobError] = useState("");
+  const [openKycModal, setOpenKycModal] = useState(false);
+  const [openKycSuccess, setOpenKycSuccess] = useState(false);
+
   const [formData, setFormData] = useState({
     profilePic: null,
-    firstName: "",
-    lastName: "",
+    fullName: "",
     dateOfBirth: "",
     phoneNumber: "",
     email: "",
@@ -54,21 +60,20 @@ const KycVerification = () => {
     governmentId: null,
     proofOfAddress: null,
   });
-  const handleChange = (e) => {
-    setFormData((f) => ({ ...f, [e.target.name]: e.target.value }));
-  };
+
   const totalSteps = 4;
   const [step, setStep] = useState(1);
 
   const progressPercent = (step / totalSteps) * 100;
+
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
     const imageData = URL.createObjectURL(file);
     setProfilePics(imageData);
-    console.log("file", imageData);
+    // console.log("file", imageData);
     if (file) {
       setFormData((f) => ({ ...f, [fieldName]: file }));
-      toast.success(`${file.name} uploaded successfully`);
+      // toast.success(`${file.name} uploaded successfully`);
     }
   };
 
@@ -80,8 +85,7 @@ const KycVerification = () => {
     if (
       step === 1 &&
       (!formData.profilePic ||
-        !formData.firstName ||
-        !formData.lastName ||
+        !formData.fullName ||
         !formData.dateOfBirth ||
         !formData.phoneNumber ||
         !formData.email ||
@@ -109,13 +113,17 @@ const KycVerification = () => {
     if (step < totalSteps) {
       setStep((prev) => prev + 1);
     } else {
-      handleSubmit();
+      handleKyc();
     }
   };
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const user = useSelector((state) => state.TrustForge.user);
   const userId = user?.data?.id;
+
+  const handleKyc = () => {
+    setOpenKycModal(true);
+  };
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -127,7 +135,9 @@ const KycVerification = () => {
       const res = await axios.post(`${BaseUrl}/kycI`, formData2, {
         headers: { authorization: `Bearer ${token}` },
       });
-      toast.success("KYC submitted successfully");
+      setOpenKycModal(false);
+      setOpenKycSuccess(true);
+
       setUserKYC("Under Review");
 
       const profileData = res?.data;
@@ -144,11 +154,7 @@ const KycVerification = () => {
       setLoading(false);
       setFormData({
         profilePic: null,
-        firstName: "",
-        lastName: "",
         dateOfBirth: "",
-        phoneNumber: "",
-        email: "",
         nationality: "",
         residentialAddress: "",
         city: "",
@@ -189,13 +195,61 @@ const KycVerification = () => {
     }
   }, [userId]);
 
-  console.log("this is user", userKYC);
-
   useEffect(() => {
     if (kycLocked) {
       setStep(4);
     }
   }, [kycLocked]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!userId) return;
+      const endpoints = `${BaseUrl}/investor/${userId}`;
+      try {
+        const res = await axios.get(endpoints);
+        setUserDetails(res?.data?.data?.user);
+        setFormData((prev) => ({
+          ...prev,
+          fullName: res?.data?.data?.user?.fullName || "",
+          email: res?.data?.data?.user?.email || "",
+          phoneNumber: res?.data?.data?.user?.phoneNumber || "",
+        }));
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+    fetchUser();
+  }, [userId]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "dateOfBirth") {
+      const error = validateDOB(value);
+      setDobError(error);
+    }
+  };
+  const validateDOB = (value) => {
+    if (!value) return "Date of birth is required.";
+
+    const dob = new Date(value);
+    const today = new Date();
+
+    if (dob >= today) return "Date of birth must be in the past.";
+
+    const age = today.getFullYear() - dob.getFullYear();
+    const month = today.getMonth() - dob.getMonth();
+    const day = today.getDate() - dob.getDate();
+    const hasBirthdayPassed = month > 0 || (month === 0 && day >= 0);
+    const actualAge = hasBirthdayPassed ? age : age - 1;
+
+    if (actualAge < 18) return "You must be at least 18 years old.";
+
+    return "";
+  };
+
+  console.log("user", formData);
 
   return (
     <KycContainer>
@@ -291,9 +345,16 @@ const KycVerification = () => {
                         }}
                       />
                     ) : (
-                      <span onClick={() => ProfilePicRef.current.click()}>
-                        <GoUpload />
-                      </span>
+                      <img
+                        src={profileHolder}
+                        alt="Profile Preview"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                        }}
+                      />
                       // <GoUpload size={30} color="blue" />
                     )}
                     <span onClick={() => ProfilePicRef.current.click()}>
@@ -307,15 +368,16 @@ const KycVerification = () => {
                 <FieldRow>
                   <div className="Name">
                     <div>
-                      <Label>First Name</Label>
+                      <Label>Fullname</Label>
                       <Input
                         type="text"
                         name="firstName"
-                        value={formData.firstName}
+                        value={userDetails?.fullName}
                         onChange={handleChange}
+                        readOnly
                       />
                     </div>
-                    <div>
+                    {/* <div>
                       <Label>Last Name</Label>
                       <Input
                         type="text"
@@ -323,7 +385,7 @@ const KycVerification = () => {
                         value={formData.lastName}
                         onChange={handleChange}
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </FieldRow>
 
@@ -336,6 +398,9 @@ const KycVerification = () => {
                     onChange={handleChange}
                     placeholder="dd/mm/yyyy"
                   />
+                  {dobError && (
+                    <p style={{ color: "red", marginTop: "4px" }}>{dobError}</p>
+                  )}
                 </FieldRow>
 
                 <FieldRow>
@@ -343,8 +408,9 @@ const KycVerification = () => {
                   <Input
                     name="phoneNumber"
                     type="num"
-                    value={formData.phoneNumber}
+                    value={userDetails?.phoneNumber}
                     onChange={handleChange}
+                    readOnly
                   />
                 </FieldRow>
 
@@ -353,8 +419,9 @@ const KycVerification = () => {
                   <Input
                     type="email"
                     name="email"
-                    value={formData.email}
+                    value={userDetails?.email}
                     onChange={handleChange}
+                    readOnly
                   />
                 </FieldRow>
                 <FieldRow>
@@ -378,19 +445,33 @@ const KycVerification = () => {
                   <div className="Name">
                     <div>
                       <Label>City</Label>
-                      <Input
+                      <SelectInput
                         onChange={handleChange}
                         name="city"
                         value={formData.city}
-                      />
+                      >
+                        <option>Choose City</option>
+                        {NigeriaCities.map((cities, index) => (
+                          <option value={cities} key={index}>
+                            {cities}
+                          </option>
+                        ))}
+                      </SelectInput>
                     </div>
                     <div>
                       <Label>State</Label>
-                      <Input
+                      <SelectInput
                         name="state"
                         value={formData.state}
                         onChange={handleChange}
-                      />
+                      >
+                        <option>Choose State</option>
+                        {NigeriaStates.map((cities, index) => (
+                          <option value={cities} key={index}>
+                            {cities}
+                          </option>
+                        ))}
+                      </SelectInput>
                     </div>
                   </div>
                 </FieldRow>
@@ -423,7 +504,7 @@ const KycVerification = () => {
                 <SectionTitle>Verification Document</SectionTitle>
                 <FieldRow>
                   <h3>Government-Issued ID</h3>
-                  <p>Password, Driver's license, or National ID</p>
+                  <p>Passport, Driver's license, or National ID</p>
                   <input
                     type="file"
                     accept=".jpg,.jpeg,.png,.pdf"
@@ -435,9 +516,28 @@ const KycVerification = () => {
                   <div
                     onClick={() => governmentIssuedRef.current.click()}
                     className="Upload"
+                    style={{
+                      // border: "2px dashed var(--primary_color_400)",
+                      border: formData.governmentId
+                        ? "1px dashed var(--primary_color_400)"
+                        : "1px dashed lightgray",
+                    }}
                   >
-                    <GoUpload size={50} color="lightGrey" />
-                    <p style={{ color: "lightgray" }}>
+                    <GoUpload
+                      size={50}
+                      color={
+                        formData.governmentId
+                          ? " var(--primary_color_400)"
+                          : "lightGrey"
+                      }
+                    />
+                    <p
+                      style={{
+                        color: formData.governmentId
+                          ? "var(--primary_color_400)"
+                          : "lightgray",
+                      }}
+                    >
                       {formData.governmentId
                         ? formData.governmentId.name
                         : "Click to upload"}
@@ -457,9 +557,28 @@ const KycVerification = () => {
                   <div
                     onClick={() => proofOfAdressRef.current.click()}
                     className="Upload"
+                    style={{
+                      // border: "2px dashed var(--primary_color_400)",
+                      border: formData.proofOfAddress
+                        ? "1px dashed var(--primary_color_400)"
+                        : "1px dashed lightgray",
+                    }}
                   >
-                    <GoUpload size={50} color="lightGrey" />
-                    <p style={{ color: "lightgray" }}>
+                    <GoUpload
+                      size={50}
+                      color={
+                        formData.governmentId
+                          ? " var(--primary_color_400)"
+                          : "lightGrey"
+                      }
+                    />
+                    <p
+                      style={{
+                        color: formData.proofOfAddress
+                          ? "var(--primary_color_400)"
+                          : "lightgray",
+                      }}
+                    >
                       {formData.proofOfAddress
                         ? formData.proofOfAddress.name
                         : "Click to upload"}
@@ -479,20 +598,53 @@ const KycVerification = () => {
             )}
 
             <NextButton disabled={kycLocked || loading} onClick={handleNext}>
-              {step < totalSteps ? (
-                "Next Step"
-              ) : loading ? (
-                <>
-                  <span className="loader"></span>
-                  Submitting Verification...
-                </>
-              ) : (
-                "Submit for Verification"
-              )}
+              {step < totalSteps ? "Next Step" : "Submit for Verification"}
             </NextButton>
           </ActionRow>
         </Card>
       </PageWrap>
+      {openKycModal && (
+        <div className="modal-overlay">
+          <div className="logout-modal">
+            <h1>Confirm Submission</h1>
+            <p>
+              Please review your details carefully before submitting. You won't
+              be able to edit them once sent
+            </p>
+
+            <div className="buttons">
+              <button className="logout-btn" onClick={handleSubmit}>
+                {loading ? "Submiting..." : "Submit"}
+              </button>
+
+              <button
+                className="cancel-btn"
+                onClick={() => setOpenKycModal(false)}
+              >
+                Review
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {openKycSuccess && (
+        <div className="modal-overlay">
+          <div className="logout-modal">
+            <h1>Kyc Submission</h1>
+            <p>
+              Your KYC has been submitted successfully. Our team is reviewing
+              it.
+            </p>
+
+            <div className="buttons">
+              <button className="okay" onClick={() => setOpenKycSuccess(false)}>
+                Okay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </KycContainer>
   );
 };
