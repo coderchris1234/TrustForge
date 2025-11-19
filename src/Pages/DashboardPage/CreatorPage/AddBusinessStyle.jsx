@@ -9,6 +9,8 @@ export const PageWrap = styled.div`
   justify-content: center;
   box-sizing: border-box;
   padding-right: 5rem;
+
+  /* ===== MODAL OVERLAY ===== */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -91,9 +93,46 @@ export const PageWrap = styled.div`
       cursor: pointer;
     }
 
-    @media (max-width: 480px) {
-      padding: 18px 16px;
+    /* ======= TABLET ======= */
+    @media (max-width: 768px) {
+      .logout-modal {
+        width: 70%;
+        padding: 2rem 2.5rem;
+      }
+
+      .logout-modal .buttons {
+        width: 80%;
+      }
     }
+
+    /* ======= MOBILE ======= */
+    @media (max-width: 480px) {
+      .logout-modal {
+        width: 90%;
+        padding: 1.5rem;
+      }
+
+      .logout-modal .buttons {
+        flex-direction: column;
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  /* Tablet Padding */
+  @media (max-width: 768px) {
+    padding: 24px 28px;
+    padding-right: 2rem;
+  }
+
+  /* Mobile Padding */
+  @media (max-width: 480px) {
+    padding: 18px 16px;
+    padding-right: 0;
   }
 `;
 
@@ -104,6 +143,11 @@ export const Card = styled.div`
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 22px;
+  }
 
   @media (max-width: 480px) {
     padding: 18px;
@@ -148,6 +192,11 @@ export const StepInfo = styled.div`
   flex-direction: column;
   gap: 2rem;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 1.5rem;
+  }
+
   @media (max-width: 480px) {
     padding: 10px;
     gap: 12px;
@@ -155,10 +204,9 @@ export const StepInfo = styled.div`
 `;
 
 export const StepLabel = styled.div`
-  font-size: 13px;
+  font-size: 1rem;
   color: #336bff;
   margin-bottom: 8px;
-  font-size: 1rem;
 
   @media (max-width: 480px) {
     font-size: 0.95rem;
@@ -192,13 +240,17 @@ export const StepNames = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
   @media (max-width: 480px) {
     margin-top: 8px;
     justify-content: flex-start;
     gap: 8px;
-    /* allow compact appearance on mobile */
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
     padding-bottom: 4px;
   }
 `;
@@ -216,7 +268,6 @@ export const StepName = styled.div`
 
 export const FormArea = styled.div`
   padding: 6px 0 26px 0;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -264,13 +315,7 @@ export const FieldRow = styled.div`
       gap: 1rem;
       flex: 1;
 
-      select {
-        padding: 0.4rem 0.2rem;
-        border-radius: 5px;
-        background-color: #f3f5f8;
-        border: none;
-        outline: none;
-      }
+      select,
       input {
         padding: 0.5rem 0.2rem;
         border-radius: 5px;
@@ -281,19 +326,10 @@ export const FieldRow = styled.div`
     }
   }
 
-  .submission {
-    background-color: var(--primary_color_100);
-    padding: 1rem;
-    border-radius: 8px;
-    color: var(--primary_color_500);
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-
-    ul {
-      padding-left: 2rem;
-      display: flex;
+  @media (max-width: 768px) {
+    .fund {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1rem;
     }
   }
 
@@ -307,13 +343,6 @@ export const FieldRow = styled.div`
 
       div {
         width: 100%;
-      }
-    }
-
-    .submission {
-      padding: 12px;
-      ul {
-        padding-left: 1.25rem;
       }
     }
   }
@@ -343,6 +372,7 @@ export const Input = styled.input`
   background: #fafafa;
   outline: none;
   font-size: 13px;
+
   &:focus {
     border-color: #c7ddff;
     box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
@@ -362,6 +392,7 @@ export const Textarea = styled.textarea`
   background: #fafafa;
   font-size: 13px;
   resize: vertical;
+
   &:focus {
     border-color: #c7ddff;
     box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.06);
@@ -396,10 +427,14 @@ export const UploadBox = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  color: #9ca3af;
-  font-size: 13px;
-  background: #fafafa;
   color: var(--primary_color_400);
+  background: #fafafa;
+  font-size: 13px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1.5rem;
+  }
 
   @media (max-width: 480px) {
     width: 100%;
@@ -414,12 +449,12 @@ export const ActionRow = styled.div`
   align-items: center;
   margin-top: 8px;
 
-  @media (max-width: 480px) {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    button {
+      width: 100%;
+    }
   }
 `;
 
@@ -431,6 +466,7 @@ export const BackButton = styled.button`
   padding: 8px 12px;
   cursor: pointer;
   border-radius: 8px;
+
   &:disabled {
     color: #c7ccd4;
     cursor: not-allowed;
@@ -458,12 +494,13 @@ export const NextButton = styled.button`
   @media (max-width: 480px) {
     padding: 8px 14px;
     font-size: 13px;
+    width: 100%;
     border-radius: 8px;
-    margin-left: auto;
+
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
-      background: #00a3ff; /* optional: keep background same on disabled */
+      background: #00a3ff;
     }
   }
 `;
