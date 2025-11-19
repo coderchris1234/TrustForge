@@ -167,6 +167,14 @@ const AddBusiness = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "yearFounded" && value) {
+      const selectedYear = new Date(value).getFullYear();
+      const currentYear = new Date().getFullYear();
+
+      if (selectedYear > currentYear) {
+        return; // stop user from entering future years
+      }
+    }
     const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
     setForm((prev) => ({ ...prev, [name]: capitalized }));
   };
@@ -257,7 +265,7 @@ const AddBusiness = () => {
                     name="yearFounded"
                     value={form.yearFounded}
                     onChange={handleChange}
-                    placeholder="e.g. 2020"
+                    max={new Date().toISOString().split("T")[0]} // 🔒 disables all future dates
                   />
                 </FieldRow>
               </>
@@ -415,8 +423,10 @@ const AddBusiness = () => {
                       }
                       name="businessRegistrationCertificate"
                     />
-                    <UploadBox onClick={() => certInputRef.current.click()}>
+                    <UploadBox
                       hasFile={!!form.businessRegistrationCertificate}
+                      onClick={() => certInputRef.current.click()}
+                    >
                       <MdOutlineFileUpload size={40} color="blue" />
                       {form.businessRegistrationCertificate
                         ? form.businessRegistrationCertificate.name
@@ -470,12 +480,13 @@ const AddBusiness = () => {
         {openModal && (
           <div className="modal-overlay">
             <div className="logout-modal">
+              <div className="image">🎉</div>
+
               <h1>Business Upload.</h1>
               <p>
                 Your business has been uploaded successfully. Our team is
                 reviewing it.
               </p>
-
               <div className="buttons">
                 <button className="view1" onClick={() => nav("../mybusiness")}>
                   View Business Profile

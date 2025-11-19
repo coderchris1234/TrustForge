@@ -30,6 +30,12 @@ export const PageWrap = styled.div`
       align-items: center;
       justify-content: center;
 
+      .image {
+        width: 50px;
+        height: 50px;
+        font-size: 3rem;
+      }
+
       p {
         text-align: center;
         width: 80%;
@@ -64,6 +70,16 @@ export const PageWrap = styled.div`
       font-size: 15px;
     }
 
+    .view {
+      background-color: #0046ff;
+      width: 80%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
     .view1 {
       background-color: #0046ff;
       width: 80%;
@@ -373,7 +389,7 @@ export const UploadBox = styled.div`
   width: 320px;
   padding: 2rem;
   border-radius: 8px;
-  border: 1px dashed #d1d5db;
+  /* border: 1px dashed #d1d5db; */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
