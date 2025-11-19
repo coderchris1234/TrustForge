@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 // import { DashboardLayout } from "./CreatorStyle";
 import { Outlet } from "react-router-dom";
 import { CreatorMenu } from "../../../Config/Data";
 import DashBoardLayout from "../../../Components/DashBoardLayout";
 
 const Creator = () => {
+  const [notifcationCount, setNotifcationCount] = useState(0);
   return (
     <>
       <DashBoardLayout
@@ -12,7 +13,8 @@ const Creator = () => {
         username="Mr Eze"
         title="Business Owner"
         dashboard="Business dashboard"
-        Outlet={<Outlet />}
+        Outlet={<Outlet context={{ setNotifcationCount }} />}
+        notifcationCount={notifcationCount}
       />
     </>
   );

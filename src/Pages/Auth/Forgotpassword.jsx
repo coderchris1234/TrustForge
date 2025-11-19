@@ -23,14 +23,7 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // const user = useSelector((state) => state.TrustForge.user);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
-
-  // Dynamic endpoint selection based on role
-  // const endpoints =
-  //   user?.data?.role === "Investor"
-  //     ? `${BaseUrl}/forgoti`
-  //     : `${BaseUrl}/forgot`;
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -50,32 +43,20 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      // First, call the Investor endpoint
-      const investorRes = await axios.post(`${BaseUrl}/forgoti`, { email });
+      const res = await axios.post(`${BaseUrl}/forgot`, { email });
 
-      if (
-        investorRes.data?.message?.toLowerCase().includes("investor not found")
-      ) {
-        // Investor not found → try Business Owner endpoint
-        const businessRes = await axios.post(`${BaseUrl}/forgot`, { email });
-
-        if (
-          businessRes.data?.message?.toLowerCase().includes("user not found")
-        ) {
-          setError("User not found");
-          toast.error("User not found");
-        } else {
-          toast.success("Password reset link has been sent to your email");
-        }
-      } else {
-        // Investor found → success
-        toast.success("Password reset link has been sent to your email");
-      }
+      toast.success(
+        res.data?.message || "Password reset link has been sent to your email"
+      );
     } catch (err) {
-      const msg =
-        err.response?.data?.message || err.message || "Something went wrong";
-      setError(msg);
-      toast.error(msg);
+      const msg = err.response?.data?.message || "Something went wrong";
+
+      if (msg.toLowerCase().includes("reset email")) {
+        toast.success(msg);
+      } else {
+        setError(msg);
+        toast.error(msg);
+      }
     } finally {
       setLoading(false);
     }

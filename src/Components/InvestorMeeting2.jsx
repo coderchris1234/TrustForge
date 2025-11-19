@@ -64,7 +64,6 @@ const InvestorMeeting2 = ({
   const userJoinMeeting = () => {
     setJoining(true);
 
-    // small delay so the UI updates before redirect happens
     setTimeout(() => {
       window.location.href = meetingLink;
     }, 500);

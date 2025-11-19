@@ -66,7 +66,6 @@ export const Section = styled.div`
   }
 `;
 
-
 const DetailsTab = ({ data }) => (
   <DetailsWrapper>
     <MetricRow>
@@ -74,7 +73,7 @@ const DetailsTab = ({ data }) => (
         Funding Sought: ₦
         {data?.fundingSought ? Number(data.fundingSought).toLocaleString() : 0}
       </div>
-      <div>
+      <div title="Amount generated yearly">
         Current Revenue: ₦
         {data?.currentRevenue
           ? Number(data.currentRevenue).toLocaleString()
