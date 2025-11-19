@@ -369,6 +369,7 @@ export const UploadWrapper = styled.div`
 `;
 
 export const UploadBox = styled.div`
+  border: 2px dashed ${(props) => (props.hasFile ? "blue" : "#ccc")};
   width: 320px;
   padding: 2rem;
   border-radius: 8px;

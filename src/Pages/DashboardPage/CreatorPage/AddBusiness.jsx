@@ -313,6 +313,9 @@ const AddBusiness = () => {
                 <FieldRow>
                   <Label>Target Market</Label>
                   <Textarea
+                    style={{
+                      outline: "none",
+                    }}
                     value={form.targetMarket}
                     onChange={handleChange}
                     name="targetMarket"
@@ -393,6 +396,7 @@ const AddBusiness = () => {
                       // accept=".pdf"
                     />
                     <UploadBox
+                      hasFile={!!form.pitchDeck}
                       onClick={() => pitchDeckInputRef.current.click()}
                     >
                       <MdOutlineFileUpload size={40} color="blue" />
@@ -412,6 +416,7 @@ const AddBusiness = () => {
                       name="businessRegistrationCertificate"
                     />
                     <UploadBox onClick={() => certInputRef.current.click()}>
+                      hasFile={!!form.businessRegistrationCertificate}
                       <MdOutlineFileUpload size={40} color="blue" />
                       {form.businessRegistrationCertificate
                         ? form.businessRegistrationCertificate.name
