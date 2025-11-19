@@ -6,6 +6,55 @@ export const Meeting_container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  .tabs {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0 30px;
+    border-bottom: 1px solid #e4e6eb;
+    padding-bottom: 10px;
+  }
+
+  .tab {
+    position: relative;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #6c6c6c;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+  }
+
+  .tab:hover {
+    background: #f5f7ff;
+    color: #0052ff;
+  }
+
+  .tab.active {
+    color: #0052ff;
+    font-weight: 600;
+  }
+
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+    height: 3px;
+    width: 100%;
+    background: #0052ff;
+    border-radius: 10px;
+  }
+
+  .tab span {
+    background: #e8edff;
+    color: #0052ff;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-left: 8px;
+    font-weight: 600;
+  }
 
   .meeting {
     width: 100%;
