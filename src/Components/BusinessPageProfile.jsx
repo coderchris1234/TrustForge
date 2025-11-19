@@ -36,6 +36,8 @@ import { RiSecurePaymentLine } from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { CiSaveDown2 } from "react-icons/ci";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 const BusinessPageProfile = ({ data }) => {
   const [form, setForm] = useState({
@@ -199,7 +201,11 @@ const BusinessPageProfile = ({ data }) => {
             ) : liked ? (
               "❤️ Liked"
             ) : (
-              "🤍 Like"
+              <span
+                style={{ display: "flex", alignItems: "ccenter", gap: "3px" }}
+              >
+                <FaRegHeart /> Like
+              </span>
             )}
           </LikeButton>
 
@@ -207,9 +213,17 @@ const BusinessPageProfile = ({ data }) => {
             {isLoading ? (
               <Skeleton width={80} />
             ) : isSavedUI ? (
-              "❤️ Unsave"
+              <span
+                style={{ display: "flex", alignItems: "ccenter", gap: "3px" }}
+              >
+                <CiSaveDown2 size={20} color="green" /> Unsaved
+              </span>
             ) : (
-              <CiSaveDown2 size={30} />
+              <span
+                style={{ display: "flex", alignItems: "ccenter", gap: "3px" }}
+              >
+                <CiSaveDown2 size={20} /> Save
+              </span>
             )}
           </SaveButton>
 

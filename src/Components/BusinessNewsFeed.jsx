@@ -13,6 +13,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 import { BsBuildings } from "react-icons/bs";
 import { CiSaveDown2 } from "react-icons/ci";
 import { FaFire, FaStar } from "react-icons/fa";
+import { FaBold } from "react-icons/fa6";
 // import { useEffect } from "react";
 
 const BusinessNewsFeed = ({ data }) => {
@@ -245,10 +246,12 @@ const BusinessNewsFeed = ({ data }) => {
 
                   <div className="love">
                     <CiSaveDown2
-                      size={30}
+                      size={20}
                       color={isSaved ? "green" : "black"}
                       onClick={() => handleSave(post)}
+                      fontStyle={FaBold}
                     />
+                    Save
                   </div>
                 </div>
               </div>
