@@ -221,7 +221,6 @@ export const BusinessContainer = styled.div`
       TABLET <= 768px
   ============================= */
   @media (max-width: 768px) {
-
     .businessContainer {
       padding-bottom: 72px; /* Space for bottom buttons */
     }

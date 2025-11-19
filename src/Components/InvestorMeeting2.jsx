@@ -25,9 +25,9 @@ const InvestorMeeting2 = ({
   rescheduleMeeting,
   loading,
   rescheduleRole,
+  endMeeting,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
-  const [joining, setJoining] = useState(false);
 
   const [form, setForm] = useState({
     date: "",
@@ -62,7 +62,7 @@ const InvestorMeeting2 = ({
   const minDate = `${year}-${month}-${day}`;
 
   const userJoinMeeting = () => {
-    setJoining(true);
+    endMeeting(id);
 
     setTimeout(() => {
       window.location.href = meetingLink;
@@ -99,31 +99,25 @@ const InvestorMeeting2 = ({
             {/* <div className="first">{}</div> */}
           </div>
           <div className="tittle_right">
-            {meetingStatus === "Approved and Upcoming" ? (
+            {meetingStatus === "Approved and Upcoming" && (
+              <div className="join_meetings" onClick={userJoinMeeting}>
+                Join Meeting
+                <FaVideo size={15} />
+              </div>
+            )}
+
+            {meetingStatus === "Concluded" && (
               <div
                 className="join_meetings"
-                onClick={!joining ? userJoinMeeting : null}
                 style={{
-                  cursor: joining ? "not-allowed" : "pointer",
-                  opacity: joining ? 0.7 : 1,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "5px",
+                  pointerEvents: "none",
+                  opacity: 0.5,
+                  cursor: "not-allowed",
                 }}
               >
-                {joining ? (
-                  <>
-                    Joining...
-                    <div className="spinner"></div>
-                  </>
-                ) : (
-                  <>
-                    Join Meeting
-                    <FaVideo size={15} />
-                  </>
-                )}
+                Meeting ended
               </div>
-            ) : null}
+            )}
 
             {(meetingStatus !== "Awaiting Approval" &&
               meetingStatus !== "Reschedule Requested") ||

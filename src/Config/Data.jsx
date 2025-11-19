@@ -507,6 +507,43 @@ export const CreatorMenu = [
     },
   ],
 ];
+export const nigerianBanks = [
+  "Access Bank Plc",
+  "Fidelity Bank Plc",
+  "First City Monument Bank (FCMB)",
+  "First Bank of Nigeria Plc",
+  "Guaranty Trust Bank Plc (GTBank)",
+  "United Bank for Africa (UBA) Plc",
+  "Zenith Bank Plc",
+  "Citibank Nigeria Limited",
+  "Ecobank Nigeria Plc",
+  "Keystone Bank Limited",
+  "Polaris Bank Plc",
+  "Stanbic IBTC Bank Plc",
+  "Standard Chartered Bank Nigeria Ltd",
+  "Sterling Bank Plc",
+  "Titan Trust Bank Ltd",
+  "Union Bank of Nigeria Plc",
+  "Unity Bank Plc",
+  "Wema Bank Plc",
+  "Premium Trust Bank Ltd",
+  "Optimus Bank Limited",
+  "Providus Bank Limited",
+  "Parallex Bank Limited",
+  "Signature Bank Limited",
+  "SunTrust Bank Nigeria Limited",
+  "Jaiz Bank Plc", // Non-interest / Islamic
+  "Taj Bank Limited", // Non-interest
+  "Lotus Bank Limited", // Non-interest
+  "Alternative Bank Limited",
+  "Coronation Merchant Bank",
+  "FBN Merchant Bank",
+  "Alpha Morgan Bank Limited",
+  "Nova Commercial Bank Ltd",
+  "Heritage Bank Plc",
+  "AB Microfinance Bank Ltd",
+  "AACB Microfinance Bank Ltd",
+];
 
 export const StoriesData = [
   {

@@ -28,9 +28,8 @@ const Notification1 = () => {
 
   const deleteNotification = async (id) => {
     try {
-      await axios.delete(`${BaseUrl}/killN`, { id: id });
+      await axios.delete(`${BaseUrl}/killN/${id}`);
 
-      // Remove deleted notification from UI
       setNotifications((prev) => prev.filter((n) => n.id !== id));
     } catch (err) {
       console.log("Error deleting notification", err);
