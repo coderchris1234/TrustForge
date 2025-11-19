@@ -43,6 +43,7 @@ import { GiConfirmed } from "react-icons/gi";
 import { FaEye, FaHeart } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 // import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { RiBarChartFill } from "react-icons/ri";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -708,8 +709,8 @@ export const getOverviewBusiness = (overviewData) => [
     id: 3,
     title: "Total Likes",
     num: overviewData?.totalLikes ?? 0,
-    icon: FaHeart,
-    bgColor: "#e35151",
+    icon: FaRegHeart,
+    // bgColor: "#e35151",
     color: "#b01e1e",
   },
   {

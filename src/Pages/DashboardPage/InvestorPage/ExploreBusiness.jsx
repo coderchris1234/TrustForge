@@ -47,6 +47,9 @@ const ExploreBusiness = () => {
     };
 
     fetchBusinesses();
+    const interval = setInterval(fetchBusinesses, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   const tierOrder = {

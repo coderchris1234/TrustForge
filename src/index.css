@@ -24,6 +24,18 @@ body {
     transform: rotate(360deg);
   }
 }
+/* Hide scrollbar globally but keep scroll functionality */
+body,
+html {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
 :root {
   --primary_color_100: #b4d1f8;

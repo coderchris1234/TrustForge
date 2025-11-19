@@ -54,6 +54,9 @@ const Notification = () => {
     };
 
     fetchNotifications();
+    const interval = setInterval(fetchNotifications, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [token, BaseUrl]);
 
   return (
