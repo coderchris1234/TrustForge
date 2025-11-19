@@ -32,6 +32,12 @@ export const PageWrap = styled.div`
       align-items: center;
       justify-content: center;
 
+      .image {
+        width: 50px;
+        height: 50px;
+        font-size: 3rem;
+      }
+
       p {
         text-align: center;
         width: 80%;
@@ -68,7 +74,17 @@ export const PageWrap = styled.div`
 
     .view {
       background-color: #0046ff;
-      width: 50%;
+      width: 80%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .view1 {
+      background-color: #0046ff;
+      width: 80%;
       margin: 0 auto;
       color: #ffff;
       border: none;
@@ -400,10 +416,11 @@ export const UploadWrapper = styled.div`
 `;
 
 export const UploadBox = styled.div`
+  border: 2px dashed ${(props) => (props.hasFile ? "blue" : "#ccc")};
   width: 320px;
   padding: 2rem;
   border-radius: 8px;
-  border: 1px dashed #d1d5db;
+  /* border: 1px dashed #d1d5db; */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -443,8 +460,8 @@ export const ActionRow = styled.div`
 
 export const BackButton = styled.button`
   background: transparent;
-  color: #6b7280;
-  border: none;
+  color: #0046ff;
+  border: 1px solid #0046ff;
   font-size: 14px;
   padding: 8px 12px;
   cursor: pointer;
@@ -462,7 +479,7 @@ export const BackButton = styled.button`
 `;
 
 export const NextButton = styled.button`
-  background: #00a3ff;
+  background: #0046ff;
   color: #ffffff;
   border: none;
   padding: 10px 18px;

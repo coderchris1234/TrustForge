@@ -1,26 +1,43 @@
 import React, { useState } from "react";
 import { Not_container } from "./NotStyle";
+import { MdOutlineCancel } from "react-icons/md";
 
-const Notification = ({ id, title, message, date, status, markAsRead }) => {
+const Notification = ({
+  id,
+  title,
+  message,
+  date,
+  status,
+  // markAsRead,
+  deleteNotification,
+}) => {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const closeModal = () => {
+  // const closeModal = () => {
+  //   setLoading(false);
+  //   setModal(false);
+  //   markAsRead(id);
+  // };
+
+  const handleDelete = async () => {
+    console.log("Deleting →", id);
+    setLoading(true);
+    await deleteNotification(id);
     setLoading(false);
     setModal(false);
-    markAsRead(id);
   };
 
   return (
     <Not_container>
       {modal && (
         <div className="notification-modal">
-          omo
           <div className="notification-content">
+            <MdOutlineCancel onClick={() => setModal(false)} />
             <h3>{title}</h3>
             <p>{message}</p>
             <span>{new Date(date).toLocaleString()}</span>
-            <button onClick={closeModal}>
+            <button onClick={handleDelete}>
               {loading ? "Deleting..." : "Delete"}
             </button>
           </div>

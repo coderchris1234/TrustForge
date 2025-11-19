@@ -18,7 +18,7 @@ const MeetingModal = ({ open, close, businessId }) => {
     date: "",
     time: "",
     note: "",
-    meetingType: "",
+    meetingType: "Virtual",
     guest: userId,
     businessId: businessId,
   });
@@ -109,14 +109,15 @@ const MeetingModal = ({ open, close, businessId }) => {
               />
             </div>
           </div>
-          <select
-            name="meetingType"
-            value={form.meetingType}
-            onChange={handleChange}
-          >
-            <option value="">Select meeting type</option>
-            <option value="Virtual">Virtual</option>
-          </select>
+          <div>
+            <label>Meeting Type</label>
+            <input
+              type="text"
+              value="Virtual"
+              readOnly
+              style={{ background: "#f5f5f5", cursor: "not-allowed" }}
+            />
+          </div>
 
           <div>
             <label htmlFor="">Notes(optional)</label>
@@ -128,8 +129,27 @@ const MeetingModal = ({ open, close, businessId }) => {
               onChange={handleChange}
             />
           </div>
-          <button onClick={handleSubmit}>
-            {loading ? "Sending Meeting Request" : "Send Meeting Request"}
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            style={{
+              opacity: loading ? 0.7 : 1,
+              pointerEvents: loading ? "none" : "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              cursor: loading ? "not-allowed" : "pointer",
+            }}
+          >
+            {loading ? (
+              <>
+                <div className="spinner"></div>
+                Sending...
+              </>
+            ) : (
+              "Send Meeting Request"
+            )}
           </button>
         </div>
       </ModalBox>

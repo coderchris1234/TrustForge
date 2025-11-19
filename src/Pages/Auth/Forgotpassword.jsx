@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -23,14 +23,14 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const user = useSelector((state) => state.TrustForge.user);
+  // const user = useSelector((state) => state.TrustForge.user);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
 
   // Dynamic endpoint selection based on role
-  const endpoints =
-    user?.data?.role === "Investor"
-      ? `${BaseUrl}/forgoti`
-      : `${BaseUrl}/forgot`;
+  // const endpoints =
+  //   user?.data?.role === "Investor"
+  //     ? `${BaseUrl}/forgoti`
+  //     : `${BaseUrl}/forgot`;
 
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -50,13 +50,30 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(endpoints, { email });
-      console.log("forgot", res?.data);
+      // First, call the Investor endpoint
+      const investorRes = await axios.post(`${BaseUrl}/forgoti`, { email });
 
-      toast.success("Password reset link has been sent to your email");
+      if (
+        investorRes.data?.message?.toLowerCase().includes("investor not found")
+      ) {
+        // Investor not found → try Business Owner endpoint
+        const businessRes = await axios.post(`${BaseUrl}/forgot`, { email });
+
+        if (
+          businessRes.data?.message?.toLowerCase().includes("user not found")
+        ) {
+          setError("User not found");
+          toast.error("User not found");
+        } else {
+          toast.success("Password reset link has been sent to your email");
+        }
+      } else {
+        // Investor found → success
+        toast.success("Password reset link has been sent to your email");
+      }
     } catch (err) {
       const msg =
-        err.response?.data?.message || "Something went wrong. Try again.";
+        err.response?.data?.message || err.message || "Something went wrong";
       setError(msg);
       toast.error(msg);
     } finally {
@@ -106,7 +123,7 @@ const ForgotPassword = () => {
 
           <LoginText style={{ marginTop: 8, color: "#1B1B1B" }}>
             Remember password?{" "}
-            <span onClick={() => navigate("/login")}>Log In</span>
+            <span onClick={() => navigate("/login")}>LogIn</span>
           </LoginText>
 
           <TermsText style={{ marginTop: 10 }}>

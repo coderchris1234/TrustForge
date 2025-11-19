@@ -44,10 +44,36 @@ const Overview = () => {
 
   return (
     <OverviewContent>
-      <div className="ContentTitle">
-        <h1>Dashboard Overview</h1>
-        <p>Welcome back, Here’s what is happening with your Business</p>
-      </div>
+      <section className="Contenttitle_holder">
+        <div className="ContentTitle">
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back, Here’s what is happening with your Business</p>
+        </div>
+        <div className="QuickAction">
+          {/* <p>Quick Action</p> */}
+          <div className="action">
+            <NavLink
+              to={"/dashboard/business_owner/addbusiness"}
+              style={{
+                backgroundColor: "#0046ff",
+                color: "#fff",
+              }}
+              className="quick"
+            >
+              <p style={{ color: "white" }}>Add Business Profile</p>
+            </NavLink>
+            {/* <div
+            style={{
+              border: "1px solid lightGrey",
+            }}
+            className="quick"
+          >
+            <CiCalendar width={"40px"} />
+            <p style={{ color: "black" }}>Scheduled Meeting</p>
+          </div> */}
+          </div>
+        </div>
+      </section>
 
       <div className="Overview-content">
         {overviewBusiness.map((section) => (
@@ -77,32 +103,6 @@ const Overview = () => {
           </NavLink>
         </div>
         <BusinessList overviewData={overviewData} />
-      </div>
-
-      <div className="QuickAction">
-        <p>Quick Action</p>
-        <div className="action">
-          <NavLink
-            to={"/dashboard/business_owner/addbusiness"}
-            style={{
-              backgroundColor: "#1E6BFF",
-              color: "#fff",
-            }}
-            className="quick"
-          >
-            <MdOutlineFileUpload size={"20px"} />
-            <p style={{ color: "white" }}>Add Business Profile</p>
-          </NavLink>
-          {/* <div
-            style={{
-              border: "1px solid lightGrey",
-            }}
-            className="quick"
-          >
-            <CiCalendar width={"40px"} />
-            <p style={{ color: "black" }}>Scheduled Meeting</p>
-          </div> */}
-        </div>
       </div>
     </OverviewContent>
   );

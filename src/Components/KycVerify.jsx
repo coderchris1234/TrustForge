@@ -312,7 +312,7 @@ const KycVerification = () => {
             {userKYC.toLowerCase().includes("review")
               ? "Your KYC verification is currently under review."
               : userKYC.toLowerCase().includes("verified")
-              ? "Your KYC has been verified successfully!"
+              ? "Congratulations! Your KYC has been successfully verified. You can now access all TrustForge features."
               : ""}
           </div>
         )}
@@ -613,8 +613,12 @@ const KycVerification = () => {
             </p>
 
             <div className="buttons">
-              <button className="logout-btn" onClick={handleSubmit}>
-                {loading ? "Submiting..." : "Submit"}
+              <button
+                className="logout-btn"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
+                {loading ? <div className="spinner"></div> : "Submit"}
               </button>
 
               <button

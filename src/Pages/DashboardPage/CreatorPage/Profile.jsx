@@ -34,7 +34,7 @@ const Profile = () => {
 
     fetchKyc();
   }, [userId, token, BaseUrl]);
-  const Initials = kyc ? kyc.firstName.charAt(0).toUpperCase() : "";
+  // const Initials = kyc ? kyc.firstName.charAt(0).toUpperCase() : "";
 
   return (
     <ProfileStyle>

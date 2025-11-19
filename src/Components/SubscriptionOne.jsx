@@ -54,7 +54,7 @@ const breakpoints = {
 const SuccessWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #031019ff;
+  /* background-color: #031019ff; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +85,7 @@ const Card = styled.div`
 
   h1 {
     font-size: 24px;
-    color: #00a3ff;
+    color: #0046ff;
     margin-bottom: 1rem;
   }
 
@@ -96,7 +96,7 @@ const Card = styled.div`
   }
 
   button {
-    background-color: #00a3ff;
+    background-color: #0046ff;
     color: #fff;
     border: none;
     padding: 0.8rem 1.5rem;

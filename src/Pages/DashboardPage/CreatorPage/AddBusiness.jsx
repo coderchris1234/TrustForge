@@ -40,7 +40,8 @@ const AddBusiness = () => {
   const certInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState("");
+
+  const [errorModal, setErrorModal] = useState("");
 
   const totalSteps = 3;
   const [step, setStep] = useState(1);
@@ -140,7 +141,7 @@ const AddBusiness = () => {
       }
     } catch (error) {
       setLoading(false);
-      toast.error(error?.response?.data?.message);
+      setErrorModal(error?.response?.data?.message || "Something went wrong");
     }
     setStep(1);
     setLoading(false);
@@ -166,6 +167,14 @@ const AddBusiness = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "yearFounded" && value) {
+      const selectedYear = new Date(value).getFullYear();
+      const currentYear = new Date().getFullYear();
+
+      if (selectedYear > currentYear) {
+        return; // stop user from entering future years
+      }
+    }
     const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
     setForm((prev) => ({ ...prev, [name]: capitalized }));
   };
@@ -256,7 +265,7 @@ const AddBusiness = () => {
                     name="yearFounded"
                     value={form.yearFounded}
                     onChange={handleChange}
-                    placeholder="e.g. 2020"
+                    max={new Date().toISOString().split("T")[0]} // 🔒 disables all future dates
                   />
                 </FieldRow>
               </>
@@ -312,6 +321,9 @@ const AddBusiness = () => {
                 <FieldRow>
                   <Label>Target Market</Label>
                   <Textarea
+                    style={{
+                      outline: "none",
+                    }}
                     value={form.targetMarket}
                     onChange={handleChange}
                     name="targetMarket"
@@ -342,7 +354,7 @@ const AddBusiness = () => {
                         <Label>Capital Needed</Label>
                         <input
                           type="num"
-                          placeholder="e.g..., ₦700,000"
+                          placeholder="e.g...₦700,000"
                           onChange={(e) => {
                             const value = e.target.value;
                             if (/^\d{0,30}$/.test(value)) {
@@ -356,7 +368,7 @@ const AddBusiness = () => {
                   </FieldRow>
                 </FieldRow>
                 <FieldRow>
-                  <Label>Current Revenue</Label>
+                  <Label>Expected Current Revenue</Label>
                   <Input
                     value={form.currentRevenue}
                     onChange={(e) => {
@@ -366,7 +378,7 @@ const AddBusiness = () => {
                       }
                     }}
                     name="currentRevenue"
-                    placeholder="e.g..., ₦500,000"
+                    placeholder="How much your business is projected to generate every year. e.g...₦500,000,"
                   />
                 </FieldRow>
               </>
@@ -392,6 +404,7 @@ const AddBusiness = () => {
                       // accept=".pdf"
                     />
                     <UploadBox
+                      hasFile={!!form.pitchDeck}
                       onClick={() => pitchDeckInputRef.current.click()}
                     >
                       <MdOutlineFileUpload size={40} color="blue" />
@@ -410,7 +423,10 @@ const AddBusiness = () => {
                       }
                       name="businessRegistrationCertificate"
                     />
-                    <UploadBox onClick={() => certInputRef.current.click()}>
+                    <UploadBox
+                      hasFile={!!form.businessRegistrationCertificate}
+                      onClick={() => certInputRef.current.click()}
+                    >
                       <MdOutlineFileUpload size={40} color="blue" />
                       {form.businessRegistrationCertificate
                         ? form.businessRegistrationCertificate.name
@@ -464,15 +480,30 @@ const AddBusiness = () => {
         {openModal && (
           <div className="modal-overlay">
             <div className="logout-modal">
+              <div className="image">🎉</div>
+
               <h1>Business Upload.</h1>
               <p>
-                Your business has beenn uploaded successfully. Our team is
+                Your business has been uploaded successfully. Our team is
                 reviewing it.
               </p>
+              <div className="buttons">
+                <button className="view1" onClick={() => nav("../mybusiness")}>
+                  View Business Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {errorModal && (
+          <div className="modal-overlay">
+            <div className="logout-modal">
+              <h2>Error</h2>
+              <p>{errorModal}</p>
 
               <div className="buttons">
-                <button className="view" onClick={() => nav("mybusiness")}>
-                  View Business Profile
+                <button className="view" onClick={() => setErrorModal("")}>
+                  Close
                 </button>
               </div>
             </div>

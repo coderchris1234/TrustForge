@@ -14,16 +14,26 @@ const Notification1 = () => {
     try {
       await axios.post(
         `${BaseUrl}/read`,
-        { notificationId: id }, // 👈 pass ID in body
+        { notificationId: id },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
 
-      // Update UI after backend confirms
       setNotifications((prev) => prev.filter((n) => n.id !== id));
     } catch (err) {
       console.log("Error marking as read", err);
+    }
+  };
+
+  const deleteNotification = async (id) => {
+    try {
+      await axios.delete(`${BaseUrl}/killN`, { id: id });
+
+      // Remove deleted notification from UI
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+    } catch (err) {
+      console.log("Error deleting notification", err);
     }
   };
 
@@ -80,6 +90,7 @@ const Notification1 = () => {
             date={new Date(notif.createdAt).toLocaleString()}
             status={notif.status}
             markAsRead={markAsRead}
+            deleteNotification={deleteNotification}
           />
         ))}
       </div>

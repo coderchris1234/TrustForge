@@ -29,6 +29,7 @@ import { setUser } from "../Global/Slice";
 const Signup = () => {
   const BaseUrl = import.meta.env.VITE_BaseUrl;
   const plan = JSON.parse(localStorage.getItem("selectedPlan"));
+  console.log("plan", plan);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -300,7 +301,7 @@ const Signup = () => {
               onClick={() => navigate("/login")}
               style={{ color: "#0046ff" }}
             >
-              Log in
+              Login
             </span>
           </LoginText>
 

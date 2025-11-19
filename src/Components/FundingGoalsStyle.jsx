@@ -12,7 +12,7 @@ export const Funding_container = styled.div`
     width: 22rem;
     padding: 0.8rem;
     border-radius: 0.7rem;
-    border: 1px solid gray;
+    border: 1px solid #1b1b1b4d;
     background-color: #fff;
     display: flex;
     flex-direction: column;

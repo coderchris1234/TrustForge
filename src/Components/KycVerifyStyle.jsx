@@ -49,6 +49,22 @@ export const KycContainer = styled.div`
       cursor: pointer;
       width: 50%;
       font-size: 15px;
+
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin: 0 auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     }
 
     .cancel-btn {
@@ -203,7 +219,16 @@ export const PageWrap = styled.div`
   }
 
   @media (max-width: 480px) {
+    /* width: 100%; */
+    /* padding: 32px 48px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    /* padding-right: 5rem; */
+    /* background-color: yellow; */
     padding: 16px;
+    width: 100%;
   }
 `;
 
@@ -241,6 +266,8 @@ export const StepInfo = styled.div`
 
   @media (max-width: 480px) {
     gap: 1rem;
+    width: 100%;
+
     padding: 0.8rem;
   }
 `;

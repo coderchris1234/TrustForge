@@ -244,12 +244,12 @@ export const KycContainer = styled.div`
 /* ---------------- PageWrap ---------------- */
 export const PageWrap = styled.div`
   width: 100%;
-  padding: 32px 48px;
+  /* padding: 32px 48px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding-right: 5rem;
+  /* padding-right: 5rem; */
 
   @media (max-width: ${breakpoints.tablet}) {
     padding: 20px;
@@ -268,6 +268,7 @@ export const Card = styled.div`
   padding: 28px 34px;
   box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
   box-sizing: border-box;
+  margin-top: 2rem;
 
   @media (max-width: ${breakpoints.tablet}) {
     padding: 20px;
