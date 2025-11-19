@@ -417,8 +417,8 @@ export const FormArea = styled.div`
       span {
         width: 26px;
         height: 26px;
-        right: 5px;
-        bottom: 4px;
+        right: 0px;
+        bottom: 0;
       }
     }
 
