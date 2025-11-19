@@ -25,7 +25,7 @@ import { GoUpload } from "react-icons/go";
 import { MdOutlinePayment } from "react-icons/md";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import profileHolder from "../../../assets/ProfileHolder.png";
+import profileHolder from "../../../assets/profileHolder.png";
 import { NigeriaCities, NigeriaStates } from "../../../Config/Data";
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
