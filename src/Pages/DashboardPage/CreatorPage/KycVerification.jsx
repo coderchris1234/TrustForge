@@ -27,6 +27,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import profileHolder from "../../../assets/profileHolder.png";
 import { NigeriaCities, NigeriaStates } from "../../../Config/Data";
+import { nigerianBanks } from "../../../Config/Data";
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
   const proofOfAdressRef = useRef(null);
@@ -535,15 +536,31 @@ const KycVerification = () => {
                       </span>
                     </div>
                   </div>
-                  <FieldRow>
-                    <Label>Bank Name</Label>
-                    <Input
+
+                  {/* <Label>Bank Name</Label>
+                    <SelectInput
                       value={formData.bankName}
                       onChange={handleChange}
                       name="bankName"
                       placeholder="e.g... First Bank"
                     />
-                  </FieldRow>
+                    </SelectInput> */}
+                  <div>
+                    <Label>Bank Name</Label>
+                    <SelectInput
+                      style={{ width: "100%" }}
+                      name="bankName"
+                      value={formData.bankName}
+                      onChange={handleChange}
+                    >
+                      <option>Choose Bank</option>
+                      {nigerianBanks.map((banks, index) => (
+                        <option value={banks} key={index}>
+                          {banks}
+                        </option>
+                      ))}
+                    </SelectInput>
+                  </div>
                   <FieldRow>
                     <Label>Account Name</Label>
                     <Input
@@ -556,9 +573,14 @@ const KycVerification = () => {
                   <FieldRow>
                     <Label>Account Number</Label>
                     <Input
-                      type="num"
+                      type="tel"
                       value={formData.accountNumber}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        const onlyNumbers = e.target.value.replace(/\D/g, ""); // removes any non-digit characters
+                        handleChange({
+                          target: { name: "accountNumber", value: onlyNumbers },
+                        });
+                      }}
                       name="accountNumber"
                       placeholder="Enter account number"
                       maxLength={10}

@@ -75,7 +75,7 @@ const Profile = () => {
 
             <div className="Profile_content_holder">
               <article className="Kyc_verified">
-                <h3>{kyc?.firstName}</h3>
+                <h3>{kyc?.fullName}</h3>
                 <span>{kyc?.verificationStatus}</span>
               </article>
 
@@ -102,8 +102,8 @@ const Profile = () => {
             <section className="First_name">
               <div className="First">
                 <aside className="First_informations">
-                  <span>First Name</span>
-                  <p>{kyc?.firstName}</p>
+                  <span>Full Name</span>
+                  <p>{kyc?.fullName}</p>
                 </aside>
 
                 <aside className="First_informations">
@@ -124,11 +124,6 @@ const Profile = () => {
               </div>
 
               <div className="First">
-                <aside className="First_informations">
-                  <span>Last Name</span>
-                  <p>{kyc?.lastName}</p>
-                </aside>
-
                 <aside className="First_informations">
                   <span>Phone number</span>
                   <p>{kyc?.phoneNumber}</p>
