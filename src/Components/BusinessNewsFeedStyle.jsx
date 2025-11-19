@@ -162,6 +162,7 @@ export const Newsfeed_container = styled.div`
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        gap: 10px;
         transition: all 0.3s ease-in-out;
       }
 

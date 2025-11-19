@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 const breakpoints = {
   mobile: "480px",
@@ -41,8 +43,8 @@ export const EngagementItem = styled.div`
 
   /* Small Tablets & Large Phones */
   @media (max-width: ${breakpoints.mobileLarge}) {
-    flex-direction: column;       /* Stack content vertically */
-    align-items: flex-start;      
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start;
     padding: 8px 10px;
     gap: 8px;
   }
@@ -54,7 +56,6 @@ export const EngagementItem = styled.div`
   }
 `;
 
-
 const EngagementTab = ({ data }) => (
   <EngagementList>
     {[{ views: data?.viewCount, likes: data?.likeCount }].map(
@@ -62,7 +63,7 @@ const EngagementTab = ({ data }) => (
         <EngagementItem key={views + likes}>
           {/* <span>{date}</span> */}
           <span>
-            👁 {views} ❤️ {likes}
+            <FaRegEye /> {views} <FaRegHeart /> {likes}
           </span>
         </EngagementItem>
       )

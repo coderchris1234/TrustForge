@@ -10,7 +10,9 @@ export const FundActivity_container = styled.div`
   .sec_wrapper {
     width: 100%;
     padding: 1rem;
-    border: 1px solid black;
+    /* border: 1px solid #1b1b1b; */
+    border: 1px solid #1b1b1b4d;
+
     border-radius: 1rem;
     background-color: #ffffff;
     display: flex;

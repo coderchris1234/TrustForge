@@ -15,6 +15,9 @@ import {
   Stat,
   Date,
 } from "./BusinessDetailPageHeaderStyle";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+
 // import { data } from "react-router-dom";
 
 const BusinessDetailPageHeader = ({ data }) => {
@@ -49,8 +52,14 @@ const BusinessDetailPageHeader = ({ data }) => {
         </Poster>
 
         <Stats>
-          <Stat>👁 {data?.viewCount}</Stat>
-          <Stat>❤️ {data?.likeCount}</Stat>
+          <Stat>
+            {" "}
+            <FaRegEye />
+            {data?.viewCount}
+          </Stat>
+          <Stat>
+            <FaRegHeart /> {data?.likeCount}
+          </Stat>
         </Stats>
 
         <Date>{data?.postedDate}</Date>

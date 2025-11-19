@@ -32,6 +32,9 @@ const BusinessDetailPage = () => {
     };
 
     fetchBusiness();
+    const interval = setInterval(fetchBusiness, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [id]);
   if (loading) {
     return (
