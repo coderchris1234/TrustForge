@@ -17,7 +17,7 @@ import {
 import authlogo from "../../assets/authlogo.png";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 
 const ResetPassword = () => {
@@ -31,7 +31,7 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const role = useSelector((state) => state.TrustForge.user);
+  // const role = useSelector((state) => state.TrustForge.user);
   const { token } = useParams();
 
   const passwordRegex =
@@ -68,10 +68,7 @@ const ResetPassword = () => {
     e.preventDefault();
     const BaseUrl = import.meta.env.VITE_BaseUrl;
 
-    const endpoint =
-      role?.data?.role === "Investor"
-        ? `${BaseUrl}/reset-passwordi`
-        : `${BaseUrl}/reset-password`;
+    const endpoint = `${BaseUrl}/reset-password`;
 
     try {
       setLoading(true);

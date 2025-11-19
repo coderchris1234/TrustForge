@@ -73,6 +73,10 @@ const MyBusiness = () => {
 
     return statusMatch && searchMatch;
   });
+  const sortedBusiness = [...displayBusiness].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   return (
     <>
       <MyBusinessHeader>
@@ -114,13 +118,10 @@ const MyBusiness = () => {
       </SearchBar>
 
       <BusinessWrapper>
-        {displayBusiness.length > 0 ? (
-          displayBusiness
-            .slice()
-            .reverse()
-            .map((biz) => (
-              <BusinessCard allBusiness={allBusiness} key={biz.id} {...biz} />
-            ))
+        {sortedBusiness.length > 0 ? (
+          sortedBusiness.map((biz) => (
+            <BusinessCard allBusiness={allBusiness} key={biz.id} {...biz} />
+          ))
         ) : (
           <p>No Business Found</p>
         )}
