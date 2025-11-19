@@ -139,7 +139,6 @@ const BusinessCard = (props) => {
             </div>
           </div>
           <div className="Date_posted">
-            posted:
             <span>
               {new Date(props.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",

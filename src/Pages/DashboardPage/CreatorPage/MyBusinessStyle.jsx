@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"; 
 
 export const MyBusinessHeader = styled.div`
   display: flex;
@@ -28,14 +28,23 @@ export const MyBusinessHeader = styled.div`
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    opacity: 0.9;
   }
 
   /* Tablet */
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
     width: 92%;
+    gap: 12px;
+
+    button {
+      width: auto;
+    }
   }
 
   /* Mobile */
@@ -43,6 +52,7 @@ export const MyBusinessHeader = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    width: 100%;
 
     .heading h2 {
       font-size: 19px;
@@ -63,12 +73,12 @@ export const MyBusinessHeader = styled.div`
 export const SearchBar = styled.div`
   background-color: #fff;
   width: 95%;
-  /* margin: 0 auto; */
   margin-top: 1rem;
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  /* gap: 2rem; */
+  gap: 1rem;
+  border-radius: 8px;
 
   select {
     width: 15%;
@@ -98,29 +108,37 @@ export const SearchBar = styled.div`
       background-color: #eceff4;
       border: none;
       outline: none;
+      font-size: 15px;
     }
   }
 
   /* Tablet */
   @media (max-width: 900px) {
     flex-direction: column;
-    gap: 1rem;
     width: 92%;
+    gap: 1rem;
 
-    .searchContainer {
+    select {
       width: 100%;
     }
 
-    select {
+    .searchContainer {
       width: 100%;
     }
   }
 
   /* Mobile */
   @media (max-width: 600px) {
-    flex-direction: column;
-    gap: 0.8rem;
+    width: 100%;
     padding: 0.7rem;
+    gap: 0.8rem;
+    flex-direction: column;
+
+    select {
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 14px;
+    }
 
     .searchContainer {
       width: 100%;
@@ -129,12 +147,6 @@ export const SearchBar = styled.div`
       input {
         font-size: 14px;
       }
-    }
-
-    select {
-      width: 100%;
-      padding: 0.6rem;
-      font-size: 14px;
     }
   }
 `;
@@ -151,8 +163,16 @@ export const BusinessWrapper = styled.div`
 
   p {
     color: gray;
+    text-align: center;
   }
 
+  /* Tablet */
+  @media (max-width: 900px) {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Mobile */
   @media (max-width: 600px) {
     padding: 0.8rem;
   }
