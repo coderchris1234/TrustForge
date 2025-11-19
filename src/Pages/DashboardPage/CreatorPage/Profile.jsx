@@ -33,6 +33,9 @@ const Profile = () => {
     };
 
     fetchKyc();
+    const interval = setInterval(fetchKyc, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [userId, token, BaseUrl]);
   // const Initials = kyc ? kyc.firstName.charAt(0).toUpperCase() : "";
 

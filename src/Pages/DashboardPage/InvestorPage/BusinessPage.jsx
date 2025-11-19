@@ -23,8 +23,11 @@ const BusinessPage = () => {
       setInvestorCount(res?.data?.investorIntrests);
       console.log("bus", res);
     };
-          
+
     fetchBusiness();
+    const interval = setInterval(fetchBusiness, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [id]);
   console.log("count", investorCount);
   return (
@@ -41,8 +44,6 @@ const BusinessPage = () => {
 };
 
 export default BusinessPage;
-
-
 
 // import React, { useEffect, useState, useRef } from "react";
 // import BusinessPageProfile from "../../../Components/BusinessPageProfile";

@@ -52,7 +52,11 @@ const Notification1 = () => {
           ...(res.data.unread || []),
         ];
 
-        setNotifications(allNotifications);
+        const sorted = [...allNotifications].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        setNotifications(sorted);
         console.log("Fetched notifications:", allNotifications);
       } catch (error) {
         console.log("Error fetching notifications:", error);
@@ -60,6 +64,9 @@ const Notification1 = () => {
     };
 
     fetchNotifications();
+    const interval = setInterval(fetchNotifications, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [token, BaseUrl]);
 
   return (

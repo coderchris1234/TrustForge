@@ -69,6 +69,8 @@ const InvestorMeeting = ({
                   ? "Reschedule"
                   : meetingStatus === "Declined"
                   ? "Decl"
+                  : meetingStatus === "Concluded"
+                  ? "concluded"
                   : "cencl"
               }
             >
@@ -80,6 +82,12 @@ const InvestorMeeting = ({
               <div className="join_meetings" onClick={userJoinMeeting}>
                 Join Meeting
                 <FaVideo size={15} />
+              </div>
+            ) : null}
+            {meetingStatus === "Concluded" ? (
+              <div className="join_meetings" onClick={userJoinMeeting}>
+                Meeting ended
+                {/* <FaVideo size={15} /> */}
               </div>
             ) : null}
             {rescheduleRole !== "BusinessOwner" ? null : (
@@ -96,13 +104,6 @@ const InvestorMeeting = ({
                 <CiCircleCheck />
               </div>
             )}
-            {/* {meetingStatus === "Awaiting Approval" ||
-            meetingStatus === "Reschedule Requested" ? (
-              <div className="awaiting">
-                Awaiting Response
-                <CiClock2 />
-              </div>
-            ) : null} */}
             {meetingStatus === "Declined" ||
             rescheduleRole === "Investor" ? null : (
               <div

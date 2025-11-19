@@ -58,6 +58,8 @@ const MyBusiness = () => {
       };
 
       fetchData();
+      const interval = setInterval(fetchData, 1000); // every 5 seconds
+      return () => clearInterval(interval);
     } catch (error) {
       console.error("Error reading persisted user:", error);
       // setLoading(false);
@@ -73,6 +75,10 @@ const MyBusiness = () => {
 
     return statusMatch && searchMatch;
   });
+  const sortedBusiness = [...displayBusiness].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   return (
     <>
       <MyBusinessHeader>
@@ -114,13 +120,10 @@ const MyBusiness = () => {
       </SearchBar>
 
       <BusinessWrapper>
-        {displayBusiness.length > 0 ? (
-          displayBusiness
-            .slice()
-            .reverse()
-            .map((biz) => (
-              <BusinessCard allBusiness={allBusiness} key={biz.id} {...biz} />
-            ))
+        {sortedBusiness.length > 0 ? (
+          sortedBusiness.map((biz) => (
+            <BusinessCard allBusiness={allBusiness} key={biz.id} {...biz} />
+          ))
         ) : (
           <p>No Business Found</p>
         )}

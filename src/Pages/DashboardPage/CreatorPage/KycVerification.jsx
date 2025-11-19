@@ -556,6 +556,7 @@ const KycVerification = () => {
                   <FieldRow>
                     <Label>Account Number</Label>
                     <Input
+                      type="num"
                       value={formData.accountNumber}
                       onChange={handleChange}
                       name="accountNumber"

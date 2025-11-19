@@ -32,6 +32,9 @@ const FundingHistory = () => {
     };
 
     fetchFundingData();
+    const interval = setInterval(fetchFundingData, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [token, BaseUrl]);
 
   return (

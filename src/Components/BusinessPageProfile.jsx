@@ -112,7 +112,6 @@ const BusinessPageProfile = ({ data }) => {
   const data1 = {
     businessId: form.businessId,
     price: form.price,
-    // redirectUrl: `${window.location.origin}/payment-success`,
   };
 
   const handleInvest = async () => {
@@ -128,8 +127,6 @@ const BusinessPageProfile = ({ data }) => {
 
       if (res.data?.message.includes("Please submit")) {
         toast.error(res.data.message);
-      } else {
-        toast.success(res?.data?.message);
       }
     } catch (err) {
       console.log(err);

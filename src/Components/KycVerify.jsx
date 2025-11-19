@@ -189,6 +189,9 @@ const KycVerification = () => {
       };
 
       fetchData();
+      const interval = setInterval(fetchData, 1000); // every 5 seconds
+
+      return () => clearInterval(interval);
     } catch (error) {
       console.error("Error reading persisted user:", error);
       // setLoading(false);
@@ -338,10 +341,10 @@ const KycVerification = () => {
                         src={profilePics}
                         alt="Profile Preview"
                         style={{
-                          width: "150px",
-                          height: "150px",
+                          width: "100px",
+                          height: "100px",
                           borderRadius: "50%",
-                          objectFit: "cover",
+                          objectFit: "contain",
                         }}
                       />
                     ) : (

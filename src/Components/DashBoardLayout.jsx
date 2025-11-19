@@ -33,6 +33,8 @@ const DashBoardLayout = (props) => {
     };
 
     fetchKyc();
+    const interval = setInterval(fetchKyc, 1000); // every 5 seconds
+    return () => clearInterval(interval);
   }, [userId, token, BaseUrl]);
 
   const openLogoutModal = () => setShowLogoutModal(true);
@@ -66,6 +68,9 @@ const DashBoardLayout = (props) => {
       }
     };
     fetchUser();
+    const interval = setInterval(fetchUser, 1000); // every 5 seconds
+
+    return () => clearInterval(interval);
   }, [userId]);
 
   return (
@@ -184,8 +189,8 @@ const DashBoardLayout = (props) => {
             </div>
 
             <div className="notification">
-              <img src="/public/icon.svg" alt="" />
-              <div className="rounded">{props?.notifcationCount || 0}</div>
+              {/* <img src="/public/icon.svg" alt="" />
+              <div className="rounded">{props?.notifcationCount || 0}</div> */}
             </div>
           </div>
 

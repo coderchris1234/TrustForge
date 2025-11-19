@@ -90,6 +90,9 @@ const Meeting = () => {
     }
     try {
       fetchData();
+      const interval = setInterval(fetchData, 5000); // every 5 seconds
+
+      return () => clearInterval(interval);
     } catch (error) {
       console.error("Error reading persisted user:", error);
       // setLoading(false);
