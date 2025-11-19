@@ -27,7 +27,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetailss } from "../Pages/Global/Slice";
 import { NigeriaCities, NigeriaStates, SelectOptions } from "../Config/Data";
-import profileHolder from "../assets/ProfileHolder.png";
+import profileHolder from "../assets/profileHolder.png";
 
 const KycVerification = () => {
   const governmentIssuedRef = useRef(null);
