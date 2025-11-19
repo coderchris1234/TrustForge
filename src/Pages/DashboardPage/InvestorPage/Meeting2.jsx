@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 const Meeting2 = () => {
   const [allMeeting, setAllMeeting] = useState({});
   const user = useSelector((state) => state.TrustForge.user);
-  // const [loadingMap, setLoadingMap] = useState({});
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
   const BaseUrl = import.meta.env.VITE_BaseUrl;
@@ -68,6 +67,25 @@ const Meeting2 = () => {
     }
   };
 
+  const endMeeting = async (id) => {
+    try {
+      const res = await axios.post(
+        `${BaseUrl}/end-meeting`,
+        { meetingId: id },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success(res?.data?.message);
+      fetchData(); // refresh meetings
+    } catch (err) {
+      console.log("Error ending meeting:", err);
+    }
+  };
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -94,15 +112,18 @@ const Meeting2 = () => {
         </div>
       </div>
       {allMeeting?.meetings?.length > 0 ? (
-        allMeeting?.meetings?.map((biz) => (
-          <InvestorMeeting
-            {...biz}
-            key={biz.id}
-            rescheduleMeeting={rescheduleMeeting}
-            approvedMeeting={approvedMeeting}
-            loading={loading}
-          />
-        ))
+        [...allMeeting.meetings]
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // 🔥 newest at the top
+          .map((biz) => (
+            <InvestorMeeting
+              {...biz}
+              key={biz.id}
+              rescheduleMeeting={rescheduleMeeting}
+              approvedMeeting={approvedMeeting}
+              loading={loading}
+              endMeeting={endMeeting}
+            />
+          ))
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>
           No meetings found.

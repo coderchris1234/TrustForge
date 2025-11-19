@@ -33,8 +33,16 @@ export const InvestorMeeting_container = styled.div`
           border-radius: 8px;
           border: none;
           color: #101010;
+          font-size: 10px;
           /* display: flex; */
           /* align-items: center; */
+        }
+
+        .concluded {
+          padding: 0.3rem;
+          background-color: lightgrey;
+          font-size: 10px;
+          border-radius: 10px;
         }
         .Reschedule {
           background-color: var(--secondary_color_100);
@@ -43,11 +51,16 @@ export const InvestorMeeting_container = styled.div`
           color: #9e9999;
         }
 
+        .join_meetings {
+          font-size: 10px;
+        }
+
         .Decl {
           background-color: var(--error_red_color_400);
           padding: 0.3rem;
           border-radius: 8px;
-          color: #ffff;
+          color: #101010;
+          font-size: 10px;
         }
 
         .confirm,
@@ -65,6 +78,7 @@ export const InvestorMeeting_container = styled.div`
           color: #035003;
           padding: 0.3rem;
           border-radius: 8px;
+          font-size: 10px;
         }
 
         .first {
@@ -78,7 +92,7 @@ export const InvestorMeeting_container = styled.div`
         gap: 1rem;
 
         .decline_button {
-          color: #ffff;
+          color: #101010;
           background-color: #ff0000d8;
           border-radius: 8px;
           display: flex;
@@ -118,7 +132,8 @@ export const InvestorMeeting_container = styled.div`
           justify-content: center;
           gap: 0.7rem;
           cursor: pointer;
-          padding: 0.6rem 1rem;
+          padding: 0.5rem 1rem;
+          font-size: 10px;
         }
 
         .schedule_meetings {
@@ -254,6 +269,7 @@ export const InvestorMeeting_container = styled.div`
       .schedule_meetings {
         width: 100%;
         font-size: 0.8rem;
+        font-size: 10px;
       }
 
       .name_container {
