@@ -100,7 +100,6 @@ const Meeting2 = () => {
             key={biz.id}
             rescheduleMeeting={rescheduleMeeting}
             approvedMeeting={approvedMeeting}
-            // loading={loadingMap[biz.id] || false}
             loading={loading}
           />
         ))

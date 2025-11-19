@@ -32,7 +32,7 @@ export const InvestorMeeting_container = styled.div`
           padding: 5px;
           border-radius: 8px;
           border: none;
-          color: #ffff;
+          color: #101010;
           /* display: flex; */
           /* align-items: center; */
         }

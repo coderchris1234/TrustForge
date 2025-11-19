@@ -184,8 +184,8 @@ const DashBoardLayout = (props) => {
             </div>
 
             <div className="notification">
-              <img src="/public/icon.svg" alt="" />
-              <div className="rounded">{props?.notifcationCount || 0}</div>
+              {/* <img src="/public/icon.svg" alt="" />
+              <div className="rounded">{props?.notifcationCount || 0}</div> */}
             </div>
           </div>
 

@@ -35,6 +35,7 @@ export const InvestorMeeting_container = styled.div`
           background-color: yellow;
           padding: 5px;
           border: none;
+          font-size: 10px;
         }
         .cencl {
           border: 1px solid grey;
@@ -66,6 +67,7 @@ export const InvestorMeeting_container = styled.div`
           padding: 5px;
           border: none;
           color: white;
+          font-size: 10px;
         }
 
         .conf {
@@ -77,6 +79,7 @@ export const InvestorMeeting_container = styled.div`
           background-color: #1fe91f;
           padding: 0.5rem;
           border: none;
+          font-size: 10px;
         }
 
         .pending,
@@ -120,6 +123,7 @@ export const InvestorMeeting_container = styled.div`
           gap: 0.7rem;
           cursor: pointer;
           padding: 0.6rem 1rem;
+          font-size: 12px;
         }
 
         .accept_meetings {
@@ -134,6 +138,7 @@ export const InvestorMeeting_container = styled.div`
           display: flex;
           gap: 0.5rem;
           cursor: pointer;
+          font-size: 12px;
         }
         .decline_button {
           border: 1px solid gray;
