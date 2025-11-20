@@ -73,7 +73,17 @@ export const PageWrap = styled.div`
     }
 
     .view {
-      background-color: #0046ff;
+      background-color: red;
+      width: 80%;
+      margin: 0 auto;
+      color: #ffff;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .sub {
+      background-color: blue;
       width: 80%;
       margin: 0 auto;
       color: #ffff;
