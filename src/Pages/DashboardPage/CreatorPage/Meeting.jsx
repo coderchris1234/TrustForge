@@ -83,24 +83,24 @@ const Meeting = () => {
       toast.error(err?.res?.message);
     }
   };
-  const endMeeting = async (id) => {
-    try {
-      const res = await axios.post(
-        `${BaseUrl}/end-meeting`,
-        { meetingId: id },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  // const endMeeting = async (id) => {
+  //   try {
+  //     const res = await axios.post(
+  //       `${BaseUrl}/end-meeting`,
+  //       { meetingId: id },
+  //       {
+  //         headers: {
+  //           authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
 
-      toast.success(res?.data?.message);
-      fetchData(); // refresh meetings
-    } catch (err) {
-      console.log("Error ending meeting:", err);
-    }
-  };
+  //     toast.success(res?.data?.message);
+  //     fetchData(); // refresh meetings
+  //   } catch (err) {
+  //     console.log("Error ending meeting:", err);
+  //   }
+  // };
 
   useEffect(() => {
     if (!userId) {
@@ -123,7 +123,7 @@ const Meeting = () => {
   // const displayedMeetings =
   //   activeTab === "upcoming" ? upcomingMeetings : pastMeetings;
 
-  console.log("allMeeting", allMeeting.meetings);
+  // console.log("allMeeting", allMeeting.meetings);
 
   return (
     <MeetingContainer>
@@ -160,7 +160,7 @@ const Meeting = () => {
               rescheduleMeeting={rescheduleMeeting}
               loading={loading}
               declineLoading={declineLoading}
-              endMeeting={endMeeting}
+              // endMeeting={endMeeting}
             />
           ))
       ) : (
