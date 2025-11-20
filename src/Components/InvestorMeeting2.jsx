@@ -25,10 +25,8 @@ const InvestorMeeting2 = ({
   rescheduleMeeting,
   loading,
   rescheduleRole,
-  endMeeting,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
-
   const [form, setForm] = useState({
     date: "",
     time: "",
@@ -62,11 +60,7 @@ const InvestorMeeting2 = ({
   const minDate = `${year}-${month}-${day}`;
 
   const userJoinMeeting = () => {
-    endMeeting(id);
-
-    setTimeout(() => {
-      window.location.href = meetingLink;
-    }, 500);
+    window.location.href = meetingLink;
   };
 
   const initials = hostName
@@ -99,26 +93,12 @@ const InvestorMeeting2 = ({
             {/* <div className="first">{}</div> */}
           </div>
           <div className="tittle_right">
-            {meetingStatus === "Approved and Upcoming" && (
+            {meetingStatus === "Approved and Upcoming" ? (
               <div className="join_meetings" onClick={userJoinMeeting}>
                 Join Meeting
                 <FaVideo size={15} />
               </div>
-            )}
-
-            {meetingStatus === "Concluded" && (
-              <div
-                className="join_meetings"
-                style={{
-                  pointerEvents: "none",
-                  opacity: 0.5,
-                  cursor: "not-allowed",
-                }}
-              >
-                Meeting ended
-              </div>
-            )}
-
+            ) : null}
             {(meetingStatus !== "Awaiting Approval" &&
               meetingStatus !== "Reschedule Requested") ||
             rescheduleRole === "BusinessOwner" ? null : (
@@ -129,7 +109,6 @@ const InvestorMeeting2 = ({
                 }}
                 style={{
                   backgroundColor: "#11d611",
-                  color: "#ffff",
                 }}
               >
                 Accept Meeting
@@ -192,7 +171,10 @@ const InvestorMeeting2 = ({
               {meetingType}
             </div>
             <div className="time_container">
-              <div className="time">
+              <div
+                className="time"
+                style={{ display: "flex", width: "4rem", height: "2rem" }}
+              >
                 <CiClock2 size={20} />
                 {time}
               </div>
