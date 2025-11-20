@@ -14,7 +14,7 @@ const Meeting2 = () => {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("upcoming");
 
-  const endpoint = `${BaseUrl}/investor/${userId}`;
+  const endpoint = `${BaseUrl}/user/${userId}`;
 
   const fetchData = async () => {
     try {
