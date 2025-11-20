@@ -452,12 +452,26 @@ export const FormArea = styled.div`
   }
 
   .Upload {
-    border: 1px dashed lightgray;
-    padding: 3rem;
+    width: 100%;
+    height: 140px;
+    border: 2px dashed #c9c9c9;
+    border-radius: 12px;
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .Upload:hover {
+    background: #f5f7ff;
+  }
+
+  .Upload.uploaded {
+    border-color: #0052ff;
+    background: #eef4ff;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -757,4 +771,3 @@ export const NextButton = styled.button`
     padding: 0.9rem;
   }
 `;
-

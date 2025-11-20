@@ -1,32 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { MeetingContainer } from "./MeetingStyle";
-import InvestorMeeting2 from "../../../Components/InvestorMeeting2";
+import InvestorMeeting from "../../../Components/InvestorMeeting";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Meeting = () => {
-  const [activeTab, setActiveTab] = useState("upcoming");
+const Meeting2 = () => {
   const [allMeeting, setAllMeeting] = useState({});
-  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const user = useSelector((state) => state.TrustForge.user);
   const userId = user?.data?.id;
   const token = useSelector((state) => state.TrustForge.user?.token);
+  const BaseUrl = import.meta.env.VITE_BaseUrl;
   const [loading, setLoading] = useState(false);
-  const [declineLoading, setDeclineLoading] = useState(false);
-  console.log("userToken", token);
+  const [activeTab, setActiveTab] = useState("upcoming");
 
-  const endpoint = `${BaseUrl}/user/${userId}`;
+  const endpoint = `${BaseUrl}/investor/${userId}`;
 
   const fetchData = async () => {
     try {
       const res = await axios.get(endpoint);
       setAllMeeting(res.data.data || {});
-      console.log("all meeting", allMeeting);
     } catch (err) {
       console.error("Error fetching overview data:", err);
     }
   };
+
+  const upcomingMeetings =
+    allMeeting?.meetings?.filter((m) => m.meetingStatus !== "Concluded") || [];
+
+  const pastMeetings =
+    allMeeting?.meetings?.filter(
+      (m) => m.meetingStatus === "Concluded" || m.meetingStatus === "Declined"
+    ) || [];
 
   const approvedMeeting = async (id) => {
     try {
@@ -34,69 +39,43 @@ const Meeting = () => {
         `${BaseUrl}/approve-meeting`,
         { meetingId: id },
         {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
+          headers: { authorization: `Bearer ${token}` },
         }
       );
       toast.success(res?.data?.message);
       fetchData();
-      console.log(res);
     } catch (err) {
       console.log("this is error", err);
     }
   };
-  const declineMeeting = async (id) => {
-    setDeclineLoading(true);
-    try {
-      const res = await axios.post(
-        `${BaseUrl}/decline-meeting`,
-        { meetingId: id },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      toast.success(res?.data?.message);
-      fetchData();
-      console.log(res);
-    } catch (err) {
-      console.log("this is error", err);
-    }
-  };
+
   const rescheduleMeeting = async (data) => {
     setLoading(true);
     try {
       const res = await axios.post(`${BaseUrl}/reschedule-meeting`, data, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
+        headers: { authorization: `Bearer ${token}` },
       });
-      toast.success("Reschedule meeting sent successfully");
-
-      setLoading(false);
+      toast.success(res?.data?.message);
       fetchData();
-      console.log(res);
     } catch (err) {
+      console.log("this is error", err);
+    } finally {
       setLoading(false);
-      toast.error(err?.res?.message);
     }
   };
+
   const endMeeting = async (id) => {
     try {
       const res = await axios.post(
         `${BaseUrl}/end-meeting`,
         { meetingId: id },
         {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
+          headers: { authorization: `Bearer ${token}` },
         }
       );
 
       toast.success(res?.data?.message);
-      fetchData(); // refresh meetings
+      fetchData();
     } catch (err) {
       console.log("Error ending meeting:", err);
     }
@@ -108,7 +87,7 @@ const Meeting = () => {
     }
     try {
       fetchData();
-      const interval = setInterval(fetchData, 5000); // every 5 seconds
+      const interval = setInterval(fetchData, 1000); // every 5 seconds
 
       return () => clearInterval(interval);
     } catch (error) {
@@ -117,57 +96,78 @@ const Meeting = () => {
     }
   }, [userId]);
 
-  // const upcomingMeetings = Meetings.filter((m) => m.status === "Confirmed");
-  // const pastMeetings = Meetings.filter((m) => m.status !== "Confirmed");
-
-  // const displayedMeetings =
-  //   activeTab === "upcoming" ? upcomingMeetings : pastMeetings;
-
-  console.log("allMeeting", allMeeting.meetings);
-
   return (
     <MeetingContainer>
-      <div className="meetingHeading">
-        <div className="meetingContent">
-          <h3>Meeting</h3>
+      <div className="meeting">
+        <div className="meeting_text">
+          <h1>Meeting</h1>
           <p>Connect and Accept meeting with investors</p>
         </div>
-        <div className="meetingStats">
-          <div
-            className={activeTab === "upcoming" ? "active" : ""}
-            onClick={() => setActiveTab("upcoming")}
-          >
-            <p>Upcoming ({allMeeting?.meetings?.length || 0})</p>
-          </div>
+      </div>
 
-          {/* <div
-            className={activeTab === "past" ? "active" : ""}
-            onClick={() => setActiveTab("past")}
-          >
-            <p>Past ({allMeeting?.meetings?.length || 0})</p>
-          </div> */}
+      <div className="tabs">
+        <div
+          className={`tab ${activeTab === "upcoming" ? "active" : ""}`}
+          onClick={() => setActiveTab("upcoming")}
+        >
+          Upcoming <span>{upcomingMeetings.length}</span>
+        </div>
+
+        <div
+          className={`tab ${activeTab === "past" ? "active" : ""}`}
+          onClick={() => setActiveTab("past")}
+        >
+          Past <span>{pastMeetings.length}</span>
         </div>
       </div>
-      {allMeeting?.meetings?.length > 0 ? (
-        allMeeting?.meetings?.map((biz) => (
-          <InvestorMeeting2
-            {...biz}
-            key={biz.id}
-            approvedMeeting={approvedMeeting}
-            declineMeeting={declineMeeting}
-            rescheduleMeeting={rescheduleMeeting}
-            loading={loading}
-            declineLoading={declineLoading}
-            endMeeting={endMeeting}
-          />
-        ))
-      ) : (
-        <p style={{ textAlign: "center", marginTop: "1rem" }}>
-          No meetings found.
-        </p>
+
+      {activeTab === "upcoming" && (
+        <>
+          {upcomingMeetings.length > 0 ? (
+            [...upcomingMeetings]
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((biz) => (
+                <InvestorMeeting
+                  {...biz}
+                  key={biz.id}
+                  rescheduleMeeting={rescheduleMeeting}
+                  approvedMeeting={approvedMeeting}
+                  loading={loading}
+                  endMeeting={endMeeting}
+                />
+              ))
+          ) : (
+            <p style={{ textAlign: "center", marginTop: "1rem" }}>
+              No upcoming meetings.
+            </p>
+          )}
+        </>
+      )}
+
+      {activeTab === "past" && (
+        <>
+          {pastMeetings.length > 0 ? (
+            [...pastMeetings]
+              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((biz) => (
+                <InvestorMeeting
+                  {...biz}
+                  key={biz.id}
+                  rescheduleMeeting={rescheduleMeeting}
+                  approvedMeeting={approvedMeeting}
+                  loading={loading}
+                  endMeeting={endMeeting}
+                />
+              ))
+          ) : (
+            <p style={{ textAlign: "center", marginTop: "1rem" }}>
+              No past meetings.
+            </p>
+          )}
+        </>
       )}
     </MeetingContainer>
   );
 };
 
-export default Meeting;
+export default Meeting2;

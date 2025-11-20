@@ -5,6 +5,55 @@ export const MeetingContainer = styled.div`
   margin: 0 auto;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  .tabs {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0 30px;
+    border-bottom: 1px solid #e4e6eb;
+    padding-bottom: 10px;
+  }
+
+  .tab {
+    position: relative;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #6c6c6c;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+  }
+
+  .tab:hover {
+    background: #f5f7ff;
+    color: #0052ff;
+  }
+
+  .tab.active {
+    color: #0052ff;
+    font-weight: 600;
+  }
+
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+    height: 3px;
+    width: 100%;
+    background: #0052ff;
+    border-radius: 10px;
+  }
+
+  .tab span {
+    background: #e8edff;
+    color: #0052ff;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-left: 8px;
+    font-weight: 600;
+  }
 
   .meetingHeading {
     .meetingStats {
@@ -55,15 +104,15 @@ export const MeetingContainer = styled.div`
         width: 100%;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         justify-content: space-between;
         gap: 8px;
-        padding: 6px; 
+        padding: 6px;
         border-radius: 999px;
 
         div {
           flex: 0 1 auto;
-          min-width: 42%; 
+          min-width: 42%;
           max-width: 48%;
           display: flex;
           justify-content: center;

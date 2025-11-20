@@ -505,6 +505,9 @@ const AddBusiness = () => {
                 <button className="view" onClick={() => setErrorModal("")}>
                   Close
                 </button>
+                <button className="sub" onClick={() => nav("../subscription")}>
+                  Subscribe Now
+                </button>
               </div>
             </div>
           </div>
