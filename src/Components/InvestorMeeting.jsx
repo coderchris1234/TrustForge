@@ -19,7 +19,6 @@ const InvestorMeeting = ({
   rescheduleMeeting,
   approvedMeeting,
   loading,
-  endMeeting,
   rescheduleRole,
 }) => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -47,10 +46,7 @@ const InvestorMeeting = ({
 
   const userJoinMeeting = () => {
     window.location.href = meetingLink;
-
     console.log("meetingLink", meetingLink);
-
-    endMeeting(id);
   };
   const today = new Date();
   const year = today.getFullYear();
@@ -73,8 +69,6 @@ const InvestorMeeting = ({
                   ? "Reschedule"
                   : meetingStatus === "Declined"
                   ? "Decl"
-                  : meetingStatus === "Concluded"
-                  ? "concluded"
                   : "cencl"
               }
             >
@@ -82,26 +76,12 @@ const InvestorMeeting = ({
             </div>
           </div>
           <div className="tittle_right">
-            {meetingStatus === "Approved and Upcoming" && (
+            {meetingStatus === "Approved and Upcoming" ? (
               <div className="join_meetings" onClick={userJoinMeeting}>
                 Join Meeting
                 <FaVideo size={15} />
               </div>
-            )}
-
-            {meetingStatus === "Concluded" && (
-              <div
-                className="join_meetings"
-                style={{
-                  pointerEvents: "none",
-                  opacity: 0.5,
-                  cursor: "not-allowed",
-                }}
-              >
-                Meeting ended
-              </div>
-            )}
-
+            ) : null}
             {rescheduleRole !== "BusinessOwner" ? null : (
               <div
                 className="accept_meetings"
@@ -116,8 +96,14 @@ const InvestorMeeting = ({
                 <CiCircleCheck />
               </div>
             )}
+            {/* {meetingStatus === "Awaiting Approval" ||
+            meetingStatus === "Reschedule Requested" ? (
+              <div className="awaiting">
+                Awaiting Response
+                <CiClock2 />
+              </div>
+            ) : null} */}
             {meetingStatus === "Declined" ||
-            meetingStatus === "Concluded" ||
             rescheduleRole === "Investor" ? null : (
               <div
                 onClick={() => setOpenModal(true)}
@@ -125,6 +111,13 @@ const InvestorMeeting = ({
               >
                 Reschedule
                 <FiRefreshCw size={20} />
+              </div>
+            )}
+            {meetingStatus !== "Awaiting Approval" &&
+            meetingStatus !== "Reschedule Requested" ? null : (
+              <div className="decline_button" onClick={() => {}}>
+                {rescheduleRole === "Investor" ? "Cancel" : "Decline"}
+                <MdOutlineCancel size={15} />
               </div>
             )}
           </div>
