@@ -173,7 +173,7 @@ const InvestorMeeting2 = ({
             <div className="time_container">
               <div
                 className="time"
-                style={{ display: "flex", width: "4rem", height: "2rem" }}
+                // style={{ display: "flex", width: "4rem", height: "2rem" }}
               >
                 <CiClock2 size={20} />
                 {time}
