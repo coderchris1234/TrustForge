@@ -149,18 +149,20 @@ const Meeting = () => {
         </div>
       </div>
       {allMeeting?.meetings?.length > 0 ? (
-        allMeeting?.meetings?.map((biz) => (
-          <InvestorMeeting2
-            {...biz}
-            key={biz.id}
-            approvedMeeting={approvedMeeting}
-            declineMeeting={declineMeeting}
-            rescheduleMeeting={rescheduleMeeting}
-            loading={loading}
-            declineLoading={declineLoading}
-            endMeeting={endMeeting}
-          />
-        ))
+        [...allMeeting.meetings]
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((biz) => (
+            <InvestorMeeting2
+              {...biz}
+              key={biz.id}
+              approvedMeeting={approvedMeeting}
+              declineMeeting={declineMeeting}
+              rescheduleMeeting={rescheduleMeeting}
+              loading={loading}
+              declineLoading={declineLoading}
+              endMeeting={endMeeting}
+            />
+          ))
       ) : (
         <p style={{ textAlign: "center", marginTop: "1rem" }}>
           No meetings found.
