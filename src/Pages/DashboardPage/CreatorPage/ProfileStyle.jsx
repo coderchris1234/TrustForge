@@ -1,123 +1,108 @@
 import styled from "styled-components";
 
 export const ProfileStyle = styled.div`
-  width: 92%;
-  /* max-width: 960px; */
-  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  /* min-height: 500px; */
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial;
-  color: #111827;
+  gap: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #04091a;
 
   .Profile_heading {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
     h1 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 700;
-      color: #0f172a;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #04091a;
+      letter-spacing: -0.5px;
+      margin: 0 0 4px;
     }
 
     p {
-      margin: 0;
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #6b7280;
+      margin: 0 0 1rem;
     }
 
     .Profssional {
-      width: 420px;
-      max-width: 100%;
-      height: 44px;
-      background-color: #d1d5db;
-      margin-top: 12px;
       display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 6px;
-      border-radius: 999px;
-    }
+      gap: 4px;
+      background: #f0f2f8;
+      padding: 4px;
+      border-radius: 100px;
+      width: fit-content;
 
-    .Profssional button {
-      border: none;
-      background: transparent;
-      padding: 8px 18px;
-      border-radius: 999px;
-      height: 100%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 600;
-      color: #374151;
-    }
+      button {
+        height: 36px;
+        padding: 0 20px;
+        border: none;
+        background: transparent;
+        border-radius: 100px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #6b7280;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.2s ease;
 
-    .Profssional button.active {
-      background: #ffffff;
-      color: #111827;
-      box-shadow: 0 6px 14px rgba(2, 6, 23, 0.06);
+        &.active {
+          background: #0046ff;
+          color: #ffffff;
+          font-weight: 600;
+        }
+      }
     }
   }
 
   .Profile_info {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 1rem;
   }
 
   .Profile_image {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 1.5rem;
     display: flex;
-    gap: 18px;
-    padding: 16px;
+    gap: 1.25rem;
     align-items: center;
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
-    border: 1px solid rgba(15, 23, 42, 0.03);
-    box-sizing: border-box;
   }
 
   .Profile_img_holder {
     display: flex;
     align-items: center;
-    gap: 12px;
-    min-width: 0;
+    gap: 1rem;
   }
 
   .Image_holder {
-    width: 92px;
-    height: 92px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    background: #eee;
+    background: #f0f2f8;
+    border: 2px solid #e5e7eb;
     flex-shrink: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 36px;
-  }
+    justify-content: center;
+    font-size: 2rem;
 
-  .Image_holder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .ProIcon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background: #0ea5a5;
+    background: #0046ff;
     flex-shrink: 0;
   }
 
@@ -125,207 +110,140 @@ export const ProfileStyle = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-width: 0;
+    gap: 6px;
   }
 
   .Kyc_verified {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
-  }
 
-  .Kyc_verified h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #0f172a;
-  }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #04091a;
+      margin: 0;
+    }
 
-  .Kyc_verified span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background-color: #dcfce7;
-    color: #166534;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 12px;
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #dcfce7;
+      color: #166534;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.72rem;
+    }
   }
 
   .Profile_info_holder {
     display: flex;
-    gap: 18px;
-    margin-top: 6px;
+    gap: 1rem;
     flex-wrap: wrap;
-  }
 
-  .Profile_info_holder > div p {
-    margin: 0;
-    color: #374151;
+    > div p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
   }
 
   .Profile_content_info {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
-    border: 1px solid rgba(15, 23, 42, 0.03);
-    box-sizing: border-box;
+    gap: 1rem;
   }
 
   .Personal_infos {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
-  .Personal_infos h4 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-    color: #0f172a;
-  }
+    h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #04091a;
+      margin: 0;
+    }
 
-  .Personal_infos span {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #111827;
-    font-size: 13px;
+    span {
+      height: 36px;
+      padding: 0 16px;
+      background: transparent;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #0046ff;
+        color: #0046ff;
+      }
+    }
   }
 
   .First_name {
-    width: 100%;
     display: flex;
-    gap: 24px;
-    margin-top: 4px;
+    gap: 1.5rem;
   }
 
   .First {
-    width: 50%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0.75rem;
   }
 
-  .First_informations span {
-    font-size: 13px;
-    color: #6b7280;
-  }
+  .First_informations {
+    span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-  .First_informations p {
-    margin: 4px 0 0 0;
-    font-size: 15px;
-    color: #111827;
-    font-weight: 600;
+    p {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      color: #04091a;
+      font-weight: 600;
+    }
   }
 
   .Update {
-    margin-top: 8px;
-    background-color: #f3f4f6;
-    border-radius: 8px;
-    padding: 12px;
+    background: #f8faff;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+
+    p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.8rem;
+    }
   }
 
-  .Update p {
-    margin: 0;
-    color: #6b7280;
-    font-size: 13px;
-  }
-
-  @media (max-width: 420px) {
-    width: 95%;
-    margin: 12px auto;
-    gap: 12px;
-
-    .Profile_heading h1 {
-      font-size: 18px;
-    }
-    .Profile_heading p {
-      font-size: 13px;
-    }
-
-    .Profssional {
-      width: 260px;
-      height: 36px;
-      padding: 4px;
-    }
-
-    .Profssional button {
-      font-size: 13px;
-      padding: 6px 12px;
-    }
-
-    .Profile_image {
-      padding: 12px;
-      gap: 12px;
-    }
-
-    .Image_holder {
-      width: 72px;
-      height: 72px;
-    }
-
-    .ProIcon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .Kyc_verified h3 {
-      font-size: 15px;
-    }
-
-    .Kyc_verified span {
-      font-size: 12px;
-      padding: 5px 8px;
-    }
-
-    .Profile_image {
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .Profile_content_holder {
-      gap: 6px;
-    }
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 3rem;
 
     .First_name {
       flex-direction: column;
-      gap: 12px;
+      gap: 1rem;
     }
 
-    .First {
-      width: 100%;
-      gap: 10px;
-    }
-
-    .First_informations p {
-      font-size: 15px;
-    }
-
-    .Personal_infos h4 {
-      font-size: 16px;
-    }
-
-    .Personal_infos span {
-      font-size: 12px;
-      padding: 5px 8px;
-    }
-
-    .Update {
-      padding: 10px;
-    }
-
-    .Update p {
-      font-size: 12px;
-    }
+    .First { width: 100%; }
   }
 `;

@@ -1,271 +1,141 @@
-import styled from "styled-components";
-import WHYBg from "../assets/WHY.png";
+import styled, { keyframes } from "styled-components";
 
-export const SmartContainer = styled.div`
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+export const SmartContainer = styled.section`
   width: 100%;
-  height: 100vh;
-  background: url(${WHYBg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #f8faff;
+  padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   .Smart_wrapper {
-    width: 90%;
-    height: 60%;
+    width: 100%;
+    max-width: 1100px;
     display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    /* background-color: green; */
+    flex-direction: column;
+    gap: 4rem;
+    animation: ${fadeUp} 0.8s ease forwards;
+  }
 
-    .Smart_left {
-      width: 40%;
-      height: 100%;
+  .Smart_left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
 
-      .Smart_left_content {
-        width: 100%;
-        height: 30%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        /* align-items: center; */
-        margin-top: 3rem;
-
-        h3 {
-          font-size: 36px;
-          font-weight: 600;
-          line-height: 125%;
-          color: var(--netural_black_color);
-        }
-
-        span {
-          color: var(--primary_color_500);
-        }
-
-        p {
-          font-size: 18px;
-          font-weight: 400;
-          line-height: 150%;
-          color: var(--netural_black_color);
-          /* text-align: center; */
-        }
-      }
-    }
-
-    .Smart_right {
-      width: 60%;
-      height: 100%;
+    .Smart_left_content {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      /* background-color: red; */
+      gap: 1rem;
+    }
 
-      .Smart_right_content {
-        width: 100%;
-        height: 50%;
+    .section_label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0046ff;
+    }
+
+    h3 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #04091a;
+      margin: 0;
+      line-height: 1.15;
+      letter-spacing: -1px;
+
+      span { color: #0046ff; }
+    }
+
+    .Smart_right_desc {
+      padding-top: 0.5rem;
+
+      p {
+        font-size: 1rem;
+        color: #4b5563;
+        line-height: 1.8;
+        margin: 0;
+      }
+    }
+  }
+
+  .Smart_right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: #e5e7eb;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+
+    .Smart_right_content {
+      display: contents;
+    }
+
+    .Smart_card {
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #f0f5ff;
+      }
+
+      .Smart_card_cont {
         display: flex;
-        gap: 15px;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-        .Smart_card {
-          width: 50%;
-          height: 90%;
-          border-radius: 15px;
-          background-color: var(--main_white);
-          display: flex;
-          padding: 0.5rem;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          border: 1px solid var(--neutral_gray_color_700);
-          transition: all 350ms ease-in-out;
+      .Smart_img {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: #04091a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: #ffffff;
+      }
 
-          &:hover {
-            border: 1px solid var(--primary_color_500);
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          }
+      h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #04091a;
+        margin: 0;
+      }
 
-          .Smart_card_cont {
-            width: 100%;
-            height: max-content;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 10px;
-
-            h3 {
-              font-size: 20px;
-              font-weight: 500;
-              color: var(--netural_black_color);
-              margin: 0px;
-            }
-
-            span {
-              font-size: 15px;
-              font-weight: 400;
-              color: var(--netural_black_color);
-            }
-
-            .Smart_img {
-              width: 48px;
-              height: 47px;
-              background-color: var(--primary_color_100);
-              border-radius: 8px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 26px;
-              color: var(--primary_color_500);
-              font-weight: 500;
-            }
-          }
-        }
+      span {
+        font-size: 0.875rem;
+        color: #6b7280;
+        line-height: 1.65;
       }
     }
   }
 
   @media (max-width: 1024px) {
-    height: auto;
-    padding: 4rem 0;
+    padding: 5rem 1.5rem;
 
-    .Smart_wrapper {
-      width: 90%;
-      height: auto;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-
-      .Smart_left {
-        width: 100%;
-
-        .Smart_left_content {
-          align-items: center;
-          text-align: center;
-
-          h3 {
-            font-size: 30px;
-          }
-
-          p {
-            font-size: 15px;
-            max-width: 600px;
-          }
-        }
-      }
-
-      .Smart_right {
-        width: 100%;
-        .Smart_right_content {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-
-          .Smart_card {
-            width: 45%;
-            height: auto;
-            padding: 1.5rem 0;
-          }
-        }
-      }
+    .Smart_left {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
   }
 
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 3rem 0;
+  @media (max-width: 640px) {
+    padding: 4rem 1.25rem;
 
-    .Smart_wrapper {
-      width: 90%;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-
-      .Smart_left {
-        width: 100%;
-        .Smart_left_content {
-          h3 {
-            font-size: 26px;
-          }
-
-          p {
-            font-size: 14px;
-          }
-        }
-      }
-
-      .Smart_right {
-        width: 100%;
-        .Smart_right_content {
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-
-          .Smart_card {
-            width: 90%;
-            height: auto;
-
-            .Smart_card_cont {
-              align-items: center;
-              text-align: center;
-
-              h3 {
-                font-size: 18px;
-              }
-
-              span {
-                font-size: 14px;
-              }
-
-              .Smart_img {
-                width: 42px;
-                height: 42px;
-                font-size: 22px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .Smart_wrapper {
-      width: 90%;
-      gap: 25px;
-
-      .Smart_left {
-        .Smart_left_content {
-          h3 {
-            font-size: 22px;
-            line-height: 130%;
-          }
-
-          p {
-            font-size: 13px;
-            line-height: 140%;
-          }
-        }
-      }
-
-      .Smart_right {
-        .Smart_right_content {
-          .Smart_card {
-            width: 100%;
-            .Smart_card_cont {
-              padding: 15px;
-
-              h3 {
-                font-size: 16px;
-              }
-
-              span {
-                font-size: 13px;
-              }
-            }
-          }
-        }
-      }
+    .Smart_right {
+      grid-template-columns: 1fr;
     }
   }
 `;

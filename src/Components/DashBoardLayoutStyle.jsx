@@ -2,266 +2,257 @@ import styled from "styled-components";
 
 export const DashboardLayoutContainer = styled.div`
   width: 100%;
-  background: #eceff4;
+  background: #f0f2f8;
   min-height: 100vh;
   display: flex;
   font-family: "Poppins", sans-serif;
-  gap: 2px;
 
+  /* ── Logout modal ── */
   .logout-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(4, 9, 26, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeIn 0.2s ease-out;
+    backdrop-filter: blur(4px);
   }
 
   .logout-modal {
-    background: #fff;
-    padding: 3rem 5rem;
-    border-radius: 10px;
-    width: 30%;
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    width: 420px;
+    max-width: 90vw;
     text-align: center;
-    animation: scaleIn 0.2s ease-out;
-  }
+    border: 1px solid #e5e7eb;
 
-  .logout-modal h3 {
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  .logout-modal .buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .logout-btn {
-    background: #e53935;
-    padding: 10px;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 50%;
-    font-size: 15px;
-  }
-
-  .cancel-btn {
-    background: #f1f1f1;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 50%;
-    font-size: 15px;
-  }
-
-  @media (max-width: 1024px) {
-    .logout-modal {
-      width: 40%;
-      padding: 2.5rem 3.5rem;
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #04091a;
+      letter-spacing: -0.3px;
+      margin: 0 0 0.75rem;
     }
 
-    .logout-modal h3 {
-      font-size: 17px;
-    }
-  }
-
-  /* Mobile Large (≤768px) */
-  @media (max-width: 768px) {
-    .logout-modal {
-      width: 60%;
-      padding: 2rem 3rem;
+    p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.65;
+      margin: 0 0 2rem;
     }
 
-    .logout-modal .buttons {
-      flex-direction: column;
+    .buttons {
+      display: flex;
       gap: 12px;
     }
 
-    .logout-btn,
+    .logout-btn {
+      flex: 1;
+      height: 44px;
+      background: #dc2626;
+      border: none;
+      color: #ffffff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+      transition: background 0.2s ease;
+
+      &:hover { background: #b91c1c; }
+    }
+
     .cancel-btn {
-      width: 100%;
-      padding: 10px 0;
+      flex: 1;
+      height: 44px;
+      background: #f3f4f6;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      font-family: "Poppins", sans-serif;
+      color: #374151;
+      transition: background 0.2s ease;
+
+      &:hover { background: #e5e7eb; }
     }
   }
-  @media (max-width: 480px) {
-    .logout-modal {
-      width: 85%;
-      padding: 1.8rem 1.5rem;
-    }
 
-    .logout-modal h3 {
-      font-size: 16px;
-    }
-
-    .logout-btn,
-    .cancel-btn {
-      padding: 9px 0;
-      font-size: 14px;
-    }
-  }
-
+  /* ── Sidebar ── */
   .aside {
     width: 240px;
     height: 100vh;
-    background-color: var(--main_white);
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
+    background: #04091a;
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
     transition: left 0.3s ease;
-    padding-top: 0.3rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
 
     .close-btn {
       display: none;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      line-height: 1;
     }
 
     .leftSidedContent {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-      width: 88%;
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
 
       .image-logo {
-        display: flex;
-        gap: 6px;
-        margin-bottom: 10px;
+        margin-bottom: 0.5rem;
 
         img {
-          width: 100%;
-          height: 100%;
+          height: 1.4rem;
+          width: auto;
+          filter: brightness(0) invert(1);
         }
       }
-    }
 
-    .LogoName {
-      background: linear-gradient(91deg, #002da3 24.94%, #0046ff 72.09%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 600;
-      font-size: 21px;
-    }
-
-    .DashboardName {
-      color: var(--netural_black_color);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
+      .DashboardName {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.35);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0;
+      }
     }
 
     .sideBarContents {
-      width: 80%;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding-top: 1rem;
+      padding: 1rem 1rem;
+      overflow-y: auto;
+      gap: 0.25rem;
+
+      &::-webkit-scrollbar { width: 0; }
 
       .ItemList {
-        border-bottom: 1px solid var(--neutral_gray_color_500);
-        padding-bottom: 3rem;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        width: 100%;
+        gap: 2px;
+        padding-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+
+        &:last-of-type {
+          border-bottom: none;
+        }
       }
-    }
 
-    .logout {
-      margin-top: 30px;
-      color: var(--error_red_color_500);
-    }
-
-    .businessContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .business {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      transition: background 0.2s ease;
-
-      &.active {
-        color: var(--primary_color_500);
-        background-color: var(--primary_color_100);
-        padding: 0.5rem;
+      .businessContainer {
         border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .business {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: rgba(255,255,255,0.55);
+        text-decoration: none;
+        transition: all 0.15s ease;
+        cursor: pointer;
+
+        div { display: flex; align-items: center; }
+
+        &:hover {
+          background: rgba(255,255,255,0.06);
+          color: rgba(255,255,255,0.9);
+        }
+
+        &.active {
+          background: rgba(0,70,255,0.2);
+          color: #ffffff;
+          font-weight: 600;
+
+          div { color: #4d8bff; }
+        }
+      }
+
+      .logout {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: #f87171;
+        cursor: pointer;
+        transition: background 0.15s ease;
+
+        &:hover { background: rgba(248,113,113,0.1); }
+
+        img { width: 20px; height: 20px; filter: invert(1); opacity: 0.7; }
       }
     }
   }
 
+  /* ── Main content ── */
   .LayoutPage {
     flex: 1;
     margin-left: 240px;
     min-height: 100vh;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
+    transition: margin-left 0.3s ease;
 
     .header {
       width: 100%;
-      background-color: var(--main_white);
-      padding: 1rem;
+      background: #ffffff;
+      padding: 0 1.5rem;
+      height: 60px;
       display: flex;
-      height: max-content;
-      /* flex-direction: column; */
-      margin-bottom: 2rem;
+      align-items: center;
+      justify-content: flex-end;
       position: sticky;
       top: 0;
-      left: 0;
-      /* height: 70px; */
-      /* align-items: center; */
-      justify-content: space-between;
+      z-index: 100;
+      border-bottom: 1px solid #e5e7eb;
 
-      .top-bar {
-        display: none;
-      }
+      .top-bar { display: none; }
 
       .header-content {
-        width: 98%;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
+        gap: 1rem;
 
         .profile-content {
           display: flex;
-          flex: 1;
-          min-width: 200px;
           align-items: center;
-          justify-content: flex-end;
-          gap: 8px;
+          gap: 10px;
 
           .imageContainer {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            object-fit: cover;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            flex-shrink: 0;
 
             img {
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
+              width: 100%;
+              height: 100%;
               object-fit: cover;
             }
           }
@@ -269,10 +260,16 @@ export const DashboardLayoutContainer = styled.div`
           .UserInfo {
             p {
               margin: 0;
+              font-size: 0.875rem;
+              font-weight: 600;
+              color: #04091a;
+              line-height: 1.2;
             }
+
             span {
-              font-size: 10px;
-              color: var(--secondary_color_700);
+              font-size: 0.72rem;
+              color: #6b7280;
+              font-weight: 400;
             }
           }
         }
@@ -280,91 +277,39 @@ export const DashboardLayoutContainer = styled.div`
     }
   }
 
+  /* ── Mobile ── */
   @media (max-width: 768px) {
-    flex-direction: column;
-
     .aside {
       left: ${({ showSidebar }) => (showSidebar ? "0" : "-100%")};
-      width: 100%;
-      height: 100vh;
-      position: absolute;
-      background-color: var(--main_white);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      z-index: 999;
+      width: 280px;
 
-      .close-btn {
-        display: block;
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 28px;
-        font-weight: bold;
-        color: #333;
-        cursor: pointer;
-        z-index: 1001;
-      }
+      .close-btn { display: block; }
     }
 
     .LayoutPage {
       margin-left: 0;
-      width: 100%;
-      padding: 10px;
 
       .header {
+        justify-content: space-between;
+        padding: 0 1rem;
+
         .top-bar {
-          width: 100%;
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          padding: 10px 10px;
-          margin-bottom: 10px;
-        }
+          gap: 1rem;
 
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          cursor: pointer;
-
-          .bar {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-          }
-        }
-
-        .notification {
-          position: relative;
-
-          img {
-            width: 24px;
-            height: 24px;
-          }
-
-          .rounded {
-            position: absolute;
-            top: -6px;
-            left: 14px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: red;
-            color: #fff;
-            font-size: 10px;
+          .hamburger {
             display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
 
-        .header-content {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-
-          .profile-content {
-            width: 100%;
+            .bar {
+              width: 22px;
+              height: 2px;
+              background: #04091a;
+              border-radius: 2px;
+            }
           }
         }
       }
@@ -372,27 +317,8 @@ export const DashboardLayoutContainer = styled.div`
   }
 
   @media (max-width: 480px) {
-    .LogoName {
-      font-size: 16px;
-    }
-
-    .DashboardName {
-      font-size: 14px;
-    }
-
-    .header-content {
-      width: 100%;
-    }
-
-    .profile-content {
-      flex-direction: column;
-      align-items: flex-start;
-
-      .UserInfo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    .logout-modal {
+      padding: 2rem 1.5rem;
     }
   }
 `;

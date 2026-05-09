@@ -1,240 +1,218 @@
 import styled, { css } from "styled-components";
 
-/* Page wrapper */
 export const Page = styled.div`
   width: 100%;
-  padding: 20px;
-  height: max-content;
+  max-width: 1100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 16px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 12px;
-  }
+  gap: 1.5rem;
 `;
 
-/* Toggle buttons row */
 export const ToggleRow = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 14px;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  width: 100%;
-  height: 50px;
-
-  @media (max-width: 480px) {
-    gap: 8px;
-  }
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 100px;
+  padding: 5px;
+  width: fit-content;
 `;
 
 export const ToggleButton = styled.button`
-  border: 1px solid #d1d5db;
-  padding: 6px 20px;
-  border-radius: 8px;
-  background: #f3f4f6;
-  color: #374151;
+  height: 38px;
+  padding: 0 22px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
   cursor: pointer;
-  font-weight: 600;
-  outline: none;
-  transition: all 150ms ease;
-  font-size: 14px;
-  width: max-content;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 
   ${(props) =>
     props.active &&
     css`
-      background: #fff;
-      border-color: #9ca3ff;
-      color: #111827;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+      background: var(--primary_color_500);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 70, 255, 0.25);
     `}
 
-  @media (max-width: 480px) {
-    padding: 6px 14px;
-    font-size: 13px;
+  &:hover:not([disabled]) {
+    color: var(--primary_color_500);
   }
+
+  ${(props) =>
+    props.active &&
+    css`
+      &:hover {
+        color: #ffffff;
+      }
+    `}
 `;
 
-/* Cards row: use flex so we can stretch children to same height */
 export const CardsRow = styled.div`
   display: flex;
-  gap: 20px;
-  width: 95%;
+  gap: 1.5rem;
+  width: 100%;
   justify-content: center;
-  align-items: stretch; /* <-- important: stretch children to same height */
-  flex-wrap: wrap; /* allow wrapping for smaller screens */
-  box-sizing: border-box;
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
+  align-items: stretch;
+  flex-wrap: wrap;
 `;
 
-/* Each Card is a column flex container so we can manage header/feature/footer layout */
 export const Card = styled.div`
-  border-radius: 12px;
-  background: #fff;
-  padding: 18px;
-  border: 2px solid #e5e7eb;
-
+  flex: 1 1 280px;
+  max-width: 340px;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 2rem;
+  border: 1.5px solid #e5e7eb;
   display: flex;
-  flex-direction: column; /* column layout: header -> features -> footer */
-  justify-content: flex-start;
-  width: calc(
-    33.333% - 13.333px
-  ); /* three cards per row by default; adjust as needed */
-  box-sizing: border-box;
-  /* ensure all cards share same available height in a row */
-  flex: 1 1 calc(33.333% - 13.333px);
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--primary_color_300);
+    box-shadow: 0 12px 40px rgba(0, 70, 255, 0.08);
+    transform: translateY(-4px);
+  }
 
   ${(p) =>
     p.featured &&
     css`
-      border-color: #2b6bff;
-      box-shadow: 0 10px 30px rgba(43, 107, 255, 0.08);
+      border-color: var(--primary_color_500);
+      box-shadow: 0 12px 40px rgba(0, 70, 255, 0.12);
+      position: relative;
+
+      &::before {
+        content: "Most Popular";
+        position: absolute;
+        top: -13px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary_color_500);
+        color: #ffffff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 4px 14px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
     `}
 
-  @media (max-width: 1024px) {
-    /* two cards per row on medium screens */
-    width: calc(50% - 10px);
-    flex: 1 1 calc(50% - 10px);
-  }
-
   @media (max-width: 768px) {
-    /* single column on small/mobile */
-    width: 100%;
-    flex: 1 1 100%;
-    padding: 16px;
+    max-width: 100%;
+    padding: 1.75rem;
   }
-
-  /* IMPORTANT: ensure card takes full height when parent stretches */
-  /* If you need a minimum height for visual balance, set it here */
-  min-height: 18rem;
 `;
 
-/* Header row inside card */
-/* Give header a consistent minimum height so Features start at same vertical offset */
 export const CardHeader = styled.div`
   display: flex;
   gap: 12px;
-  align-items: center;
-  /* set a min-height so the area above features is consistent across cards */
-  min-height: 4.5rem; /* adjust this value until Features line up perfectly */
+  align-items: flex-start;
+  min-height: 4rem;
 `;
 
-/* small icon box */
 export const CardIcon = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: #eef2ff;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary_color_100), #dbeafe);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1e3a8a;
+  color: var(--primary_color_500);
+  flex-shrink: 0;
 `;
 
 export const CardTitle = styled.h3`
   margin: 0;
-  font-size: 16px;
-  color: #111827;
-
-  @media (max-width: 480px) {
-    font-size: 15px;
-  }
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--netural_black_color);
 `;
 
 export const PillSmall = styled.div`
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: 5px;
+  font-size: 0.75rem;
   color: #6b7280;
+  line-height: 1.4;
 `;
 
-/* Price */
 export const Price = styled.div`
-  margin-top: 14px;
-  font-weight: 700;
-  font-size: 28px;
-  color: #0f172a;
-
-  @media (max-width: 480px) {
-    font-size: 24px;
-  }
+  margin-top: 1.5rem;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--netural_black_color);
+  letter-spacing: -1px;
+  line-height: 1;
 `;
 
 export const PriceUnit = styled.span`
-  font-weight: 500;
-  font-size: 14px;
-  color: #6b7280;
-  margin-left: 6px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-left: 4px;
+  letter-spacing: 0;
 `;
 
-/* features list */
-/* Keep it a column and allow it to grow/shrink; use padding-top if you need extra spacing */
 export const Features = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-right: 4px;
-  margin-top: 50px; /* small gap between header/price and features */
-
-  span {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* make features area flexible so footer stays pinned to bottom */
-  flex: 1 1 auto;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  flex: 1;
 `;
 
 export const FeatureItem = styled.div`
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: flex-start;
+  font-size: 0.875rem;
   color: #374151;
-  font-size: 13px;
+  line-height: 1.5;
 
   svg {
-    color: blue;
+    color: var(--primary_color_500);
     flex-shrink: 0;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
+    margin-top: 2px;
   }
 `;
 
-/* footer area with button */
 export const CardFooter = styled.div`
-  margin-top: 18px;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
 `;
 
-/* Call-to-action button */
 export const ActionButton = styled.button`
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-weight: 700;
+  width: 100%;
+  height: 48px;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  min-width: 170px;
-  font-size: 14px;
-  height: 50px;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+  border: 1.5px solid transparent;
 
   ${(p) =>
     p.variant === "primary" &&
     css`
-      background: #1e40af;
-      color: #fff;
-      border-color: #1e40af;
+      background: var(--primary_color_500);
+      color: #ffffff;
+      border-color: var(--primary_color_500);
+
+      &:hover:not(:disabled) {
+        background: var(--primary_color_700);
+        border-color: var(--primary_color_700);
+        transform: translateY(-1px);
+      }
     `}
 
   ${(p) =>
@@ -243,26 +221,42 @@ export const ActionButton = styled.button`
       background: transparent;
       color: #374151;
       border-color: #e5e7eb;
+
+      &:hover:not(:disabled) {
+        border-color: var(--primary_color_500);
+        color: var(--primary_color_500);
+      }
     `}
 
   ${(p) =>
     p.variant === "outline" &&
     css`
       background: transparent;
-      color: blue;
-      border-color: blue;
-      font-weight: 600;
+      color: var(--primary_color_500);
+      border-color: var(--primary_color_500);
+
+      &:hover:not(:disabled) {
+        background: #eff6ff;
+      }
     `}
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.55;
     cursor: default;
+    transform: none;
   }
 
-  @media (max-width: 480px) {
-    padding: 8px 14px;
-    font-size: 13px;
-    min-width: 140px;
+  .spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 `;
-6;

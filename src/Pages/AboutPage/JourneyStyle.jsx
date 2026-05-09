@@ -1,134 +1,98 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const JourneyContainer = styled.div`
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+export const JourneyContainer = styled.section`
   width: 100%;
-  height: 30vh;
-  background-color: var(--main_white);
+  background: #0046ff;
+  padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
 
   .Journney_wrapper {
-    width: 45%;
-    height: 90%;
+    width: 100%;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: ${fadeUp} 0.8s ease forwards;
 
     h3 {
-      margin: 0px;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--main_black);
-      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -1px;
+      line-height: 1.15;
     }
 
     p {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--main_black);
-      line-height: 140%;
-      text-align: center;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      margin: 0;
+      max-width: 560px;
     }
 
     .journey_button {
-      width: 179px;
-      height: 44px;
-      background-color: var(--primary_color_500);
+      height: 54px;
+      padding: 0 40px;
+      background: #ffffff;
       border: none;
       border-radius: 8px;
-      color: var(--main_white);
-      font-size: 16px;
-      font-weight: 600;
+      color: #0046ff;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
+      font-family: "Poppins", sans-serif;
+      transition: all 0.2s ease;
 
       &:hover {
-        background-color: var(--primary_color_600);
+        background: rgba(255,255,255,0.9);
         transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
       }
     }
   }
 
-  /* ✅ Tablet view */
-  @media (max-width: 1024px) {
-    height: auto;
-    padding: 3rem 0;
-
-    .Journney_wrapper {
-      width: 65%;
-      gap: 12px;
-
-      h3 {
-        font-size: 26px;
-      }
-
-      p {
-        font-size: 17px;
-      }
-
-      .journey_button {
-        width: 165px;
-        height: 42px;
-        font-size: 15px;
-      }
-    }
-  }
-
-  /* ✅ Mobile view */
   @media (max-width: 768px) {
-    height: auto;
-    padding: 2.5rem 1.5rem;
+    padding: 5rem 1.5rem;
 
     .Journney_wrapper {
-      width: 100%;
-      align-items: flex-start;
-      text-align: left;
-      gap: 15px;
-
-      h3 {
-        font-size: 22px;
-        text-align: left;
-      }
-
-      p {
-        font-size: 15px;
-        text-align: left;
-      }
-
-      .journey_button {
-        width: 150px;
-        height: 40px;
-        font-size: 14px;
-      }
+      h3 { font-size: 1.75rem; }
+      p { font-size: 0.95rem; }
     }
   }
 
-  /* ✅ Small mobile screens */
-  @media (max-width: 480px) {
-    padding: 2rem 1rem;
+  @media (max-width: 640px) {
+    padding: 4rem 1.25rem;
 
     .Journney_wrapper {
-      gap: 10px;
-      align-items: center;
-
-      h3 {
-        font-size: 20px;
-      }
-
-      p {
-        font-size: 14px;
-        text-align: center;
-      }
+      h3 { font-size: 1.5rem; }
 
       .journey_button {
-        width: 140px;
-        height: 38px;
-        font-size: 13px;
+        width: 100%;
+        max-width: 300px;
       }
     }
   }

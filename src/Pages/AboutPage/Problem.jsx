@@ -8,23 +8,23 @@ const Problem = () => {
       <div className="Problem_wrapper">
         <aside className="Problem_section">
           <div className="Problem_text_holder">
-            <h3>The Problem We’re solving</h3>
+            <span className="section_label">The Challenge</span>
+            <h3>The Problem We're Solving</h3>
             <p>
               Many startups and small business owners struggle to secure the
-              right <br /> investors due to limited visibility, lack of trust,
-              and inefficient
-              <br /> networking channels
+              right investors due to limited visibility, lack of trust, and
+              inefficient networking channels.
             </p>
             <span>
-              on the other hand, investors face difficulties identifying
-              credible, investment ready businesses that align with their
-              interest and risk profiles. This hinders innovation, slow business
-              growth, and waste valuable opportunities on both sides.
+              On the other hand, investors face difficulties identifying
+              credible, investment-ready businesses that align with their
+              interests and risk profiles. This hinders innovation, slows
+              business growth, and wastes valuable opportunities on both sides.
             </span>
           </div>
         </aside>
         <aside className="Problem_section1">
-          <img src={Frame} alt="" />
+          <img src={Frame} alt="The problem illustration" />
         </aside>
       </div>
     </ProblemContainer>

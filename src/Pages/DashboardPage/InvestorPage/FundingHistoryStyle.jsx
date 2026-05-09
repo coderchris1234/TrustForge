@@ -2,94 +2,70 @@ import styled from "styled-components";
 
 export const FundingHistory_contianer = styled.div`
   width: 100%;
-  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  font-family: "Poppins", sans-serif;
 
   h1 {
-    font-size: 22px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #04091a;
+    letter-spacing: -0.5px;
+    margin: 0 0 4px;
   }
 
   p {
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0 0 1.5rem;
   }
 
   .read_unread {
-    width: 100%;
-    background-color: #c1c1c1;
-    padding: 0.4rem;
     display: flex;
-    justify-content: space-between;
-    border-radius: 2rem;
-    margin-top: 1.4rem;
-    gap: 0.5rem;
+    align-items: center;
+    background: #f0f2f8;
+    padding: 4px;
+    border-radius: 100px;
+    width: fit-content;
+    gap: 2px;
+    margin-top: 1.5rem;
 
-    .active,
-    .pending,
-    .completed {
-      flex: 1;
-      background-color: #fff;
+    .active, .pending, .completed {
+      height: 36px;
+      padding: 0 20px;
+      border-radius: 100px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      border-radius: 2rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 0.5rem;
+      justify-content: center;
       cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #6b7280;
+      transition: all 0.2s ease;
+      background: transparent;
+      white-space: nowrap;
     }
 
-    .pending {
-      background-color: transparent;
-    }
-
-    .completed {
-      background-color: transparent;
+    .active {
+      background: #0046ff;
+      color: #ffffff;
+      font-weight: 600;
     }
   }
 
   @media (max-width: 768px) {
-    h1 {
-      font-size: 18px;
-    }
-
-    p {
-      font-size: 14px;
-    }
+    padding: 1.5rem 1rem 3rem;
 
     .read_unread {
+      width: 100%;
+      border-radius: 12px;
       flex-direction: column;
-      align-items: stretch;
-      height: auto;
+      padding: 6px;
 
-      .active,
-      .pending,
-      .completed {
+      .active, .pending, .completed {
         width: 100%;
-        font-size: 0.9rem;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 16px;
-    }
-
-    p {
-      font-size: 13px;
-    }
-
-    .read_unread {
-      gap: 0.4rem;
-
-      .active,
-      .pending,
-      .completed {
-        font-size: 0.85rem;
-        padding: 0.4rem;
+        border-radius: 8px;
       }
     }
   }

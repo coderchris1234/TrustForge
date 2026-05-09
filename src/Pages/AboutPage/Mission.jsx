@@ -7,7 +7,7 @@ const Mission = () => {
     <MissionContainer>
       <div className="Mission_wrapper">
         {MissionInfo?.map((item) => (
-          <div className="Mission">
+          <div className="Mission" key={item.goal}>
             <div className="Mission_icon">{item.icon}</div>
             <h3>{item.goal}</h3>
             <p>{item.descriptions}</p>

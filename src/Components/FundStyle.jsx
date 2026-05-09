@@ -1,98 +1,84 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const fadeUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-export const FundContainer = styled.div`
+export const FundContainer = styled.section`
   width: 100%;
-  min-height: 25vh;
+  background: #04091a;
+  padding: 5rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: linear-gradient(to left, #336bff, #002da3, #002da3, #336bff);
-  margin-bottom: 2rem;
-  padding: 2rem 1rem;
-  animation: ${fadeUp} 1s ease forwards;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,70,255,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
 
   .Fund_page_wrapper {
-    width: 90%;
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .Fund_num {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
 
-    .Fund_num {
-      max-width: 350px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      animation: ${fadeUp} 1.2s ease forwards;
+    &:last-child {
+      border-right: none;
+    }
 
-      h1 {
-        font-size: 45px;
-        font-weight: 700;
-        color: var(--main_white);
-        margin: 0;
-        letter-spacing: 1px;
-        transition: transform 0.3s ease;
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
 
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-
-      p {
-        font-size: 18px;
-        font-weight: 400;
-        color: var(--main_white);
-        margin: 0.5rem 0 0;
-        line-height: 1.4;
-      }
+    p {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      margin: 0.5rem 0 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      max-width: 140px;
     }
   }
 
   @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem;
 
     .Fund_page_wrapper {
-      gap: 1.5rem;
-      flex-direction: column;
-
-      .Fund_num h1 {
-        font-size: 30px;
-      }
-
-      .Fund_num p {
-        font-size: 1rem;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 2rem 1rem;
-
-    .Fund_page_wrapper {
-      flex-direction: column;
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
 
       .Fund_num {
-        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 2rem;
 
-        h1 {
-          font-size: 2rem;
+        &:nth-child(odd) {
+          border-right: 1px solid rgba(255,255,255,0.08);
         }
 
-        p {
-          font-size: 0.9rem;
+        &:nth-last-child(-n+2) {
+          border-bottom: none;
         }
       }
     }

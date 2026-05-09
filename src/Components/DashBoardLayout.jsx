@@ -33,8 +33,8 @@ const DashBoardLayout = (props) => {
     };
 
     fetchKyc();
-    const interval = setInterval(fetchKyc, 1000); // every 5 seconds
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchKyc, 1000);
+    // return () => clearInterval(interval);
   }, [userId, token, BaseUrl]);
 
   const openLogoutModal = () => setShowLogoutModal(true);
@@ -99,31 +99,23 @@ const DashBoardLayout = (props) => {
               const isKycIncomplete =
                 userDetails?.user?.kycStatus.includes("not");
               const isKycRoute = section.link === "kycverification";
-
               const isDisabled = isKycIncomplete && !isKycRoute;
 
               return (
                 <div
                   key={index}
-                  className={`businessContainer ${
-                    isDisabled ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  onClick={() => {
-                    if (!isDisabled) setShowSidebar(false);
-                  }}
+                  className={`businessContainer`}
+                  style={{ opacity: isDisabled ? 0.4 : 1 }}
+                  onClick={() => { if (!isDisabled) setShowSidebar(false); }}
                 >
                   {isDisabled ? (
                     <div className="business">
-                      <div>
-                        <section.Icon size={24} />
-                      </div>
+                      <div><section.Icon size={18} /></div>
                       <span>{section.label}</span>
                     </div>
                   ) : (
                     <NavLink to={section.link} end className="business">
-                      <div>
-                        <section.Icon size={24} />
-                      </div>
+                      <div><section.Icon size={18} /></div>
                       <span>{section.label}</span>
                     </NavLink>
                   )}
@@ -137,31 +129,23 @@ const DashBoardLayout = (props) => {
               const isKycIncomplete =
                 userDetails?.user?.kycStatus.includes("not");
               const isKycRoute = section.link === "kycverification";
-
               const isDisabled = isKycIncomplete && !isKycRoute;
 
               return (
                 <div
                   key={index}
-                  className={`businessContainer ${
-                    isDisabled ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  onClick={() => {
-                    if (!isDisabled) setShowSidebar(false);
-                  }}
+                  className={`businessContainer`}
+                  style={{ opacity: isDisabled ? 0.4 : 1 }}
+                  onClick={() => { if (!isDisabled) setShowSidebar(false); }}
                 >
                   {isDisabled ? (
                     <div className="business">
-                      <div>
-                        <section.Icon size={24} />
-                      </div>
+                      <div><section.Icon size={18} /></div>
                       <span>{section.label}</span>
                     </div>
                   ) : (
                     <NavLink to={section.link} end className="business">
-                      <div>
-                        <section.Icon size={24} />
-                      </div>
+                      <div><section.Icon size={18} /></div>
                       <span>{section.label}</span>
                     </NavLink>
                   )}
@@ -170,11 +154,9 @@ const DashBoardLayout = (props) => {
             })}
           </div>
 
-          <div className="logout">
+          <div className="logout" onClick={openLogoutModal}>
             <img src="/public/material-symbols_logout.svg" alt="" />
-            <span style={{ cursor: "pointer" }} onClick={openLogoutModal}>
-              Logout
-            </span>
+            <span>Logout</span>
           </div>
         </div>
       </aside>
@@ -215,17 +197,14 @@ const DashBoardLayout = (props) => {
       {showLogoutModal && (
         <div className="logout-modal-overlay">
           <div className="logout-modal">
-            <h1>LOG OUT...</h1>
+            <h1>Logging out</h1>
             <p>
-              Leaving so soon? You'll be logged out of your account, do you want
-              to continue?
+              Leaving so soon? You'll be logged out of your account. Do you want to continue?
             </p>
-
             <div className="buttons">
               <button className="logout-btn" onClick={confirmLogout}>
                 Log me out
               </button>
-
               <button className="cancel-btn" onClick={closeLogoutModal}>
                 Stay logged in
               </button>

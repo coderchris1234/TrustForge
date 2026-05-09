@@ -1,21 +1,15 @@
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
-  width: 90%;
-  height: max-content;
-  display: flex;
-  justify-content: center;
-  /* padding: 50px; */
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 4rem 1.5rem 5rem;
 
   .Startup_content {
     width: 100%;
-    height: max-content;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    /* gap: 2rem; */
+    gap: 1.5rem;
   }
 `;

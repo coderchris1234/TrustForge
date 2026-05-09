@@ -1,227 +1,202 @@
 import styled from "styled-components";
 
 export const OverviewContent = styled.div`
-  width: 95%;
+  width: 100%;
+  padding: 2rem 2rem 4rem;
+  font-family: "Poppins", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 48px;
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
 
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
+  /* ── Page header ── */
   .Contenttitle_holder {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 
     .ContentTitle {
-      padding-top: 1.25rem;
-      margin-bottom: 12px;
-
       h1 {
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-bottom: 6px;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #04091a;
+        letter-spacing: -0.5px;
+        margin: 0 0 4px;
       }
 
       p {
-        color: #1b1b1b;
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 22px;
+        font-size: 0.875rem;
+        color: #6b7280;
         margin: 0;
       }
-    }
-  }
-
-  .QuickAction {
-    /* background-color: #fff; */
-    margin-top: 20px;
-    border-radius: 12px;
-    display: flex;
-    width: 35%;
-
-    /* flex-direction: column; */
-    justify-content: flex-end;
-    /* box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04); */
-
-    p {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #1b1b1b;
-    }
-
-    .action {
-      display: flex;
-      flex-direction: column; /* always column */
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      /* flex-wrap: wrap; */
-
-      .quick {
-        border-radius: 10px;
-        width: 100%;
-        display: flex;
-        /* flex-direction: column; stack icon + text inside each button */
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .quick.primary {
-        background: #0046ff;
-        color: #fff;
-      }
-
-      .quick.secondary {
-        border: 1px solid #ccc;
-        background: #fff;
-        color: #000;
-      }
-
-      .quick:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-
-  .Overview-content {
-    width: 100%;
-    margin-top: 0;
-    gap: 1rem;
-    /* height: 20%; */
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 2rem;
-
-    .box {
-      width: 25%;
-      height: 20vh;
-      border-radius: 15px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .box:hover {
-      transform: translateY(-2px);
-    }
-
-    .box p {
-      color: #666;
-      font-size: 18px;
-      margin: 0 0 4px 0;
-    }
-
-    .box span {
-      color: #111;
-      font-size: 23px;
-      font-weight: 600;
-    }
-
-    img {
-      width: 28px;
-      height: 28px;
-    }
-  }
-
-  .recentIdeas {
-    width: 100%;
-    background-color: #fff;
-    margin-top: 18px;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(11, 13, 22, 0.04);
-    display: flex;
-    flex-direction: column;
-
-    .recent {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-
-      p {
-        font-weight: 600;
-        margin: 0;
-        font-size: 16px;
-      }
-
-      button {
-        background-color: transparent;
-        border: 1px solid lightgrey;
-        padding: 8px 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        font-size: 14px;
-
-        &:hover {
-          background-color: #f3f3f3;
-        }
-      }
-    }
-  }
-  @media (max-width: 992px) {
-    .Overview-content {
-      flex-wrap: wrap;
-      .box {
-        flex: 1 1 calc(50% - 10px);
-        height: 7rem;
-      }
-    }
-
-    .QuickAction .action .quick {
-      flex: 1 1 calc(50% - 10px);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .Overview-content {
-      flex-direction: column;
-      gap: 14px;
-
-      .box {
-        width: 100%;
-        flex: none;
-        height: 7rem;
-      }
-    }
-
-    .recentIdeas {
-      padding: 1rem;
     }
 
     .QuickAction {
-      padding: 1rem;
-
       .action {
+        display: flex;
         gap: 10px;
+        align-items: center;
 
         .quick {
-          width: 100%;
+          height: 40px;
+          padding: 0 20px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          font-family: "Poppins", sans-serif;
+          border: none;
+          background: #0046ff;
+          color: #ffffff;
+
+          p { color: #ffffff; margin: 0; font-size: 0.85rem; }
+
+          &:hover {
+            background: #002da3;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,70,255,0.25);
+          }
         }
+      }
+    }
+  }
+
+  /* ── Stat cards ── */
+  .Overview-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .box {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #c7d7ff;
+        box-shadow: 0 4px 20px rgba(0,70,255,0.07);
+        transform: translateY(-2px);
+      }
+
+      > div:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      p {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: #6b7280;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      span {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #04091a;
+        letter-spacing: -1px;
+        line-height: 1;
+      }
+
+      > div:last-child {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: #f0f2f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  /* ── Recent section ── */
+  .recentIdeas {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+
+    .recent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+
+      p {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #04091a;
+        margin: 0;
+        letter-spacing: -0.3px;
+      }
+
+      button {
+        height: 34px;
+        padding: 0 16px;
+        background: transparent;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #374151;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.2s ease;
+
+        &:hover {
+          border-color: #0046ff;
+          color: #0046ff;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .Overview-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 3rem;
+
+    .Contenttitle_holder {
+      flex-direction: column;
+      gap: 1rem;
+
+      .QuickAction { width: 100%; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.75rem 3rem;
+
+    .Overview-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+
+      .box {
+        padding: 1.25rem 1rem;
+
+        span { font-size: 1.4rem; }
       }
     }
   }

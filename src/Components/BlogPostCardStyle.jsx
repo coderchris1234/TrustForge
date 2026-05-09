@@ -1,244 +1,124 @@
 import styled from "styled-components";
 
 export const BlogPostCardStyle = styled.div`
-  width: 32%;
-  height: 100%;
-  background-color: var(--main_white);
-  border-radius: 15px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
-  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: all 0.25s ease;
 
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  &:hover {
+    border-color: #c7d7ff;
+    box-shadow: 0 8px 32px rgba(0,70,255,0.07);
+    transform: translateY(-3px);
+  }
 
   .Insight_Card_image {
     width: 100%;
-    height: 50%;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    height: 190px;
+    overflow: hidden;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-top-right-radius: 15px;
-      border-top-left-radius: 15px;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.04);
     }
   }
 
   .Insight_card_contents {
-    width: 100%;
-    height: 60%;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    /* gap: 10px; */
-    padding: 1rem;
+    flex: 1;
+    padding: 1.5rem;
+    gap: 1rem;
 
     .Insight_card_text_holder {
-      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      height: max-content;
-      /* padding: 0.5rem; */
-      /* padding: 15px 20px 0px 20px; */
-      margin-top: 15px;
-
-      .Read_me_blog {
-        p {
-          font-size: 16px;
-          font-weight: 400;
-          display: flex;
-          flex-direction: column;
-
-          .Read_More {
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--secondary_color_600);
-          }
-        }
-      }
+      gap: 0.6rem;
+      flex: 1;
 
       span {
         width: fit-content;
-        padding: 4px 12px;
-        background-color: var(--neutral_gray_color_700);
-        border-radius: 10px;
-        font-size: 14px;
-        color: var(--netural_black_color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-        height: 25px;
+        padding: 2px 10px;
+        background: #eff6ff;
+        border-radius: 100px;
+        font-size: 0.7rem;
+        color: #0046ff;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
 
       h3 {
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--netural_black_color);
-        line-height: 130%;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #04091a;
+        line-height: 1.45;
         margin: 0;
       }
 
-      p {
-        font-size: 10px;
-        font-weight: 400;
-        color: var(--netural_black_color);
-        line-height: 160%;
+      .Read_me_blog p {
+        font-size: 0.825rem;
+        color: #6b7280;
+        line-height: 1.65;
+        margin: 0;
+
+        .Read_More {
+          color: #0046ff;
+          font-weight: 600;
+          text-decoration: none;
+          margin-left: 4px;
+
+          &:hover { text-decoration: underline; }
+        }
       }
     }
 
     .Insight_card_footer {
-      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      /* margin-top: 10px; */
-      /* padding: 0.5rem; */
+      gap: 6px;
+      padding-top: 1rem;
+      border-top: 1px solid #f3f4f6;
 
       .Profile_insight,
       .Profile_insight1 {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
 
-        p,
-        span {
-          font-size: 16px;
-          font-weight: 400;
-          color: var(--main_black);
+        p, span {
+          font-size: 0.775rem;
+          color: #9ca3af;
           margin: 0;
+          background: none;
+          padding: 0;
+          border-radius: 0;
+          text-transform: none;
+          letter-spacing: 0;
+          font-weight: 400;
         }
       }
 
+      .Profile_insight1 { gap: 14px; }
+
       .Profile_icon_holder {
         display: flex;
-        gap: 10px;
+        gap: 4px;
         align-items: center;
       }
     }
   }
 
-  @media (max-width: 1024px) {
-    width: 45%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-
-    .Insight_card_contents {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-
-      .Insight_card_text_holder {
-        padding: 16px 20px 0px 20px;
-        margin-top: 0;
-        gap: 0.5rem;
-        height: auto;
-
-        h3 {
-          font-size: 18px;
-          margin: 0;
-        }
-
-        p {
-          font-size: 15px;
-          margin: 0;
-        }
-
-        span {
-          font-size: 14px;
-          margin-top: 6px;
-        }
-      }
-
-      .Insight_card_footer {
-        margin-top: 0; /* remove top margin */
-        padding: 12px 20px 16px 20px;
-        gap: 8px;
-
-        .Profile_insight,
-        .Profile_insight1 {
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: center;
-        }
-
-        .Profile_icon_holder {
-          gap: 8px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .Insight_card_contents {
-      width: 100%;
-      .Insight_card_text_holder {
-        padding: 18px;
-
-        h3 {
-          font-size: 16px;
-        }
-
-        p {
-          font-size: 13px;
-          line-height: 150%;
-        }
-
-        span {
-          font-size: 11px;
-          padding: 3px 10px;
-          width: 50%;
-          height: 25px;
-          font-size: 13px;
-        }
-      }
-
-      .Insight_card_footer {
-        padding: 10px 18px 18px 18px;
-        gap: 8px;
-
-        p,
-        span {
-          font-size: 13px;
-        }
-      }
-    }
-
-    @media (max-width: 390px) {
-      .Insight_card_contents {
-        .Insight_card_text_holder {
-          /* padding: 18px; */
-          span {
-            font-size: 11px;
-            padding: 3px 10px;
-            width: 40%;
-            height: 25px;
-            font-size: 13px;
-          }
-          h3 {
-            font-size: 16px;
-          }
-
-          p {
-            font-size: 13px;
-            line-height: 150%;
-          }
-        }
-      }
-    }
+  @media (max-width: 640px) {
+    .Insight_Card_image { height: 170px; }
   }
 `;

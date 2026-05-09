@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 4.5rem;
-  background-color: var(--main_white);
+  background-color: rgba(4, 9, 26, 0.95);
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   position: sticky;
   top: 0;
   z-index: 99999;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 
   .Header_Wrapper {
     width: 90%;
@@ -47,23 +48,23 @@ export const HeaderContainer = styled.header`
 
       .Link {
         text-decoration: none;
-        color: var(--neutral_black_color);
+        color: rgba(255,255,255,0.65);
       }
 
       .Link.active {
-        font-weight: bold;
-        color: var(--primary_color_500);
+        font-weight: 600;
+        color: #ffffff;
       }
 
       li {
         list-style-type: none;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 400;
         cursor: pointer;
-        transition: all 350ms ease-in-out;
+        transition: color 200ms ease;
 
         &:hover {
-          color: var(--primary_color_500);
+          color: #ffffff;
         }
       }
     }
@@ -91,13 +92,14 @@ export const HeaderContainer = styled.header`
 
     .Btn_Login {
       width: 5rem;
-      border: 2px solid var(--neutral_gray_color_500);
-      background-color: var(--main_white);
-      color: var(--main_black);
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: transparent;
+      color: rgba(255,255,255,0.8);
 
       &:hover {
-        background-color: var(--primary_color_100);
-        border: none;
+        border-color: rgba(255,255,255,0.5);
+        color: #ffffff;
+        background-color: transparent;
       }
     }
 
@@ -117,7 +119,7 @@ export const HeaderContainer = styled.header`
     display: none;
     font-size: 2rem;
     cursor: pointer;
-    color: var(--primary_color_500);
+    color: rgba(255,255,255,0.8);
   }
 
   /* ---------- MOBILE ---------- */
@@ -135,7 +137,8 @@ export const HeaderContainer = styled.header`
       display: flex;
       flex-direction: column;
       width: 100%;
-      background-color: var(--main_white);
+      background-color: #04091a;
+      border-top: 1px solid rgba(255,255,255,0.07);
       position: absolute;
       top: 4.3rem;
       left: 0;
@@ -143,8 +146,6 @@ export const HeaderContainer = styled.header`
       z-index: 9999;
       height: max-content;
       align-items: center;
-
-      /* add horizontal padding so items don't touch edges */
       padding: 12px 14px;
       box-sizing: border-box;
       gap: 10px;
@@ -171,19 +172,18 @@ export const HeaderContainer = styled.header`
       width: 100%;
       box-sizing: border-box;
       padding: 0.6rem 0.75rem;
-      border: 1px solid #e6e7ea;
-      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
       border-radius: 8px;
       font-size: 1rem;
       font-weight: 400;
-      color: var(--neutral_black_color);
+      color: rgba(255,255,255,0.75);
       transition: border-color 140ms ease, color 140ms ease;
     }
 
-    /* active link look */
     nav.MobileNav .Link.active li {
-      border-color: var(--primary_color_500);
-      color: var(--primary_color_500);
+      border-color: #4d8bff;
+      color: #ffffff;
       font-weight: 600;
     }
 

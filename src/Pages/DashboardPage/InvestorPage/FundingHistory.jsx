@@ -25,16 +25,13 @@ const FundingHistory = () => {
         });
 
         console.log("raw response:", res.data);
-        setFunding(res.data); // store full response object
+        setFunding(res?.data); // store full response object
       } catch (error) {
         console.log("error fetching funding history", error);
       }
     };
 
     fetchFundingData();
-    const interval = setInterval(fetchFundingData, 1000); // every 5 seconds
-
-    return () => clearInterval(interval);
   }, [token, BaseUrl]);
 
   return (
