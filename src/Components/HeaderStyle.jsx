@@ -3,17 +3,18 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 4.5rem;
-  background-color: rgba(4, 9, 26, 0.95);
+  background: rgba(245, 240, 232, 0.92);
   backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   position: sticky;
   top: 0;
   z-index: 99999;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(25,25,25,0.1);
 
   .Header_Wrapper {
     width: 90%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -25,10 +26,17 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
 
-    img {
-      max-height: 4rem;
-      max-width: 200px;
-      object-fit: contain;
+    .Logo_text {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #191919;
+      letter-spacing: -0.5px;
+      font-family: "Poppins", sans-serif;
+
+      &::after {
+        content: ".";
+        color: #b9ff66;
+      }
     }
   }
 
@@ -41,31 +49,29 @@ export const HeaderContainer = styled.header`
       width: 100%;
       display: flex;
       justify-content: center;
-      gap: 4rem;
+      gap: 3rem;
       align-items: center;
       padding: 0;
       margin: 0;
 
       .Link {
         text-decoration: none;
-        color: rgba(255,255,255,0.65);
+        color: #555;
       }
 
       .Link.active {
-        font-weight: 600;
-        color: #ffffff;
+        font-weight: 700;
+        color: #191919;
       }
 
       li {
         list-style-type: none;
         font-size: 0.9rem;
-        font-weight: 400;
+        font-weight: 500;
         cursor: pointer;
         transition: color 200ms ease;
 
-        &:hover {
-          color: #ffffff;
-        }
+        &:hover { color: #191919; }
       }
     }
   }
@@ -77,185 +83,133 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: flex-end;
 
-    &.mobile {
-      display: none;
-    }
+    &.mobile { display: none; }
 
     .Btn_Login,
     .Btn_Login2 {
-      height: 2.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
+      height: 2.4rem;
+      font-size: 0.875rem;
+      border-radius: 100px;
       cursor: pointer;
-      transition: all 350ms ease-in-out;
+      transition: all 200ms ease;
+      font-family: "Poppins", sans-serif;
     }
 
     .Btn_Login {
-      width: 5rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      background-color: transparent;
-      color: rgba(255,255,255,0.8);
+      padding: 0 20px;
+      border: 2px solid rgba(25,25,25,0.2);
+      background: transparent;
+      color: #191919;
 
       &:hover {
-        border-color: rgba(255,255,255,0.5);
-        color: #ffffff;
-        background-color: transparent;
+        border-color: #191919;
+        background: transparent;
       }
     }
 
     .Btn_Login2 {
-      width: 12rem;
-      background-color: var(--primary_color_500);
-      color: var(--main_white);
+      padding: 0 20px;
+      background: #191919;
+      color: #ffffff;
       border: none;
 
       &:hover {
-        background-color: var(--primary_color_700);
+        background: #b9ff66;
+        color: #191919;
       }
     }
   }
 
   .MenuIcon {
     display: none;
-    font-size: 2rem;
+    font-size: 1.75rem;
     cursor: pointer;
-    color: rgba(255,255,255,0.8);
+    color: #191919;
   }
 
-  /* ---------- MOBILE ---------- */
   @media (max-width: 768px) {
-    .MenuIcon {
-      display: block;
-    }
+    .MenuIcon { display: block; }
+    nav { display: none; }
 
-    nav {
-      display: none;
-    }
-
-    /* Mobile nav when open */
     nav.MobileNav {
       display: flex;
       flex-direction: column;
       width: 100%;
-      background-color: #04091a;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      background: #f5f0e8;
+      border-top: 1px solid rgba(25,25,25,0.1);
       position: absolute;
       top: 4.3rem;
       left: 0;
       right: 0;
       z-index: 9999;
-      height: max-content;
-      align-items: center;
-      padding: 12px 14px;
-      box-sizing: border-box;
-      gap: 10px;
-    }
-
-    /* vertical list, tighter spacing */
-    nav.MobileNav ul {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem; /* reduced gap */
-      padding: 0;
-      margin: 0;
-    }
-
-    /* each link wrapper spans full width and uses box-sizing */
-    nav.MobileNav .Link {
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    /* style individual li as a boxed item (like your screenshot) */
-    nav.MobileNav .Link li {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 0.6rem 0.75rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.04);
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.75);
-      transition: border-color 140ms ease, color 140ms ease;
-    }
-
-    nav.MobileNav .Link.active li {
-      border-color: #4d8bff;
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    /* auth buttons stacked and full-width, slightly tighter */
-    nav.MobileNav .Auth_Button.mobile {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: center;
-      width: 100%;
-      gap: 0.6rem;
-      margin-top: 6px;
-    }
-
-    /* Login (outline) */
-    nav.MobileNav .Auth_Button.mobile .Btn_Login {
-      width: 100%;
-      height: 2.75rem;
-      border-radius: 10px;
-      border: 2px solid var(--primary_color_500);
-      background: transparent;
-      color: var(--primary_color_500);
-      font-size: 1rem;
-    }
-
-    /* Get started (filled) */
-    nav.MobileNav .Auth_Button.mobile .Btn_Login2 {
-      width: 100%;
-      height: 2.75rem;
-      border-radius: 10px;
-      background: var(--primary_color_500);
-      color: #fff;
-      font-size: 1rem;
-      border: none;
-    }
-
-    .Auth_Button.desktop {
-      display: none;
-    }
-  }
-
-  /* ---------- SMALL PHONES ---------- */
-  @media (max-width: 480px) {
-    .AppLogo {
-      justify-content: flex-start;
-    }
-
-    .AppLogo img {
-      max-width: 100px;
-      max-height: 2rem;
-    }
-
-    /* slightly reduce padding on very small screens */
-    nav.MobileNav {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 1rem;
       gap: 8px;
     }
 
     nav.MobileNav ul {
-      gap: 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav.MobileNav .Link {
+      width: 100%;
     }
 
     nav.MobileNav .Link li {
-      padding: 0.55rem 0.7rem;
-      font-size: 0.95rem;
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1px solid rgba(25,25,25,0.1);
+      background: #ffffff;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    nav.MobileNav .Link.active li {
+      border-color: #191919;
+      color: #191919;
+      font-weight: 700;
+    }
+
+    nav.MobileNav .Auth_Button.mobile {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     nav.MobileNav .Auth_Button.mobile .Btn_Login,
     nav.MobileNav .Auth_Button.mobile .Btn_Login2 {
-      height: 2.4rem;
-      font-size: 0.95rem;
+      width: 100%;
+      height: 2.75rem;
+      border-radius: 10px;
+    }
+
+    nav.MobileNav .Auth_Button.mobile .Btn_Login {
+      border: 2px solid #191919;
+      background: transparent;
+      color: #191919;
+    }
+
+    nav.MobileNav .Auth_Button.mobile .Btn_Login2 {
+      background: #191919;
+      color: #ffffff;
+      border: none;
+    }
+
+    .Auth_Button.desktop { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .AppLogo img {
+      max-width: 120px;
+      max-height: 2rem;
     }
   }
 `;

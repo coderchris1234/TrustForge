@@ -2,35 +2,55 @@ import styled, { keyframes } from "styled-components";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 `;
 
 export const TargetContainer = styled.section`
   width: 100%;
-  background: #ffffff;
+  background: #191919;
   padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -120px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: #b9ff66;
+    opacity: 0.08;
+    pointer-events: none;
+  }
 
   .Target_wrapper {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 5rem;
+    position: relative;
+    z-index: 1;
     animation: ${fadeUp} 0.8s ease forwards;
   }
 
+  /* ── Who we are — horizontal split ── */
   .who_we_are {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     align-items: start;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 
     .left_col {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .section_label {
@@ -38,16 +58,16 @@ export const TargetContainer = styled.section`
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #0046ff;
+      color: #b9ff66;
     }
 
     h3 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: #04091a;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: #ffffff;
       margin: 0;
-      line-height: 1.15;
-      letter-spacing: -1px;
+      line-height: 1.0;
+      letter-spacing: -2px;
     }
 
     .right_col {
@@ -59,55 +79,56 @@ export const TargetContainer = styled.section`
 
     p {
       font-size: 1rem;
-      color: #4b5563;
+      color: rgba(255,255,255,0.6);
       line-height: 1.8;
       margin: 0;
     }
   }
 
+  /* ── Feature cards — bento row ── */
   .Secure {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: #e5e7eb;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
+    gap: 1.5rem;
 
     .Secure_img {
-      background: #ffffff;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
       padding: 2.5rem 2rem;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      transition: background 0.2s ease;
+      transition: all 0.25s ease;
 
       &:hover {
-        background: #f8faff;
+        background: rgba(185,255,102,0.06);
+        border-color: rgba(185,255,102,0.3);
+        transform: translateY(-4px);
       }
 
       .Secure_image_holder {
         width: 52px;
         height: 52px;
-        border-radius: 12px;
-        background: #04091a;
+        border-radius: 14px;
+        background: #b9ff66;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #ffffff;
+        color: #191919;
         font-size: 1.4rem;
       }
 
       h3 {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        color: #04091a;
+        color: #ffffff;
         margin: 0;
       }
 
       p {
         font-size: 0.875rem;
-        color: #6b7280;
+        color: rgba(255,255,255,0.5);
         line-height: 1.65;
         margin: 0;
       }
@@ -120,6 +141,7 @@ export const TargetContainer = styled.section`
     .who_we_are {
       grid-template-columns: 1fr;
       gap: 2rem;
+      padding-bottom: 3rem;
     }
 
     .Secure {
