@@ -1,153 +1,126 @@
-import styled from "styled-components";
-import InsightBg from "../assets/InsightBg.png";
+import styled, { keyframes } from "styled-components";
 
-export const InsightContainer = styled.div`
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+export const InsightContainer = styled.section`
   width: 100%;
-  height: max-content;
-  /* background: linear-gradient(to right, #f5b301, #8ab7f4, #8ab7f4); */
-  background: url(${InsightBg});
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #ffffff;
+  padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 3rem;
 
   .Insight_wrapper {
-    width: 90%;
-    height: 100%;
+    width: 100%;
+    max-width: 1100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    gap: 4rem;
+    animation: ${fadeUp} 0.8s ease forwards;
+  }
 
-    .Insight_texts {
-      width: 100%;
-      height: 10%;
+  .Insight_texts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: end;
+
+    .left_head {
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      margin-top: 40px;
-      gap: 20px;
+      gap: 1rem;
+    }
 
-      h3 {
-        font-size: 36px;
-        font-weight: 600;
-        color: var(--netural_black_color);
-        margin-bottom: 0px;
-        text-align: center;
-      }
+    .section_label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0046ff;
+    }
 
-      span {
-        color: var(--primary_color_500);
-      }
+    h3 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #04091a;
+      margin: 0;
+      line-height: 1.15;
+      letter-spacing: -1px;
+
+      span { color: #0046ff; }
+    }
+
+    .right_head {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 1rem;
+      padding-bottom: 0.25rem;
 
       p {
-        font-size: 18px;
-        font-weight: 400;
-        color: var(--netural_black_color);
-        text-align: center;
-        line-height: 1.5;
+        font-size: 1rem;
+        color: #4b5563;
+        line-height: 1.75;
+        margin: 0;
+        text-align: right;
       }
     }
+  }
 
-    .Insight_card_holder {
-      width: 100%;
-      height: 65%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+  .Insight_card_holder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 
-    .Insight_btn {
-      width: 180px;
-      height: 50px;
-      margin-top: 30px;
-      border-radius: 8px;
-      cursor: pointer;
-      background-color: var(--primary_color_500);
-      border: none;
-      color: var(--main_white);
+  .Insight_btn {
+    width: fit-content;
+    height: 48px;
+    padding: 0 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: 1.5px solid #04091a;
+    color: #04091a;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.2s ease;
+    align-self: center;
+
+    &:hover {
+      background: #04091a;
+      color: #ffffff;
     }
   }
 
   @media (max-width: 1024px) {
-    height: auto;
-    padding: 2rem 1rem;
-    background-size: cover;
-    background-position: center;
+    padding: 5rem 1.5rem;
 
-    .Insight_wrapper {
-      height: auto;
+    .Insight_texts {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
 
-      .Insight_card_holder {
-        justify-content: center;
-        gap: 30px;
+      .right_head {
+        align-items: flex-start;
+
+        p { text-align: left; }
       }
+    }
+
+    .Insight_card_holder {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 2rem 1rem 3rem 1rem;
+  @media (max-width: 640px) {
+    padding: 4rem 1.25rem;
 
-    .Insight_wrapper {
-      gap: 30px;
-
-      .Insight_texts {
-        margin-top: 20px;
-
-        h3 {
-          font-size: 28px;
-          text-align: center;
-        }
-
-        p {
-          font-size: 16px;
-          text-align: center;
-        }
-      }
-
-      .Insight_card_holder {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: auto;
-        gap: 25px;
-      }
-
-      .Insight_btn {
-        width: 150px;
-        height: 42px;
-        font-size: 15px;
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .Insight_wrapper {
-      .Insight_texts {
-        h3 {
-          font-size: 22px;
-        }
-
-        p {
-          font-size: 14px;
-        }
-      }
-
-      .Insight_card_holder {
-        gap: 20px;
-      }
-
-      .Insight_btn {
-        width: 140px;
-        height: 40px;
-        font-size: 14px;
-      }
+    .Insight_card_holder {
+      grid-template-columns: 1fr;
     }
   }
 `;

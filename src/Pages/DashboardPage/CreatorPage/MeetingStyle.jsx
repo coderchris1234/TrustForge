@@ -1,149 +1,120 @@
 import styled from "styled-components";
 
 export const MeetingContainer = styled.div`
-  width: 95%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  padding: 2rem 2rem 4rem;
+  font-family: "Poppins", sans-serif;
+
   .tabs {
     display: flex;
-    gap: 20px;
-    margin: 20px 0 30px;
-    border-bottom: 1px solid #e4e6eb;
-    padding-bottom: 10px;
+    gap: 4px;
+    margin-bottom: 2rem;
+    background: #f0f2f8;
+    padding: 4px;
+    border-radius: 12px;
+    width: fit-content;
   }
 
   .tab {
     position: relative;
-    padding: 10px 16px;
-    font-size: 15px;
+    height: 38px;
+    padding: 0 20px;
+    font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
-    color: #6c6c6c;
-    transition: all 0.25s ease;
+    color: #6b7280;
     border-radius: 8px;
-  }
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
 
-  .tab:hover {
-    background: #f5f7ff;
-    color: #0052ff;
-  }
+    &:hover {
+      background: rgba(0,70,255,0.06);
+      color: #0046ff;
+    }
 
-  .tab.active {
-    color: #0052ff;
-    font-weight: 600;
-  }
+    &.active {
+      background: #0046ff;
+      color: #ffffff;
+      font-weight: 600;
+    }
 
-  .tab.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -11px;
-    height: 3px;
-    width: 100%;
-    background: #0052ff;
-    border-radius: 10px;
-  }
+    span {
+      background: rgba(255,255,255,0.25);
+      color: inherit;
+      padding: 1px 7px;
+      font-size: 0.72rem;
+      border-radius: 100px;
+      font-weight: 700;
+    }
 
-  .tab span {
-    background: #e8edff;
-    color: #0052ff;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 20px;
-    margin-left: 8px;
-    font-weight: 600;
+    &.active span {
+      background: rgba(255,255,255,0.25);
+    }
+
+    &:not(.active) span {
+      background: #e8edff;
+      color: #0046ff;
+    }
   }
 
   .meetingHeading {
     .meetingStats {
-      background-color: #c1c1c1;
+      background: #f0f2f8;
       display: flex;
-      justify-content: space-around;
       align-items: center;
-      cursor: pointer;
-      border-radius: 50px;
-      gap: 3rem;
-      padding: 0.3rem 0.5rem;
+      border-radius: 100px;
+      padding: 4px;
+      width: fit-content;
+      gap: 2px;
 
       div {
-        background-color: transparent;
+        height: 36px;
+        padding: 0 20px;
+        border-radius: 100px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        flex: 1;
-        border-radius: 50px;
-        transition: all 0.3s ease;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #6b7280;
+        transition: all 0.2s ease;
+        background: transparent;
+
+        p { margin: 0; }
 
         &.active {
-          background-color: #ffff;
-          color: #1b1b1b;
+          background: #0046ff;
+          color: #ffffff;
           font-weight: 600;
         }
-        p {
-          margin: 0.5rem 0;
-        }
       }
     }
   }
 
-  @media (max-width: 900px) {
-    .meetingHeading .meetingStats {
-      gap: 1.25rem;
-      padding: 0.28rem 0.4rem;
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 3rem;
+
+    .tabs {
+      width: 100%;
+      overflow-x: auto;
     }
-  }
 
-  @media (max-width: 480px) {
-    width: 96%;
-    margin-top: 0.8rem;
-    margin-bottom: 1.2rem;
-
-    .meetingHeading {
-      .meetingStats {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 8px;
-        padding: 6px;
-        border-radius: 999px;
-
-        div {
-          flex: 0 1 auto;
-          min-width: 42%;
-          max-width: 48%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 8px 10px;
-          border-radius: 999px;
-
-          p {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1;
-            text-align: center;
-          }
-
-          &.active {
-            background-color: #ffff;
-            color: #1b1b1b;
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-
-  @media (max-width: 340px) {
     .meetingHeading .meetingStats {
-      gap: 6px;
+      width: 100%;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      padding: 6px;
 
       div {
-        min-width: 100%;
-        max-width: 100%;
+        flex: 1;
+        min-width: 45%;
+        border-radius: 8px;
       }
     }
   }

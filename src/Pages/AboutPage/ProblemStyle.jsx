@@ -1,180 +1,89 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const ProblemContainer = styled.div`
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+export const ProblemContainer = styled.section`
   width: 100%;
-  min-height: 90vh;
-  background-color: var(--main_white);
+  background: #ffffff;
+  padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 4rem 0;
 
   .Problem_wrapper {
-    width: 90%;
-    height: 95%;
-    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 6rem;
+    animation: ${fadeUp} 0.8s ease forwards;
+  }
 
-    .Problem_section {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .Problem_section .Problem_text_holder {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-      .Problem_text_holder {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        h3 {
-          font-size: 36px;
-          font-weight: 600;
-          color: var(--netural_black_color);
-          line-height: 120%;
-        }
-
-        p,
-        span {
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 167%;
-          color: var(--netural_black_color);
-        }
-      }
+    .section_label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0046ff;
     }
 
-    .Problem_section1 {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-        /* max-height: 500px; */
-        border-radius: 20px;
-        object-fit: cover;
-      }
+    h3 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: #04091a;
+      line-height: 1.15;
+      margin: 0;
+      letter-spacing: -1px;
     }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    span {
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #6b7280;
+      padding: 1.25rem 1.5rem;
+      background: #f8faff;
+      border-left: 3px solid #04091a;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+
+  .Problem_section1 img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 24px 64px rgba(4, 9, 26, 0.12);
   }
 
   @media (max-width: 1024px) {
+    padding: 5rem 1.5rem;
+
     .Problem_wrapper {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 40px;
-
-      .Problem_section {
-        width: 100%;
-
-        .Problem_text_holder {
-          width: 100%;
-          align-items: center;
-
-          h3 {
-            font-size: 30px;
-          }
-
-          p,
-          span {
-            font-size: 15px;
-            max-width: 650px;
-          }
-        }
-      }
-
-      .Problem_section1 {
-        width: 100%;
-        margin-top: 0;
-
-        img {
-          max-width: 90%;
-          height: auto;
-        }
-      }
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
   }
 
-  @media (max-width: 768px) {
-    padding: 3rem 1rem;
+  @media (max-width: 640px) {
+    padding: 4rem 1.25rem;
 
-    .Problem_wrapper {
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      gap: 25px;
-
-      .Problem_section {
-        width: 100%;
-
-        .Problem_text_holder {
-          width: 100%;
-          padding-top: 0;
-          gap: 15px;
-
-          h3 {
-            font-size: 26px;
-          }
-
-          p,
-          span {
-            font-size: 14px;
-            line-height: 160%;
-          }
-        }
-      }
-
-      .Problem_section1 {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-
-        img {
-          width: 100%;
-          height: auto;
-          border-radius: 15px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .Problem_wrapper {
-      gap: 20px;
-
-      .Problem_section {
-        width: 100%;
-
-        .Problem_text_holder {
-          h3 {
-            font-size: 22px;
-          }
-
-          p,
-          span {
-            font-size: 13px;
-          }
-        }
-      }
-      .Problem_section1 {
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-
-        img {
-          width: 100%;
-        }
-      }
-      .Problem_section1 img {
-        border-radius: 12px;
-        width: 100%;
-      }
+    .Problem_section .Problem_text_holder h3 {
+      font-size: 1.75rem;
     }
   }
 `;

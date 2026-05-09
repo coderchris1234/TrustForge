@@ -1,144 +1,84 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const MissionContainer = styled.div`
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+export const MissionContainer = styled.section`
   width: 100%;
-  height: 75vh;
+  background: #f8faff;
+  padding: 7rem 1.5rem;
   display: flex;
-  background-color: var(--main_white);
   justify-content: center;
-  align-items: center;
 
   .Mission_wrapper {
-    width: 90%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-
-    .Mission {
-      width: 1008px;
-      height: 260px;
-      background-color: var(--main_white);
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 2rem;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-      .Mission_icon {
-        color: var(--primary_color_500);
-        font-size: 60px;
-        font-weight: 100;
-        margin-top: 2rem;
-      }
-
-      h3 {
-        font-size: 28px;
-        font-weight: 600;
-        color: var(--netural_black_color);
-        margin: 0px;
-        text-align: center;
-      }
-
-      p {
-        font-size: 18px;
-        font-weight: 400;
-        color: var(--netural_black_color);
-        line-height: 150%;
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-    }
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #e5e7eb;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    animation: ${fadeUp} 0.8s ease forwards;
   }
 
-  @media (max-width: 1024px) {
-    height: auto;
-    padding: 3rem 0;
+  .Mission {
+    background: #ffffff;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: background 0.2s ease;
 
-    .Mission_wrapper {
-      gap: 30px;
+    &:hover {
+      background: #f0f5ff;
+    }
 
-      .Mission {
-        width: 90%;
-        height: auto;
-        padding: 25px 20px;
-        gap: 18px;
+    .Mission_icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: #04091a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
 
-        .Mission_icon {
-          font-size: 50px;
-        }
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #04091a;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
 
-        h3 {
-          font-size: 24px;
-        }
-
-        p {
-          font-size: 16px;
-          max-width: 600px;
-        }
-      }
+    p {
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.8;
+      margin: 0;
     }
   }
 
   @media (max-width: 768px) {
-    height: auto;
-    padding: 2rem 1.5rem;
+    padding: 5rem 1.5rem;
 
     .Mission_wrapper {
-      align-items: flex-start;
-      gap: 25px;
-
-      .Mission {
-        width: 100%;
-        align-items: flex-start;
-        text-align: left;
-        padding: 20px;
-        gap: 15px;
-
-        .Mission_icon {
-          font-size: 45px;
-        }
-
-        h3 {
-          font-size: 22px;
-          text-align: left;
-        }
-
-        p {
-          font-size: 15px;
-          text-align: left;
-          line-height: 150%;
-        }
-      }
+      grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 480px) {
-    padding: 1.5rem 1rem;
+  @media (max-width: 640px) {
+    padding: 4rem 1.25rem;
 
-    .Mission_wrapper {
-      .Mission {
-        gap: 12px;
-        align-items: center;
-
-        .Mission_icon {
-          font-size: 40px;
-        }
-
-        h3 {
-          font-size: 20px;
-        }
-
-        p {
-          font-size: 14px;
-          text-align: center;
-        }
-      }
+    .Mission {
+      padding: 2.5rem 2rem;
     }
   }
 `;

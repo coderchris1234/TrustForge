@@ -109,6 +109,7 @@ const Signup = () => {
 
     if (!role) {
       toast.error("Please select a role");
+      return false;
     }
 
     return true;
@@ -129,7 +130,13 @@ const Signup = () => {
     try {
       const res = await axios.post(
         `${BaseUrl}/${role === "Investor" ? "Investor" : "user"}`,
-        formData
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          phoneNumber: `${country.code}${formData.phoneNumber}`,
+        }
       );
 
       dispatch(setUser(res?.data));
@@ -158,7 +165,13 @@ const Signup = () => {
   return (
     <SignupContainer>
       <SignupLeft>
-        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <div className="Left_quote">
+          <blockquote>
+            "Your next great partnership starts here."
+          </blockquote>
+          <p>Join 90+ businesses already growing on TrustForge.</p>
+        </div>
       </SignupLeft>
       {loading && (
         <div className="loading-overlay">
@@ -168,7 +181,10 @@ const Signup = () => {
 
       <SignupRight>
         <FormBox>
-          <FormTitle>Welcome to TrustForge</FormTitle>
+          <FormTitle>
+            <div className="title-text">Create your account</div>
+            <div className="title-sub">Join TrustForge and start building connections</div>
+          </FormTitle>
 
           <form onSubmit={handleSubmit} noValidate>
             <Label>
@@ -256,7 +272,7 @@ const Signup = () => {
                   top: "50%",
                   transform: "translateY(-50%)",
                   cursor: "pointer",
-                  color: "#888",
+                  color: "#9ca3af",
                 }}
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
@@ -283,7 +299,7 @@ const Signup = () => {
                   top: "50%",
                   transform: "translateY(-50%)",
                   cursor: "pointer",
-                  color: "#888",
+                  color: "#9ca3af",
                 }}
               >
                 {showConfirm ? <FaEye /> : <FaEyeSlash />}
@@ -297,12 +313,7 @@ const Signup = () => {
 
           <LoginText>
             Already have an account?{" "}
-            <span
-              onClick={() => navigate("/login")}
-              style={{ color: "#0046ff" }}
-            >
-              Login
-            </span>
+            <span onClick={() => navigate("/login")}>Login</span>
           </LoginText>
 
           <TermsText>

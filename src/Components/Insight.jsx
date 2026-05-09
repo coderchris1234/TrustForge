@@ -1,6 +1,5 @@
 import React from "react";
 import { InsightContainer } from "./InsightStyle";
-import CustomButton from "./CustomButton";
 import { InsightData } from "../Config/Data";
 import { useNavigate } from "react-router-dom";
 import BlogPostCard from "./BlogPostCard";
@@ -11,26 +10,26 @@ const Insight = () => {
     <InsightContainer>
       <div className="Insight_wrapper">
         <div className="Insight_texts">
-          <h3>
-            Insights & <span>Resources.</span>
-          </h3>
-          <p>Expert advice and tips for both startups and investors</p>
+          <div className="left_head">
+            <span className="section_label">Insights & Resources</span>
+            <h3>
+              Expert <span>Advice.</span>
+            </h3>
+          </div>
+          <div className="right_head">
+            <p>Expert advice and tips for both startups and investors</p>
+          </div>
         </div>
 
         <div className="Insight_card_holder">
           {InsightData?.slice(0, 3).map((item) => (
-            <BlogPostCard item={item} />
+            <BlogPostCard item={item} key={item.heading} />
           ))}
         </div>
 
-        <CustomButton
-          className="Insight_btn"
-          Btntext="View All Post"
-          type="button"
-          onClick={() => {
-            nav("/insights");
-          }}
-        />
+        <button className="Insight_btn" onClick={() => nav("/insights")}>
+          View all posts →
+        </button>
       </div>
     </InsightContainer>
   );

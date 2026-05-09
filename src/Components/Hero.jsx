@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { HeroContainer } from "../Components/HeroStyle";
-import CustomButton from "./CustomButton";
 import { GoArrowRight } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
@@ -21,26 +20,53 @@ const Hero = () => {
     <HeroContainer>
       <div className="Hero_page_wrapper">
         <article className="Hero_content">
-          <h3>
+          <div className="Hero_badge">
+            <span className="badge_dot" />
+            Trusted by 90+ businesses across Africa
+          </div>
+
+          <h1>
             Where{" "}
-            <span key={words[currentWordIndex]} className="animated-word">
+            <span key={currentWordIndex} className="animated-word">
               {words[currentWordIndex]}
-            </span>{" "}
-            <br /> Build the Future Together.
-          </h3>
-          <p>
-            TrustForge connects innovative founders, growing enterprises,
-            <br /> and smart investors on a secure platform built for
-            collaboration,
-            <br /> funding, and sustainable growth.
+            </span>
+            <br />
+            Build the Future Together.
+          </h1>
+
+          <p className="Hero_sub">
+            TrustForge connects innovative founders, growing enterprises, and
+            smart investors on a secure platform built for collaboration,
+            funding, and sustainable growth.
           </p>
-          <CustomButton
-            className="Hero_btn"
-            Btntext="Get started for free"
-            type="button"
-            icon={<GoArrowRight className="Hero_icon" />}
-            onClick={() => nav("/signup")}
-          />
+
+          <div className="Hero_cta_group">
+            <button className="Hero_btn" onClick={() => nav("/signup")}>
+              Get started for free <GoArrowRight className="Hero_icon" />
+            </button>
+            <button className="Hero_btn_outline" onClick={() => nav("/about")}>
+              Learn more
+            </button>
+          </div>
+
+          <div className="Hero_stats">
+            <div className="stat_item">
+              <strong>90+</strong>
+              <span>Active businesses</span>
+            </div>
+            <div className="stat_item">
+              <strong>30+</strong>
+              <span>Verified investors</span>
+            </div>
+            <div className="stat_item">
+              <strong>₦100M+</strong>
+              <span>Funding facilitated</span>
+            </div>
+            <div className="stat_item">
+              <strong>95%</strong>
+              <span>Satisfaction rate</span>
+            </div>
+          </div>
         </article>
       </div>
     </HeroContainer>

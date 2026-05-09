@@ -7,7 +7,10 @@ const Team = () => {
     <TeamContainer>
       <div className="Team_wrapper">
         <article className="Team_header_text">
-          <h3>Meet Our Team</h3>
+          <div className="left_head">
+            <span className="section_label">The People</span>
+            <h3>Meet Our Team</h3>
+          </div>
           <p>The team behind the platform where trust meets growth</p>
         </article>
 
@@ -23,7 +26,6 @@ const Team = () => {
                 <p>{props.details}</p>
               </aside>
             ))}
-
             {TeamInfo?.map((props, i) => (
               <aside className="Team_card" key={i + TeamInfo.length}>
                 <div className="Team_Card_profile">

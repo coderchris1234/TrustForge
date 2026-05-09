@@ -7,16 +7,20 @@ const Stories = () => {
     <StoriesContainer>
       <div className="Story_wrapper">
         <div className="Story_header">
-          <h3>
-            <span>Success </span> Stories.
-          </h3>
+          <div className="left_head">
+            <span className="section_label">Testimonials</span>
+            <h3>
+              <span>Success</span> Stories.
+            </h3>
+          </div>
           <p>Real businesses achieving real results through TRUSTFORGE.</p>
         </div>
+
         <div className="Story_card_holder">
           {StoriesData?.map((item) => (
-            <article className="Story_card">
+            <article className="Story_card" key={item.name}>
               <div className="Story_image">
-                <img src={item.image} alt="" />
+                <img src={item.image} alt={item.name} />
               </div>
               <div className="Story_contents">
                 <aside className="Story_cont1">
@@ -24,9 +28,6 @@ const Stories = () => {
                   <p>{item.descriptions}</p>
                 </aside>
                 <div className="Story_cont2">
-                  <div className="Linediv">
-                    <div className="Line"></div>
-                  </div>
                   <h4>{item.name}</h4>
                   <span>{item.role}</span>
                   <p>{item.jobTitle}</p>

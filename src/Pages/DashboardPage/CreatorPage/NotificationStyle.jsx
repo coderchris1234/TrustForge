@@ -2,125 +2,89 @@ import styled from "styled-components";
 
 export const Notificationcontainer = styled.div`
   width: 100%;
-  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  font-family: "Poppins", sans-serif;
 
   .notification_top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
 
     h1 {
-      font-size: 22px;
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #04091a;
+      letter-spacing: -0.5px;
+      margin: 0 0 4px;
     }
 
     p {
-      font-size: 16px;
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin: 0;
     }
 
     .mark {
-      height: 2.4rem;
-      min-width: 9rem;
-      background-color: #fff;
+      height: 40px;
+      padding: 0 16px;
+      background: #ffffff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 0.5rem;
-      font-size: 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #0046ff;
+        color: #0046ff;
+      }
     }
   }
 
   .read_unread {
-    background-color: #c1c1c1;
-    padding: 0.2rem;
-    border-radius: 1rem;
+    background: #f0f2f8;
+    padding: 4px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
-    font-size: 18px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    width: 100%;
-    max-width: 300px;
+    width: fit-content;
+    gap: 2px;
   }
 
-  .all,
-  .unread {
-    flex: 1;
-    background-color: #fff;
-    border-radius: 1rem;
+  .all, .unread {
+    height: 36px;
+    padding: 0 20px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding: 0.5rem;
-    font-size: 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    transition: all 0.2s ease;
+    background: transparent;
+
+    &.active_tab {
+      background: #0046ff;
+      color: #ffffff;
+      font-weight: 600;
+    }
   }
 
   @media (max-width: 768px) {
-    .notification_top {
-      flex-direction: column;
-      align-items: flex-start;
-
-      h1 {
-        font-size: 18px;
-      }
-
-      p {
-        font-size: 14px;
-      }
-
-      .mark {
-        font-size: 13px;
-        width: auto;
-        padding: 0.4rem 0.8rem;
-      }
-    }
-
-    .read_unread {
-      font-size: 16px;
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .all,
-    .unread {
-      width: 100%;
-      font-size: 13px;
-      margin-top: 0.4rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .notification_top {
-      h1 {
-        font-size: 16px;
-      }
-
-      p {
-        font-size: 13px;
-      }
-
-      .mark {
-        font-size: 12px;
-        padding: 0.3rem 0.6rem;
-      }
-    }
-
-    .read_unread {
-      font-size: 15px;
-    }
-
-    .all,
-    .unread {
-      font-size: 12px;
-    }
+    padding: 1.5rem 1rem 3rem;
   }
 `;

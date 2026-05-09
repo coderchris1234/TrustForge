@@ -28,8 +28,8 @@ const Investor = ({ data }) => {
       }
     };
     fetchInvestors();
-    const interval = setInterval(fetchInvestors, 1000); // every 5 seconds
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchInvestors, 1000);
+    // return () => clearInterval(interval);
   }, []);
   return (
     <div>

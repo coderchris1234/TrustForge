@@ -214,7 +214,11 @@ const VerifyEmail = () => {
   return (
     <VerifyEmailContainer>
       <VerifyEmailLeft>
-        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <div className="Left_quote">
+          <blockquote>"One step away from your verified account."</blockquote>
+          <p>Check your inbox for the 6-digit code we sent you.</p>
+        </div>
       </VerifyEmailLeft>
       <VerifyEmailRight>
         <FormBox>
@@ -222,9 +226,7 @@ const VerifyEmail = () => {
             <div className="title-text">
               Email <span>Verification.</span>
             </div>
-            <small
-              style={{ fontWeight: 400, display: "block", color: "#1B1B1B" }}
-            >
+            <small>
               A verification code has been sent to your email address. Please
               enter to continue.
             </small>
@@ -255,13 +257,18 @@ const VerifyEmail = () => {
                   onKeyDown={(e) => handleKeyDown(e, idx)}
                   aria-label={`Digit ${idx + 1}`}
                   style={{
-                    width: 44,
-                    height: 48,
+                    width: 48,
+                    height: 56,
                     textAlign: "center",
-                    fontSize: 18,
-                    borderRadius: 6,
-                    border: "1px solid #ccc",
+                    fontSize: 20,
+                    fontWeight: 700,
+                    borderRadius: 10,
+                    border: digit ? "1.5px solid #0046ff" : "1.5px solid #e5e7eb",
+                    background: digit ? "#f0f5ff" : "#f9fafb",
                     outline: "none",
+                    fontFamily: "Poppins, sans-serif",
+                    color: "#04091a",
+                    transition: "all 0.15s ease",
                   }}
                 />
               ))}

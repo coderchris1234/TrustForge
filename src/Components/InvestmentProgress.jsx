@@ -18,7 +18,7 @@ const InvestmentProgress = ({ data, remain, investor }) => {
   const remaining = remain;
   const percentage = Math.round((raised / goal) * 100);
 
-    const formatNumber = (num) => {
+  const formatNumber = (num) => {
     return new Intl.NumberFormat("en-NG").format(num);
   };
 

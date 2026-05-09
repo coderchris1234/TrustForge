@@ -116,14 +116,20 @@ const Login = () => {
 
   const isFormValid = useMemo(() => {
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-    const passwordOk = passwordRegex.test(formData.password);
+    const passwordOk = formData.password.length > 0;
     return emailOk && passwordOk;
   }, [formData]);
 
   return (
     <LoginContainer>
       <LoginLeft>
-        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <div className="Left_quote">
+          <blockquote>
+            "Where great businesses and great investors find each other."
+          </blockquote>
+          <p>Join 90+ businesses already growing on TrustForge.</p>
+        </div>
       </LoginLeft>
       {loading && (
         <div className="loading-overlay">
@@ -134,9 +140,8 @@ const Login = () => {
       <LoginRight>
         <FormBox>
           <FormTitle>
-            <div className="title-text">Login to Trustforge</div>
-            {/* <div className="title-text">Welcome Back</div> */}
-            {/* <small>login to continue</small> */}
+            <div className="title-text">Welcome back</div>
+            <div className="title-sub">Log in to your TrustForge account</div>
           </FormTitle>
 
           <form onSubmit={onSubmit}>
@@ -193,18 +198,18 @@ const Login = () => {
                   name="isBusinessOwner"
                   checked={formData.isBusinessOwner}
                   onChange={handleChange}
-                  style={{ width: 16, height: 16, cursor: "pointer" }}
+                  style={{ width: 16, height: 16, cursor: "pointer", accentColor: "#0046ff" }}
                 />
-                <span style={{ fontSize: 14 }}>Log in as BusinessOwner</span>
+                <span style={{ fontSize: 14, color: "#374151" }}>Log in as Business Owner</span>
               </label>
 
               <span
                 onClick={() => navigate("/forgotpassword")}
                 style={{
                   fontSize: 14,
-                  color: "black",
-                  textDecoration: "none",
+                  color: "var(--primary_color_500)",
                   cursor: "pointer",
+                  fontWeight: 500,
                 }}
               >
                 Forgot Password?

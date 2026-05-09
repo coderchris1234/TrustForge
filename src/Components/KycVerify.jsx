@@ -378,6 +378,9 @@ const KycVerification = () => {
                         value={userDetails?.fullName}
                         onChange={handleChange}
                         readOnly
+                        style={{
+                          width: "100%",
+                        }}
                       />
                     </div>
                     {/* <div>
@@ -491,6 +494,11 @@ const KycVerification = () => {
                     value={formData.investmentType}
                     onChange={handleChange}
                     name="investmentType"
+                    style={{
+                      outline: "none",
+                      padding: "1rem",
+                      borderRadius: "8px",
+                    }}
                   >
                     {SelectOptions?.map((option, index) => (
                       <option key={index} value={option.value}>

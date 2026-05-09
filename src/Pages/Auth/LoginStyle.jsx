@@ -1,24 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import login from "/login.jpg";
+
+const fadeInUp = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
 
 export const LoginContainer = styled.div`
   display: flex;
-  gap: 10px;
-  justify-content: center;
   width: 100%;
-  height: max-content;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-color: #fff;
-  font-weight: 400;
-  font-size: 16px;
-  font-style: normal;
-  line-height: 24px;
+
   .loading-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.45);
     display: flex;
     justify-content: center;
@@ -27,55 +23,75 @@ export const LoginContainer = styled.div`
   }
 
   .spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid #fff;
-    border-top-color: #00a3ff;
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
     border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+    animation: spin 0.7s linear infinite;
   }
 
   @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     flex-direction: column;
-    align-items: center;
-    gap: 0;
   }
 `;
 
 export const LoginLeft = styled.div`
-  width: 43%;
+  width: 48%;
+  min-height: 100vh;
   background: linear-gradient(
-      0deg,
-      rgba(0, 70, 255, 0.25) 0%,
-      rgba(0, 70, 255, 0.25) 100%
+      135deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 29, 104, 0.5) 100%
     ),
     url(${login});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 2.5rem 3rem;
+  position: relative;
 
   img {
-    height: 3rem;
-    width: 3rem;
-    margin-top: 2rem;
-    margin-left: 2rem;
+    height: 2.8rem;
+    width: auto;
     cursor: pointer;
+    object-fit: contain;
   }
 
-  @media (max-width: 1024px) {
+  .Left_quote {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    blockquote {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
     width: 100%;
-    height: 60vh;
-    border-radius: 0; /* Full rectangular image */
-  }
+    min-height: 280px;
+    padding: 1.75rem 1.5rem;
 
-  @media (max-width: 600px) {
-    border-radius: 0; /* Keep full edge-to-edge */
+    .Left_quote { display: none; }
   }
 `;
 
@@ -84,160 +100,181 @@ export const LoginRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  background: #fff;
-  width: 50%;
-  padding: 10rem;
-  height: 100vh;
+  background: #ffffff;
+  padding: 3rem 2rem;
+  min-height: 100vh;
 
-  @media (max-width: 1024px) {
-    width: 100%;
-    height: auto;
-    padding: 4rem 2rem;
-  }
-
-  @media (max-width: 600px) {
-    padding: 2.5rem 1.5rem;
+  @media (max-width: 900px) {
+    min-height: unset;
+    padding: 3rem 1.5rem 4rem;
   }
 `;
 
 export const FormBox = styled.div`
-  width: 80%;
+  width: 100%;
   max-width: 420px;
+  animation: ${fadeInUp} 0.7s ease forwards;
 `;
 
-export const FormTitle = styled.h2`
-  display: block;
-  text-align: center;
-  margin-bottom: 12px;
-  font-family: Poppins;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 150%;
-  color: #1b1b1b;
-  margin: 0 0 3rem 0;
+export const FormTitle = styled.div`
+  margin-bottom: 2.5rem;
 
   .title-text {
-    /* color: #0046ff; */
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 145%;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--netural_black_color);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
 
-  span {
-    /* color: #0066ff; */
+  .title-sub {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 400;
   }
+`;
 
-  small {
-    font-size: 14px;
+export const Label = styled.label`
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  margin-top: 1.25rem;
+
+  .required {
+    color: var(--error_red_color_500);
+    margin-left: 2px;
   }
 `;
 
 export const InputField = styled.input`
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: 0.3s;
-  margin-bottom: 6px;
+  height: 48px;
+  padding: 0 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--netural_black_color);
+  background: #f9fafb;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: #9ca3af;
+  }
 
   &:focus {
-    border-color: #0066ff;
+    border-color: var(--primary_color_500);
+    background: #ffffff;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.08);
   }
 `;
 
 export const CreateButton = styled.button`
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
   width: 100%;
-  margin-top: 18px;
-  background-color: ${(props) => (props.disabled ? "#144b9e" : "#0066ff")};
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  opacity: ${(props) => (props.disabled ? 0.8 : 1)};
-  transition: background-color 150ms ease, opacity 150ms ease;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  cursor: ${(p) => (p.disabled ? "not-allowed" : "pointer")};
+  background: ${(p) => (p.disabled ? "#93aff7" : "var(--primary_color_500)")};
+  transition: all 0.25s ease;
 
-  &:hover {
-    background-color: ${(props) => (props.disabled ? "#144b9e" : "#0051cc")};
+  &:hover:not(:disabled) {
+    background: var(--primary_color_700);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 70, 255, 0.25);
   }
 `;
 
 export const OrText = styled.p`
   text-align: center;
-  color: #888;
-  font-size: 14px;
-  margin: 15px 0 10px;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin: 1.25rem 0;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background: #e5e7eb;
+  }
+
+  &::before { left: 0; }
+  &::after { right: 0; }
 `;
 
 export const GoogleBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 8px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
   cursor: pointer;
-  transition: 0.3s;
-  width: 30%;
-  margin: 0 auto;
+  transition: all 0.2s ease;
+  width: 100%;
 
   &:hover {
-    background-color: #f9f9f9;
+    border-color: #d1d5db;
+    background: #f9fafb;
   }
 
   img {
-    width: 25px;
-    height: 25px;
-  }
-
-  @media (max-width: 600px) {
-    width: 60%;
+    width: 22px;
+    height: 22px;
   }
 `;
 
 export const LoginText = styled.p`
   text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 1.25rem;
 
   span {
-    color: #ff3c00;
+    color: var(--primary_color_500);
     cursor: pointer;
-    font-weight: 500;
-    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
 export const TermsText = styled.p`
   text-align: center;
-  font-size: 12px;
-  margin-top: 10px;
-  color: #666;
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  color: #9ca3af;
 
   a {
-    color: #0066ff;
+    color: var(--primary_color_500);
     text-decoration: none;
-  }
-`;
 
-export const Label = styled.label`
-  font-weight: 500;
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
-
-  .required {
-    color: red;
-    margin-left: 3px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
 export const ErrorText = styled.p`
-  color: red;
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
+  color: var(--error_red_color_500);
+  font-size: 0.775rem;
+  margin-top: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;

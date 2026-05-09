@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import axios from "axios";
 import toast from "react-hot-toast";
+import authlogo from "../../assets/authlogo.png";
 import {
   ForgotPasswordContainer,
   ForgotPasswordLeft,
@@ -64,7 +64,13 @@ const ForgotPassword = () => {
 
   return (
     <ForgotPasswordContainer>
-      <ForgotPasswordLeft />
+      <ForgotPasswordLeft>
+        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <div className="Left_quote">
+          <blockquote>"Regaining access is just one step away."</blockquote>
+          <p>We'll send a reset link straight to your inbox.</p>
+        </div>
+      </ForgotPasswordLeft>
 
       <ForgotPasswordRight>
         <FormBox>

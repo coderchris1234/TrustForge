@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const LandingPageContainer = styled.div`
   width: 100%;
-  height: max-content;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
 
   .LandingPage_wrapper {
     width: 100%;
-    height: max-content;
+    flex: 1;
+    display: flex;
     flex-direction: column;
   }
 `;

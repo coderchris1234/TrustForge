@@ -112,7 +112,11 @@ const ResetPassword = () => {
   return (
     <ResetPasswordContainer>
       <ResetPasswordLeft>
-        <img src={authlogo} alt="" onClick={() => navigate("/")} />
+        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <div className="Left_quote">
+          <blockquote>"A fresh start is just a password away."</blockquote>
+          <p>Create a strong new password to secure your account.</p>
+        </div>
       </ResetPasswordLeft>
       <ResetPasswordRight>
         <FormBox>
