@@ -165,7 +165,7 @@ const Signup = () => {
   return (
     <SignupContainer>
       <SignupLeft>
-        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <span className="Auth_logo_text" onClick={() => navigate("/")}>TrustForge.</span>
         <div className="Left_quote">
           <blockquote>
             "Your next great partnership starts here."

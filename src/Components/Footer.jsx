@@ -4,7 +4,6 @@ import { MdCopyright } from "react-icons/md";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { RiFacebookCircleLine } from "react-icons/ri";
-import LOGO2 from "../assets/LOGO2.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -15,8 +14,8 @@ const Footer = () => {
           <div className="Footer_text_logo">
             <div className="Footer_logo">
               <div className="Logo_img_footer">
-                <Link to={"/"}>
-                  <img src={LOGO2} />
+                <Link to={"/"} style={{ textDecoration: "none" }}>
+                  <span className="Footer_logo_text">TrustForge.</span>
                 </Link>
               </div>
             </div>

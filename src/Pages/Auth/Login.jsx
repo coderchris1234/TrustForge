@@ -123,7 +123,7 @@ const Login = () => {
   return (
     <LoginContainer>
       <LoginLeft>
-        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <span className="Auth_logo_text" onClick={() => navigate("/")}>TrustForge.</span>
         <div className="Left_quote">
           <blockquote>
             "Where great businesses and great investors find each other."

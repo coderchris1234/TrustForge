@@ -3,7 +3,6 @@ import { DashboardLayoutContainer } from "./DashBoardLayoutStyle";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../Pages/Global/Slice";
-import Logo from "../assets/Logo.png";
 import axios from "axios";
 import profileHolder from "../assets/profileHolder.png";
 
@@ -82,12 +81,8 @@ const DashBoardLayout = (props) => {
 
         <div className="leftSidedContent">
           <div className="image-logo">
-            <Link to={"/"}>
-              <img
-                src={Logo}
-                alt=""
-                style={{ height: "1.4rem", width: "8.8rem" }}
-              />
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              <span className="Dash_logo_text">TrustForge.</span>
             </Link>
           </div>
           <p className="DashboardName">{props.dashboard}</p>

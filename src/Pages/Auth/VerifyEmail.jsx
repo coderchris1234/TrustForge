@@ -214,7 +214,7 @@ const VerifyEmail = () => {
   return (
     <VerifyEmailContainer>
       <VerifyEmailLeft>
-        <img src={authlogo} alt="TrustForge" onClick={() => navigate("/")} />
+        <span className="Auth_logo_text" onClick={() => navigate("/")}>TrustForge.</span>
         <div className="Left_quote">
           <blockquote>"One step away from your verified account."</blockquote>
           <p>Check your inbox for the 6-digit code we sent you.</p>

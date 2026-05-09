@@ -2,29 +2,30 @@ import styled, { keyframes } from "styled-components";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 `;
 
 export const StoriesContainer = styled.section`
   width: 100%;
-  background: #04091a;
+  background: #ffffff;
   padding: 7rem 1.5rem;
   display: flex;
   justify-content: center;
 
   .Story_wrapper {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 4rem;
     animation: ${fadeUp} 0.8s ease forwards;
   }
 
+  /* ── Header ── */
   .Story_header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: end;
 
     .left_head {
@@ -38,87 +39,95 @@ export const StoriesContainer = styled.section`
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #4d8bff;
+      color: #191919;
+      opacity: 0.4;
     }
 
     h3 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: #ffffff;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: #191919;
       margin: 0;
-      line-height: 1.15;
-      letter-spacing: -1px;
+      line-height: 1.0;
+      letter-spacing: -2px;
 
-      span { color: #4d8bff; }
+      span { color: #191919; }
     }
 
     p {
       font-size: 1rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.75;
+      color: #666;
+      line-height: 1.8;
       margin: 0;
       padding-top: 0.5rem;
     }
   }
 
+  /* ── Cards ── */
   .Story_card_holder {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    overflow: hidden;
+    gap: 1.5rem;
 
     .Story_card {
-      background: #0a1128;
-      padding: 2.5rem 2rem;
+      border: 1px solid #e8e3d8;
+      border-radius: 20px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      transition: background 0.2s ease;
+      transition: all 0.25s ease;
+      background: #fafaf7;
 
       &:hover {
-        background: #0d1535;
+        border-color: #191919;
+        transform: translateY(-4px);
+        box-shadow: 6px 6px 0 #191919;
       }
 
       .Story_image {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
+        width: 100%;
+        height: 200px;
         overflow: hidden;
-        border: 2px solid rgba(77,139,255,0.4);
-        flex-shrink: 0;
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 0.4s ease;
         }
+
+        &:hover img { transform: scale(1.04); }
       }
 
       .Story_contents {
+        padding: 1.75rem;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
         flex: 1;
       }
 
       .Story_cont1 {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
         flex: 1;
 
         .Story_icon {
           font-size: 1.5rem;
-          color: #4d8bff;
-          opacity: 0.6;
+          color: #b9ff66;
+          background: #191919;
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         p {
           font-size: 0.9rem;
-          color: rgba(255,255,255,0.7);
+          color: #444;
           line-height: 1.75;
           font-style: italic;
           margin: 0;
@@ -127,25 +136,25 @@ export const StoriesContainer = styled.section`
 
       .Story_cont2 {
         padding-top: 1.25rem;
-        border-top: 1px solid rgba(255,255,255,0.08);
+        border-top: 1px solid #e8e3d8;
 
         h4 {
           font-size: 0.9rem;
           font-weight: 700;
-          color: #ffffff;
+          color: #191919;
           margin: 0 0 3px;
         }
 
         span {
           font-size: 0.78rem;
-          color: #4d8bff;
+          color: #888;
           font-weight: 500;
           display: block;
         }
 
         p {
-          font-size: 0.78rem;
-          color: rgba(255,255,255,0.35);
+          font-size: 0.75rem;
+          color: #aaa;
           margin: 2px 0 0;
         }
       }

@@ -3,7 +3,6 @@ import { HeaderContainer } from "./HeaderStyle";
 import { MenuNav } from "../Config/Data";
 import CustomButton from "./CustomButton";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import Logo from "../assets/Logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setBlogIndex } from "../Pages/Global/Slice";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
@@ -19,8 +18,8 @@ const Header = () => {
     <HeaderContainer>
       <section className="Header_Wrapper">
         <div className="AppLogo">
-          <Link to={"/"}>
-            <img src={Logo} alt="Logo" />
+          <Link to={"/"} style={{ textDecoration: "none" }}>
+            <span className="Logo_text">TrustForge</span>
           </Link>
         </div>
 

@@ -113,10 +113,13 @@ export const DashboardLayoutContainer = styled.div`
       .image-logo {
         margin-bottom: 0.5rem;
 
-        img {
-          height: 1.4rem;
-          width: auto;
-          filter: brightness(0) invert(1);
+        .Dash_logo_text {
+          font-size: 1.1rem;
+          font-weight: 900;
+          color: #ffffff;
+          letter-spacing: -0.3px;
+          font-family: "Poppins", sans-serif;
+          text-decoration: none;
         }
       }
 
